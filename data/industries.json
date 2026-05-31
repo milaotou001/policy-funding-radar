@@ -428,17 +428,17 @@
       },
       "market_signal": {
         "etf_code": "159667",
-        "price": null,
-        "return_5d_pct": null,
-        "return_1m_pct": null,
-        "return_3m_pct": null,
-        "return_6m_pct": null,
-        "return_1y_pct": null,
-        "volume_trend": null,
-        "fund_flow_direction": null,
-        "signal": "数据不足",
-        "signal_label": "机床ETF(159667)仅覆盖工业母机细分，ETF代码已修正，行情数据待补充",
-        "updated": "2026-05-31"
+        "price": 2.3068,
+        "return_5d_pct": -4.45,
+        "return_1m_pct": 14.3,
+        "return_3m_pct": 17.43,
+        "return_6m_pct": 61.84,
+        "return_1y_pct": 107.28,
+        "volume_trend": "放量",
+        "fund_flow_direction": "流入",
+        "signal": "双重验证",
+        "signal_label": "工业母机ETF(159667)全周期强势（1年+107%/6月+62%/3月+17%），覆盖机床/激光/谐波减速器，仅覆盖工业母机细分",
+        "updated": "2026-05-29"
       },
       "work_report": {
         "national": {
@@ -2071,17 +2071,17 @@
       },
       "market_signal": {
         "etf_code": "515050",
-        "price": null,
-        "return_5d_pct": null,
-        "return_1m_pct": null,
-        "return_3m_pct": null,
-        "return_6m_pct": null,
-        "return_1y_pct": null,
-        "volume_trend": null,
-        "fund_flow_direction": null,
-        "signal": "数据不足",
-        "signal_label": "5G通信ETF(515050)覆盖部分光通信/光芯片标的，与量子信息有交叉。无纯量子ETF。ETF代码已修正，行情数据待补充",
-        "updated": "2026-05-31"
+        "price": 1.2017,
+        "return_5d_pct": 4.56,
+        "return_1m_pct": 21.33,
+        "return_3m_pct": 48.73,
+        "return_6m_pct": 77.36,
+        "return_1y_pct": 248.69,
+        "volume_trend": "放量",
+        "fund_flow_direction": "流入",
+        "signal": "温和确认",
+        "signal_label": "5G通信ETF(515050)极端强势（1年+249%/6月+77%），但主要受益于5G-A/AI基础设施而非量子技术本身。无纯量子ETF，代理映射精度有限",
+        "updated": "2026-05-29"
       },
       "work_report": {
         "national": {
@@ -2615,17 +2615,17 @@
       },
       "market_signal": {
         "etf_code": "159611",
-        "price": null,
+        "price": 1.2377,
         "return_5d_pct": null,
-        "return_1m_pct": null,
-        "return_3m_pct": null,
-        "return_6m_pct": null,
-        "return_1y_pct": null,
-        "volume_trend": null,
-        "fund_flow_direction": null,
-        "signal": "数据不足",
-        "signal_label": "全指电力ETF(159611)核电+火电+绿电混合，核电权重持续提升。ETF代码已修正，行情数据待补充",
-        "updated": "2026-05-31"
+        "return_1m_pct": 10.13,
+        "return_3m_pct": 13.57,
+        "return_6m_pct": 20.29,
+        "return_1y_pct": 26.59,
+        "volume_trend": "持平",
+        "fund_flow_direction": "流入",
+        "signal": "温和确认",
+        "signal_label": "全指电力ETF(159611)稳步上行（1年+27%/6月+20%），核电+火电+绿电混合，核电权重持续提升但电力板块弹性有限",
+        "updated": "2026-05-29"
       },
       "work_report": {
         "national": {
@@ -2743,17 +2743,17 @@
       },
       "market_signal": {
         "etf_code": "159755",
-        "price": null,
-        "return_5d_pct": null,
-        "return_1m_pct": null,
-        "return_3m_pct": null,
-        "return_6m_pct": null,
-        "return_1y_pct": null,
-        "volume_trend": null,
-        "fund_flow_direction": null,
-        "signal": "数据不足",
-        "signal_label": "电池ETF(159755)覆盖锂电/钠电/储能系统，与储能产业链高度重合。ETF代码已修正，行情数据待补充",
-        "updated": "2026-05-31"
+        "price": 1.1292,
+        "return_5d_pct": -3.26,
+        "return_1m_pct": -9.42,
+        "return_3m_pct": 2.75,
+        "return_6m_pct": 8.51,
+        "return_1y_pct": 68.31,
+        "volume_trend": "缩量",
+        "fund_flow_direction": "流出",
+        "signal": "暂不确认",
+        "signal_label": "电池ETF(159755)中长期尚可（1年+68%）但近1月-9.4%持续走弱。3000万千瓦储能目标明确但短期消化估值中",
+        "updated": "2026-05-29"
       },
       "work_report": {
         "national": {
@@ -3371,17 +3371,17 @@
       },
       "market_signal": {
         "etf_code": "512660",
-        "price": null,
-        "return_5d_pct": null,
-        "return_1m_pct": null,
-        "return_3m_pct": null,
-        "return_6m_pct": null,
-        "return_1y_pct": null,
-        "volume_trend": null,
-        "fund_flow_direction": null,
-        "signal": "数据不足",
-        "signal_label": "军工ETF(512660)是商业航天最接近的标的，多数商业航天公司在军工板块。ETF代码已修正，行情数据待补充",
-        "updated": "2026-05-31"
+        "price": 1.2839,
+        "return_5d_pct": -5.47,
+        "return_1m_pct": -6.7,
+        "return_3m_pct": -17.19,
+        "return_6m_pct": 9.56,
+        "return_1y_pct": 22.73,
+        "volume_trend": "缩量",
+        "fund_flow_direction": "流出",
+        "signal": "暂不确认",
+        "signal_label": "军工ETF(512660)中长期温和（1年+23%/6月+10%）但近3月-17%持续走弱。商业航天多数标的在军工板块，是当前最接近的代理",
+        "updated": "2026-05-29"
       },
       "work_report": {
         "national": {
@@ -4989,6 +4989,20 @@
           "detail": "发行全国首单80亿轨道资产类REITs、7亿先进制造科创公司债。落地首只QFLP基金。科技贷款余额超7000亿。基金规模达7800亿。新增上市企业7家以上。",
           "action_level": "制度构建"
         }
+      },
+      "market_signal": {
+        "etf_code": "-",
+        "price": null,
+        "return_5d_pct": null,
+        "return_1m_pct": null,
+        "return_3m_pct": null,
+        "return_6m_pct": null,
+        "return_1y_pct": null,
+        "volume_trend": null,
+        "fund_flow_direction": null,
+        "signal": "数据不足",
+        "signal_label": "暂无对应ETF产品，行情数据缺失",
+        "updated": "2026-05-31"
       }
     },
     {
@@ -5271,6 +5285,20 @@
         "source": "浙江省十五五规划纲要（2026-2030）",
         "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
         "zj_intensity": "弱落地"
+      },
+      "market_signal": {
+        "etf_code": "-",
+        "price": null,
+        "return_5d_pct": null,
+        "return_1m_pct": null,
+        "return_3m_pct": null,
+        "return_6m_pct": null,
+        "return_1y_pct": null,
+        "volume_trend": null,
+        "fund_flow_direction": null,
+        "signal": "数据不足",
+        "signal_label": "暂无对应ETF产品，行情数据缺失",
+        "updated": "2026-05-31"
       }
     },
     {
