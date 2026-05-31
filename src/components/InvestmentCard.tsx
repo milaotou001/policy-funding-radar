@@ -271,11 +271,19 @@ function WorkReportSection({ data }: { data: { national?: WorkReportEvidence; zh
 
 function CityEvidenceSection({ evidence }: { evidence: CityEvidenceMatrix }) {
   const actionStyles: Record<string, string> = {
-    "重点推进": "bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300 border-red-200 dark:border-red-700",
-    "持续推进": "bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-700",
-    "早期培育": "bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-700",
-    "监管规范": "bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-700",
-    "制度构建": "bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300 border-green-200 dark:border-green-700",
+    "重点推进": "bg-red-50 dark:bg-red-950/30 text-red-800 dark:text-red-300 border-red-200 dark:border-red-800",
+    "持续推进": "bg-blue-50 dark:bg-blue-950/30 text-blue-800 dark:text-blue-300 border-blue-200 dark:border-blue-800",
+    "早期培育": "bg-purple-50 dark:bg-purple-950/30 text-purple-800 dark:text-purple-300 border-purple-200 dark:border-purple-800",
+    "监管规范": "bg-amber-50 dark:bg-amber-950/30 text-amber-800 dark:text-amber-300 border-amber-200 dark:border-amber-800",
+    "制度构建": "bg-green-50 dark:bg-green-950/30 text-green-800 dark:text-green-300 border-green-200 dark:border-green-800",
+  };
+
+  const badgeStyles: Record<string, string> = {
+    "重点推进": "bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300",
+    "持续推进": "bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300",
+    "早期培育": "bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300",
+    "监管规范": "bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300",
+    "制度构建": "bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300",
   };
 
   const entries = Object.entries(evidence) as [CityCode, { mention: string; detail: string; action_level: string }][];
@@ -293,21 +301,27 @@ function CityEvidenceSection({ evidence }: { evidence: CityEvidenceMatrix }) {
           {entries.length}/8 城覆盖
         </span>
       </dt>
-      <dd className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-md p-3 space-y-1.5 text-sm">
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
+      <dd className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-md p-3 text-sm">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {sorted.map(([code, ev]) => (
             <div
               key={code}
-              className={`rounded px-2 py-1.5 border text-xs ${actionStyles[ev.action_level] || "bg-zinc-100 dark:bg-zinc-800 text-zinc-500"}`}
-              title={ev.detail}
+              className={`rounded px-3 py-2.5 border ${actionStyles[ev.action_level] || "bg-zinc-50 dark:bg-zinc-800/50 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700"}`}
             >
-              <div className="flex items-center gap-1 flex-wrap">
-                <span className="font-bold">{CITY_NAMES[code]}</span>
-                <span className="text-[10px] opacity-70">{ev.action_level}</span>
+              <div className="flex items-center gap-1.5 mb-1">
+                <span className="font-bold text-sm">{CITY_NAMES[code]}</span>
+                <span className={`inline-block px-1.5 py-0.5 rounded text-[10px] font-bold ${badgeStyles[ev.action_level] || "bg-zinc-100 dark:bg-zinc-800 text-zinc-500"}`}>
+                  {ev.action_level}
+                </span>
               </div>
-              <p className="text-[10px] mt-0.5 leading-tight opacity-80 line-clamp-2">
+              <p className="text-xs leading-relaxed font-medium text-zinc-800 dark:text-zinc-200">
                 {ev.mention}
               </p>
+              {ev.detail && (
+                <p className="text-[11px] leading-relaxed mt-1 text-zinc-500 dark:text-zinc-400">
+                  {ev.detail}
+                </p>
+              )}
             </div>
           ))}
         </div>
