@@ -122,6 +122,7 @@ const matrix = industries.map((ind) => {
   else if (policyStrong >= 2 && marketStrong) consensus = '政策-市场共振';
   else consensus = '信号分散';
 
+  const ioetf = ind.investment_observation?.etf;
   return {
     id: ind.id,
     name: ind.name,
@@ -131,6 +132,9 @@ const matrix = industries.map((ind) => {
     policyStrong,
     dq,
     etf_code: ind.market_signal?.etf_code || '-',
+    etf_name: ioetf?.name || '',
+    etf_index: ioetf?.index || '',
+    etf_note: ioetf?.note || '',
     ret6m: ind.market_signal?.return_6m_pct,
     ret1y: ind.market_signal?.return_1y_pct,
     signal: ind.market_signal?.signal || '-',
@@ -229,8 +233,8 @@ for (const [type, count] of Object.entries(stratDist)) {
 R += '\n---\n\n';
 
 R += '## 全行业信号矩阵\n\n';
-R += '| 行业 | 国家 | 省级 | 城市 | 规划 | 市场 | 策略类型 | 数据质量 | 6月 | 1年 |\n';
-R += '|------|------|------|------|------|------|----------|----------|-----|-----|\n';
+R += '| 行业 | ETF | 国家 | 省级 | 城市 | 规划 | 市场 | 策略类型 | 数据质量 | 6月 | 1年 |\n';
+R += '|------|------|------|------|------|------|------|----------|----------|-----|-----|\n';
 
 for (const m of matrix) {
   const s = (v) => {
@@ -239,7 +243,7 @@ for (const m of matrix) {
     if (v === '弱') return '🟠';
     return '⚪';
   };
-  R += `| ${m.name} | ${s(m.layers.national)} | ${s(m.layers.provincial)} | ${s(m.layers.cityExec)} | ${s(m.layers.planCommit)} | ${s(m.layers.market)} | ${m.strategy} | ${m.dq.tag} ${m.dq.label} | ${pct(m.ret6m)} | ${pct(m.ret1y)} |\n`;
+  R += `| ${m.name} | ${m.etf_code} | ${s(m.layers.national)} | ${s(m.layers.provincial)} | ${s(m.layers.cityExec)} | ${s(m.layers.planCommit)} | ${s(m.layers.market)} | ${m.strategy} | ${m.dq.tag} ${m.dq.label} | ${pct(m.ret6m)} | ${pct(m.ret1y)} |\n`;
 }
 
 R += `\n> 🟢强 🟡中 🟠弱 ⚪无/缺\n`;
@@ -257,6 +261,7 @@ function strategySection(title, items) {
     const ind = industries.find((i) => i.id === m.id);
     const eq = m.layers.eq;
     R += `### ${m.name} \`${m.etf_code}\` ${m.dq.tag}\n\n`;
+    R += `- **ETF**：${m.etf_name} | 跟踪 ${m.etf_index} | ${m.etf_note}\n`;
     R += `- **共识**：${m.consensus}（${m.strongLayers}/5 层强信号）\n`;
     R += `- **市场**：${m.signal} | 6月 ${pct(m.ret6m)} | 1年 ${pct(m.ret1y)} | 资金 ${m.flow}\n`;
     R += `- **证据质量**：量化目标 ${eq.quan} 条 | 工程项目 ${eq.eng} 条 | 产业平台 ${eq.plat} 条 | 定性提及 ${eq.vague} 条\n`;

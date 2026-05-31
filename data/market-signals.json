@@ -11,7 +11,10 @@
     "fund_flow_direction": "流入",
     "signal": "双重验证",
     "signal_label": "全周期强势：1年+109%/6月+51%/3月+27%，资金持续流入。政策省级强落地+市场高度一致",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "芯片ETF华夏",
+    "etf_full_name": "华夏国证半导体芯片ETF",
+    "etf_description": "跟踪国证半导体芯片指数，覆盖芯片设计、制造、封测全产业链"
   },
   "ai": {
     "etf_code": "159819",
@@ -25,7 +28,10 @@
     "fund_flow_direction": "流入",
     "signal": "温和确认",
     "signal_label": "中长期强劲（1年+118%/6月+29%），但近期横盘。政策独立成章+1.2万亿目标，回调后或有介入机会",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "人工智能ETF易方达",
+    "etf_full_name": "易方达中证人工智能ETF",
+    "etf_description": "跟踪中证人工智能主题指数，覆盖AI算力、算法、应用全链条"
   },
   "robotics": {
     "etf_code": "562500",
@@ -39,7 +45,10 @@
     "fund_flow_direction": "流出",
     "signal": "市场分歧",
     "signal_label": "长期强势（1年+99%/6月+45%）但近一月资金获利了结。人形机器人产业尚早，短期波动大",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "机器人ETF华夏",
+    "etf_full_name": "华夏中证机器人ETF",
+    "etf_description": "跟踪中证机器人指数，覆盖工业机器人、服务机器人及核心零部件"
   },
   "new-energy": {
     "etf_code": "516160",
@@ -53,7 +62,10 @@
     "fund_flow_direction": "流出",
     "signal": "暂不确认",
     "signal_label": "中长期尚可（1年+74%）但近3月持续走弱-8%，资金流出。政策强化但产能过剩压制短期表现",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "新能源ETF南方",
+    "etf_full_name": "南方中证新能源ETF",
+    "etf_description": "跟踪中证新能源指数，覆盖光伏、风电、储能、核电等清洁能源"
   },
   "digital-economy": {
     "etf_code": "560800",
@@ -67,7 +79,10 @@
     "fund_flow_direction": "流入",
     "signal": "双重验证",
     "signal_label": "全周期稳健上行（1年+83%/6月+35%/3月+16%），数据要素试验区落地+浙江数商，政策与资金共振",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "数字经济ETF鹏扬",
+    "etf_full_name": "鹏扬中证数字经济主题ETF",
+    "etf_description": "跟踪中证数字经济主题指数，覆盖数字产业化与产业数字化"
   },
   "biomedicine": {
     "etf_code": "512290",
@@ -81,7 +96,10 @@
     "fund_flow_direction": "流入",
     "signal": "双重验证",
     "signal_label": "全周期确认（1年+69%/6月+33%/3月+18%），杭州生物医药集群提级+国家级集群争取中",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "生物医药ETF国泰",
+    "etf_full_name": "国泰中证生物医药ETF",
+    "etf_description": "跟踪中证生物医药指数，覆盖创新药、生物制品、医疗研发"
   },
   "manufacturing": {
     "etf_code": "159667",
@@ -95,7 +113,10 @@
     "fund_flow_direction": "流入",
     "signal": "双重验证",
     "signal_label": "工业母机ETF(159667)全周期强势（1年+107%/6月+62%/3月+17%），覆盖机床/激光/谐波减速器，仅覆盖工业母机细分",
-    "updated": "2026-05-29"
+    "updated": "2026-05-29",
+    "etf_name": "工业母机ETF国泰",
+    "etf_full_name": "国泰国证工业母机ETF",
+    "etf_description": "跟踪国证工业母机指数，覆盖数控机床、刀具、核心零部件等高端制造装备"
   },
   "low-altitude-economy": {
     "etf_code": "159378",
@@ -109,7 +130,10 @@
     "fund_flow_direction": "流入",
     "signal": "双重验证",
     "signal_label": "最强新增方向（1年+126%/6月+68%/3月+36%），首次写入省级规划+低空新基建，政策从0到1红利期",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "通用航空ETF永赢",
+    "etf_full_name": "永赢国证通用航空ETF",
+    "etf_description": "跟踪国证通用航空指数，覆盖eVTOL、无人机、低空基础设施"
   },
   "nuclear-energy": {
     "etf_code": "159611",
@@ -123,7 +147,10 @@
     "fund_flow_direction": "流入",
     "signal": "温和确认",
     "signal_label": "全指电力ETF(159611)稳步上行（1年+27%/6月+20%），核电+火电+绿电混合，核电权重持续提升但电力板块弹性有限",
-    "updated": "2026-05-29"
+    "updated": "2026-05-29",
+    "etf_name": "电力ETF广发",
+    "etf_full_name": "广发中证全指电力ETF",
+    "etf_description": "跟踪中证全指电力公用事业指数，覆盖火电、水电、核电、新能源发电"
   },
   "energy-storage": {
     "etf_code": "159755",
@@ -137,7 +164,10 @@
     "fund_flow_direction": "流出",
     "signal": "暂不确认",
     "signal_label": "电池ETF(159755)中长期尚可（1年+68%）但近1月-9.4%持续走弱。3000万千瓦储能目标明确但短期消化估值中",
-    "updated": "2026-05-29"
+    "updated": "2026-05-29",
+    "etf_name": "电池ETF广发",
+    "etf_full_name": "广发国证新能源车电池ETF",
+    "etf_description": "跟踪国证新能源车电池指数，覆盖锂电池、钠电池、储能系统"
   },
   "quantum-tech": {
     "etf_code": "515050",
@@ -151,7 +181,10 @@
     "fund_flow_direction": "流入",
     "signal": "温和确认",
     "signal_label": "5G通信ETF(515050)极端强势（1年+249%/6月+77%），但主要受益于5G-A/AI基础设施而非量子技术本身。无纯量子ETF，代理映射精度有限",
-    "updated": "2026-05-29"
+    "updated": "2026-05-29",
+    "etf_name": "5G通信ETF华夏",
+    "etf_full_name": "华夏中证5G通信主题ETF",
+    "etf_description": "跟踪中证5G通信主题指数，覆盖5G基建、光通信、卫星互联网"
   },
   "autonomous-driving": {
     "etf_code": "516520",
@@ -165,7 +198,10 @@
     "fund_flow_direction": "流入",
     "signal": "温和确认",
     "signal_label": "工程化转向明确（1年+86%/6月+38%），杭州车路云示范是实质落地信号，资金认可度高",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "智能驾驶ETF华泰柏瑞",
+    "etf_full_name": "华泰柏瑞中证智能驾驶主题ETF",
+    "etf_description": "跟踪中证智能驾驶主题指数，覆盖车载芯片、激光雷达、智驾方案"
   },
   "commercial-space": {
     "etf_code": "512660",
@@ -179,7 +215,10 @@
     "fund_flow_direction": "流出",
     "signal": "暂不确认",
     "signal_label": "军工ETF(512660)中长期温和（1年+23%/6月+10%）但近3月-17%持续走弱。商业航天多数标的在军工板块，是当前最接近的代理",
-    "updated": "2026-05-29"
+    "updated": "2026-05-29",
+    "etf_name": "军工ETF国泰",
+    "etf_full_name": "国泰中证军工ETF",
+    "etf_description": "跟踪中证军工指数，覆盖航空航天、舰船、兵器、军工电子"
   },
   "platform-economy": {
     "etf_code": "513050",
@@ -193,7 +232,10 @@
     "fund_flow_direction": "流入",
     "signal": "市场分歧",
     "signal_label": "中概反弹（1年+55%/6月+26%），但穿透式监管写入省级规划增添不确定性，政策信号与市场走势背离",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "中概互联ETF易方达",
+    "etf_full_name": "易方达中证海外中国互联网50ETF",
+    "etf_description": "跟踪中证海外中国互联网50指数，覆盖港股美股上市的中国互联网平台"
   },
   "data-elements": {
     "etf_code": "516000",
@@ -207,7 +249,10 @@
     "fund_flow_direction": "流入",
     "signal": "温和确认",
     "signal_label": "政策驱动上行（1年+89%/6月+41%），国家数据要素试验区+浙江数商品牌化，政策从概念走向产业",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "大数据ETF华夏",
+    "etf_full_name": "华夏中证大数据ETF",
+    "etf_description": "跟踪中证大数据产业指数，覆盖数据服务、数据安全、数据交易"
   },
   "industrial-software": {
     "etf_code": "159852",
@@ -221,7 +266,10 @@
     "fund_flow_direction": "流入",
     "signal": "双重验证",
     "signal_label": "全周期强劲（1年+109%/6月+46%/3月+23%），2万亿营收目标+杭州软件名城，国产替代+政策双驱动",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "软件ETF嘉实",
+    "etf_full_name": "嘉实中证软件服务ETF",
+    "etf_description": "跟踪中证软件服务指数，覆盖工业软件、基础软件、SaaS"
   },
   "new-materials": {
     "etf_code": "516890",
@@ -235,7 +283,10 @@
     "fund_flow_direction": "流入",
     "signal": "温和确认",
     "signal_label": "稳健上行（1年+55%/6月+23%），宁波材料集群提升能级，材料方向受益多产业政策共振。ETF代码已修正(516890新材料ETF)",
-    "updated": "2026-05-31"
+    "updated": "2026-05-31",
+    "etf_name": "新材料ETF华安",
+    "etf_full_name": "华安中证新材料主题ETF",
+    "etf_description": "跟踪中证新材料主题指数，覆盖先进金属、化工新材料、复合材料"
   },
   "brain-computer": {
     "etf_code": "159883",
@@ -249,7 +300,10 @@
     "fund_flow_direction": "流入",
     "signal": "市场分歧",
     "signal_label": "脑机接口列入未来产业，但无纯脑机ETF。新材料ETF作为近似标的，政策热点但映射精度有限",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "医疗器械ETF永赢",
+    "etf_full_name": "永赢中证医疗器械ETF",
+    "etf_description": "跟踪中证医疗器械指数，覆盖医疗设备、耗材、体外诊断"
   },
   "biomanufacturing": {
     "etf_code": "159837",
@@ -263,7 +317,10 @@
     "fund_flow_direction": "流出",
     "signal": "暂不确认",
     "signal_label": "全周期偏弱（1年-4%/6月-13%），生物制造首次列入未来产业但市场尚未定价，产业仍处早期研发阶段",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "生物科技ETF易方达",
+    "etf_full_name": "易方达中证生物科技ETF",
+    "etf_description": "跟踪中证生物科技主题指数，覆盖合成生物、基因技术、生物制造"
   },
   "hydrogen-fusion": {
     "etf_code": "516160",
@@ -277,7 +334,10 @@
     "fund_flow_direction": "流出",
     "signal": "数据不足",
     "signal_label": "氢能首次列入未来产业+醇氢专项行动，但借用新能源ETF观察，无纯氢能ETF。政策早期，市场关注度低",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "新能源ETF南方",
+    "etf_full_name": "南方中证新能源ETF",
+    "etf_description": "跟踪中证新能源指数，覆盖光伏、风电、储能、核电等清洁能源"
   },
   "six-g": {
     "etf_code": "515880",
@@ -291,7 +351,10 @@
     "fund_flow_direction": "流入",
     "signal": "温和确认",
     "signal_label": "通信基础设施升级（1年+79%/6月+36%），6G前瞻布局+5G-A基站9万个，确定性高但弹性有限",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "通信ETF国泰",
+    "etf_full_name": "国泰中证全指通信设备ETF",
+    "etf_description": "跟踪中证全指通信设备指数，覆盖基站设备、光模块、网络设备"
   },
   "critical-minerals": {
     "etf_code": "516780",
@@ -305,7 +368,10 @@
     "fund_flow_direction": "持平",
     "signal": "数据不足",
     "signal_label": "关键矿产借用稀土产业ETF(516780)近似观察，无纯关键矿产ETF。省级规划侧面体现（大宗商品枢纽+设备回收）",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "稀土ETF华泰柏瑞",
+    "etf_full_name": "华泰柏瑞中证稀土ETF",
+    "etf_description": "跟踪中证稀土产业指数，覆盖稀土开采、冶炼、永磁材料"
   },
   "power-grid": {
     "etf_code": "561170",
@@ -319,7 +385,10 @@
     "fund_flow_direction": "流入",
     "signal": "数据不足",
     "signal_label": "电力设备借用绿色电力ETF(561170)近似观察，覆盖电网设备/智能电网标的，映射精度有限",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "绿色电力ETF富国",
+    "etf_full_name": "富国中证绿色电力ETF",
+    "etf_description": "跟踪中证绿色电力指数，覆盖风电、光伏发电、水电等清洁电力运营商"
   },
   "seed-industry": {
     "etf_code": "159825",
@@ -333,7 +402,10 @@
     "fund_flow_direction": "流入",
     "signal": "数据不足",
     "signal_label": "种业在省级规划中未独立体现，借用农业ETF观察。政策驱动弱，市场平淡",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "农业ETF富国",
+    "etf_full_name": "富国中证农业ETF",
+    "etf_description": "跟踪中证农业主题指数，覆盖种业、养殖、饲料、农化"
   },
   "agritech": {
     "etf_code": "159825",
@@ -347,7 +419,10 @@
     "fund_flow_direction": "流入",
     "signal": "数据不足",
     "signal_label": "农业科技无独立ETF，借用农业ETF观察。政策支持但市场关注度有限",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "农业ETF富国",
+    "etf_full_name": "富国中证农业ETF",
+    "etf_description": "跟踪中证农业主题指数，覆盖种业、养殖、饲料、农化"
   },
   "medical-devices": {
     "etf_code": "159883",
@@ -361,7 +436,10 @@
     "fund_flow_direction": "流入",
     "signal": "温和确认",
     "signal_label": "医疗器械受益于医药板块整体回暖（1年+73%），但省级规划未独立强调，嵌套在生物医药方向中",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "医疗器械ETF永赢",
+    "etf_full_name": "永赢中证医疗器械ETF",
+    "etf_description": "跟踪中证医疗器械指数，覆盖医疗设备、耗材、体外诊断"
   },
   "domestic-aircraft": {
     "etf_code": "512660",
@@ -375,7 +453,10 @@
     "fund_flow_direction": "流入",
     "signal": "数据不足",
     "signal_label": "大飞机非浙江优势产业，省级规划未体现。借用军工ETF观察，映射精度有限",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "军工ETF国泰",
+    "etf_full_name": "国泰中证军工ETF",
+    "etf_description": "跟踪中证军工指数，覆盖航空航天、舰船、兵器、军工电子"
   },
   "deep-sea": {
     "etf_code": "512660",
@@ -389,7 +470,10 @@
     "fund_flow_direction": "流入",
     "signal": "数据不足",
     "signal_label": "深海采矿写入浙江十五五，但无纯深海ETF。借用军工ETF观察，映射精度有限",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "军工ETF国泰",
+    "etf_full_name": "国泰中证军工ETF",
+    "etf_description": "跟踪中证军工指数，覆盖航空航天、舰船、兵器、军工电子"
   },
   "carbon-market": {
     "etf_code": "560060",
@@ -403,7 +487,10 @@
     "fund_flow_direction": "流入",
     "signal": "数据不足",
     "signal_label": "碳市场无独立ETF，借用科技/量子ETF近似观察。数据不足以支撑碳市场方向研判",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "碳中和ETF广发",
+    "etf_full_name": "广发中证上海环交所碳中和ETF",
+    "etf_description": "跟踪中证上海环交所碳中和指数，覆盖碳配额相关高碳转型与深度低碳"
   },
   "silver-economy": {
     "etf_code": "516830",
@@ -417,7 +504,10 @@
     "fund_flow_direction": "流入",
     "signal": "数据不足",
     "signal_label": "银发经济首次写入省级规划，借用消费/航空航天ETF近似观察，无纯银发经济ETF",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "养老ETF富国",
+    "etf_full_name": "富国中证养老产业ETF",
+    "etf_description": "跟踪中证养老产业指数，覆盖养老服务、老年医疗、养老保险"
   },
   "traditional-chinese-medicine": {
     "etf_code": "159647",
@@ -431,7 +521,10 @@
     "fund_flow_direction": "流入",
     "signal": "温和确认",
     "signal_label": "中药ETF(159647)精准匹配（1年+86%/6月+38%），省级规划未独立强调中医药但ETF本身精准",
-    "updated": "2026-05-31"
+    "updated": "2026-05-31",
+    "etf_name": "中药ETF鹏华",
+    "etf_full_name": "鹏华中证中药ETF",
+    "etf_description": "跟踪中证中药指数，覆盖中药饮片、中成药、中药配方颗粒"
   },
   "nev": {
     "etf_code": "515030",
@@ -445,7 +538,10 @@
     "fund_flow_direction": "流入",
     "signal": "温和确认",
     "signal_label": "稳步上行（1年+63%/6月+29%），争取国家级集群但行业竞争加剧，资金流入速度放缓",
-    "updated": "2026-05-30"
+    "updated": "2026-05-30",
+    "etf_name": "新能源车ETF华夏",
+    "etf_full_name": "华夏中证新能源汽车ETF",
+    "etf_description": "跟踪中证新能源汽车指数，覆盖整车、电池、充电桩"
   },
   "green-finance": {
     "etf_code": "-",

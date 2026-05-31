@@ -5,515 +5,579 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>五层信号共识矩阵 & 投资策略框架 v2 — 政策资金流向雷达</title>
 <style>
-  :root {
-    --bg: #fafafa; --card: #fff; --text: #18181b; --muted: #71717a;
-    --border: #e4e4e7; --accent: #2563eb;
-    --green: #16a34a; --amber: #d97706; --red: #dc2626; --purple: #9333ea;
-    --green-bg: #f0fdf4; --amber-bg: #fffbeb; --red-bg: #fef2f2;
-    --blue-bg: #eff6ff; --purple-bg: #faf5ff; --zinc-bg: #f4f4f5;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #09090b; --card: #18181b; --text: #f4f4f5; --muted: #a1a1aa;
-      --border: #27272a; --accent: #60a5fa;
-      --green: #4ade80; --amber: #fbbf24; --red: #f87171; --purple: #c084fc;
-      --green-bg: #052e16; --amber-bg: #451a03; --red-bg: #450a0a;
-      --blue-bg: #172554; --purple-bg: #2e1065; --zinc-bg: #27272a;
-    }
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    background: var(--bg); color: var(--text); line-height: 1.6;
-    max-width: 1280px; margin: 0 auto; padding: 24px 16px;
-  }
-  h1 { font-size: 1.6em; margin-bottom: 4px; }
-  h2 { font-size: 1.2em; margin: 36px 0 16px; padding-bottom: 6px; border-bottom: 2px solid var(--border); }
-  h3 { font-size: 1em; margin: 20px 0 8px; font-family: monospace; }
-  .meta { color: var(--muted); font-size: .85em; margin-bottom: 20px; }
-
-  .summary { display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0; }
-  .summary-item {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 8px; padding: 14px 18px; min-width: 100px; text-align: center;
-  }
-  .summary-item strong { font-size: 1.5em; display: block; }
-  .summary-item span { font-size: .8em; color: var(--muted); }
-
-  table { width: 100%; border-collapse: collapse; font-size: .84em; margin: 12px 0; }
-  th, td { padding: 6px 8px; border: 1px solid var(--border); text-align: left; }
-  th { background: var(--zinc-bg); font-weight: 600; white-space: nowrap; position: sticky; top: 0; }
-  tr:hover { background: var(--blue-bg); }
-  .matrix-wrap { overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px; }
-  .matrix-wrap table { margin: 0; font-size: .82em; }
-  .matrix-wrap td:first-child { white-space: nowrap; font-weight: 600; }
-
-  .tag { display: inline-block; padding: 1px 8px; border-radius: 4px; font-size: .75em; font-weight: 600; white-space: nowrap; }
-  .tag-core { background: var(--green-bg); color: var(--green); }
-  .tag-left { background: var(--amber-bg); color: var(--amber); }
-  .tag-momentum { background: var(--purple-bg); color: var(--purple); }
-  .tag-diffusion { background: var(--blue-bg); color: var(--accent); }
-  .tag-local { background: var(--zinc-bg); color: var(--muted); }
-  .tag-exclude { background: var(--red-bg); color: var(--red); }
-
-  .strategy-box {
-    background: var(--card); border: 2px solid var(--border); border-radius: 10px;
-    padding: 20px; margin: 20px 0;
-  }
-  .strategy-box h3 { margin-top: 0; font-family: inherit; }
-  .strategy-rules {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 8px; margin: 12px 0; font-size: .85em;
-  }
-  .rule-item { background: var(--zinc-bg); border-radius: 6px; padding: 8px 12px; }
-  .rule-item strong { display: block; font-size: .75em; color: var(--muted); text-transform: uppercase; margin-bottom: 2px; }
-
-  .industry-card {
-    background: var(--card); border: 1px solid var(--border); border-radius: 8px;
-    padding: 14px 16px; margin: 10px 0;
-  }
-  .industry-card h4 { margin: 0 0 8px; font-size: .95em; }
-  .industry-card ul { list-style: none; padding: 0; font-size: .88em; }
-  .industry-card li { padding: 2px 0; }
-  .key-quote { font-size: .85em; color: var(--muted); padding: 6px 0 6px 12px; border-left: 3px solid var(--border); margin: 6px 0; }
-  .etf-tag { font-family: monospace; font-size: .85em; background: var(--zinc-bg); padding: 1px 6px; border-radius: 3px; }
-
-  .flow-in { color: var(--green); } .flow-out { color: var(--red); }
-  .return-pos { color: var(--green); font-weight: 600; }
-  .return-neg { color: var(--red); font-weight: 600; }
-  .return-na { color: var(--muted); }
-
-  hr { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
-  .footer { font-size: .8em; color: var(--muted); margin-top: 40px; }
-  .toc { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0; }
-  .toc a { font-size: .85em; color: var(--accent); text-decoration: none; padding: 4px 10px; border: 1px solid var(--border); border-radius: 20px; }
-  .toc a:hover { background: var(--blue-bg); }
-
-  @media print {
-    body { max-width: none; padding: 0; font-size: 10pt; }
-    .strategy-box, .industry-card { break-inside: avoid; }
-    h2 { break-after: avoid; }
-  }
-</style>
+:root{--bg:#fafafa;--card:#fff;--text:#18181b;--muted:#71717a;--border:#e4e4e7;--accent:#2563eb;--green:#16a34a;--amber:#d97706;--red:#dc2626;--purple:#9333ea;--green-bg:#f0fdf4;--amber-bg:#fffbeb;--red-bg:#fef2f2;--blue-bg:#eff6ff;--purple-bg:#faf5ff;--zinc-bg:#f4f4f5}
+2@media(prefers-color-scheme:dark){:root{--bg:#09090b;--card:#18181b;--text:#f4f4f5;--muted:#a1a1aa;--border:#27272a;--accent:#60a5fa;--green:#4ade80;--amber:#fbbf24;--red:#f87171;--purple:#c084fc;--green-bg:#052e16;--amber-bg:#451a03;--red-bg:#450a0a;--blue-bg:#172554;--purple-bg:#2e1065;--zinc-bg:#27272a}}
+3*{box-sizing:border-box;margin:0;padding:0}
+4body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;max-width:1280px;margin:0 auto;padding:24px 16px}
+5h1{font-size:1.6em;margin-bottom:4px}h2{font-size:1.2em;margin:36px 0 16px;padding-bottom:6px;border-bottom:2px solid var(--border)}
+6h3{font-size:1em;margin:20px 0 8px;font-family:monospace}.meta{color:var(--muted);font-size:.85em;margin-bottom:20px}
+7.summary{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
+8.summary-item{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 18px;min-width:100px;text-align:center}
+9.summary-item strong{font-size:1.5em;display:block}.summary-item span{font-size:.8em;color:var(--muted)}
+10table{width:100%;border-collapse:collapse;font-size:.84em;margin:12px 0}
+11th,td{padding:6px 8px;border:1px solid var(--border);text-align:left}
+12th{background:var(--zinc-bg);font-weight:600;white-space:nowrap;position:sticky;top:0}
+13tr:hover{background:var(--blue-bg)}
+14.matrix-wrap{overflow-x:auto;margin:16px 0;border:1px solid var(--border);border-radius:8px}
+15.matrix-wrap table{margin:0;font-size:.82em}.matrix-wrap td:first-child{white-space:nowrap;font-weight:600}
+16.tag{display:inline-block;padding:1px 8px;border-radius:4px;font-size:.75em;font-weight:600;white-space:nowrap}
+17.tag-core{background:var(--green-bg);color:var(--green)}.tag-left{background:var(--amber-bg);color:var(--amber)}
+18.tag-momentum{background:var(--purple-bg);color:var(--purple)}.tag-diffusion{background:var(--blue-bg);color:var(--accent)}
+19.tag-local{background:var(--zinc-bg);color:var(--muted)}.tag-exclude{background:var(--red-bg);color:var(--red)}
+20.strategy-box{background:var(--card);border:2px solid var(--border);border-radius:10px;padding:20px;margin:20px 0}
+21.strategy-box h3{margin-top:0;font-family:inherit}.strategy-rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:12px 0;font-size:.85em}
+22.rule-item{background:var(--zinc-bg);border-radius:6px;padding:8px 12px}
+23.rule-item strong{display:block;font-size:.75em;color:var(--muted);text-transform:uppercase;margin-bottom:2px}
+24.industry-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin:10px 0}
+25.industry-card h4{margin:0 0 8px;font-size:.95em}.industry-card ul{list-style:none;padding:0;font-size:.88em}
+26.industry-card li{padding:2px 0}
+27.etf-info{font-size:.85em;background:var(--zinc-bg);padding:8px 12px;border-radius:6px;margin:8px 0;line-height:1.7}
+28.etf-info code{font-size:1em;background:var(--card);padding:1px 6px;border-radius:3px}
+29.key-quote{font-size:.85em;color:var(--muted);padding:6px 0 6px 12px;border-left:3px solid var(--border);margin:6px 0}
+30.flow-in{color:var(--green)}.flow-out{color:var(--red)}
+31.return-pos{color:var(--green);font-weight:600}.return-neg{color:var(--red);font-weight:600}.return-na{color:var(--muted)}
+32hr{border:none;border-top:1px solid var(--border);margin:28px 0}.footer{font-size:.8em;color:var(--muted);margin-top:40px}
+33.toc{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.toc a{font-size:.85em;color:var(--accent);text-decoration:none;padding:4px 10px;border:1px solid var(--border);border-radius:20px}.toc a:hover{background:var(--blue-bg)}
+34@media print{body{max-width:none;padding:0;font-size:10pt}.strategy-box,.industry-card{break-inside:avoid}h2{break-after:avoid}}
+35</style>
 </head>
 <body>
-
-<h1>五层信号共识矩阵 & 投资策略框架 v2</h1>
-<p class="meta">
-  生成：2026-05-31 · 34 个行业 · 五层证据交叉验证 · 仅供研究参考不构成投资建议
-</p>
-
-<div class="toc">
-  <a href="#matrix">全行业矩阵</a>
-  <a href="#s1">核心配置(8)</a>
-  <a href="#s2">左侧观察(1)</a>
-  <a href="#s3">政策扩散(3)</a>
-  <a href="#s4">动量交易(4)</a>
-  <a href="#s5">地方行情(5)</a>
-  <a href="#s6">排除池(13)</a>
-  <a href="#method">方法论</a>
-</div>
-
+<h1>五层信号共识矩阵 &amp; 投资策略框架 v2</h1>
+<p class="meta">生成：2026-05-31 | 34 个行业 | 基于证据质量加权的五层政策-市场信号共识分析</p>
+<h2>策略速览</h2>
 <div class="summary">
-  <div class="summary-item"><strong>8</strong><span>核心配置</span></div>
-  <div class="summary-item"><strong>1</strong><span>左侧观察</span></div>
-  <div class="summary-item"><strong>3</strong><span>政策扩散</span></div>
-  <div class="summary-item"><strong>4</strong><span>动量交易</span></div>
-  <div class="summary-item"><strong>5</strong><span>地方行情</span></div>
-  <div class="summary-item"><strong>13</strong><span>排除池</span></div>
+<div class="summary-item"><strong>8</strong><span>核心配置</span></div>
+<div class="summary-item"><strong>1</strong><span>左侧观察</span></div>
+<div class="summary-item"><strong>3</strong><span>政策扩散</span></div>
+<div class="summary-item"><strong>4</strong><span>动量交易</span></div>
+<div class="summary-item"><strong>5</strong><span>地方行情</span></div>
+<div class="summary-item"><strong>13</strong><span>排除池</span></div>
 </div>
-
-<!-- ================================================================== -->
-<hr>
-<h2 id="overview">策略框架总览</h2>
-
-<table>
-<thead>
-<tr><th>策略类型</th><th>核心逻辑</th><th>操作</th><th>仓位</th><th>止损</th><th>退出条件</th><th>周期</th></tr>
-</thead>
-<tbody>
-<tr>
-  <td><span class="tag tag-core">核心配置</span></td>
-  <td>五层验证 + 市场确认 = 趋势有政策底</td>
-  <td>等回调15-20%分批买</td>
-  <td>≤15%/只，合计≤60%</td>
-  <td>不止损行业，止损时机</td>
-  <td>省级降级或资金连续4周流出</td>
-  <td>中长期</td>
-</tr>
-<tr>
-  <td><span class="tag tag-left">左侧观察</span></td>
-  <td>政策极硬但市场不认</td>
-  <td>等≥2层信号改善再进</td>
-  <td>3-5%试仓</td>
-  <td>量化目标下修→清仓</td>
-  <td>12个月无改善→放弃</td>
-  <td>12个月+</td>
-</tr>
-<tr>
-  <td><span class="tag tag-diffusion">政策扩散</span></td>
-  <td>上层定调了，基层还没跟上</td>
-  <td>等城市层新增重点推进信号</td>
-  <td>5-8%</td>
-  <td>6个月无新信号→减半</td>
-  <td>省级降级或资金持续流出</td>
-  <td>中期</td>
-</tr>
-<tr>
-  <td><span class="tag tag-momentum">动量交易</span></td>
-  <td>行情强但政策不是主驱动力</td>
-  <td>纯技术面入场</td>
-  <td>≤5%/只，合计≤15%</td>
-  <td>严格技术止损</td>
-  <td>趋势破位即出</td>
-  <td>短线</td>
-</tr>
-<tr>
-  <td><span class="tag tag-local">地方行情</span></td>
-  <td>地方/规划层推动，国家层面偏弱</td>
-  <td>波段操作，快进快出</td>
-  <td>3-5%</td>
-  <td>严格</td>
-  <td>目标位到就走</td>
-  <td>短线波段</td>
-</tr>
-<tr>
-  <td><span class="tag tag-exclude">排除池</span></td>
-  <td>政策不支持或ETF映射太差</td>
-  <td>不做</td>
-  <td>—</td>
-  <td>—</td>
-  <td>—</td>
-  <td>—</td>
-</tr>
-</tbody>
+<table><tr><th>策略</th><th>入场</th><th>仓位</th><th>止损</th><th>退出</th><th>周期</th><th>数量</th></tr>
+<tr><td><span class="tag tag-core">核心配置</span></td><td>等回调15-20%分批买</td><td>≤15%/只，合计≤60%</td><td>不止损行业，止损时机</td><td>省级降级或资金连续4周流出</td><td>中长期</td><td>8 个</td></tr>
+<tr><td><span class="tag tag-left">左侧观察</span></td><td>等≥2层信号改善再进</td><td>3-5%试仓</td><td>量化目标下修→清仓</td><td>12个月无改善→放弃</td><td>12个月+</td><td>1 个</td></tr>
+<tr><td><span class="tag tag-diffusion">政策扩散</span></td><td>等城市层新增重点推进信号</td><td>5-8%</td><td>6个月无新信号→减半</td><td>省级降级或资金持续流出</td><td>中期</td><td>3 个</td></tr>
+<tr><td><span class="tag tag-momentum">动量交易</span></td><td>纯技术面入场</td><td>≤5%/只，合计≤15%</td><td>严格技术止损</td><td>趋势破位即出</td><td>短线</td><td>4 个</td></tr>
+<tr><td><span class="tag tag-local">地方行情</span></td><td>波段操作，快进快出</td><td>3-5%</td><td>严格</td><td>目标位到就走</td><td>短线波段</td><td>5 个</td></tr>
+<tr><td><span class="tag tag-exclude">排除池</span></td><td>不做</td><td>—</td><td>—</td><td>—</td><td>—</td><td>13 个</td></tr>
 </table>
-
-<!-- ================================================================== -->
-<hr>
-<h2 id="matrix">全行业信号矩阵</h2>
-<p class="meta">🟢强 🟡中 🟠弱 ⚪无/缺 · 按策略类型排序</p>
-
+<h2>共识分布</h2>
+<div class="summary">
+<div class="summary-item"><strong>8</strong><span>高度共识</span></div>
+<div class="summary-item"><strong>1</strong><span>政策先行</span></div>
+<div class="summary-item"><strong>12</strong><span>信号分散</span></div>
+<div class="summary-item"><strong>13</strong><span>全面偏弱</span></div>
+</div>
+<h2>全行业信号矩阵</h2>
 <div class="matrix-wrap">
 <table>
-<thead>
-<tr><th>行业</th><th>国家</th><th>省级</th><th>城市</th><th>规划</th><th>市场</th><th>策略类型</th><th>数据质量</th><th>6月</th><th>1年</th></tr>
-</thead>
-<tbody>
-<tr><td>半导体/芯片</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-core">核心配置</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+50.6%</td><td class="return-pos">+109.3%</td></tr>
-<tr><td>制造业</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-core">核心配置</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+61.8%</td><td class="return-pos">+107.3%</td></tr>
-<tr><td>低空经济</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-core">核心配置</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+68.2%</td><td class="return-pos">+125.8%</td></tr>
-<tr><td>数字经济</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-core">核心配置</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+35.2%</td><td class="return-pos">+82.6%</td></tr>
-<tr><td>工业软件</td><td>🟡</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-core">核心配置</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+45.8%</td><td class="return-pos">+108.5%</td></tr>
-<tr><td>人工智能</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟡</td><td><span class="tag tag-core">核心配置</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+28.5%</td><td class="return-pos">+117.6%</td></tr>
-<tr><td>机器人</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟠</td><td><span class="tag tag-core">核心配置</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+45.2%</td><td class="return-pos">+98.5%</td></tr>
-<tr><td>生物医药</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟡</td><td>🟢</td><td><span class="tag tag-core">核心配置</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+32.8%</td><td class="return-pos">+68.5%</td></tr>
-<tr><td>新能源</td><td>🟡</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟠</td><td><span class="tag tag-left">左侧观察</span></td><td>🟡 共享ETF·精准</td><td class="return-pos">+12.3%</td><td class="return-pos">+74.1%</td></tr>
-<tr><td>商业航天</td><td>🟢</td><td>🟡</td><td>🟢</td><td>🟡</td><td>🟠</td><td><span class="tag tag-diffusion">政策扩散</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+9.6%</td><td class="return-pos">+22.7%</td></tr>
-<tr><td>智能驾驶</td><td>🟢</td><td>🟢</td><td>🟡</td><td>🟡</td><td>🟡</td><td><span class="tag tag-diffusion">政策扩散</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+38.2%</td><td class="return-pos">+85.8%</td></tr>
-<tr><td>数据要素</td><td>🟠</td><td>🟢</td><td>🟠</td><td>🟡</td><td>🟡</td><td><span class="tag tag-momentum">动量交易</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+40.5%</td><td class="return-pos">+88.6%</td></tr>
-<tr><td>6G通信</td><td>🟠</td><td>🟡</td><td>🟡</td><td>🟢</td><td>🟡</td><td><span class="tag tag-momentum">动量交易</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+35.6%</td><td class="return-pos">+78.5%</td></tr>
-<tr><td>量子科技</td><td>🟠</td><td>🟡</td><td>🟡</td><td>🟡</td><td>🟡</td><td><span class="tag tag-momentum">动量交易</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+77.4%</td><td class="return-pos">+248.7%</td></tr>
-<tr><td>电力设备与电网</td><td>🟡</td><td>🟠</td><td>🟡</td><td>🟢</td><td>⚪</td><td><span class="tag tag-momentum">动量交易</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+28.6%</td><td class="return-pos">+62.3%</td></tr>
-<tr><td>新材料</td><td>🟡</td><td>🟡</td><td>🟢</td><td>🟢</td><td>🟡</td><td><span class="tag tag-local">地方行情</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+22.8%</td><td class="return-pos">+55.2%</td></tr>
-<tr><td>核能</td><td>🟡</td><td>🟢</td><td>🟡</td><td>🟡</td><td>🟡</td><td><span class="tag tag-local">地方行情</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+20.3%</td><td class="return-pos">+26.6%</td></tr>
-<tr><td>平台经济</td><td>🟠</td><td>🟢</td><td>🟡</td><td>🟡</td><td>🟠</td><td><span class="tag tag-local">地方行情</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+25.8%</td><td class="return-pos">+55.2%</td></tr>
-<tr><td>生物制造</td><td>🟠</td><td>🟡</td><td>🟡</td><td>🟡</td><td>🟠</td><td><span class="tag tag-local">地方行情</span></td><td>🟡 独立ETF·相关</td><td class="return-neg">-12.6%</td><td class="return-neg">-3.9%</td></tr>
-<tr><td>储能</td><td>🟡</td><td>🟡</td><td>🟡</td><td>🟡</td><td>🟠</td><td><span class="tag tag-local">地方行情</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+8.5%</td><td class="return-pos">+68.3%</td></tr>
-<tr><td>氢能与核聚变</td><td>🟠</td><td>🟡</td><td>🟡</td><td>🟡</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+12.3%</td><td class="return-pos">+74.1%</td></tr>
-<tr><td>脑机接口</td><td>🟠</td><td>🟡</td><td>🟠</td><td>🟡</td><td>🟠</td><td><span class="tag tag-exclude">排除池</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+32.8%</td><td class="return-pos">+72.5%</td></tr>
-<tr><td>关键矿产</td><td>⚪</td><td>🟡</td><td>⚪</td><td>🟠</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+8.5%</td><td class="return-pos">+35.6%</td></tr>
-<tr><td>种业</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+15.2%</td><td class="return-pos">+32.5%</td></tr>
-<tr><td>医疗器械</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>🟡</td><td><span class="tag tag-exclude">排除池</span></td><td>🟡 共享ETF·精准</td><td class="return-pos">+32.8%</td><td class="return-pos">+72.5%</td></tr>
-<tr><td>大飞机</td><td>⚪</td><td>🟠</td><td>⚪</td><td>🟡</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+25.6%</td><td class="return-pos">+58.2%</td></tr>
-<tr><td>新能源车</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>🟡</td><td><span class="tag tag-exclude">排除池</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+28.5%</td><td class="return-pos">+62.8%</td></tr>
-<tr><td>深海经济</td><td>🟡</td><td>🟠</td><td>🟠</td><td>🟡</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+25.6%</td><td class="return-pos">+58.2%</td></tr>
-<tr><td>农业科技</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+15.2%</td><td class="return-pos">+32.5%</td></tr>
-<tr><td>绿色金融与耐心资本</td><td>🟠</td><td>🟡</td><td>🟠</td><td>🟠</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td>🟡 待核查</td><td class="return-na">—</td><td class="return-na">—</td></tr>
-<tr><td>碳市场</td><td>🟠</td><td>🟠</td><td>🟠</td><td>⚪</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+48.5%</td><td class="return-pos">+115.2%</td></tr>
-<tr><td>银发经济</td><td>🟡</td><td>🟡</td><td>🟠</td><td>🟠</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+42.8%</td><td class="return-pos">+95.6%</td></tr>
-<tr><td>冰雪经济</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td>🟡 待核查</td><td class="return-na">—</td><td class="return-na">—</td></tr>
-<tr><td>中医药</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>🟡</td><td><span class="tag tag-exclude">排除池</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+38.2%</td><td class="return-pos">+85.6%</td></tr>
-</tbody>
-</table>
-</div>
-
-<!-- ================================================================== -->
-<h2 id="s1">一、核心配置 · 回调即买（8 个）</h2>
-
-<div class="strategy-box" style="border-color: var(--green);">
+<tr><th>行业</th><th>ETF代码</th><th>ETF名称</th><th>国家</th><th>省级</th><th>城市</th><th>规划</th><th>市场</th><th>策略</th><th>数据质量</th><th>6月</th><th>1年</th></tr>
+<tr><td>半导体/芯片</td><td style="font-family:monospace;font-size:.85em">159995</td><td style="font-size:.82em">华夏国证半导体芯片ETF</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-core">核心配置</span></td><td style="font-size:.82em">🟢 独立ETF·精准</td><td class="return-pos">+50.6%</td><td class="return-pos">+109.3%</td></tr>
+<tr><td>制造业</td><td style="font-family:monospace;font-size:.85em">159667</td><td style="font-size:.82em">国泰中证机床ETF</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-core">核心配置</span></td><td style="font-size:.82em">🟡 独立ETF·相关</td><td class="return-pos">+61.8%</td><td class="return-pos">+107.3%</td></tr>
+<tr><td>低空经济</td><td style="font-family:monospace;font-size:.85em">159378</td><td style="font-size:.82em">通用航空ETF</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-core">核心配置</span></td><td style="font-size:.82em">🟢 独立ETF·精准</td><td class="return-pos">+68.2%</td><td class="return-pos">+125.8%</td></tr>
+<tr><td>数字经济</td><td style="font-family:monospace;font-size:.85em">560800</td><td style="font-size:.82em">鹏扬中证数字经济主题ETF</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-core">核心配置</span></td><td style="font-size:.82em">🟢 独立ETF·精准</td><td class="return-pos">+35.2%</td><td class="return-pos">+82.6%</td></tr>
+<tr><td>工业软件</td><td style="font-family:monospace;font-size:.85em">159852</td><td style="font-size:.82em">招商中证软件ETF</td><td>🟡</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-core">核心配置</span></td><td style="font-size:.82em">🟡 独立ETF·相关</td><td class="return-pos">+45.8%</td><td class="return-pos">+108.5%</td></tr>
+<tr><td>人工智能</td><td style="font-family:monospace;font-size:.85em">159819</td><td style="font-size:.82em">易方达中证人工智能ETF</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟡</td><td><span class="tag tag-core">核心配置</span></td><td style="font-size:.82em">🟢 独立ETF·精准</td><td class="return-pos">+28.5%</td><td class="return-pos">+117.6%</td></tr>
+<tr><td>机器人</td><td style="font-family:monospace;font-size:.85em">562500</td><td style="font-size:.82em">华夏中证机器人ETF</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟠</td><td><span class="tag tag-core">核心配置</span></td><td style="font-size:.82em">🟢 独立ETF·精准</td><td class="return-pos">+45.2%</td><td class="return-pos">+98.5%</td></tr>
+<tr><td>生物医药</td><td style="font-family:monospace;font-size:.85em">512290</td><td style="font-size:.82em">国泰中证生物医药ETF</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟡</td><td>🟢</td><td><span class="tag tag-core">核心配置</span></td><td style="font-size:.82em">🟢 独立ETF·精准</td><td class="return-pos">+32.8%</td><td class="return-pos">+68.5%</td></tr>
+<tr><td>新能源</td><td style="font-family:monospace;font-size:.85em">516160</td><td style="font-size:.82em">南方中证新能源ETF</td><td>🟡</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟠</td><td><span class="tag tag-left">左侧观察</span></td><td style="font-size:.82em">🟡 共享ETF·精准</td><td class="return-pos">+12.3%</td><td class="return-pos">+74.1%</td></tr>
+<tr><td>商业航天</td><td style="font-family:monospace;font-size:.85em">512660</td><td style="font-size:.82em">国泰中证军工ETF</td><td>🟢</td><td>🟡</td><td>🟢</td><td>🟡</td><td>🟠</td><td><span class="tag tag-diffusion">政策扩散</span></td><td style="font-size:.82em">🟠 共享ETF·相关</td><td class="return-pos">+9.6%</td><td class="return-pos">+22.7%</td></tr>
+<tr><td>智能驾驶</td><td style="font-family:monospace;font-size:.85em">516520</td><td style="font-size:.82em">华泰柏瑞中证智能汽车主题ETF</td><td>🟢</td><td>🟢</td><td>🟡</td><td>🟡</td><td>🟡</td><td><span class="tag tag-diffusion">政策扩散</span></td><td style="font-size:.82em">🟢 独立ETF·精准</td><td class="return-pos">+38.2%</td><td class="return-pos">+85.8%</td></tr>
+<tr><td>平台经济</td><td style="font-family:monospace;font-size:.85em">513050</td><td style="font-size:.82em">易方达中证海外互联ETF</td><td>🟠</td><td>🟢</td><td>🟡</td><td>🟡</td><td>🟠</td><td><span class="tag tag-diffusion">政策扩散</span></td><td style="font-size:.82em">🟡 独立ETF·相关</td><td class="return-pos">+25.8%</td><td class="return-pos">+55.2%</td></tr>
+<tr><td>6G通信</td><td style="font-family:monospace;font-size:.85em">515880</td><td style="font-size:.82em">国泰中证全指通信设备ETF</td><td>🟠</td><td>🟡</td><td>🟡</td><td>🟢</td><td>🟡</td><td><span class="tag tag-momentum">动量交易</span></td><td style="font-size:.82em">🟡 独立ETF·相关</td><td class="return-pos">+35.6%</td><td class="return-pos">+78.5%</td></tr>
+<tr><td>核能</td><td style="font-family:monospace;font-size:.85em">159611</td><td style="font-size:.82em">广发中证全指电力ETF</td><td>🟡</td><td>🟢</td><td>🟡</td><td>🟡</td><td>🟡</td><td><span class="tag tag-momentum">动量交易</span></td><td style="font-size:.82em">🟢 独立ETF·精准</td><td class="return-pos">+20.3%</td><td class="return-pos">+26.6%</td></tr>
+<tr><td>数据要素</td><td style="font-family:monospace;font-size:.85em">516000</td><td style="font-size:.82em">华夏中证大数据ETF</td><td>🟠</td><td>🟢</td><td>🟠</td><td>🟡</td><td>🟡</td><td><span class="tag tag-momentum">动量交易</span></td><td style="font-size:.82em">🟡 独立ETF·相关</td><td class="return-pos">+40.5%</td><td class="return-pos">+88.6%</td></tr>
+<tr><td>量子科技</td><td style="font-family:monospace;font-size:.85em">515050</td><td style="font-size:.82em">华夏中证5G通信ETF</td><td>🟠</td><td>🟡</td><td>🟡</td><td>🟡</td><td>🟡</td><td><span class="tag tag-momentum">动量交易</span></td><td style="font-size:.82em">🟡 独立ETF·相关</td><td class="return-pos">+77.4%</td><td class="return-pos">+248.7%</td></tr>
+<tr><td>新材料</td><td style="font-family:monospace;font-size:.85em">516890</td><td style="font-size:.82em">华夏中证新材料主题ETF</td><td>🟡</td><td>🟡</td><td>🟢</td><td>🟢</td><td>🟡</td><td><span class="tag tag-local">地方行情</span></td><td style="font-size:.82em">🟢 独立ETF·精准</td><td class="return-pos">+22.8%</td><td class="return-pos">+55.2%</td></tr>
+<tr><td>电力设备与电网</td><td style="font-family:monospace;font-size:.85em">561170</td><td style="font-size:.82em">富国中证绿色电力ETF</td><td>🟡</td><td>🟠</td><td>🟡</td><td>🟢</td><td>⚪</td><td><span class="tag tag-local">地方行情</span></td><td style="font-size:.82em">🟡 独立ETF·相关</td><td class="return-pos">+28.6%</td><td class="return-pos">+62.3%</td></tr>
+<tr><td>生物制造</td><td style="font-family:monospace;font-size:.85em">159837</td><td style="font-size:.82em">易方达中证生物科技主题ETF</td><td>🟠</td><td>🟡</td><td>🟡</td><td>🟡</td><td>🟠</td><td><span class="tag tag-local">地方行情</span></td><td style="font-size:.82em">🟡 独立ETF·相关</td><td class="return-neg">-12.6%</td><td class="return-neg">-3.9%</td></tr>
+<tr><td>氢能与核聚变</td><td style="font-family:monospace;font-size:.85em">516160</td><td style="font-size:.82em">南方中证新能源ETF</td><td>🟠</td><td>🟡</td><td>🟡</td><td>🟡</td><td>⚪</td><td><span class="tag tag-local">地方行情</span></td><td style="font-size:.82em">🟠 共享ETF·相关</td><td class="return-pos">+12.3%</td><td class="return-pos">+74.1%</td></tr>
+<tr><td>储能</td><td style="font-family:monospace;font-size:.85em">159755</td><td style="font-size:.82em">广发国证新能源车电池ETF</td><td>🟡</td><td>🟡</td><td>🟡</td><td>🟡</td><td>🟠</td><td><span class="tag tag-local">地方行情</span></td><td style="font-size:.82em">🟢 独立ETF·精准</td><td class="return-pos">+8.5%</td><td class="return-pos">+68.3%</td></tr>
+<tr><td>脑机接口</td><td style="font-family:monospace;font-size:.85em">159883</td><td style="font-size:.82em">永赢中证全指医疗器械ETF</td><td>🟠</td><td>🟡</td><td>🟠</td><td>🟡</td><td>🟠</td><td><span class="tag tag-exclude">排除池</span></td><td style="font-size:.82em">🟠 共享ETF·相关</td><td class="return-pos">+32.8%</td><td class="return-pos">+72.5%</td></tr>
+<tr><td>关键矿产</td><td style="font-family:monospace;font-size:.85em">516780</td><td style="font-size:.82em">华泰柏瑞中证稀土产业ETF</td><td>⚪</td><td>🟡</td><td>⚪</td><td>🟠</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td style="font-size:.82em">🟡 独立ETF·相关</td><td class="return-pos">+8.5%</td><td class="return-pos">+35.6%</td></tr>
+<tr><td>种业</td><td style="font-family:monospace;font-size:.85em">159825</td><td style="font-size:.82em">富国中证农业主题ETF</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td style="font-size:.82em">🟠 共享ETF·相关</td><td class="return-pos">+15.2%</td><td class="return-pos">+32.5%</td></tr>
+<tr><td>医疗器械</td><td style="font-family:monospace;font-size:.85em">159883</td><td style="font-size:.82em">永赢中证全指医疗器械ETF</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>🟡</td><td><span class="tag tag-exclude">排除池</span></td><td style="font-size:.82em">🟡 共享ETF·精准</td><td class="return-pos">+32.8%</td><td class="return-pos">+72.5%</td></tr>
+<tr><td>大飞机</td><td style="font-family:monospace;font-size:.85em">512660</td><td style="font-size:.82em">国泰中证军工ETF</td><td>⚪</td><td>🟠</td><td>⚪</td><td>🟡</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td style="font-size:.82em">🟠 共享ETF·相关</td><td class="return-pos">+25.6%</td><td class="return-pos">+58.2%</td></tr>
+<tr><td>新能源车</td><td style="font-family:monospace;font-size:.85em">515030</td><td style="font-size:.82em">华夏中证新能源汽车ETF</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>🟡</td><td><span class="tag tag-exclude">排除池</span></td><td style="font-size:.82em">🟢 独立ETF·精准</td><td class="return-pos">+28.5%</td><td class="return-pos">+62.8%</td></tr>
+<tr><td>深海经济</td><td style="font-family:monospace;font-size:.85em">512660</td><td style="font-size:.82em">国泰中证军工ETF</td><td>🟡</td><td>🟠</td><td>🟠</td><td>🟡</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td style="font-size:.82em">🟠 共享ETF·相关</td><td class="return-pos">+25.6%</td><td class="return-pos">+58.2%</td></tr>
+<tr><td>农业科技</td><td style="font-family:monospace;font-size:.85em">159825</td><td style="font-size:.82em">富国中证农业主题ETF</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td style="font-size:.82em">🟠 共享ETF·相关</td><td class="return-pos">+15.2%</td><td class="return-pos">+32.5%</td></tr>
+<tr><td>绿色金融与耐心资本</td><td style="font-family:monospace;font-size:.85em">-</td><td style="font-size:.82em"></td><td>🟠</td><td>🟡</td><td>🟠</td><td>🟠</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td style="font-size:.82em">🟡 待核查</td><td class="return-na">—</td><td class="return-na">—</td></tr>
+<tr><td>碳市场</td><td style="font-family:monospace;font-size:.85em">560060</td><td style="font-size:.82em">广发中证上海环交所碳中和ETF</td><td>🟠</td><td>🟠</td><td>🟠</td><td>⚪</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td style="font-size:.82em">🟡 独立ETF·相关</td><td class="return-pos">+48.5%</td><td class="return-pos">+115.2%</td></tr>
+<tr><td>银发经济</td><td style="font-family:monospace;font-size:.85em">516830</td><td style="font-size:.82em">银华中证养老产业ETF</td><td>🟡</td><td>🟡</td><td>🟠</td><td>🟠</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td style="font-size:.82em">🟡 独立ETF·相关</td><td class="return-pos">+42.8%</td><td class="return-pos">+95.6%</td></tr>
+<tr><td>冰雪经济</td><td style="font-family:monospace;font-size:.85em">-</td><td style="font-size:.82em"></td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td style="font-size:.82em">🟡 待核查</td><td class="return-na">—</td><td class="return-na">—</td></tr>
+<tr><td>中医药</td><td style="font-family:monospace;font-size:.85em">159647</td><td style="font-size:.82em">华泰柏瑞中证中药ETF</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>🟡</td><td><span class="tag tag-exclude">排除池</span></td><td style="font-size:.82em">🟢 独立ETF·精准</td><td class="return-pos">+38.2%</td><td class="return-pos">+85.6%</td></tr>
+</table></div>
+<p style="font-size:.82em;color:var(--muted)">🟢强 🟡中 🟠弱 ⚪无/缺</p>
+<hr>
+<h2>一、核心配置 · 回调即买（8 个）</h2>
+<div class="strategy-box" style="border-color:#16a34a">
 <h3>策略逻辑</h3>
-<p>五层政策验证 + 市场已确认 = 趋势有政策底。不是追高工具，是"等打折"清单。当股价从高点回撤15-20%时，不是趋势终结而是政策逻辑没变情况下的打折窗口。</p>
+<p>五层政策验证 + 市场已确认 = 趋势有政策底。不是追高工具，是"等打折"清单。</p>
 <div class="strategy-rules">
-  <div class="rule-item"><strong>入场</strong>等回调15-20%分批买，或回踩60日均线</div>
-  <div class="rule-item"><strong>仓位</strong>单只≤15%，合计≤60%</div>
-  <div class="rule-item"><strong>止损</strong>不止损行业方向，止损入场时机。买后继续跌超15%→检查政策层是否变弱</div>
-  <div class="rule-item"><strong>退出</strong>省级落地强度降级 / 国家定调降级 / ETF资金连续4周净流出</div>
-  <div class="rule-item"><strong>周期</strong>中长期持有</div>
+<div class="rule-item"><strong>入场</strong>等回调15-20%分批买</div>
+<div class="rule-item"><strong>仓位</strong>≤15%/只，合计≤60%</div>
+<div class="rule-item"><strong>止损</strong>不止损行业，止损时机</div>
+<div class="rule-item"><strong>退出</strong>省级降级或资金连续4周流出</div>
+<div class="rule-item"><strong>周期</strong>中长期</div>
+</div></div>
+<div class="industry-card">
+<h4>半导体/芯片 <code style="font-weight:400;font-size:.9em">159995</code> 🟢</h4>
+<div class="etf-info"><strong>ETF：</strong>华夏国证半导体芯片ETF<br><strong>跟踪指数：</strong>国证半导体芯片指数<br><strong>简介：</strong>A股规模最大的芯片ETF（~250亿），流动性好，覆盖芯片设计/制造/封装全链条</div>
+<ul>
+<li><strong>共识：</strong>高度共识（5/5 层强信号）</li>
+<li><strong>市场：</strong>双重验证 | 6月 <span class="return-pos">+50.6%</span> | 1年 <span class="return-pos">+109.3%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 3 条 | 工程项目 8 条 | 产业平台 8 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>强化——从十四五十大标志性产业链之一，升级为十五五新兴支柱产业+争取新增国家级集群</li>
+<li><strong>国家：</strong>集成电路列入2026年新兴支柱产业重点方向</li>
+</ul>
+<div class="key-quote"><strong>关键量化目标：</strong><br>• 三大先导产业制造业产值年均增速保持10%以上（上海）<br>• 集成电路等39种工业产品产量占全国比重超10%（深圳）<br>• 到2030年集成电路核心产业营业收入超1030亿元（杭州）<br></div>
 </div>
+<div class="industry-card">
+<h4>制造业 <code style="font-weight:400;font-size:.9em">159667</code> 🟡</h4>
+<div class="etf-info"><strong>ETF：</strong>国泰中证机床ETF<br><strong>跟踪指数：</strong>中证机床指数<br><strong>简介：</strong>工业母机方向最直接标的，覆盖数控机床/精密加工设备/核心零部件，但制造业太宽泛，仅覆盖工业母机这一细分</div>
+<ul>
+<li><strong>共识：</strong>高度共识（5/5 层强信号）</li>
+<li><strong>市场：</strong>双重验证 | 6月 <span class="return-pos">+61.8%</span> | 1年 <span class="return-pos">+107.3%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 6 条 | 工程项目 1 条 | 产业平台 0 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>大幅强化——从十四五产业链提升行动，升级为十五五系统化415X集群工程+13万亿营收量化目标</li>
+<li><strong>国家：</strong>制造业增加值连续16年全球第一，安排设备更新2000亿</li>
+</ul>
+<div class="key-quote"><strong>关键量化目标：</strong><br>• 集群规上营收突破13万亿元（十四五末约9万亿）（浙江规划）<br>• 规上工业增加值年均增长5.5%以上（浙江规划）<br>• 专精特新中小企业1.8万家，小巨人2700家（浙江规划）<br>• 制造业单项冠军320家，国家先进制造业集群10个（浙江规划）<br>• 省级未来工厂200家，链主企业100家以上（浙江规划）<br></div>
 </div>
-
-<div class="industry-card"><h4>半导体/芯片 <span class="etf-tag">159995</span> 🟢 独立ETF·精准</h4>
+<div class="industry-card">
+<h4>低空经济 <code style="font-weight:400;font-size:.9em">159378</code> 🟢</h4>
+<div class="etf-info"><strong>ETF：</strong>通用航空ETF<br><strong>跟踪指数：</strong>国证通用航空产业指数<br><strong>简介：</strong>全市场首只通用航空ETF，同类规模最大，覆盖eVTOL/无人机/通航运营/空管系统，低空经济含量88%</div>
 <ul>
-<li><b>共识</b>：5/5 层全强 — 国家🟢省级🟢城市🟢规划🟢市场🟢</li>
-<li><b>行情</b>：双重验证 | 6月 +50.6% | 1年 +109.3% | 资金 流入</li>
-<li><b>证据</b>：量化目标3条 · 工程项目8条 · 产业平台8条</li>
-<li><b>浙江</b>：从十大标志性产业链升级为新兴支柱产业+争取新增国家级集群</li>
+<li><strong>共识：</strong>高度共识（5/5 层强信号）</li>
+<li><strong>市场：</strong>双重验证 | 6月 <span class="return-pos">+68.2%</span> | 1年 <span class="return-pos">+125.8%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 2 条 | 工程项目 10 条 | 产业平台 4 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>新增——十四五未提及低空经济，十五五首次列为新兴支柱产业+低空新基建</li>
+<li><strong>国家：</strong>低空经济列入2026年新兴支柱产业</li>
 </ul>
-<p class="key-quote">量化锚：三大先导产业制造业产值年均增速≥10%（上海）· 集成电路产量占全国超10%（深圳）· 核心产业营收超1030亿元/2030年（杭州）</p></div>
-
-<div class="industry-card"><h4>制造业 <span class="etf-tag">159667</span> 🟡 独立ETF·相关</h4>
+<div class="key-quote"><strong>关键量化目标：</strong><br>• 建成投用超1200个低空起降点（深圳）<br>• 到2030年低空经济及航空航天产业规模达1500亿元（苏州）<br></div>
+</div>
+<div class="industry-card">
+<h4>数字经济 <code style="font-weight:400;font-size:.9em">560800</code> 🟢</h4>
+<div class="etf-info"><strong>ETF：</strong>鹏扬中证数字经济主题ETF<br><strong>跟踪指数：</strong>中证数字经济主题指数<br><strong>简介：</strong>覆盖半导体/软件/云计算/大数据/AI，数字经济核心赛道一篮子覆盖</div>
 <ul>
-<li><b>共识</b>：5/5 层全强 — 国家🟢省级🟢城市🟢规划🟢市场🟢</li>
-<li><b>行情</b>：双重验证 | 6月 +61.8% | 1年 +107.3% | 资金 流入</li>
-<li><b>证据</b>：量化目标6条 · 工程项目1条</li>
-<li><b>浙��</b>：415X集群工程+13万亿营收量化目标（十四五末约9万亿）</li>
+<li><strong>共识：</strong>高度共识（5/5 层强信号）</li>
+<li><strong>市场：</strong>双重验证 | 6月 <span class="return-pos">+35.2%</span> | 1年 <span class="return-pos">+82.6%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 3 条 | 工程项目 6 条 | 产业平台 3 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>强化+安全化——从十四五一号工程2.0版，升级为十五五独立成节+数据要素试验区+平台经济审慎监管</li>
+<li><strong>国家：</strong>数字经济核心产业目标占GDP12.5%，推动加入DEPA和CPTPP</li>
 </ul>
-<p class="key-quote">量化锚：集群规上营收突破13万亿元 · 专精特新1.8万家 · 单项冠军320家 · 未来工厂200家 · 链主企业100家以上</p></div>
-
-<div class="industry-card"><h4>低空经济 <span class="etf-tag">159378</span> 🟢 独立ETF·精准</h4>
+<div class="key-quote"><strong>关键量化目标：</strong><br>• 数字经济核心产业增加值占GDP 14%（2030年）（浙江规划）<br>• 到2030年信息传输、软件和信息技术服务业营业收入达17000亿元（杭州）<br>• 数字经济核心产业增加值增长6.5%（杭州）<br></div>
+</div>
+<div class="industry-card">
+<h4>工业软件 <code style="font-weight:400;font-size:.9em">159852</code> 🟡</h4>
+<div class="etf-info"><strong>ETF：</strong>招商中证软件ETF<br><strong>跟踪指数：</strong>中证软件指数<br><strong>简介：</strong>覆盖基础软件/工业软件/应用软件，工业软件占比不高但是最接近的标的</div>
 <ul>
-<li><b>共识</b>：5/5 层全强 — 国家🟢省级🟢城市🟢规划🟢市场🟢</li>
-<li><b>行情</b>：双重验证 | 6月 +68.2% | 1年 +125.8% | 资金 流入</li>
-<li><b>证据</b>：量化目标2条 · 工程项目10条 · 产业平台4条</li>
-<li><b>浙江</b>：十四五未提及 → 十五五首次列为新兴支柱产业+低空新基建（0→1）</li>
+<li><strong>共识：</strong>高度共识（4/5 层强信号）</li>
+<li><strong>市场：</strong>双重验证 | 6月 <span class="return-pos">+45.8%</span> | 1年 <span class="return-pos">+108.5%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 3 条 | 工程项目 5 条 | 产业平台 4 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>强化——从十四五高端软件基础产业，升级为十五五新兴支柱产业+2万亿量化目标</li>
+<li><strong>国家：</strong>关键核心技术攻关+数字经济核心产业</li>
 </ul>
-<p class="key-quote">量化锚：超1200个低空起降点（深圳）· 低空+航空航天产业规模1500亿元/2030年（苏州）</p></div>
-
-<div class="industry-card"><h4>数字经济 <span class="etf-tag">560800</span> 🟢 独立ETF·精准</h4>
+<div class="key-quote"><strong>关键量化目标：</strong><br>• 规上信息软件营收2万亿元（浙江规划）<br>• 千亿级旗舰企业2家（浙江规划）<br>• 信息传输、软件和信息技术服务业增加值突破8000亿元（2030年）（深圳）<br></div>
+</div>
+<div class="industry-card">
+<h4>人工智能 <code style="font-weight:400;font-size:.9em">159819</code> 🟢</h4>
+<div class="etf-info"><strong>ETF：</strong>易方达中证人工智能ETF<br><strong>跟踪指数：</strong>中证人工智能主题指数<br><strong>简介：</strong>规模最大的AI主题ETF（~157亿），覆盖AI算力/算法/应用全产业链</div>
 <ul>
-<li><b>共识</b>：5/5 层全强 — 国家🟢省级🟢城市🟢规划🟢市场🟢</li>
-<li><b>行情</b>：双重验证 | 6月 +35.2% | 1年 +82.6% | 资金 流入</li>
-<li><b>证据</b>：量化目标3条 · 工程项目6条 · 产业平台3条</li>
-<li><b>浙江</b>：独立成节+数据要素试验区+平台经济审慎监管</li>
+<li><strong>共识：</strong>高度共识（4/5 层强信号）</li>
+<li><strong>市场：</strong>温和确认 | 6月 <span class="return-pos">+28.5%</span> | 1年 <span class="return-pos">+117.6%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 14 条 | 工程项目 22 条 | 产业平台 9 条 | 定性提及 3 条</li>
+<li><strong>浙江：</strong>显著强化——从十四五数字经济下的一个方向，升级为十五五独立成章（第四章），定位为支撑浙江现代化建设的核心引擎</li>
+<li><strong>国家：</strong>人工智能+深化拓展，建设超大规模智算集群</li>
 </ul>
-<p class="key-quote">量化锚：数字经济核心产业占GDP 14%/2030年（浙江）· 信息软件营收17000亿元（杭州）· 核心产业增加值+6.5%（杭州）</p></div>
-
-<div class="industry-card"><h4>工业软件 <span class="etf-tag">159852</span> 🟡 独立ETF·相关</h4>
+<div class="key-quote"><strong>关键量化目标：</strong><br>• 2030年规上AI核心产业营收1.2万亿元（浙江规划）<br>• 三大先导产业制造业产值年均增速保持10%以上（上海）<br>• 推动5000家以上制造业企业实现智能化应用（上海）<br>• 建设500个以上先进级智能工厂（上海）<br>• 信息传输、软件和信息技术服务业增加值突破8000亿元（2030年）（深圳）<br></div>
+</div>
+<div class="industry-card">
+<h4>机器人 <code style="font-weight:400;font-size:.9em">562500</code> 🟢</h4>
+<div class="etf-info"><strong>ETF：</strong>华夏中证机器人ETF<br><strong>跟踪指数：</strong>中证机器人指数<br><strong>简介：</strong>规模最大的机器人ETF（~121亿），覆盖工业机器人/服务机器人/核心零部件</div>
 <ul>
-<li><b>共识</b>：4/5 层强 — 国家🟡省级🟢城市🟢规划🟢市场🟢</li>
-<li><b>行情</b>：双重验证 | 6月 +45.8% | 1年 +108.5% | 资金 流入</li>
-<li><b>证据</b>：量化目标3条 · 工程项目5条 · 产业平台4条</li>
+<li><strong>共识：</strong>高度共识（4/5 层强信号）</li>
+<li><strong>市场：</strong>市场分歧 | 6月 <span class="return-pos">+45.2%</span> | 1年 <span class="return-pos">+98.5%</span> | 资金 <span class="flow-out">流出</span></li>
+<li><strong>证据质量：</strong>量化目标 2 条 | 工程项目 10 条 | 产业平台 8 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>大幅强化——从十四五智能装备中的工业机器人，升级为十五五未来产业首位的人形机器人+具身智能</li>
+<li><strong>国家：</strong>具身智能列入未来产业，工业机器人产量增长28%</li>
 </ul>
-<p class="key-quote">量化锚：规上信息软件营收2万亿元 · 千亿级旗舰企业2家 · 信息传输与软件增加值突破8000亿元（深圳）</p></div>
-
-<div class="industry-card"><h4>人工智能 <span class="etf-tag">159819</span> 🟢 独立ETF·精准</h4>
+<div class="key-quote"><strong>关键量化目标：</strong><br>• 到2030年具身智能机器人及其他智能终端集群产业规模力争突破2200亿元（杭州）<br>• 工业机器人等39种工业产品产量占全国比重超10%（深圳）<br></div>
+</div>
+<div class="industry-card">
+<h4>生物医药 <code style="font-weight:400;font-size:.9em">512290</code> 🟢</h4>
+<div class="etf-info"><strong>ETF：</strong>国泰中证生物医药ETF<br><strong>跟踪指数：</strong>中证生物医药指数<br><strong>简介：</strong>规模大（~50亿），聚焦生物药/创新药/CXO，与生物医药产业方向精准对应</div>
 <ul>
-<li><b>共识</b>：4/5 层强 — 国家🟢省级🟢城市🟢规划🟢市场🟡</li>
-<li><b>行情</b>：温和确认 | 6月 +28.5% | 1年 +117.6% | 资金 流入</li>
-<li><b>证据</b>：量化目标14条（行业第一）· 工程项目22条 · 产业平台9条</li>
-<li><b>浙江</b>：独立成章（第四章），定位核心引擎，从十四五数字经济子方向到独立支柱</li>
+<li><strong>共识：</strong>高度共识（4/5 层强信号）</li>
+<li><strong>市场：</strong>双重验证 | 6月 <span class="return-pos">+32.8%</span> | 1年 <span class="return-pos">+68.5%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 1 条 | 工程项目 8 条 | 产业平台 10 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>强化——从十四五十大标志性产业链之一，升级为十五五新兴支柱产业+集群能级提升</li>
+<li><strong>国家：</strong>生物医药列入2026年新兴支柱产业</li>
 </ul>
-<p class="key-quote">量化锚：规上AI核心产业营收1.2万亿元/2030年 · 5000家以上企业智能化应用（上海）· 500个以上先进级智能工厂（上海）</p></div>
-
-<div class="industry-card"><h4>机器人 <span class="etf-tag">562500</span> 🟢 独立ETF·精准</h4>
-<ul>
-<li><b>共识</b>：4/5 层强 — 国家🟢省级🟢城市🟢规划🟢市场🟠</li>
-<li><b>行情</b>：市场分歧 | 6月 +45.2% | 1年 +98.5% | 资金 流出（近期获利了结）</li>
-<li><b>证据</b>：量化目标2条 · 工程项目10条 · 产业平台8条</li>
-<li><b>浙江</b>：从十四五智能装备子方向 → 十五五未来产业首位（人形机器人+具身智能）</li>
-<li><b>注意</b>：市场有分歧信号——近1月-3.9%、资金流出。这正是"等回调"策略适用的情形</li>
-</ul>
-<p class="key-quote">量化锚：具身智能机器人集群规模突破2200亿元（杭州）· 工业机器人产量占全国超10%（深圳）</p></div>
-
-<div class="industry-card"><h4>生物医药 <span class="etf-tag">512290</span> 🟢 独立ETF·精准</h4>
-<ul>
-<li><b>共识</b>：4/5 层强 — 国家🟢省级🟢城市🟢规划🟡市场🟢</li>
-<li><b>行情</b>：双重验证 | 6月 +32.8% | 1年 +68.5% | 资金 流入</li>
-<li><b>证据</b>：量化目标1条 · 工程项目8条 · 产业平台10条</li>
-</ul>
-<p class="key-quote">量化锚：生物医药与医疗器械集群产值突破1300亿元（杭州）</p></div>
-
-<!-- ================================================================== -->
-<h2 id="s2">二、左侧观察 · 等催化剂（1 个）</h2>
-
-<div class="strategy-box" style="border-color: var(--amber);">
+<div class="key-quote"><strong>关键量化目标：</strong><br>• 到2030年生物医药与医疗器械产业集群产值突破1300亿元（杭州）<br></div>
+</div>
+<hr>
+<h2>二、左侧观察 · 等催化剂（1 个）</h2>
+<div class="strategy-box" style="border-color:#d97706">
 <h3>策略逻辑</h3>
-<p>政策极硬（量化目标多且有具体数字）但市场不认。不急着买，但要盯着——政策迟早要落地，市场迟早要修正定价。关键问题是"时机未到"还是"政策空洞"。</p>
+<p>政策方向明确但市场尚未确认，存在预期差。等待催化剂让市场重新定价。</p>
 <div class="strategy-rules">
-  <div class="rule-item"><strong>入场</strong>不主动买。等三层中至少两层出现改善信号再试仓</div>
-  <div class="rule-item"><strong>仓位</strong>确认后3-5%试仓</div>
-  <div class="rule-item"><strong>止损</strong>量化目标若被下修或删减→清仓</div>
-  <div class="rule-item"><strong>退出</strong>12个月内三层信号未改善→放弃</div>
-  <div class="rule-item"><strong>周期</strong>12个月+</div>
-</div>
-</div>
-
-<div class="industry-card"><h4>新能源 <span class="etf-tag">516160</span> 🟡 共享ETF·精准</h4>
+<div class="rule-item"><strong>入场</strong>等≥2层信号改善再进</div>
+<div class="rule-item"><strong>仓位</strong>3-5%试仓</div>
+<div class="rule-item"><strong>止损</strong>量化目标下修→清仓</div>
+<div class="rule-item"><strong>退出</strong>12个月无改善→放弃</div>
+<div class="rule-item"><strong>周期</strong>12个月+</div>
+</div></div>
+<div class="industry-card">
+<h4>新能源 <code style="font-weight:400;font-size:.9em">516160</code> 🟡</h4>
+<div class="etf-info"><strong>ETF：</strong>南方中证新能源ETF<br><strong>跟踪指数：</strong>中证新能源指数<br><strong>简介：</strong>覆盖风电/光伏/核电/储能/氢能，新能源全产业链，规模大流动性好</div>
 <ul>
-<li><b>信号</b>：省级🟢城市🟢规划🟢 — 政策4层中有3层偏向强/中，但市场🟠暂不确认</li>
-<li><b>行情</b>：暂不确认 | 6月 +12.3% | 1年 +74.1% | 资金 流出</li>
-<li><b>证据</b>：量化目标8条（行业第一）· 工程项目7条 · 产业平台3条</li>
-<li><b>判断</b>：2.8亿千瓦装机+3000万千瓦风电+9000万千瓦光伏，量化目标绝对值行业第一。产能过剩压着短期行情，但目标不会凭空消失。「时机未到」而非「政策空洞」。</li>
+<li><strong>共识：</strong>政策先行（3/5 层强信号）</li>
+<li><strong>市场：</strong>暂不确认 | 6月 <span class="return-pos">+12.3%</span> | 1年 <span class="return-pos">+74.1%</span> | 资金 <span class="flow-out">流出</span></li>
+<li><strong>证据质量：</strong>量化目标 8 条 | 工程项目 7 条 | 产业平台 3 条 | 定性提及 1 条</li>
+<li><strong>浙江：</strong>强化+工程化——从十四五新能源材料，升级为十五五独立的清洁能源基地+海上风电母港+量化目标翻倍</li>
+<li><strong>国家：</strong>新能源列为绿色转型重点，培育氢能/绿色燃料新增长点</li>
 </ul>
-<p class="key-quote">量化锚：电力总装机2.8亿千瓦 · 风电3000万千瓦 · 光伏9000万千瓦 · 抽蓄+储能3000万千瓦 · 新增非化石能源装机占比超75%</p></div>
-
-<!-- ================================================================== -->
-<h2 id="s3">三、政策扩散 · 等城市落地（3 个）</h2>
-
-<div class="strategy-box" style="border-color: var(--accent);">
+<div class="key-quote"><strong>关键量化目标：</strong><br>• 电力总装机2.8亿千瓦以上（浙江规划）<br>• 风电装机3000万千瓦以上（浙江规划）<br>• 光伏装机9000万千瓦（浙江规划）<br>• 抽蓄+新型储能3000万千瓦以上（浙江规划）<br>• 新增非化石能源装机占比超75%（浙江规划）<br></div>
+</div>
+<hr>
+<h2>三、政策扩散 · 等城市落地（3 个）</h2>
+<div class="strategy-box" style="border-color:#2563eb">
 <h3>策略逻辑</h3>
-<p>上层（国家+省级）定调了，但基层（城市执行+规划承诺）还没跟上。政策还处在"从上往下扩散"的过程中——城市层面的工程招标、产业园区挂牌、专项资金拨付是下一个确认信号。</p>
+<p>顶层政策已定调，但城市执行和规划承诺尚未跟上。城市层"重点推进"信号是最核心的升级触发器。</p>
 <div class="strategy-rules">
-  <div class="rule-item"><strong>入场</strong>等城市层出现新的"重点推进"信号或 concrete_item 增加</div>
-  <div class="rule-item"><strong>仓位</strong>信号触发后5-8%</div>
-  <div class="rule-item"><strong>止损</strong>6个月无新城市信号→减半</div>
-  <div class="rule-item"><strong>退出</strong>省级降级或资金持续流出</div>
-  <div class="rule-item"><strong>周期</strong>中期</div>
+<div class="rule-item"><strong>入场</strong>等城市层新增重点推进信号</div>
+<div class="rule-item"><strong>仓位</strong>5-8%</div>
+<div class="rule-item"><strong>止损</strong>6个月无新信号→减半</div>
+<div class="rule-item"><strong>退出</strong>省级降级或资金持续流出</div>
+<div class="rule-item"><strong>周期</strong>中期</div>
+</div></div>
+<div class="industry-card">
+<h4>商业航天 <code style="font-weight:400;font-size:.9em">512660</code> 🟠</h4>
+<div class="etf-info"><strong>ETF：</strong>国泰中证军工ETF<br><strong>跟踪指数：</strong>中证军工指数<br><strong>简介：</strong>规模最大的军工ETF（~60亿），商业航天标的多数在军工板块，是当前最接近的选择</div>
+<ul>
+<li><strong>共识：</strong>信号分散（2/5 层强信号）</li>
+<li><strong>市场：</strong>暂不确认 | 6月 <span class="return-pos">+9.6%</span> | 1年 <span class="return-pos">+22.7%</span> | 资金 <span class="flow-out">流出</span></li>
+<li><strong>证据质量：</strong>量化目标 0 条 | 工程项目 5 条 | 产业平台 2 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>延续强化——十四五已列航空航天为战略性新兴产业，十五五升级为新兴支柱产业+卫星互联网</li>
+<li><strong>国家：</strong>航空航天列入2026年新兴支柱产业</li>
+</ul>
 </div>
+<div class="industry-card">
+<h4>智能驾驶 <code style="font-weight:400;font-size:.9em">516520</code> 🟢</h4>
+<div class="etf-info"><strong>ETF：</strong>华泰柏瑞中证智能汽车主题ETF<br><strong>跟踪指数：</strong>中证智能汽车主题指数<br><strong>简介：</strong>覆盖激光雷达/车载芯片/自动驾驶算法/智能座舱，与智能驾驶产业链高度吻合</div>
+<ul>
+<li><strong>共识：</strong>信号分散（2/5 层强信号）</li>
+<li><strong>市场：</strong>温和确认 | 6月 <span class="return-pos">+38.2%</span> | 1年 <span class="return-pos">+85.8%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 1 条 | 工程项目 6 条 | 产业平台 3 条 | 定性提及 1 条</li>
+<li><strong>浙江：</strong>工程化——从十四五尖兵计划攻关方向，升级为十五五具体车路云一体化示范项目</li>
+<li><strong>国家：</strong>智能终端和智能体推广，AI+产业创新</li>
+</ul>
+<div class="key-quote"><strong>关键量化目标：</strong><br>• 力争汽车年产值超1万亿元（广州）<br></div>
 </div>
-
-<div class="industry-card"><h4>智能驾驶 <span class="etf-tag">516520</span> 🟢 独立ETF·精准</h4>
+<div class="industry-card">
+<h4>平台经济 <code style="font-weight:400;font-size:.9em">513050</code> 🟡</h4>
+<div class="etf-info"><strong>ETF：</strong>易方达中证海外互联ETF<br><strong>跟踪指数：</strong>中证海外中国互联网50指数<br><strong>简介：</strong>覆盖腾讯/阿里/美团等平台巨头，但标的多在港股美股，与A股平台经济标的差异大</div>
 <ul>
-<li><b>信号</b>：国家🟢省级🟢城市🟡规划🟡市场🟡 — 上层全绿，底层偏弱</li>
-<li><b>行情</b>：温和确认 | 6月 +38.2% | 1年 +85.8% | 资金 流入</li>
-<li><b>证据</b>：量化目标1条 · 工程项目6条 · 产业平台3条</li>
-<li><b>催化剂</b>：杭州车路云一体化示范项目进展 · 其他城市跟进自动驾驶示范区</li>
-</ul></div>
-
-<div class="industry-card"><h4>商业航天 <span class="etf-tag">512660</span> 🟠 共享ETF·相关（军工ETF代理）</h4>
-<ul>
-<li><b>信号</b>：国家🟢城市🟢省级🟡规划🟡市场🟠 — 军工ETF 近3月-17%拖累市场信号</li>
-<li><b>行情</b>：暂不确认 | 6月 +9.6% | 1年 +22.7% | 资金 流出</li>
-<li><b>证据</b>：量化目标0条 · 工程项目5条 · 产业平台2条 — 缺乏量化目标</li>
-<li><b>判断</b>：国家列为新兴支柱产业但省级只是延续强化（非大幅强化），无量化目标。政策力度不如低空经济。等城市层出现具体发射基地/卫星产业园。</li>
-</ul></div>
-
-<div class="industry-card"><h4>平台经济 <span class="etf-tag">513050</span> 🟡 独立ETF·相关</h4>
-<ul>
-<li><b>信号</b>：省级🟢城市🟡规划🟡国家🟠市场🟠 — 省级强但国家层面是监管化信号</li>
-<li><b>行情</b>：市场分歧 | 6月 +25.8% | 1年 +55.2% | 资金 流入</li>
-<li><b>判断</b>：国家"穿透式监管"写入规划增添不确定性，与省级"高质量发展强省"存在张力。政策方向不完全一致。</li>
-</ul></div>
-
-<!-- ================================================================== -->
-<h2 id="s4">四、动量交易 · 不靠政策逻辑（4 个）</h2>
-
-<div class="strategy-box" style="border-color: var(--purple);">
+<li><strong>共识：</strong>信号分散（1/5 层强信号）</li>
+<li><strong>市场：</strong>市场分歧 | 6月 <span class="return-pos">+25.8%</span> | 1年 <span class="return-pos">+55.2%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 0 条 | 工程项目 3 条 | 产业平台 0 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>监管化——从十四五促进平台经济健康发展，转为十五五高质量发展强省+穿透式监管双轮驱动</li>
+<li><strong>国家：</strong>深入整治内卷式竞争，制定全国统一大市场建设条例</li>
+</ul>
+</div>
+<hr>
+<h2>四、动量交易 · 不靠政策逻辑（4 个）</h2>
+<div class="strategy-box" style="border-color:#9333ea">
 <h3>策略逻辑</h3>
-<p>行情强势但政策层面支撑有限（≤1层强信号）。这些行情的驱动力不在此分析框架的政策层内——可能是行业景气度、业绩驱动、主题炒作或全球科技周期。不要用政策报告解释涨跌，用技术面和资金面操作。</p>
+<p>市场有趋势但政策逻辑不构成主驱动。纯技术面交易，不依赖政策信仰。</p>
 <div class="strategy-rules">
-  <div class="rule-item"><strong>入场</strong>纯技术面/资金面，不看政策</div>
-  <div class="rule-item"><strong>仓位</strong>单只≤5%，合计≤15%</div>
-  <div class="rule-item"><strong>止损</strong>严格技术止损，破位就走</div>
-  <div class="rule-item"><strong>退出</strong>无政策锚，趋势走坏即出</div>
-  <div class="rule-item"><strong>周期</strong>短线</div>
+<div class="rule-item"><strong>入场</strong>纯技术面入场</div>
+<div class="rule-item"><strong>仓位</strong>≤5%/只，合计≤15%</div>
+<div class="rule-item"><strong>止损</strong>严格技术止损</div>
+<div class="rule-item"><strong>退出</strong>趋势破位即出</div>
+<div class="rule-item"><strong>周期</strong>短线</div>
+</div></div>
+<div class="industry-card">
+<h4>6G通信 <code style="font-weight:400;font-size:.9em">515880</code> 🟡</h4>
+<div class="etf-info"><strong>ETF：</strong>国泰中证全指通信设备ETF<br><strong>跟踪指数：</strong>中证全指通信设备指数<br><strong>简介：</strong>覆盖5G/6G通信设备/光模块/卫星通信，是6G方向最接近的ETF选择</div>
+<ul>
+<li><strong>共识：</strong>信号分散（1/5 层强信号）</li>
+<li><strong>市场：</strong>温和确认 | 6月 <span class="return-pos">+35.6%</span> | 1年 <span class="return-pos">+78.5%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 2 条 | 工程项目 2 条 | 产业平台 0 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>新增——十四五未提及6G，十五五首次明确前瞻布局+卫星互联网</li>
+<li><strong>国家：</strong>6G列入2026年未来产业方向</li>
+</ul>
+<div class="key-quote"><strong>关键量化目标：</strong><br>• 5G-A基站9万个（浙江规划）<br>• 50G-PON端口15万个（浙江规划）<br></div>
 </div>
+<div class="industry-card">
+<h4>核能 <code style="font-weight:400;font-size:.9em">159611</code> 🟢</h4>
+<div class="etf-info"><strong>ETF：</strong>广发中证全指电力ETF<br><strong>跟踪指数：</strong>中证全指电力公用事业指数<br><strong>简介：</strong>核电+火电+绿电混合，核电在指数中占比高且持续提升，是当前最接近的核电ETF选择</div>
+<ul>
+<li><strong>共识：</strong>信号分散（1/5 层强信号）</li>
+<li><strong>市场：</strong>温和确认 | 6月 <span class="return-pos">+20.3%</span> | 1年 <span class="return-pos">+26.6%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 1 条 | 工程项目 5 条 | 产业平台 0 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>大幅强化——从十四五能源章节的一般项目，升级为十五五多基地并行推进+明确1600万千瓦装机目标</li>
+<li><strong>国家：</strong>未来能源列入未来产业方向</li>
+</ul>
+<div class="key-quote"><strong>关键量化目标：</strong><br>• 核电装机1600万千瓦以上（浙江规划）<br></div>
 </div>
-
-<div class="industry-card"><h4>量子科技 <span class="etf-tag">515050</span> 🟡 独立ETF·相关（5G通信ETF代理）</h4>
+<div class="industry-card">
+<h4>数据要素 <code style="font-weight:400;font-size:.9em">516000</code> 🟡</h4>
+<div class="etf-info"><strong>ETF：</strong>华夏中证大数据ETF<br><strong>跟踪指数：</strong>中证大数据产业指数<br><strong>简介：</strong>覆盖大数据/云计算/数据服务，数据要素市场化受益标的集中在此板块</div>
 <ul>
-<li><b>信号</b>：5层全🟡/🟠 — 政策面弱均衡，但有极端行情</li>
-<li><b>行情</b>：温和确认 | 6月 +77.4% | 1年 +248.7% | 资金 流入</li>
-<li><b>风险</b>：+249%的1年回报大概率不是量子技术本身驱动的——5G通信ETF受益于AI算力/通信基础设施投资。政策层只有"未来产业"级别的定性提及。当你买这个ETF时，你买的是5G基站和光模块，不是量子计算机。</li>
-</ul></div>
-
-<div class="industry-card"><h4>数据要素 <span class="etf-tag">516000</span> 🟡 独立ETF·相关</h4>
+<li><strong>共识：</strong>信号分散（1/5 层强信号）</li>
+<li><strong>市场：</strong>温和确认 | 6月 <span class="return-pos">+40.5%</span> | 1年 <span class="return-pos">+88.6%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 1 条 | 工程项目 8 条 | 产业平台 4 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>新增——从十四五数据要素市场化配置改革，升级为十五五国家级试验区+浙江数商品牌化</li>
+<li><strong>国家：</strong>深化数据要素市场化配置改革</li>
+</ul>
+<div class="key-quote"><strong>关键量化目标：</strong><br>• 到2030年建成高质量数据集300个（杭州）<br></div>
+</div>
+<div class="industry-card">
+<h4>量子科技 <code style="font-weight:400;font-size:.9em">515050</code> 🟡</h4>
+<div class="etf-info"><strong>ETF：</strong>华夏中证5G通信ETF<br><strong>跟踪指数：</strong>中证5G通信主题指数<br><strong>简介：</strong>量子科技过于早期无纯正ETF，5G通信ETF覆盖部分光通信/光芯片标的，与量子信息有交叉</div>
 <ul>
-<li><b>信号</b>：省级🟢规划🟡市场🟡城市🟠国家🟠 — 省级独强，其余分散</li>
-<li><b>行情</b>：温和确认 | 6月 +40.5% | 1年 +88.6% | 资金 流入</li>
-<li><b>证据</b>：量化目标1条 · 工程项目8条 · 产业平台4条</li>
-</ul></div>
-
-<div class="industry-card"><h4>6G通信 <span class="etf-tag">515880</span> 🟡 独立ETF·相关</h4>
-<ul>
-<li><b>信号</b>：规划🟢国家🟠省级🟡城市🟡市场🟡 — 仅规划层强，其余偏弱</li>
-<li><b>行情</b>：温和确认 | 6月 +35.6% | 1年 +78.5% | 资金 流入</li>
-<li><b>注意</b>：6G仍属前瞻布局（5G-A基站9万个先行），产业落地周期长。</li>
-</ul></div>
-
-<div class="industry-card"><h4>电力设备与电网 <span class="etf-tag">561170</span> 🟡 独立ETF·相关</h4>
-<ul>
-<li><b>信号</b>：规划🟢国家🟡城市🟡省级🟠市场⚪ — 数据不足，规划层独撑</li>
-<li><b>行情</b>：数据不足 | 6月 +28.6% | 1年 +62.3% | 资金 流入</li>
-<li><b>注意</b>：借用绿色电力ETF代理，映射精度有限。南京智能电网1万亿目标+深圳虚拟电厂130万千瓦，但浙江省级规划未独立体现。</li>
-</ul></div>
-
-<!-- ================================================================== -->
-<h2 id="s5">五、地方行情 · 波段操作（5 个）</h2>
-
-<div class="strategy-box" style="border-color: var(--muted);">
+<li><strong>共识：</strong>信号分散（0/5 层强信号）</li>
+<li><strong>市场：</strong>温和确认 | 6月 <span class="return-pos">+77.4%</span> | 1年 <span class="return-pos">+248.7%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 0 条 | 工程项目 5 条 | 产业平台 1 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>延续——十四五已布局量子信息（尖峰计划100项基础研究），十五五列入未来产业+通算/智算/超算/量算融合</li>
+<li><strong>国家：</strong>量子科技列入2026年未来产业方向</li>
+</ul>
+</div>
+<hr>
+<h2>五、地方行情 · 波段操作（5 个）</h2>
+<div class="strategy-box" style="border-color:#71717a">
 <h3>策略逻辑</h3>
-<p>政策主要由省/市/规划层面推动，国家层面只是"未来产业"级别的定性提及或未独立强调。地方政策的持续性不如国家级，适合波段而非长期持有。</p>
+<p>政策驱动力相对分散，地方/区域因素主导。快进快出，不适合中长期持有。</p>
 <div class="strategy-rules">
-  <div class="rule-item"><strong>入场</strong>波段操作，快进快出</div>
-  <div class="rule-item"><strong>仓位</strong>3-5%</div>
-  <div class="rule-item"><strong>止损</strong>严格</div>
-  <div class="rule-item"><strong>退出</strong>目标位到就走</div>
-  <div class="rule-item"><strong>周期</strong>短线波段</div>
+<div class="rule-item"><strong>入场</strong>波段操作，快进快出</div>
+<div class="rule-item"><strong>仓位</strong>3-5%</div>
+<div class="rule-item"><strong>止损</strong>严格</div>
+<div class="rule-item"><strong>退出</strong>目标位到就走</div>
+<div class="rule-item"><strong>周期</strong>短线波段</div>
+</div></div>
+<div class="industry-card">
+<h4>新材料 <code style="font-weight:400;font-size:.9em">516890</code> 🟢</h4>
+<div class="etf-info"><strong>ETF：</strong>华夏中证新材料主题ETF<br><strong>跟踪指数：</strong>中证新材料主题指数<br><strong>简介：</strong>覆盖半导体材料/新能源材料/军工材料/生物基材料，行业覆盖面与新材攻坚方向吻合</div>
+<ul>
+<li><strong>共识：</strong>信号分散（2/5 层强信号）</li>
+<li><strong>市场：</strong>温和确认 | 6月 <span class="return-pos">+22.8%</span> | 1年 <span class="return-pos">+55.2%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 2 条 | 工程项目 6 条 | 产业平台 9 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>延续强化——十四五列入三大科创高地，十五五持续强调并纳入415X集群+未来产业</li>
+<li><strong>国家：</strong>新材料在设备更新和先进制造业中受益</li>
+</ul>
+<div class="key-quote"><strong>关键量化目标：</strong><br>• 到2030年新材料产业集群产值规模达到1650亿元（杭州）<br>• 到“十五五”末新材料产业规模力争达到5000亿元（南京）<br></div>
 </div>
+<div class="industry-card">
+<h4>电力设备与电网 <code style="font-weight:400;font-size:.9em">561170</code> 🟡</h4>
+<div class="etf-info"><strong>ETF：</strong>富国中证绿色电力ETF<br><strong>跟踪指数：</strong>中证绿色电力指数<br><strong>简介：</strong>覆盖绿电运营商/电网设备/智能电网，与新型电力系统建设方向吻合</div>
+<ul>
+<li><strong>共识：</strong>信号分散（1/5 层强信号）</li>
+<li><strong>市场：</strong>数据不足 | 6月 <span class="return-pos">+28.6%</span> | 1年 <span class="return-pos">+62.3%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 3 条 | 工程项目 7 条 | 产业平台 1 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>未在浙江十五五规划中找到直接对应表述</li>
+<li><strong>国家：</strong>能源综合生产能力58亿吨标准煤</li>
+</ul>
+<div class="key-quote"><strong>关键量化目标：</strong><br>• 到“十五五”末智能电网产业规模突破1万亿元（南京）<br>• 全国首个虚拟电厂——实时可调节能力达130万千瓦（深圳）<br>• 超充站超1000座，全球率先超充站/枪超过加油站/枪（深圳）<br></div>
 </div>
-
-<div class="industry-card"><h4>新材料 <span class="etf-tag">516890</span> 🟢 独立ETF·精准</h4>
-<ul><li>行情：6月 +22.8% | 1年 +55.2% | 城市🟢规划🟢但国家🟡省级🟡 — 地方推但国家不是重点推进级别</li></ul></div>
-<div class="industry-card"><h4>核能 <span class="etf-tag">159611</span> 🟢 独立ETF·精准</h4>
-<ul><li>行情：6月 +20.3% | 1年 +26.6% | 省级🟢（1600万千瓦目标明确）但国家🟡 — 省内重点项目，国家层面仅"未来能源"提及</li></ul></div>
-<div class="industry-card"><h4>生物制造 <span class="etf-tag">159837</span> 🟡 独立ETF·相关</h4>
-<ul><li>行情：6月 -12.6% | 1年 -3.9% | 全周期偏弱 — 早期产业，市场尚未定价</li></ul></div>
-<div class="industry-card"><h4>储能 <span class="etf-tag">159755</span> 🟢 独立ETF·精准</h4>
-<ul><li>行情：6月 +8.5% | 1年 +68.3% | 1月-9.4%持续走弱 — 3000万千瓦目标明确但近期估值消化中</li></ul></div>
-<div class="industry-card"><h4>氢能与核聚变 <span class="etf-tag">516160</span> 🟠 共享ETF·相关（借用新能源ETF）</h4>
-<ul><li>行情：6月 +12.3% | 1年 +74.1% | 数据不足 — 首次列入未来产业但无纯氢能ETF</li></ul></div>
-
-<!-- ================================================================== -->
-<h2 id="s6">六、排除池 · 不做（13 个）</h2>
-
-<div class="strategy-box" style="border-color: var(--red);">
+<div class="industry-card">
+<h4>生物制造 <code style="font-weight:400;font-size:.9em">159837</code> 🟡</h4>
+<div class="etf-info"><strong>ETF：</strong>易方达中证生物科技主题ETF<br><strong>跟踪指数：</strong>中证生物科技主题指数<br><strong>简介：</strong>无纯合成生物学ETF。生物科技ETF覆盖基因诊断/生物制药/生物制造，凯赛生物/华恒生物/华大智造等合成生物学标的均在其权重股中</div>
+<ul>
+<li><strong>共识：</strong>信号分散（0/5 层强信号）</li>
+<li><strong>市场：</strong>暂不确认 | 6月 <span class="return-neg">-12.6%</span> | 1年 <span class="return-neg">-3.9%</span> | 资金 <span class="flow-out">流出</span></li>
+<li><strong>证据质量：</strong>量化目标 0 条 | 工程项目 8 条 | 产业平台 3 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>新增——十四五仅提生物技术，十五五首次明确列为未来产业方向</li>
+<li><strong>国家：</strong>生物制造列入2026年未来产业方向</li>
+</ul>
+</div>
+<div class="industry-card">
+<h4>氢能与核聚变 <code style="font-weight:400;font-size:.9em">516160</code> 🟠</h4>
+<div class="etf-info"><strong>ETF：</strong>南方中证新能源ETF<br><strong>跟踪指数：</strong>中证新能源指数<br><strong>简介：</strong>目前无纯氢能ETF，新能源ETF含氢能/核聚变相关标的（如燃料电池系统企业）</div>
+<ul>
+<li><strong>共识：</strong>信号分散（0/5 层强信号）</li>
+<li><strong>市场：</strong>数据不足 | 6月 <span class="return-pos">+12.3%</span> | 1年 <span class="return-pos">+74.1%</span> | 资金 <span class="flow-out">流出</span></li>
+<li><strong>证据质量：</strong>量化目标 0 条 | 工程项目 4 条 | 产业平台 2 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>新增——十四五未明确氢能，十五五首次列入未来产业+醇氢能源专项行动</li>
+<li><strong>国家：</strong>氢能列入绿色燃料新增长点</li>
+</ul>
+</div>
+<div class="industry-card">
+<h4>储能 <code style="font-weight:400;font-size:.9em">159755</code> 🟢</h4>
+<div class="etf-info"><strong>ETF：</strong>广发国证新能源车电池ETF<br><strong>跟踪指数：</strong>国证新能源车电池指数<br><strong>简介：</strong>覆盖锂电池/钠电池/储能系统，与储能产业链高度重合，规模大流动性好</div>
+<ul>
+<li><strong>共识：</strong>信号分散（0/5 层强信号）</li>
+<li><strong>市场：</strong>暂不确认 | 6月 <span class="return-pos">+8.5%</span> | 1年 <span class="return-pos">+68.3%</span> | 资金 <span class="flow-out">流出</span></li>
+<li><strong>证据质量：</strong>量化目标 1 条 | 工程项目 3 条 | 产业平台 1 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>强化——十四五对储能着墨较少，十五五有明确3000万千瓦+量化目标</li>
+<li><strong>国家：</strong>新型储能纳入绿色转型体系</li>
+</ul>
+<div class="key-quote"><strong>关键量化目标：</strong><br>• 抽蓄+新型储能3000万千瓦以上（浙江规划）<br></div>
+</div>
+<hr>
+<h2>六、排除池 · 不做（13 个）</h2>
+<div class="strategy-box" style="border-color:#dc2626">
 <h3>策略逻辑</h3>
-<p>政策面不支持或ETF映射太差。这些方向如果出现行情，驱动力不在本分析的政策框架内——你赚的不是政策研究的钱，不如把精力省下来研究其他方向。</p>
-<p style="margin-top: 8px;"><b>例外标注</b>：碳市场（+48.5%/+115.2%）、银发经济（+42.8%/+95.6%）、中医药（+38.2%/+85.6%）行情不弱，但政策框架解释不了——可能由行业周期、人口结构、医保政策等非本文覆盖因素驱动。</p>
+<p>政策信号太弱或ETF映射太差，无法形成有效分析。不做就是最好的操作。</p>
+<div class="strategy-rules">
+<div class="rule-item"><strong>入场</strong>不做</div>
+<div class="rule-item"><strong>仓位</strong>—</div>
+<div class="rule-item"><strong>止损</strong>—</div>
+<div class="rule-item"><strong>退出</strong>—</div>
+<div class="rule-item"><strong>周期</strong>—</div>
+</div></div>
+<div class="industry-card">
+<h4>脑机接口 <code style="font-weight:400;font-size:.9em">159883</code> 🟠</h4>
+<div class="etf-info"><strong>ETF：</strong>永赢中证全指医疗器械ETF<br><strong>跟踪指数：</strong>中证全指医疗器械指数<br><strong>简介：</strong>无脑机接口ETF。BCI早期应用聚焦医疗康复（瘫痪/失明/帕金森），医疗器械ETF是当前最接近的标的</div>
+<ul>
+<li><strong>共识：</strong>全面偏弱（0/5 层强信号）</li>
+<li><strong>市场：</strong>市场分歧 | 6月 <span class="return-pos">+32.8%</span> | 1年 <span class="return-pos">+72.5%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 0 条 | 工程项目 5 条 | 产业平台 0 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>新增——十四五仅在尖兵计划提及脑机融合，十五五正式列为未来产业方向</li>
+<li><strong>国家：</strong>脑机接口列入2026年未来产业方向</li>
+</ul>
 </div>
-
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:6px;margin:10px 0;">
-<div class="industry-card" style="margin:0"><h4>脑机接口 <span class="etf-tag">159883</span></h4><ul><li>6月 +32.8% | 政策弱</li></ul></div>
-<div class="industry-card" style="margin:0"><h4>关键矿产 <span class="etf-tag">516780</span></h4><ul><li>6月 +8.5% | 政策弱</li></ul></div>
-<div class="industry-card" style="margin:0"><h4>种业 <span class="etf-tag">159825</span></h4><ul><li>6月 +15.2% | 政策无</li></ul></div>
-<div class="industry-card" style="margin:0"><h4>医疗器械 <span class="etf-tag">159883</span></h4><ul><li>6月 +32.8% | 政策无</li></ul></div>
-<div class="industry-card" style="margin:0"><h4>大飞机 <span class="etf-tag">512660</span></h4><ul><li>6月 +25.6% | 政策无</li></ul></div>
-<div class="industry-card" style="margin:0"><h4>新能源车 <span class="etf-tag">515030</span></h4><ul><li>6月 +28.5% | 政策无</li></ul></div>
-<div class="industry-card" style="margin:0"><h4>深海经济 <span class="etf-tag">512660</span></h4><ul><li>6月 +25.6% | 政策弱</li></ul></div>
-<div class="industry-card" style="margin:0"><h4>农业科技 <span class="etf-tag">159825</span></h4><ul><li>6月 +15.2% | 政策无</li></ul></div>
-<div class="industry-card" style="margin:0"><h4>绿色金融 <span class="etf-tag">-</span></h4><ul><li>无ETF</li></ul></div>
-<div class="industry-card" style="margin:0"><h4>碳市场 <span class="etf-tag">560060</span></h4><ul><li>6月 +48.5% ⚠️ 例外</li></ul></div>
-<div class="industry-card" style="margin:0"><h4>银发经济 <span class="etf-tag">516830</span></h4><ul><li>6月 +42.8% ⚠️ 例外</li></ul></div>
-<div class="industry-card" style="margin:0"><h4>冰雪经济 <span class="etf-tag">-</span></h4><ul><li>无ETF</li></ul></div>
-<div class="industry-card" style="margin:0"><h4>中医药 <span class="etf-tag">159647</span></h4><ul><li>6月 +38.2% ⚠️ 例外</li></ul></div>
+<div class="industry-card">
+<h4>关键矿产 <code style="font-weight:400;font-size:.9em">516780</code> 🟡</h4>
+<div class="etf-info"><strong>ETF：</strong>华泰柏瑞中证稀土产业ETF<br><strong>跟踪指数：</strong>中证稀土产业指数<br><strong>简介：</strong>覆盖稀土/永磁材料，与关键矿产中稀土方向精准对应；锂/钴/镍方向可选有色ETF（512400）</div>
+<ul>
+<li><strong>共识：</strong>全面偏弱（0/5 层强信号）</li>
+<li><strong>市场：</strong>数据不足 | 6月 <span class="return-pos">+8.5%</span> | 1年 <span class="return-pos">+35.6%</span> | 资金 <span class="">持平</span></li>
+<li><strong>证据质量：</strong>量化目标 0 条 | 工程项目 2 条 | 产业平台 0 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>新增侧面体现——通过大宗商品资源配置枢纽和退役设备回收间接体现关键矿产战略</li>
+</ul>
 </div>
-
-<!-- ================================================================== -->
-<h2 id="method">方法论</h2>
-
-<h3>五层信号来源</h3>
-<table>
-<tr><th>层级</th><th>数据来源</th><th>判断标准</th></tr>
-<tr><td>国家定调</td><td>2026年国务院政府工作报告</td><td>重点推进→强 / 持续推进→中 / 早期培育等→弱</td></tr>
-<tr><td>省级落地</td><td>浙江省十五五规划纲要</td><td>强落地→强 / 有落地→中 / 弱落地→弱</td></tr>
-<tr><td>城市执行</td><td>八城2026年政府工作报告</td><td>≥3城重点推进→强 / 1-2城→中 / 有提及→弱</td></tr>
-<tr><td>规划承诺</td><td>八城十五五规划纲要</td><td>有量化目标→强 / 有工程→中 / 仅定性→弱</td></tr>
-<tr><td>市场验证</td><td>ETF行情+资金流向</td><td>双重验证→强 / 温和确认→中 / 市场分歧/暂不确认→弱</td></tr>
-</table>
-
-<h3>证据质量权重</h3>
-<table>
-<tr><th>证据类型</th><th>权重</th><th>识别规则</th></tr>
+<div class="industry-card">
+<h4>种业 <code style="font-weight:400;font-size:.9em">159825</code> 🟠</h4>
+<div class="etf-info"><strong>ETF：</strong>富国中证农业主题ETF<br><strong>跟踪指数：</strong>中证农业主题指数<br><strong>简介：</strong>覆盖种业/农化/养殖/食品加工，种业龙头在指数中有一定权重但非纯种业ETF</div>
+<ul>
+<li><strong>共识：</strong>全面偏弱（0/5 层强信号）</li>
+<li><strong>市场：</strong>数据不足 | 6月 <span class="return-pos">+15.2%</span> | 1年 <span class="return-pos">+32.5%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 0 条 | 工程项目 0 条 | 产业平台 0 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>未在浙江十五五规划中找到直接对应表述</li>
+</ul>
+</div>
+<div class="industry-card">
+<h4>医疗器械 <code style="font-weight:400;font-size:.9em">159883</code> 🟡</h4>
+<div class="etf-info"><strong>ETF：</strong>永赢中证全指医疗器械ETF<br><strong>跟踪指数：</strong>中证全指医疗器械指数<br><strong>简介：</strong>唯一纯医疗器械ETF，覆盖高端影像/内窥镜/骨科植入/IVD</div>
+<ul>
+<li><strong>共识：</strong>全面偏弱（0/5 层强信号）</li>
+<li><strong>市场：</strong>温和确认 | 6月 <span class="return-pos">+32.8%</span> | 1年 <span class="return-pos">+72.5%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 0 条 | 工程项目 0 条 | 产业平台 0 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>未在浙江十五五规划中找到直接对应表述</li>
+</ul>
+</div>
+<div class="industry-card">
+<h4>大飞机 <code style="font-weight:400;font-size:.9em">512660</code> 🟠</h4>
+<div class="etf-info"><strong>ETF：</strong>国泰中证军工ETF<br><strong>跟踪指数：</strong>中证军工指数<br><strong>简介：</strong>大飞机产业链核心标的（中航系/商飞供应链）均在军工板块，是当前最接近的选择</div>
+<ul>
+<li><strong>共识：</strong>全面偏弱（0/5 层强信号）</li>
+<li><strong>市场：</strong>数据不足 | 6月 <span class="return-pos">+25.6%</span> | 1年 <span class="return-pos">+58.2%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 0 条 | 工程项目 5 条 | 产业平台 4 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>未在浙江十五五规划中找到直接对应表述</li>
+</ul>
+</div>
+<div class="industry-card">
+<h4>新能源车 <code style="font-weight:400;font-size:.9em">515030</code> 🟢</h4>
+<div class="etf-info"><strong>ETF：</strong>华夏中证新能源汽车ETF<br><strong>跟踪指数：</strong>中证新能源汽车指数<br><strong>简介：</strong>规模最大的新能源车ETF（~70亿），覆盖动力电池/整车/充电桩全产业链</div>
+<ul>
+<li><strong>共识：</strong>全面偏弱（0/5 层强信号）</li>
+<li><strong>市场：</strong>温和确认 | 6月 <span class="return-pos">+28.5%</span> | 1年 <span class="return-pos">+62.8%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 0 条 | 工程项目 0 条 | 产业平台 0 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>未在浙江十五五规划中找到直接对应表述</li>
+</ul>
+</div>
+<div class="industry-card">
+<h4>深海经济 <code style="font-weight:400;font-size:.9em">512660</code> 🟠</h4>
+<div class="etf-info"><strong>ETF：</strong>国泰中证军工ETF<br><strong>跟踪指数：</strong>中证军工指数<br><strong>简介：</strong>深海装备制造标的均在军工/重工板块，无独立深海ETF，军工ETF含部分深海装备企业</div>
+<ul>
+<li><strong>共识：</strong>全面偏弱（0/5 层强信号）</li>
+<li><strong>市场：</strong>数据不足 | 6月 <span class="return-pos">+25.6%</span> | 1年 <span class="return-pos">+58.2%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 0 条 | 工程项目 7 条 | 产业平台 4 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>未在浙江十五五规划中找到直接对应表述</li>
+<li><strong>国家：</strong>深海资源在海洋经济和未来产业中提及</li>
+</ul>
+</div>
+<div class="industry-card">
+<h4>农业科技 <code style="font-weight:400;font-size:.9em">159825</code> 🟠</h4>
+<div class="etf-info"><strong>ETF：</strong>富国中证农业主题ETF<br><strong>跟踪指数：</strong>中证农业主题指数<br><strong>简介：</strong>覆盖智慧农业/种业/农机/农化，是最接近农业科技的综合ETF</div>
+<ul>
+<li><strong>共识：</strong>全面偏弱（0/5 层强信号）</li>
+<li><strong>市场：</strong>数据不足 | 6月 <span class="return-pos">+15.2%</span> | 1年 <span class="return-pos">+32.5%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 0 条 | 工程项目 0 条 | 产业平台 0 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>未在浙江十五五规划中找到直接对应表述</li>
+</ul>
+</div>
+<div class="industry-card">
+<h4>绿色金融与耐心资本 <code style="font-weight:400;font-size:.9em">-</code> 🟡</h4>
+<ul>
+<li><strong>共识：</strong>全面偏弱（0/5 层强信号）</li>
+<li><strong>市场：</strong>数据不足 | 6月 <span class="return-na">—</span> | 1年 <span class="return-na">—</span> | 资金 <span class="">-</span></li>
+<li><strong>证据质量：</strong>量化目标 0 条 | 工程项目 1 条 | 产业平台 1 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>有提及——耐心资本+科技金融写入十五五</li>
+<li><strong>国家：</strong>国家低碳转型基金+耐心资本+科技金融绿色通道</li>
+</ul>
+</div>
+<div class="industry-card">
+<h4>碳市场 <code style="font-weight:400;font-size:.9em">560060</code> 🟡</h4>
+<div class="etf-info"><strong>ETF：</strong>广发中证上海环交所碳中和ETF<br><strong>跟踪指数：</strong>中证上海环交所碳中和指数<br><strong>简介：</strong>覆盖新能源/储能/碳管理/节能环保，碳市场扩围直接利好该指数成分股</div>
+<ul>
+<li><strong>共识：</strong>全面偏弱（0/5 层强信号）</li>
+<li><strong>市场：</strong>数据不足 | 6月 <span class="return-pos">+48.5%</span> | 1年 <span class="return-pos">+115.2%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 0 条 | 工程项目 0 条 | 产业平台 0 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>未在浙江十五五规划中找到直接对应表述</li>
+<li><strong>国家：</strong>扩大碳排放权交易市场覆盖范围</li>
+</ul>
+</div>
+<div class="industry-card">
+<h4>银发经济 <code style="font-weight:400;font-size:.9em">516830</code> 🟡</h4>
+<div class="etf-info"><strong>ETF：</strong>银华中证养老产业ETF<br><strong>跟踪指数：</strong>中证养老产业指数<br><strong>简介：</strong>覆盖医疗/医药/养老服务/康复器械，是银发经济方向最接近的ETF</div>
+<ul>
+<li><strong>共识：</strong>全面偏弱（0/5 层强信号）</li>
+<li><strong>市场：</strong>数据不足 | 6月 <span class="return-pos">+42.8%</span> | 1年 <span class="return-pos">+95.6%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 0 条 | 工程项目 1 条 | 产业平台 1 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>新增——十四五仅提养老育幼等服务业，十五五首次明确培育发展银发经济</li>
+<li><strong>国家：</strong>城乡居民基础养老金月最低标准再提高20元</li>
+</ul>
+</div>
+<div class="industry-card">
+<h4>冰雪经济 <code style="font-weight:400;font-size:.9em">-</code> 🟡</h4>
+<ul>
+<li><strong>共识：</strong>全面偏弱（0/5 层强信号）</li>
+<li><strong>市场：</strong>数据不足 | 6月 <span class="return-na">—</span> | 1年 <span class="return-na">—</span> | 资金 <span class="">-</span></li>
+<li><strong>证据质量：</strong>量化目标 0 条 | 工程项目 0 条 | 产业平台 0 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>未在浙江十五五规划中找到直接对应表述</li>
+</ul>
+</div>
+<div class="industry-card">
+<h4>中医药 <code style="font-weight:400;font-size:.9em">159647</code> 🟢</h4>
+<div class="etf-info"><strong>ETF：</strong>华泰柏瑞中证中药ETF<br><strong>跟踪指数：</strong>中证中药指数<br><strong>简介：</strong>规模最大的中药ETF，覆盖中药饮片/配方颗粒/中成药龙头</div>
+<ul>
+<li><strong>共识：</strong>全面偏弱（0/5 层强信号）</li>
+<li><strong>市场：</strong>温和确认 | 6月 <span class="return-pos">+38.2%</span> | 1年 <span class="return-pos">+85.6%</span> | 资金 <span class="flow-in">流入</span></li>
+<li><strong>证据质量：</strong>量化目标 0 条 | 工程项目 0 条 | 产业平台 0 条 | 定性提及 0 条</li>
+<li><strong>浙江：</strong>未在浙江十五五规划中找到直接对应表述</li>
+</ul>
+</div>
+<hr>
+<h2>证据质量权重说明</h2>
+<table><tr><th>证据类型</th><th>权重</th><th>识别规则</th></tr>
 <tr><td>量化目标（有具体数字）</td><td>3</td><td>含万/亿/%/个/兆等数值单位</td></tr>
 <tr><td>工程项目（有名称）</td><td>2</td><td>具体项目/工程/示范名称</td></tr>
 <tr><td>产业平台/集群</td><td>1.5</td><td>园区/集群/走廊/平台</td></tr>
 <tr><td>定性提及</td><td>0.5</td><td>方向性表述无具体内容</td></tr>
 </table>
-
-<h3>数据质量标签</h3>
-<table>
-<tr><th>标签</th><th>含义</th></tr>
+<h2>数据质量标签说明</h2>
+<table><tr><th>标签</th><th>含义</th></tr>
 <tr><td>🟢 独立ETF·精准</td><td>ETF唯一映射，精准匹配该行业</td></tr>
 <tr><td>🟡 独立ETF·相关 / 共享ETF·精准</td><td>相关性匹配或多行业共用但合理</td></tr>
 <tr><td>🟠 借用ETF·代理弱</td><td>借用其他行业ETF，映射精度有限</td></tr>
 <tr><td>🔴 缺数据</td><td>无市场信号</td></tr>
 </table>
-
-<p class="footer">
-  分析仅供研究参考，不构成投资建议 · 数据来源：国务院/浙江省/八城政府工作报告及十五五规划纲要 · 行情数据：东方财富（2026-05-29） · 生成：2026-05-31
-</p>
-
+<div class="footer">
+<p>分析仅供研究参考，不构成投资建议。共识度基于现有五层证据的方向一致性，不涉及行情预测。</p>
+<p>生成时间：2026-05-31 | 数据来源：Wind / East Money / 各地方政府十五五规划</p>
+</div>
 </body>
 </html>
