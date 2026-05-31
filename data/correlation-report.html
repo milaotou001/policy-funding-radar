@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>政策-行情信号共识分析报告 — 政策资金流向雷达</title>
+<style>
+  :root {
+    --bg: #fafafa; --card: #fff; --text: #18181b; --muted: #71717a;
+    --border: #e4e4e7; --accent: #2563eb; --red: #dc2626; --amber: #d97706;
+    --green: #16a34a; --purple: #9333ea;
+    --green-bg: #f0fdf4; --amber-bg: #fffbeb; --red-bg: #fef2f2; --blue-bg: #eff6ff;
+    --zinc-bg: #f4f4f5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #09090b; --card: #18181b; --text: #f4f4f5; --muted: #a1a1aa;
+      --border: #27272a; --accent: #60a5fa; --red: #f87171; --amber: #fbbf24;
+      --green: #4ade80; --purple: #c084fc;
+      --green-bg: #052e16; --amber-bg: #451a03; --red-bg: #450a0a; --blue-bg: #172554;
+      --zinc-bg: #27272a;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6;
+    max-width: 1200px; margin: 0 auto; padding: 24px 16px;
+  }
+  h1 { font-size: 1.6em; margin-bottom: 4px; }
+  h2 { font-size: 1.2em; margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid var(--border); }
+  h3 { font-size: 1em; margin: 20px 0 8px; }
+  .meta { color: var(--muted); font-size: .85em; margin-bottom: 20px; }
+  .summary { display: flex; gap: 16px; flex-wrap: wrap; margin: 16px 0; }
+  .summary-item { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; min-width: 120px; }
+  .summary-item strong { font-size: 1.4em; display: block; }
+  .summary-item span { font-size: .8em; color: var(--muted); }
+
+  table { width: 100%; border-collapse: collapse; font-size: .85em; margin: 12px 0; }
+  th, td { padding: 6px 8px; border: 1px solid var(--border); text-align: left; }
+  th { background: var(--zinc-bg); font-weight: 600; white-space: nowrap; position: sticky; top: 0; }
+  tr:hover { background: var(--blue-bg); }
+  .matrix-wrap { overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px; }
+  .matrix-wrap table { margin: 0; }
+  .matrix-wrap td:first-child { white-space: nowrap; font-weight: 600; }
+
+  .tag { display: inline-block; padding: 1px 6px; border-radius: 4px; font-size: .75em; font-weight: 600; }
+  .tag-consensus-high { background: var(--green-bg); color: var(--green); }
+  .tag-consensus-resonance { background: var(--blue-bg); color: var(--accent); }
+  .tag-consensus-policy { background: var(--amber-bg); color: var(--amber); }
+  .tag-consensus-market { background: var(--purple); color: #fff; }
+  .tag-consensus-scattered { background: var(--zinc-bg); color: var(--muted); }
+  .tag-consensus-weak { background: var(--red-bg); color: var(--red); }
+
+  .detail-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 16px; margin: 12px 0;
+  }
+  .detail-card h3 { margin-top: 0; }
+  .detail-card ul { list-style: none; padding: 0; }
+  .detail-card li { font-size: .9em; padding: 2px 0; }
+  .detail-card li::before { content: "• "; color: var(--accent); }
+  .key-quote { font-size: .85em; color: var(--muted); padding-left: 12px; border-left: 3px solid var(--border); margin: 6px 0; }
+
+  hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+  .footer { font-size: .8em; color: var(--muted); margin-top: 32px; }
+  .signal-dot { font-size: 1.1em; }
+  .return-pos { color: var(--green); font-weight: 600; }
+  .return-neg { color: var(--red); font-weight: 600; }
+  .return-na { color: var(--muted); }
+
+  @media print {
+    body { max-width: none; padding: 0; font-size: 10pt; }
+    .detail-card { break-inside: avoid; }
+    h2 { break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<h1>政策-行情信号共识分析报告</h1>
+<p class="meta">生成：2026-05-31 · 34 个行业 · 五层证据交叉验证</p>
+
+<div class="summary">
+  <div class="summary-item"><strong>8</strong><span>高度共识</span></div>
+  <div class="summary-item"><strong>1</strong><span>政策先行</span></div>
+  <div class="summary-item"><strong>12</strong><span>信号分散</span></div>
+  <div class="summary-item"><strong>13</strong><span>全面偏弱</span></div>
+</div>
+
+<hr>
+
+<h2>全行业信号矩阵</h2>
+<p class="meta">🟢强 🟡中 🟠弱 ⚪无/缺 — 按共识度排序</p>
+
+<div class="matrix-wrap">
+<table>
+<thead>
+<tr><th>行业</th><th>国家</th><th>省级</th><th>城市</th><th>规划</th><th>市场</th><th>共识类型</th><th>数据质量</th><th>6月</th><th>1年</th></tr>
+</thead>
+<tbody>
+<tr><td>半导体/芯片</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-consensus-high">高度共识</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+50.6%</td><td class="return-pos">+109.3%</td></tr>
+<tr><td>制造业</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-consensus-high">高度共识</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+61.8%</td><td class="return-pos">+107.3%</td></tr>
+<tr><td>低空经济</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-consensus-high">高度共识</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+68.2%</td><td class="return-pos">+125.8%</td></tr>
+<tr><td>数字经济</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-consensus-high">高度共识</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+35.2%</td><td class="return-pos">+82.6%</td></tr>
+<tr><td>工业软件</td><td>🟡</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-consensus-high">高度共识</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+45.8%</td><td class="return-pos">+108.5%</td></tr>
+<tr><td>人工智能</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟡</td><td><span class="tag tag-consensus-high">高度共识</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+28.5%</td><td class="return-pos">+117.6%</td></tr>
+<tr><td>机器人</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟠</td><td><span class="tag tag-consensus-high">高度共识</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+45.2%</td><td class="return-pos">+98.5%</td></tr>
+<tr><td>生物医药</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟡</td><td>🟢</td><td><span class="tag tag-consensus-high">高度共识</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+32.8%</td><td class="return-pos">+68.5%</td></tr>
+<tr><td>新能源</td><td>🟡</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟠</td><td><span class="tag tag-consensus-policy">政策先行</span></td><td>🟡 共享ETF·精准</td><td class="return-pos">+12.3%</td><td class="return-pos">+74.1%</td></tr>
+<tr><td>新材料</td><td>🟡</td><td>🟡</td><td>🟢</td><td>🟢</td><td>🟡</td><td><span class="tag tag-consensus-scattered">信号分散</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+22.8%</td><td class="return-pos">+55.2%</td></tr>
+<tr><td>商业航天</td><td>🟢</td><td>🟡</td><td>🟢</td><td>🟡</td><td>🟠</td><td><span class="tag tag-consensus-scattered">信号分散</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+9.6%</td><td class="return-pos">+22.7%</td></tr>
+<tr><td>智能驾驶</td><td>🟢</td><td>🟢</td><td>🟡</td><td>🟡</td><td>🟡</td><td><span class="tag tag-consensus-scattered">信号分散</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+38.2%</td><td class="return-pos">+85.8%</td></tr>
+<tr><td>6G通信</td><td>🟠</td><td>🟡</td><td>🟡</td><td>🟢</td><td>🟡</td><td><span class="tag tag-consensus-scattered">信号分散</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+35.6%</td><td class="return-pos">+78.5%</td></tr>
+<tr><td>核能</td><td>🟡</td><td>🟢</td><td>🟡</td><td>🟡</td><td>🟡</td><td><span class="tag tag-consensus-scattered">信号分散</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+20.3%</td><td class="return-pos">+26.6%</td></tr>
+<tr><td>电力设备与电网</td><td>🟡</td><td>🟠</td><td>🟡</td><td>🟢</td><td>⚪</td><td><span class="tag tag-consensus-scattered">信号分散</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+28.6%</td><td class="return-pos">+62.3%</td></tr>
+<tr><td>数据要素</td><td>🟠</td><td>🟢</td><td>🟠</td><td>🟡</td><td>🟡</td><td><span class="tag tag-consensus-scattered">信号分散</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+40.5%</td><td class="return-pos">+88.6%</td></tr>
+<tr><td>平台经济</td><td>🟠</td><td>🟢</td><td>🟡</td><td>🟡</td><td>🟠</td><td><span class="tag tag-consensus-scattered">信号分散</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+25.8%</td><td class="return-pos">+55.2%</td></tr>
+<tr><td>生物制造</td><td>🟠</td><td>🟡</td><td>🟡</td><td>🟡</td><td>🟠</td><td><span class="tag tag-consensus-scattered">信号分散</span></td><td>🟡 独立ETF·相关</td><td class="return-neg">-12.6%</td><td class="return-neg">-3.9%</td></tr>
+<tr><td>氢能与核聚变</td><td>🟠</td><td>🟡</td><td>🟡</td><td>🟡</td><td>⚪</td><td><span class="tag tag-consensus-scattered">信号分散</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+12.3%</td><td class="return-pos">+74.1%</td></tr>
+<tr><td>量子科技</td><td>🟠</td><td>🟡</td><td>🟡</td><td>🟡</td><td>🟡</td><td><span class="tag tag-consensus-scattered">信号分散</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+77.4%</td><td class="return-pos">+248.7%</td></tr>
+<tr><td>储能</td><td>🟡</td><td>🟡</td><td>🟡</td><td>🟡</td><td>🟠</td><td><span class="tag tag-consensus-scattered">信号分散</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+8.5%</td><td class="return-pos">+68.3%</td></tr>
+<tr><td>脑机接口</td><td>🟠</td><td>🟡</td><td>🟠</td><td>🟡</td><td>🟠</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+32.8%</td><td class="return-pos">+72.5%</td></tr>
+<tr><td>关键矿产</td><td>⚪</td><td>🟡</td><td>⚪</td><td>🟠</td><td>⚪</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+8.5%</td><td class="return-pos">+35.6%</td></tr>
+<tr><td>种业</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>⚪</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+15.2%</td><td class="return-pos">+32.5%</td></tr>
+<tr><td>医疗器械</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>🟡</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟡 共享ETF·精准</td><td class="return-pos">+32.8%</td><td class="return-pos">+72.5%</td></tr>
+<tr><td>大飞机</td><td>⚪</td><td>🟠</td><td>⚪</td><td>🟡</td><td>⚪</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+25.6%</td><td class="return-pos">+58.2%</td></tr>
+<tr><td>新能源车</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>🟡</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+28.5%</td><td class="return-pos">+62.8%</td></tr>
+<tr><td>深海经济</td><td>🟡</td><td>🟠</td><td>🟠</td><td>🟡</td><td>⚪</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+25.6%</td><td class="return-pos">+58.2%</td></tr>
+<tr><td>农业科技</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>⚪</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+15.2%</td><td class="return-pos">+32.5%</td></tr>
+<tr><td>绿色金融与耐心资本</td><td>🟠</td><td>🟡</td><td>🟠</td><td>🟠</td><td>⚪</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟡 待核查</td><td class="return-na">—</td><td class="return-na">—</td></tr>
+<tr><td>碳市场</td><td>🟠</td><td>🟠</td><td>🟠</td><td>⚪</td><td>⚪</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+48.5%</td><td class="return-pos">+115.2%</td></tr>
+<tr><td>银发经济</td><td>🟡</td><td>🟡</td><td>🟠</td><td>🟠</td><td>⚪</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+42.8%</td><td class="return-pos">+95.6%</td></tr>
+<tr><td>冰雪经济</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>⚪</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟡 待核查</td><td class="return-na">—</td><td class="return-na">—</td></tr>
+<tr><td>中医药</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>🟡</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+38.2%</td><td class="return-pos">+85.6%</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>高度共识 — ≥4层同向强信号（8 个）</h2>
+
+<div class="detail-card">
+<h3>半导体/芯片 <code>159995</code> 🟢</h3>
+<ul>
+<li><b>共识</b>：高度共识（5/5 层强信号）</li>
+<li><b>市场</b>：双重验证 | 6月 +50.6% | 1年 +109.3% | 资金 流入</li>
+<li><b>证据质量</b>：量化目标 3 条 | 工程项目 8 条 | 产业平台 8 条</li>
+<li><b>浙江</b>：强化——从十四五十大标志性产业链之一，升级为十五五新兴支柱产业+争取新增国家级集群</li>
+<li><b>国家</b>：集成电路列入2026年新兴支柱产业重点方向</li>
+</ul>
+<p class="key-quote">量化目标：三大先导产业制造业产值年均增速保持10%以上（上海）· 集成电路等39种工业产品产量占全国比重超10%（深圳）· 到2030年集成电路核心产业营业收入超1030亿元（杭州）</p>
+</div>
+
+<div class="detail-card">
+<h3>制造业 <code>159667</code> 🟡</h3>
+<ul>
+<li><b>共识</b>：高度共识（5/5 层强信号）</li>
+<li><b>市场</b>：双重验证 | 6月 +61.8% | 1年 +107.3% | 资金 流入</li>
+<li><b>证据质量</b>：量化目标 6 条 | 工程项目 1 条 | 产业平台 0 条</li>
+<li><b>浙江</b>：大幅强化——415X集群工程+13万亿营收量化目标</li>
+</ul>
+<p class="key-quote">量化目标：集群规上营收突破13万亿元 · 规上工业增加值年均增长5.5%以上 · 专精特新中小企业1.8万家 · 单项冠军320家 · 未来工厂200家</p>
+</div>
+
+<div class="detail-card">
+<h3>低空经济 <code>159378</code> 🟢</h3>
+<ul>
+<li><b>共识</b>：高度共识（5/5 层强信号）</li>
+<li><b>市场</b>：双重验证 | 6月 +68.2% | 1年 +125.8% | 资金 流入</li>
+<li><b>证据质量</b>：量化目标 2 条 | 工程项目 10 条 | 产业平台 4 条</li>
+<li><b>浙江</b>：新增——十四五未提及，十五五首次列为新兴支柱产业+低空新基建</li>
+<li><b>国家</b>：低空经济列入2026年新兴支柱产业</li>
+</ul>
+<p class="key-quote">量化目标：建成投用超1200个低空起降点（深圳）· 到2030年低空经济及航空航天产业规模达1500亿元（苏州）</p>
+</div>
+
+<div class="detail-card">
+<h3>数字经济 <code>560800</code> 🟢</h3>
+<ul>
+<li><b>共识</b>：高度共识（5/5 层强信号）</li>
+<li><b>市场</b>：双重验证 | 6月 +35.2% | 1年 +82.6% | 资金 流入</li>
+<li><b>证据质量</b>：量化目标 3 条 | 工程项目 6 条 | 产业平台 3 条</li>
+<li><b>浙江</b>：强化+安全化——独立成节+数据要素试验区+平台经济审慎监管</li>
+</ul>
+<p class="key-quote">量化目标：数字经济核心产业增加值占GDP 14%（2030年）· 信息软件营收17000亿元（杭州）· 核心产业增加值增长6.5%（杭州）</p>
+</div>
+
+<div class="detail-card">
+<h3>工业软件 <code>159852</code> 🟡</h3>
+<ul>
+<li><b>共识</b>：高度共识（4/5 层强信号）</li>
+<li><b>市场</b>：双重验证 | 6月 +45.8% | 1年 +108.5% | 资金 流入</li>
+<li><b>证据质量</b>：量化目标 3 条 | 工程项目 5 条 | 产业平台 4 条</li>
+</ul>
+<p class="key-quote">量化目标：规上信息软件营收2万亿元 · 千亿级旗舰企业2家 · 信息传输与软件增加值突破8000亿元（深圳）</p>
+</div>
+
+<div class="detail-card">
+<h3>人工智能 <code>159819</code> 🟢</h3>
+<ul>
+<li><b>共识</b>：高度共识（4/5 层强信号）</li>
+<li><b>市场</b>：温和确认 | 6月 +28.5% | 1年 +117.6% | 资金 流入</li>
+<li><b>证据质量</b>：量化目标 14 条 | 工程项目 22 条 | 产业平台 9 条 | 定性提及 3 条</li>
+<li><b>浙江</b>：显著强化——独立成章，定位核心引擎</li>
+</ul>
+<p class="key-quote">量化目标：规上AI核心产业营收1.2万亿元（浙江）· 5000家以上制造业企业智能化应用（上海）· 500个以上先进级智能工厂（上海）· 信息软件增加值突破8000亿元（深圳）</p>
+</div>
+
+<div class="detail-card">
+<h3>机器人 <code>562500</code> 🟢</h3>
+<ul>
+<li><b>共识</b>：高度共识（4/5 层强信号）</li>
+<li><b>市场</b>：市场分歧 | 6月 +45.2% | 1年 +98.5% | 资金 流出（近期获利了结）</li>
+<li><b>证据质量</b>：量化目标 2 条 | 工程项目 10 条 | 产业平台 8 条</li>
+<li><b>浙江</b>：大幅强化——升级为未来产业首位的人形机器人+具身智能</li>
+</ul>
+<p class="key-quote">量化目标：具身智能机器人集群规模突破2200亿元（杭州）· 工业机器人产量占全国超10%（深圳）</p>
+</div>
+
+<div class="detail-card">
+<h3>生物医药 <code>512290</code> 🟢</h3>
+<ul>
+<li><b>共识</b>：高度共识（4/5 层强信号）</li>
+<li><b>市场</b>：双重验证 | 6月 +32.8% | 1年 +68.5% | 资金 流入</li>
+<li><b>证据质量</b>：量化目标 1 条 | 工程项目 8 条 | 产业平台 10 条</li>
+</ul>
+<p class="key-quote">量化目标：生物医药与医疗器械集群产值突破1300亿元（杭州）</p>
+</div>
+
+<h2>政策先行 — 政策力度大但市场尚未确认（1 个）</h2>
+
+<div class="detail-card">
+<h3>新能源 <code>516160</code> 🟡</h3>
+<ul>
+<li><b>共识</b>：政策先行（政策4层强/中，市场暂不确认）</li>
+<li><b>市场</b>：暂不确认 | 6月 +12.3% | 1年 +74.1% | 资金 流出</li>
+<li><b>证据质量</b>：量化目标 8 条 | 工程项目 7 条 | 产业平台 3 条</li>
+<li><b>判断</b>：量化目标极硬（2.8亿千瓦装机等）但产能过剩压制短期表现，可能是"时机未到"而非"政策空洞"</li>
+</ul>
+<p class="key-quote">量化目标：电力总装机2.8亿千瓦 · 风电3000万千瓦 · 光伏9000万千瓦 · 抽蓄+储能3000万千瓦</p>
+</div>
+
+<hr>
+
+<h2>证据质量权重</h2>
+<table>
+<tr><th>证据类型</th><th>权重</th><th>识别规则</th></tr>
+<tr><td>量化目标（有具体数字）</td><td>3</td><td>含万/亿/%/个/兆等数值单位</td></tr>
+<tr><td>工程项目（有名称）</td><td>2</td><td>具体项目/工程/示范名称</td></tr>
+<tr><td>产业平台/集群</td><td>1.5</td><td>园区/集群/走廊/平台</td></tr>
+<tr><td>定性提及</td><td>0.5</td><td>方向性表述无具体内容</td></tr>
+</table>
+
+<h2>数据质量标签</h2>
+<table>
+<tr><th>标签</th><th>含义</th></tr>
+<tr><td>🟢 独立ETF·精准</td><td>ETF唯一映射，精准匹配该行业</td></tr>
+<tr><td>🟡 独立ETF·相关 / 共享ETF·精准</td><td>相关性匹配或多行业共用但合理</td></tr>
+<tr><td>🟠 借用ETF·代理弱</td><td>借用其他行业ETF，映射精度有限</td></tr>
+<tr><td>🔴 缺数据</td><td>无市场信号</td></tr>
+</table>
+
+<p class="footer">分析仅供研究参考，不构成投资建议。共识度基于现有五层证据的方向一致性，不涉及行情预测。数据来源：国务院/浙江省/八城政府工作报告及十五五规划纲要 · 行情数据来自东方财富（2026-05-29）</p>
+
+</body>
+</html>
