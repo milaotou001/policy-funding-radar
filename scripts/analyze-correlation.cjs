@@ -139,10 +139,61 @@ const matrix = industries.map((ind) => {
 });
 
 // ---------------------------------------------------------------------------
-// Sort: consensus priority
+// Strategy classification
 // ---------------------------------------------------------------------------
-const order = { '高度共识': 0, '政策-市场共振': 1, '政策先行': 2, '市场驱动': 3, '信号分散': 4, '全面偏弱': 5 };
-matrix.sort((a, b) => (order[a.consensus] ?? 9) - (order[b.consensus] ?? 9) || b.strongLayers - a.strongLayers);
+const STRATEGIES = {
+  CORE: '核心配置',
+  LEFT: '左侧观察',
+  MOMENTUM: '动量交易',
+  DIFFUSION: '政策扩散',
+  LOCAL: '地方行情',
+  EXCLUDE: '排除池',
+};
+
+const STRATEGY_RULES = {
+  [STRATEGIES.CORE]: { action: '等回调15-20%分批买', position: '≤15%/只，合计≤60%', stop: '不止损行业，止损时机', exit: '省级降级或资金连续4周流出', horizon: '中长期' },
+  [STRATEGIES.LEFT]: { action: '等≥2层信号改善再进', position: '3-5%试仓', stop: '量化目标下修→清仓', exit: '12个月无改善→放弃', horizon: '12个月+' },
+  [STRATEGIES.MOMENTUM]: { action: '纯技术面入场', position: '≤5%/只，合计≤15%', stop: '严格技术止损', exit: '趋势破位即出', horizon: '短线' },
+  [STRATEGIES.DIFFUSION]: { action: '等城市层新增重点推进信号', position: '5-8%', stop: '6个月无新信号→减半', exit: '省级降级或资金持续流出', horizon: '中期' },
+  [STRATEGIES.LOCAL]: { action: '波段操作，快进快出', position: '3-5%', stop: '严格', exit: '目标位到就走', horizon: '短线波段' },
+  [STRATEGIES.EXCLUDE]: { action: '不做', position: '—', stop: '—', exit: '—', horizon: '—' },
+};
+
+for (const m of matrix) {
+  const L = m.layers;
+  const policyWeak = [L.national, L.provincial, L.cityExec, L.planCommit].filter(s => s === '弱' || s === '无').length;
+  const policyStrong = [L.national, L.provincial, L.cityExec, L.planCommit].filter(s => s === '强').length;
+  const marketOk = L.market === '强' || L.market === '中';
+  const topStrong = L.national === '强' || L.provincial === '强';
+
+  if (m.consensus === '高度共识') {
+    m.strategy = STRATEGIES.CORE;
+  } else if (m.consensus === '政策先行') {
+    m.strategy = STRATEGIES.LEFT;
+  } else if (m.consensus === '信号分散') {
+    if (marketOk && policyStrong <= 1) {
+      // Market moves but policy isn't the clear driver
+      m.strategy = STRATEGIES.MOMENTUM;
+    } else if (topStrong && (L.cityExec === '弱' || L.cityExec === '无' || L.planCommit === '弱' || L.planCommit === '无' || L.planCommit === '中')) {
+      // Top-down policy exists but city/plan layers lag
+      m.strategy = STRATEGIES.DIFFUSION;
+    } else if ((L.planCommit === '强' || L.planCommit === '中') && (L.national === '弱' || L.national === '无' || L.national === '中')) {
+      // Plan/regional driving, national weak
+      m.strategy = STRATEGIES.LOCAL;
+    } else {
+      m.strategy = STRATEGIES.LOCAL;
+    }
+  } else {
+    m.strategy = STRATEGIES.EXCLUDE;
+  }
+  m.rules = STRATEGY_RULES[m.strategy];
+}
+
+// ---------------------------------------------------------------------------
+// Sort: strategy priority
+// ---------------------------------------------------------------------------
+const stratOrder = { '核心配置': 0, '左侧观察': 1, '政策扩散': 2, '动量交易': 3, '地方行情': 4, '排除池': 5 };
+matrix.sort((a, b) => (stratOrder[a.strategy] ?? 9) - (stratOrder[b.strategy] ?? 9) || b.strongLayers - a.strongLayers);
 
 // ---------------------------------------------------------------------------
 // Build report
@@ -166,8 +217,19 @@ for (const [type, count] of Object.entries(dist)) {
 R += '\n---\n\n';
 
 // Main table
+// Strategy summary
+const stratDist = {};
+for (const m of matrix) {
+  stratDist[m.strategy] = (stratDist[m.strategy] || 0) + 1;
+}
+R += '## 策略分布\n\n';
+for (const [type, count] of Object.entries(stratDist)) {
+  R += `- **${type}**：${count} 个\n`;
+}
+R += '\n---\n\n';
+
 R += '## 全行业信号矩阵\n\n';
-R += '| 行业 | 国家 | 省级 | 城市 | 规划 | 市场 | 共识类型 | 数据质量 | 6月 | 1年 |\n';
+R += '| 行业 | 国家 | 省级 | 城市 | 规划 | 市场 | 策略类型 | 数据质量 | 6月 | 1年 |\n';
 R += '|------|------|------|------|------|------|----------|----------|-----|-----|\n';
 
 for (const m of matrix) {
@@ -177,16 +239,20 @@ for (const m of matrix) {
     if (v === '弱') return '🟠';
     return '⚪';
   };
-  R += `| ${m.name} | ${s(m.layers.national)} | ${s(m.layers.provincial)} | ${s(m.layers.cityExec)} | ${s(m.layers.planCommit)} | ${s(m.layers.market)} | ${m.consensus} | ${m.dq.tag} ${m.dq.label} | ${pct(m.ret6m)} | ${pct(m.ret1y)} |\n`;
+  R += `| ${m.name} | ${s(m.layers.national)} | ${s(m.layers.provincial)} | ${s(m.layers.cityExec)} | ${s(m.layers.planCommit)} | ${s(m.layers.market)} | ${m.strategy} | ${m.dq.tag} ${m.dq.label} | ${pct(m.ret6m)} | ${pct(m.ret1y)} |\n`;
 }
 
 R += `\n> 🟢强 🟡中 🟠弱 ⚪无/缺\n`;
 R += '\n---\n\n';
 
 // Detail sections
-function groupSection(title, items) {
+function strategySection(title, items) {
   if (items.length === 0) return;
+  const first = items[0];
   R += `## ${title}（${items.length} 个）\n\n`;
+  if (first?.rules) {
+    R += `> **操作**：${first.rules.action} | **仓位**：${first.rules.position} | **止损**：${first.rules.stop} | **退出**：${first.rules.exit} | **周期**：${first.rules.horizon}\n\n`;
+  }
   for (const m of items) {
     const ind = industries.find((i) => i.id === m.id);
     const eq = m.layers.eq;
@@ -223,12 +289,20 @@ function groupSection(title, items) {
 
 const CITY = { sh: '上海', sz: '深圳', hz: '杭州', nj: '南京', su: '苏州', bj: '北京', gz: '广州', hf: '合肥' };
 
-groupSection('高度共识 — ≥4层同向强信号', matrix.filter((m) => m.consensus === '高度共识'));
-groupSection('政策-市场共振 — 政策有力+市场确认', matrix.filter((m) => m.consensus === '政策-市场共振'));
-groupSection('政策先行 — 政策力度大但市场尚未确认', matrix.filter((m) => m.consensus === '政策先行'));
-groupSection('市场驱动 — 行情强但政策支撑有限', matrix.filter((m) => m.consensus === '市场驱动'));
-groupSection('信号分散 — 各层方向不一致', matrix.filter((m) => m.consensus === '信号分散'));
-groupSection('全面偏弱 — 多层偏弱或无信号', matrix.filter((m) => m.consensus === '全面偏弱'));
+groupSection = strategySection;
+
+// Strategy-grouped detail sections
+for (const [stratType, stratLabel] of [
+  [STRATEGIES.CORE, '一、核心配置 · 回调即买'],
+  [STRATEGIES.LEFT, '二、左侧观察 · 等催化剂'],
+  [STRATEGIES.DIFFUSION, '三、政策扩散 · 等城市落地'],
+  [STRATEGIES.MOMENTUM, '四、动量交易 · 不靠政策逻辑'],
+  [STRATEGIES.LOCAL, '五、地方行情 · 波段操作'],
+  [STRATEGIES.EXCLUDE, '六、排除池 · 不做'],
+]) {
+  const items = matrix.filter((m) => m.strategy === stratType);
+  if (items.length > 0) groupSection(stratLabel, items);
+}
 
 // Evidence quality note
 R += '## 证据质量权重说明\n\n';

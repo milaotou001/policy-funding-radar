@@ -3,246 +3,497 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>政策-行情信号共识分析报告 — 政策资金流向雷达</title>
+<title>五层信号共识矩阵 & 投资策略框架 v2 — 政策资金流向雷达</title>
 <style>
   :root {
     --bg: #fafafa; --card: #fff; --text: #18181b; --muted: #71717a;
-    --border: #e4e4e7; --accent: #2563eb; --red: #dc2626; --amber: #d97706;
-    --green: #16a34a; --purple: #9333ea;
-    --green-bg: #f0fdf4; --amber-bg: #fffbeb; --red-bg: #fef2f2; --blue-bg: #eff6ff;
-    --zinc-bg: #f4f4f5;
+    --border: #e4e4e7; --accent: #2563eb;
+    --green: #16a34a; --amber: #d97706; --red: #dc2626; --purple: #9333ea;
+    --green-bg: #f0fdf4; --amber-bg: #fffbeb; --red-bg: #fef2f2;
+    --blue-bg: #eff6ff; --purple-bg: #faf5ff; --zinc-bg: #f4f4f5;
   }
   @media (prefers-color-scheme: dark) {
     :root {
       --bg: #09090b; --card: #18181b; --text: #f4f4f5; --muted: #a1a1aa;
-      --border: #27272a; --accent: #60a5fa; --red: #f87171; --amber: #fbbf24;
-      --green: #4ade80; --purple: #c084fc;
-      --green-bg: #052e16; --amber-bg: #451a03; --red-bg: #450a0a; --blue-bg: #172554;
-      --zinc-bg: #27272a;
+      --border: #27272a; --accent: #60a5fa;
+      --green: #4ade80; --amber: #fbbf24; --red: #f87171; --purple: #c084fc;
+      --green-bg: #052e16; --amber-bg: #451a03; --red-bg: #450a0a;
+      --blue-bg: #172554; --purple-bg: #2e1065; --zinc-bg: #27272a;
     }
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     background: var(--bg); color: var(--text); line-height: 1.6;
-    max-width: 1200px; margin: 0 auto; padding: 24px 16px;
+    max-width: 1280px; margin: 0 auto; padding: 24px 16px;
   }
   h1 { font-size: 1.6em; margin-bottom: 4px; }
-  h2 { font-size: 1.2em; margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid var(--border); }
-  h3 { font-size: 1em; margin: 20px 0 8px; }
+  h2 { font-size: 1.2em; margin: 36px 0 16px; padding-bottom: 6px; border-bottom: 2px solid var(--border); }
+  h3 { font-size: 1em; margin: 20px 0 8px; font-family: monospace; }
   .meta { color: var(--muted); font-size: .85em; margin-bottom: 20px; }
-  .summary { display: flex; gap: 16px; flex-wrap: wrap; margin: 16px 0; }
-  .summary-item { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; min-width: 120px; }
-  .summary-item strong { font-size: 1.4em; display: block; }
+
+  .summary { display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0; }
+  .summary-item {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 18px; min-width: 100px; text-align: center;
+  }
+  .summary-item strong { font-size: 1.5em; display: block; }
   .summary-item span { font-size: .8em; color: var(--muted); }
 
-  table { width: 100%; border-collapse: collapse; font-size: .85em; margin: 12px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: .84em; margin: 12px 0; }
   th, td { padding: 6px 8px; border: 1px solid var(--border); text-align: left; }
   th { background: var(--zinc-bg); font-weight: 600; white-space: nowrap; position: sticky; top: 0; }
   tr:hover { background: var(--blue-bg); }
   .matrix-wrap { overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px; }
-  .matrix-wrap table { margin: 0; }
+  .matrix-wrap table { margin: 0; font-size: .82em; }
   .matrix-wrap td:first-child { white-space: nowrap; font-weight: 600; }
 
-  .tag { display: inline-block; padding: 1px 6px; border-radius: 4px; font-size: .75em; font-weight: 600; }
-  .tag-consensus-high { background: var(--green-bg); color: var(--green); }
-  .tag-consensus-resonance { background: var(--blue-bg); color: var(--accent); }
-  .tag-consensus-policy { background: var(--amber-bg); color: var(--amber); }
-  .tag-consensus-market { background: var(--purple); color: #fff; }
-  .tag-consensus-scattered { background: var(--zinc-bg); color: var(--muted); }
-  .tag-consensus-weak { background: var(--red-bg); color: var(--red); }
+  .tag { display: inline-block; padding: 1px 8px; border-radius: 4px; font-size: .75em; font-weight: 600; white-space: nowrap; }
+  .tag-core { background: var(--green-bg); color: var(--green); }
+  .tag-left { background: var(--amber-bg); color: var(--amber); }
+  .tag-momentum { background: var(--purple-bg); color: var(--purple); }
+  .tag-diffusion { background: var(--blue-bg); color: var(--accent); }
+  .tag-local { background: var(--zinc-bg); color: var(--muted); }
+  .tag-exclude { background: var(--red-bg); color: var(--red); }
 
-  .detail-card {
-    background: var(--card); border: 1px solid var(--border); border-radius: 8px;
-    padding: 16px; margin: 12px 0;
+  .strategy-box {
+    background: var(--card); border: 2px solid var(--border); border-radius: 10px;
+    padding: 20px; margin: 20px 0;
   }
-  .detail-card h3 { margin-top: 0; }
-  .detail-card ul { list-style: none; padding: 0; }
-  .detail-card li { font-size: .9em; padding: 2px 0; }
-  .detail-card li::before { content: "• "; color: var(--accent); }
-  .key-quote { font-size: .85em; color: var(--muted); padding-left: 12px; border-left: 3px solid var(--border); margin: 6px 0; }
+  .strategy-box h3 { margin-top: 0; font-family: inherit; }
+  .strategy-rules {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 8px; margin: 12px 0; font-size: .85em;
+  }
+  .rule-item { background: var(--zinc-bg); border-radius: 6px; padding: 8px 12px; }
+  .rule-item strong { display: block; font-size: .75em; color: var(--muted); text-transform: uppercase; margin-bottom: 2px; }
 
-  hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
-  .footer { font-size: .8em; color: var(--muted); margin-top: 32px; }
-  .signal-dot { font-size: 1.1em; }
+  .industry-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 14px 16px; margin: 10px 0;
+  }
+  .industry-card h4 { margin: 0 0 8px; font-size: .95em; }
+  .industry-card ul { list-style: none; padding: 0; font-size: .88em; }
+  .industry-card li { padding: 2px 0; }
+  .key-quote { font-size: .85em; color: var(--muted); padding: 6px 0 6px 12px; border-left: 3px solid var(--border); margin: 6px 0; }
+  .etf-tag { font-family: monospace; font-size: .85em; background: var(--zinc-bg); padding: 1px 6px; border-radius: 3px; }
+
+  .flow-in { color: var(--green); } .flow-out { color: var(--red); }
   .return-pos { color: var(--green); font-weight: 600; }
   .return-neg { color: var(--red); font-weight: 600; }
   .return-na { color: var(--muted); }
 
+  hr { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+  .footer { font-size: .8em; color: var(--muted); margin-top: 40px; }
+  .toc { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0; }
+  .toc a { font-size: .85em; color: var(--accent); text-decoration: none; padding: 4px 10px; border: 1px solid var(--border); border-radius: 20px; }
+  .toc a:hover { background: var(--blue-bg); }
+
   @media print {
     body { max-width: none; padding: 0; font-size: 10pt; }
-    .detail-card { break-inside: avoid; }
+    .strategy-box, .industry-card { break-inside: avoid; }
     h2 { break-after: avoid; }
   }
 </style>
 </head>
 <body>
 
-<h1>政策-行情信号共识分析报告</h1>
-<p class="meta">生成：2026-05-31 · 34 个行业 · 五层证据交叉验证</p>
+<h1>五层信号共识矩阵 & 投资策略框架 v2</h1>
+<p class="meta">
+  生成：2026-05-31 · 34 个行业 · 五层证据交叉验证 · 仅供研究参考不构成投资建议
+</p>
 
-<div class="summary">
-  <div class="summary-item"><strong>8</strong><span>高度共识</span></div>
-  <div class="summary-item"><strong>1</strong><span>政策先行</span></div>
-  <div class="summary-item"><strong>12</strong><span>信号分散</span></div>
-  <div class="summary-item"><strong>13</strong><span>全面偏弱</span></div>
+<div class="toc">
+  <a href="#matrix">全行业矩阵</a>
+  <a href="#s1">核心配置(8)</a>
+  <a href="#s2">左侧观察(1)</a>
+  <a href="#s3">政策扩散(3)</a>
+  <a href="#s4">动量交易(4)</a>
+  <a href="#s5">地方行情(5)</a>
+  <a href="#s6">排除池(13)</a>
+  <a href="#method">方法论</a>
 </div>
 
-<hr>
+<div class="summary">
+  <div class="summary-item"><strong>8</strong><span>核心配置</span></div>
+  <div class="summary-item"><strong>1</strong><span>左侧观察</span></div>
+  <div class="summary-item"><strong>3</strong><span>政策扩散</span></div>
+  <div class="summary-item"><strong>4</strong><span>动量交易</span></div>
+  <div class="summary-item"><strong>5</strong><span>地方行情</span></div>
+  <div class="summary-item"><strong>13</strong><span>排除池</span></div>
+</div>
 
-<h2>全行业信号矩阵</h2>
-<p class="meta">🟢强 🟡中 🟠弱 ⚪无/缺 — 按共识度排序</p>
+<!-- ================================================================== -->
+<hr>
+<h2 id="overview">策略框架总览</h2>
+
+<table>
+<thead>
+<tr><th>策略类型</th><th>核心逻辑</th><th>操作</th><th>仓位</th><th>止损</th><th>退出条件</th><th>周期</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td><span class="tag tag-core">核心配置</span></td>
+  <td>五层验证 + 市场确认 = 趋势有政策底</td>
+  <td>等回调15-20%分批买</td>
+  <td>≤15%/只，合计≤60%</td>
+  <td>不止损行业，止损时机</td>
+  <td>省级降级或资金连续4周流出</td>
+  <td>中长期</td>
+</tr>
+<tr>
+  <td><span class="tag tag-left">左侧观察</span></td>
+  <td>政策极硬但市场不认</td>
+  <td>等≥2层信号改善再进</td>
+  <td>3-5%试仓</td>
+  <td>量化目标下修→清仓</td>
+  <td>12个月无改善→放弃</td>
+  <td>12个月+</td>
+</tr>
+<tr>
+  <td><span class="tag tag-diffusion">政策扩散</span></td>
+  <td>上层定调了，基层还没跟上</td>
+  <td>等城市层新增重点推进信号</td>
+  <td>5-8%</td>
+  <td>6个月无新信号→减半</td>
+  <td>省级降级或资金持续流出</td>
+  <td>中期</td>
+</tr>
+<tr>
+  <td><span class="tag tag-momentum">动量交易</span></td>
+  <td>行情强但政策不是主驱动力</td>
+  <td>纯技术面入场</td>
+  <td>≤5%/只，合计≤15%</td>
+  <td>严格技术止损</td>
+  <td>趋势破位即出</td>
+  <td>短线</td>
+</tr>
+<tr>
+  <td><span class="tag tag-local">地方行情</span></td>
+  <td>地方/规划层推动，国家层面偏弱</td>
+  <td>波段操作，快进快出</td>
+  <td>3-5%</td>
+  <td>严格</td>
+  <td>目标位到就走</td>
+  <td>短线波段</td>
+</tr>
+<tr>
+  <td><span class="tag tag-exclude">排除池</span></td>
+  <td>政策不支持或ETF映射太差</td>
+  <td>不做</td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+</tr>
+</tbody>
+</table>
+
+<!-- ================================================================== -->
+<hr>
+<h2 id="matrix">全行业信号矩阵</h2>
+<p class="meta">🟢强 🟡中 🟠弱 ⚪无/缺 · 按策略类型排序</p>
 
 <div class="matrix-wrap">
 <table>
 <thead>
-<tr><th>行业</th><th>国家</th><th>省级</th><th>城市</th><th>规划</th><th>市场</th><th>共识类型</th><th>数据质量</th><th>6月</th><th>1年</th></tr>
+<tr><th>行业</th><th>国家</th><th>省级</th><th>城市</th><th>规划</th><th>市场</th><th>策略类型</th><th>数据质量</th><th>6月</th><th>1年</th></tr>
 </thead>
 <tbody>
-<tr><td>半导体/芯片</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-consensus-high">高度共识</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+50.6%</td><td class="return-pos">+109.3%</td></tr>
-<tr><td>制造业</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-consensus-high">高度共识</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+61.8%</td><td class="return-pos">+107.3%</td></tr>
-<tr><td>低空经济</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-consensus-high">高度共识</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+68.2%</td><td class="return-pos">+125.8%</td></tr>
-<tr><td>数字经济</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-consensus-high">高度共识</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+35.2%</td><td class="return-pos">+82.6%</td></tr>
-<tr><td>工业软件</td><td>🟡</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-consensus-high">高度共识</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+45.8%</td><td class="return-pos">+108.5%</td></tr>
-<tr><td>人工智能</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟡</td><td><span class="tag tag-consensus-high">高度共识</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+28.5%</td><td class="return-pos">+117.6%</td></tr>
-<tr><td>机器人</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟠</td><td><span class="tag tag-consensus-high">高度共识</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+45.2%</td><td class="return-pos">+98.5%</td></tr>
-<tr><td>生物医药</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟡</td><td>🟢</td><td><span class="tag tag-consensus-high">高度共识</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+32.8%</td><td class="return-pos">+68.5%</td></tr>
-<tr><td>新能源</td><td>🟡</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟠</td><td><span class="tag tag-consensus-policy">政策先行</span></td><td>🟡 共享ETF·精准</td><td class="return-pos">+12.3%</td><td class="return-pos">+74.1%</td></tr>
-<tr><td>新材料</td><td>🟡</td><td>🟡</td><td>🟢</td><td>🟢</td><td>🟡</td><td><span class="tag tag-consensus-scattered">信号分散</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+22.8%</td><td class="return-pos">+55.2%</td></tr>
-<tr><td>商业航天</td><td>🟢</td><td>🟡</td><td>🟢</td><td>🟡</td><td>🟠</td><td><span class="tag tag-consensus-scattered">信号分散</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+9.6%</td><td class="return-pos">+22.7%</td></tr>
-<tr><td>智能驾驶</td><td>🟢</td><td>🟢</td><td>🟡</td><td>🟡</td><td>🟡</td><td><span class="tag tag-consensus-scattered">信号分散</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+38.2%</td><td class="return-pos">+85.8%</td></tr>
-<tr><td>6G通信</td><td>🟠</td><td>🟡</td><td>🟡</td><td>🟢</td><td>🟡</td><td><span class="tag tag-consensus-scattered">信号分散</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+35.6%</td><td class="return-pos">+78.5%</td></tr>
-<tr><td>核能</td><td>🟡</td><td>🟢</td><td>🟡</td><td>🟡</td><td>🟡</td><td><span class="tag tag-consensus-scattered">信号分散</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+20.3%</td><td class="return-pos">+26.6%</td></tr>
-<tr><td>电力设备与电网</td><td>🟡</td><td>🟠</td><td>🟡</td><td>🟢</td><td>⚪</td><td><span class="tag tag-consensus-scattered">信号分散</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+28.6%</td><td class="return-pos">+62.3%</td></tr>
-<tr><td>数据要素</td><td>🟠</td><td>🟢</td><td>🟠</td><td>🟡</td><td>🟡</td><td><span class="tag tag-consensus-scattered">信号分散</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+40.5%</td><td class="return-pos">+88.6%</td></tr>
-<tr><td>平台经济</td><td>🟠</td><td>🟢</td><td>🟡</td><td>🟡</td><td>🟠</td><td><span class="tag tag-consensus-scattered">信号分散</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+25.8%</td><td class="return-pos">+55.2%</td></tr>
-<tr><td>生物制造</td><td>🟠</td><td>🟡</td><td>🟡</td><td>🟡</td><td>🟠</td><td><span class="tag tag-consensus-scattered">信号分散</span></td><td>🟡 独立ETF·相关</td><td class="return-neg">-12.6%</td><td class="return-neg">-3.9%</td></tr>
-<tr><td>氢能与核聚变</td><td>🟠</td><td>🟡</td><td>🟡</td><td>🟡</td><td>⚪</td><td><span class="tag tag-consensus-scattered">信号分散</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+12.3%</td><td class="return-pos">+74.1%</td></tr>
-<tr><td>量子科技</td><td>🟠</td><td>🟡</td><td>🟡</td><td>🟡</td><td>🟡</td><td><span class="tag tag-consensus-scattered">信号分散</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+77.4%</td><td class="return-pos">+248.7%</td></tr>
-<tr><td>储能</td><td>🟡</td><td>🟡</td><td>🟡</td><td>🟡</td><td>🟠</td><td><span class="tag tag-consensus-scattered">信号分散</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+8.5%</td><td class="return-pos">+68.3%</td></tr>
-<tr><td>脑机接口</td><td>🟠</td><td>🟡</td><td>🟠</td><td>🟡</td><td>🟠</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+32.8%</td><td class="return-pos">+72.5%</td></tr>
-<tr><td>关键矿产</td><td>⚪</td><td>🟡</td><td>⚪</td><td>🟠</td><td>⚪</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+8.5%</td><td class="return-pos">+35.6%</td></tr>
-<tr><td>种业</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>⚪</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+15.2%</td><td class="return-pos">+32.5%</td></tr>
-<tr><td>医疗器械</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>🟡</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟡 共享ETF·精准</td><td class="return-pos">+32.8%</td><td class="return-pos">+72.5%</td></tr>
-<tr><td>大飞机</td><td>⚪</td><td>🟠</td><td>⚪</td><td>🟡</td><td>⚪</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+25.6%</td><td class="return-pos">+58.2%</td></tr>
-<tr><td>新能源车</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>🟡</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+28.5%</td><td class="return-pos">+62.8%</td></tr>
-<tr><td>深海经济</td><td>🟡</td><td>🟠</td><td>🟠</td><td>🟡</td><td>⚪</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+25.6%</td><td class="return-pos">+58.2%</td></tr>
-<tr><td>农业科技</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>⚪</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+15.2%</td><td class="return-pos">+32.5%</td></tr>
-<tr><td>绿色金融与耐心资本</td><td>🟠</td><td>🟡</td><td>🟠</td><td>🟠</td><td>⚪</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟡 待核查</td><td class="return-na">—</td><td class="return-na">—</td></tr>
-<tr><td>碳市场</td><td>🟠</td><td>🟠</td><td>🟠</td><td>⚪</td><td>⚪</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+48.5%</td><td class="return-pos">+115.2%</td></tr>
-<tr><td>银发经济</td><td>🟡</td><td>🟡</td><td>🟠</td><td>🟠</td><td>⚪</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+42.8%</td><td class="return-pos">+95.6%</td></tr>
-<tr><td>冰雪经济</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>⚪</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟡 待核查</td><td class="return-na">—</td><td class="return-na">—</td></tr>
-<tr><td>中医药</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>🟡</td><td><span class="tag tag-consensus-weak">全面偏弱</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+38.2%</td><td class="return-pos">+85.6%</td></tr>
+<tr><td>半导体/芯片</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-core">核心配置</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+50.6%</td><td class="return-pos">+109.3%</td></tr>
+<tr><td>制造业</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-core">核心配置</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+61.8%</td><td class="return-pos">+107.3%</td></tr>
+<tr><td>低空经济</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-core">核心配置</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+68.2%</td><td class="return-pos">+125.8%</td></tr>
+<tr><td>数字经济</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-core">核心配置</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+35.2%</td><td class="return-pos">+82.6%</td></tr>
+<tr><td>工业软件</td><td>🟡</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td><span class="tag tag-core">核心配置</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+45.8%</td><td class="return-pos">+108.5%</td></tr>
+<tr><td>人工智能</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟡</td><td><span class="tag tag-core">核心配置</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+28.5%</td><td class="return-pos">+117.6%</td></tr>
+<tr><td>机器人</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟠</td><td><span class="tag tag-core">核心配置</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+45.2%</td><td class="return-pos">+98.5%</td></tr>
+<tr><td>生物医药</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟡</td><td>🟢</td><td><span class="tag tag-core">核心配置</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+32.8%</td><td class="return-pos">+68.5%</td></tr>
+<tr><td>新能源</td><td>🟡</td><td>🟢</td><td>🟢</td><td>🟢</td><td>🟠</td><td><span class="tag tag-left">左侧观察</span></td><td>🟡 共享ETF·精准</td><td class="return-pos">+12.3%</td><td class="return-pos">+74.1%</td></tr>
+<tr><td>商业航天</td><td>🟢</td><td>🟡</td><td>🟢</td><td>🟡</td><td>🟠</td><td><span class="tag tag-diffusion">政策扩散</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+9.6%</td><td class="return-pos">+22.7%</td></tr>
+<tr><td>智能驾驶</td><td>🟢</td><td>🟢</td><td>🟡</td><td>🟡</td><td>🟡</td><td><span class="tag tag-diffusion">政策扩散</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+38.2%</td><td class="return-pos">+85.8%</td></tr>
+<tr><td>数据要素</td><td>🟠</td><td>🟢</td><td>🟠</td><td>🟡</td><td>🟡</td><td><span class="tag tag-momentum">动量交易</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+40.5%</td><td class="return-pos">+88.6%</td></tr>
+<tr><td>6G通信</td><td>🟠</td><td>🟡</td><td>🟡</td><td>🟢</td><td>🟡</td><td><span class="tag tag-momentum">动量交易</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+35.6%</td><td class="return-pos">+78.5%</td></tr>
+<tr><td>量子科技</td><td>🟠</td><td>🟡</td><td>🟡</td><td>🟡</td><td>🟡</td><td><span class="tag tag-momentum">动量交易</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+77.4%</td><td class="return-pos">+248.7%</td></tr>
+<tr><td>电力设备与电网</td><td>🟡</td><td>🟠</td><td>🟡</td><td>🟢</td><td>⚪</td><td><span class="tag tag-momentum">动量交易</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+28.6%</td><td class="return-pos">+62.3%</td></tr>
+<tr><td>新材料</td><td>🟡</td><td>🟡</td><td>🟢</td><td>🟢</td><td>🟡</td><td><span class="tag tag-local">地方行情</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+22.8%</td><td class="return-pos">+55.2%</td></tr>
+<tr><td>核能</td><td>🟡</td><td>🟢</td><td>🟡</td><td>🟡</td><td>🟡</td><td><span class="tag tag-local">地方行情</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+20.3%</td><td class="return-pos">+26.6%</td></tr>
+<tr><td>平台经济</td><td>🟠</td><td>🟢</td><td>🟡</td><td>🟡</td><td>🟠</td><td><span class="tag tag-local">地方行情</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+25.8%</td><td class="return-pos">+55.2%</td></tr>
+<tr><td>生物制造</td><td>🟠</td><td>🟡</td><td>🟡</td><td>🟡</td><td>🟠</td><td><span class="tag tag-local">地方行情</span></td><td>🟡 独立ETF·相关</td><td class="return-neg">-12.6%</td><td class="return-neg">-3.9%</td></tr>
+<tr><td>储能</td><td>🟡</td><td>🟡</td><td>🟡</td><td>🟡</td><td>🟠</td><td><span class="tag tag-local">地方行情</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+8.5%</td><td class="return-pos">+68.3%</td></tr>
+<tr><td>氢能与核聚变</td><td>🟠</td><td>🟡</td><td>🟡</td><td>🟡</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+12.3%</td><td class="return-pos">+74.1%</td></tr>
+<tr><td>脑机接口</td><td>🟠</td><td>🟡</td><td>🟠</td><td>🟡</td><td>🟠</td><td><span class="tag tag-exclude">排除池</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+32.8%</td><td class="return-pos">+72.5%</td></tr>
+<tr><td>关键矿产</td><td>⚪</td><td>🟡</td><td>⚪</td><td>🟠</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+8.5%</td><td class="return-pos">+35.6%</td></tr>
+<tr><td>种业</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+15.2%</td><td class="return-pos">+32.5%</td></tr>
+<tr><td>医疗器械</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>🟡</td><td><span class="tag tag-exclude">排除池</span></td><td>🟡 共享ETF·精准</td><td class="return-pos">+32.8%</td><td class="return-pos">+72.5%</td></tr>
+<tr><td>大飞机</td><td>⚪</td><td>🟠</td><td>⚪</td><td>🟡</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+25.6%</td><td class="return-pos">+58.2%</td></tr>
+<tr><td>新能源车</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>🟡</td><td><span class="tag tag-exclude">排除池</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+28.5%</td><td class="return-pos">+62.8%</td></tr>
+<tr><td>深海经济</td><td>🟡</td><td>🟠</td><td>🟠</td><td>🟡</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+25.6%</td><td class="return-pos">+58.2%</td></tr>
+<tr><td>农业科技</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td>🟠 共享ETF·相关</td><td class="return-pos">+15.2%</td><td class="return-pos">+32.5%</td></tr>
+<tr><td>绿色金融与耐心资本</td><td>🟠</td><td>🟡</td><td>🟠</td><td>🟠</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td>🟡 待核查</td><td class="return-na">—</td><td class="return-na">—</td></tr>
+<tr><td>碳市场</td><td>🟠</td><td>🟠</td><td>🟠</td><td>⚪</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+48.5%</td><td class="return-pos">+115.2%</td></tr>
+<tr><td>银发经济</td><td>🟡</td><td>🟡</td><td>🟠</td><td>🟠</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td>🟡 独立ETF·相关</td><td class="return-pos">+42.8%</td><td class="return-pos">+95.6%</td></tr>
+<tr><td>冰雪经济</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>⚪</td><td><span class="tag tag-exclude">排除池</span></td><td>🟡 待核查</td><td class="return-na">—</td><td class="return-na">—</td></tr>
+<tr><td>中医药</td><td>⚪</td><td>🟠</td><td>⚪</td><td>⚪</td><td>🟡</td><td><span class="tag tag-exclude">排除池</span></td><td>🟢 独立ETF·精准</td><td class="return-pos">+38.2%</td><td class="return-pos">+85.6%</td></tr>
 </tbody>
 </table>
 </div>
 
-<h2>高度共识 — ≥4层同向强信号（8 个）</h2>
+<!-- ================================================================== -->
+<h2 id="s1">一、核心配置 · 回调即买（8 个）</h2>
 
-<div class="detail-card">
-<h3>半导体/芯片 <code>159995</code> 🟢</h3>
-<ul>
-<li><b>共识</b>：高度共识（5/5 层强信号）</li>
-<li><b>市场</b>：双重验证 | 6月 +50.6% | 1年 +109.3% | 资金 流入</li>
-<li><b>证据质量</b>：量化目标 3 条 | 工程项目 8 条 | 产业平台 8 条</li>
-<li><b>浙江</b>：强化——从十四五十大标志性产业链之一，升级为十五五新兴支柱产业+争取新增国家级集群</li>
-<li><b>国家</b>：集成电路列入2026年新兴支柱产业重点方向</li>
-</ul>
-<p class="key-quote">量化目标：三大先导产业制造业产值年均增速保持10%以上（上海）· 集成电路等39种工业产品产量占全国比重超10%（深圳）· 到2030年集成电路核心产业营业收入超1030亿元（杭州）</p>
+<div class="strategy-box" style="border-color: var(--green);">
+<h3>策略逻辑</h3>
+<p>五层政策验证 + 市场已确认 = 趋势有政策底。不是追高工具，是"等打折"清单。当股价从高点回撤15-20%时，不是趋势终结而是政策逻辑没变情况下的打折窗口。</p>
+<div class="strategy-rules">
+  <div class="rule-item"><strong>入场</strong>等回调15-20%分批买，或回踩60日均线</div>
+  <div class="rule-item"><strong>仓位</strong>单只≤15%，合计≤60%</div>
+  <div class="rule-item"><strong>止损</strong>不止损行业方向，止损入场时机。买后继续跌超15%→检查政策层是否变弱</div>
+  <div class="rule-item"><strong>退出</strong>省级落地强度降级 / 国家定调降级 / ETF资金连续4周净流出</div>
+  <div class="rule-item"><strong>周期</strong>中长期持有</div>
+</div>
 </div>
 
-<div class="detail-card">
-<h3>制造业 <code>159667</code> 🟡</h3>
+<div class="industry-card"><h4>半导体/芯片 <span class="etf-tag">159995</span> 🟢 独立ETF·精准</h4>
 <ul>
-<li><b>共识</b>：高度共识（5/5 层强信号）</li>
-<li><b>市场</b>：双重验证 | 6月 +61.8% | 1年 +107.3% | 资金 流入</li>
-<li><b>证据质量</b>：量化目标 6 条 | 工程项目 1 条 | 产业平台 0 条</li>
-<li><b>浙江</b>：大幅强化——415X集群工程+13万亿营收量化目标</li>
+<li><b>共识</b>：5/5 层全强 — 国家🟢省级🟢城市🟢规划🟢市场🟢</li>
+<li><b>行情</b>：双重验证 | 6月 +50.6% | 1年 +109.3% | 资金 流入</li>
+<li><b>证据</b>：量化目标3条 · 工程项目8条 · 产业平台8条</li>
+<li><b>浙江</b>：从十大标志性产业链升级为新兴支柱产业+争取新增国家级集群</li>
 </ul>
-<p class="key-quote">量化目标：集群规上营收突破13万亿元 · 规上工业增加值年均增长5.5%以上 · 专精特新中小企业1.8万家 · 单项冠军320家 · 未来工厂200家</p>
+<p class="key-quote">量化锚：三大先导产业制造业产值年均增速≥10%（上海）· 集成电路产量占全国超10%（深圳）· 核心产业营收超1030亿元/2030年（杭州）</p></div>
+
+<div class="industry-card"><h4>制造业 <span class="etf-tag">159667</span> 🟡 独立ETF·相关</h4>
+<ul>
+<li><b>共识</b>：5/5 层全强 — 国家🟢省级🟢城市🟢规划🟢市场🟢</li>
+<li><b>行情</b>：双重验证 | 6月 +61.8% | 1年 +107.3% | 资金 流入</li>
+<li><b>证据</b>：量化目标6条 · 工程项目1条</li>
+<li><b>浙��</b>：415X集群工程+13万亿营收量化目标（十四五末约9万亿）</li>
+</ul>
+<p class="key-quote">量化锚：集群规上营收突破13万亿元 · 专精特新1.8万家 · 单项冠军320家 · 未来工厂200家 · 链主企业100家以上</p></div>
+
+<div class="industry-card"><h4>低空经济 <span class="etf-tag">159378</span> 🟢 独立ETF·精准</h4>
+<ul>
+<li><b>共识</b>：5/5 层全强 — 国家🟢省级🟢城市🟢规划🟢市场🟢</li>
+<li><b>行情</b>：双重验证 | 6月 +68.2% | 1年 +125.8% | 资金 流入</li>
+<li><b>证据</b>：量化目标2条 · 工程项目10条 · 产业平台4条</li>
+<li><b>浙江</b>：十四五未提及 → 十五五首次列为新兴支柱产业+低空新基建（0→1）</li>
+</ul>
+<p class="key-quote">量化锚：超1200个低空起降点（深圳）· 低空+航空航天产业规模1500亿元/2030年（苏州）</p></div>
+
+<div class="industry-card"><h4>数字经济 <span class="etf-tag">560800</span> 🟢 独立ETF·精准</h4>
+<ul>
+<li><b>共识</b>：5/5 层全强 — 国家🟢省级🟢城市🟢规划🟢市场🟢</li>
+<li><b>行情</b>：双重验证 | 6月 +35.2% | 1年 +82.6% | 资金 流入</li>
+<li><b>证据</b>：量化目标3条 · 工程项目6条 · 产业平台3条</li>
+<li><b>浙江</b>：独立成节+数据要素试验区+平台经济审慎监管</li>
+</ul>
+<p class="key-quote">量化锚：数字经济核心产业占GDP 14%/2030年（浙江）· 信息软件营收17000亿元（杭州）· 核心产业增加值+6.5%（杭州）</p></div>
+
+<div class="industry-card"><h4>工业软件 <span class="etf-tag">159852</span> 🟡 独立ETF·相关</h4>
+<ul>
+<li><b>共识</b>：4/5 层强 — 国家🟡省级🟢城市🟢规划🟢市场🟢</li>
+<li><b>行情</b>：双重验证 | 6月 +45.8% | 1年 +108.5% | 资金 流入</li>
+<li><b>证据</b>：量化目标3条 · 工程项目5条 · 产业平台4条</li>
+</ul>
+<p class="key-quote">量化锚：规上信息软件营收2万亿元 · 千亿级旗舰企业2家 · 信息传输与软件增加值突破8000亿元（深圳）</p></div>
+
+<div class="industry-card"><h4>人工智能 <span class="etf-tag">159819</span> 🟢 独立ETF·精准</h4>
+<ul>
+<li><b>共识</b>：4/5 层强 — 国家🟢省级🟢城市🟢规划🟢市场🟡</li>
+<li><b>行情</b>：温和确认 | 6月 +28.5% | 1年 +117.6% | 资金 流入</li>
+<li><b>证据</b>：量化目标14条（行业第一）· 工程项目22条 · 产业平台9条</li>
+<li><b>浙江</b>：独立成章（第四章），定位核心引擎，从十四五数字经济子方向到独立支柱</li>
+</ul>
+<p class="key-quote">量化锚：规上AI核心产业营收1.2万亿元/2030年 · 5000家以上企业智能化应用（上海）· 500个以上先进级智能工厂（上海）</p></div>
+
+<div class="industry-card"><h4>机器人 <span class="etf-tag">562500</span> 🟢 独立ETF·精准</h4>
+<ul>
+<li><b>共识</b>：4/5 层强 — 国家🟢省级🟢城市🟢规划🟢市场🟠</li>
+<li><b>行情</b>：市场分歧 | 6月 +45.2% | 1年 +98.5% | 资金 流出（近期获利了结）</li>
+<li><b>证据</b>：量化目标2条 · 工程项目10条 · 产业平台8条</li>
+<li><b>浙江</b>：从十四五智能装备子方向 → 十五五未来产业首位（人形机器人+具身智能）</li>
+<li><b>注意</b>：市场有分歧信号——近1月-3.9%、资金流出。这正是"等回调"策略适用的情形</li>
+</ul>
+<p class="key-quote">量化锚：具身智能机器人集群规模突破2200亿元（杭州）· 工业机器人产量占全国超10%（深圳）</p></div>
+
+<div class="industry-card"><h4>生物医药 <span class="etf-tag">512290</span> 🟢 独立ETF·精准</h4>
+<ul>
+<li><b>共识</b>：4/5 层强 — 国家🟢省级🟢城市🟢规划🟡市场🟢</li>
+<li><b>行情</b>：双重验证 | 6月 +32.8% | 1年 +68.5% | 资金 流入</li>
+<li><b>证据</b>：量化目标1条 · 工程项目8条 · 产业平台10条</li>
+</ul>
+<p class="key-quote">量化锚：生物医药与医疗器械集群产值突破1300亿元（杭州）</p></div>
+
+<!-- ================================================================== -->
+<h2 id="s2">二、左侧观察 · 等催化剂（1 个）</h2>
+
+<div class="strategy-box" style="border-color: var(--amber);">
+<h3>策略逻辑</h3>
+<p>政策极硬（量化目标多且有具体数字）但市场不认。不急着买，但要盯着——政策迟早要落地，市场迟早要修正定价。关键问题是"时机未到"还是"政策空洞"。</p>
+<div class="strategy-rules">
+  <div class="rule-item"><strong>入场</strong>不主动买。等三层中至少两层出现改善信号再试仓</div>
+  <div class="rule-item"><strong>仓位</strong>确认后3-5%试仓</div>
+  <div class="rule-item"><strong>止损</strong>量化目标若被下修或删减→清仓</div>
+  <div class="rule-item"><strong>退出</strong>12个月内三层信号未改善→放弃</div>
+  <div class="rule-item"><strong>周期</strong>12个月+</div>
+</div>
 </div>
 
-<div class="detail-card">
-<h3>低空经济 <code>159378</code> 🟢</h3>
+<div class="industry-card"><h4>新能源 <span class="etf-tag">516160</span> 🟡 共享ETF·精准</h4>
 <ul>
-<li><b>共识</b>：高度共识（5/5 层强信号）</li>
-<li><b>市场</b>：双重验证 | 6月 +68.2% | 1年 +125.8% | 资金 流入</li>
-<li><b>证据质量</b>：量化目标 2 条 | 工程项目 10 条 | 产业平台 4 条</li>
-<li><b>浙江</b>：新增——十四五未提及，十五五首次列为新兴支柱产业+低空新基建</li>
-<li><b>国家</b>：低空经济列入2026年新兴支柱产业</li>
+<li><b>信号</b>：省级🟢城市🟢规划🟢 — 政策4层中有3层偏向强/中，但市场🟠暂不确认</li>
+<li><b>行情</b>：暂不确认 | 6月 +12.3% | 1年 +74.1% | 资金 流出</li>
+<li><b>证据</b>：量化目标8条（行业第一）· 工程项目7条 · 产业平台3条</li>
+<li><b>判断</b>：2.8亿千瓦装机+3000万千瓦风电+9000万千瓦光伏，量化目标绝对值行业第一。产能过剩压着短期行情，但目标不会凭空消失。「时机未到」而非「政策空洞」。</li>
 </ul>
-<p class="key-quote">量化目标：建成投用超1200个低空起降点（深圳）· 到2030年低空经济及航空航天产业规模达1500亿元（苏州）</p>
+<p class="key-quote">量化锚：电力总装机2.8亿千瓦 · 风电3000万千瓦 · 光伏9000万千瓦 · 抽蓄+储能3000万千瓦 · 新增非化石能源装机占比超75%</p></div>
+
+<!-- ================================================================== -->
+<h2 id="s3">三、政策扩散 · 等城市落地（3 个）</h2>
+
+<div class="strategy-box" style="border-color: var(--accent);">
+<h3>策略逻辑</h3>
+<p>上层（国家+省级）定调了，但基层（城市执行+规划承诺）还没跟上。政策还处在"从上往下扩散"的过程中——城市层面的工程招标、产业园区挂牌、专项资金拨付是下一个确认信号。</p>
+<div class="strategy-rules">
+  <div class="rule-item"><strong>入场</strong>等城市层出现新的"重点推进"信号或 concrete_item 增加</div>
+  <div class="rule-item"><strong>仓位</strong>信号触发后5-8%</div>
+  <div class="rule-item"><strong>止损</strong>6个月无新城市信号→减半</div>
+  <div class="rule-item"><strong>退出</strong>省级降级或资金持续流出</div>
+  <div class="rule-item"><strong>周期</strong>中期</div>
+</div>
 </div>
 
-<div class="detail-card">
-<h3>数字经济 <code>560800</code> 🟢</h3>
+<div class="industry-card"><h4>智能驾驶 <span class="etf-tag">516520</span> 🟢 独立ETF·精准</h4>
 <ul>
-<li><b>共识</b>：高度共识（5/5 层强信号）</li>
-<li><b>市场</b>：双重验证 | 6月 +35.2% | 1年 +82.6% | 资金 流入</li>
-<li><b>证据质量</b>：量化目标 3 条 | 工程项目 6 条 | 产业平台 3 条</li>
-<li><b>浙江</b>：强化+安全化——独立成节+数据要素试验区+平台经济审慎监管</li>
-</ul>
-<p class="key-quote">量化目标：数字经济核心产业增加值占GDP 14%（2030年）· 信息软件营收17000亿元（杭州）· 核心产业增加值增长6.5%（杭州）</p>
+<li><b>信号</b>：国家🟢省级🟢城市🟡规划🟡市场🟡 — 上层全绿，底层偏弱</li>
+<li><b>行情</b>：温和确认 | 6月 +38.2% | 1年 +85.8% | 资金 流入</li>
+<li><b>证据</b>：量化目标1条 · 工程项目6条 · 产业平台3条</li>
+<li><b>催化剂</b>：杭州车路云一体化示范项目进展 · 其他城市跟进自动驾驶示范区</li>
+</ul></div>
+
+<div class="industry-card"><h4>商业航天 <span class="etf-tag">512660</span> 🟠 共享ETF·相关（军工ETF代理）</h4>
+<ul>
+<li><b>信号</b>：国家🟢城市🟢省级🟡规划🟡市场🟠 — 军工ETF 近3月-17%拖累市场信号</li>
+<li><b>行情</b>：暂不确认 | 6月 +9.6% | 1年 +22.7% | 资金 流出</li>
+<li><b>证据</b>：量化目标0条 · 工程项目5条 · 产业平台2条 — 缺乏量化目标</li>
+<li><b>判断</b>：国家列为新兴支柱产业但省级只是延续强化（非大幅强化），无量化目标。政策力度不如低空经济。等城市层出现具体发射基地/卫星产业园。</li>
+</ul></div>
+
+<div class="industry-card"><h4>平台经济 <span class="etf-tag">513050</span> 🟡 独立ETF·相关</h4>
+<ul>
+<li><b>信号</b>：省级🟢城市🟡规划🟡国家🟠市场🟠 — 省级强但国家层面是监管化信号</li>
+<li><b>行情</b>：市场分歧 | 6月 +25.8% | 1年 +55.2% | 资金 流入</li>
+<li><b>判断</b>：国家"穿透式监管"写入规划增添不确定性，与省级"高质量发展强省"存在张力。政策方向不完全一致。</li>
+</ul></div>
+
+<!-- ================================================================== -->
+<h2 id="s4">四、动量交易 · 不靠政策逻辑（4 个）</h2>
+
+<div class="strategy-box" style="border-color: var(--purple);">
+<h3>策略逻辑</h3>
+<p>行情强势但政策层面支撑有限（≤1层强信号）。这些行情的驱动力不在此分析框架的政策层内——可能是行业景气度、业绩驱动、主题炒作或全球科技周期。不要用政策报告解释涨跌，用技术面和资金面操作。</p>
+<div class="strategy-rules">
+  <div class="rule-item"><strong>入场</strong>纯技术面/资金面，不看政策</div>
+  <div class="rule-item"><strong>仓位</strong>单只≤5%，合计≤15%</div>
+  <div class="rule-item"><strong>止损</strong>严格技术止损，破位就走</div>
+  <div class="rule-item"><strong>退出</strong>无政策锚，趋势走坏即出</div>
+  <div class="rule-item"><strong>周期</strong>短线</div>
+</div>
 </div>
 
-<div class="detail-card">
-<h3>工业软件 <code>159852</code> 🟡</h3>
+<div class="industry-card"><h4>量子科技 <span class="etf-tag">515050</span> 🟡 独立ETF·相关（5G通信ETF代理）</h4>
 <ul>
-<li><b>共识</b>：高度共识（4/5 层强信号）</li>
-<li><b>市场</b>：双重验证 | 6月 +45.8% | 1年 +108.5% | 资金 流入</li>
-<li><b>证据质量</b>：量化目标 3 条 | 工程项目 5 条 | 产业平台 4 条</li>
-</ul>
-<p class="key-quote">量化目标：规上信息软件营收2万亿元 · 千亿级旗舰企业2家 · 信息传输与软件增加值突破8000亿元（深圳）</p>
+<li><b>信号</b>：5层全🟡/🟠 — 政策面弱均衡，但有极端行情</li>
+<li><b>行情</b>：温和确认 | 6月 +77.4% | 1年 +248.7% | 资金 流入</li>
+<li><b>风险</b>：+249%的1年回报大概率不是量子技术本身驱动的——5G通信ETF受益于AI算力/通信基础设施投资。政策层只有"未来产业"级别的定性提及。当你买这个ETF时，你买的是5G基站和光模块，不是量子计算机。</li>
+</ul></div>
+
+<div class="industry-card"><h4>数据要素 <span class="etf-tag">516000</span> 🟡 独立ETF·相关</h4>
+<ul>
+<li><b>信号</b>：省级🟢规划🟡市场🟡城市🟠国家🟠 — 省级独强，其余分散</li>
+<li><b>行情</b>：温和确认 | 6月 +40.5% | 1年 +88.6% | 资金 流入</li>
+<li><b>证据</b>：量化目标1条 · 工程项目8条 · 产业平台4条</li>
+</ul></div>
+
+<div class="industry-card"><h4>6G通信 <span class="etf-tag">515880</span> 🟡 独立ETF·相关</h4>
+<ul>
+<li><b>信号</b>：规划🟢国家🟠省级🟡城市🟡市场🟡 — 仅规划层强，其余偏弱</li>
+<li><b>行情</b>：温和确认 | 6月 +35.6% | 1年 +78.5% | 资金 流入</li>
+<li><b>注意</b>：6G仍属前瞻布局（5G-A基站9万个先行），产业落地周期长。</li>
+</ul></div>
+
+<div class="industry-card"><h4>电力设备与电网 <span class="etf-tag">561170</span> 🟡 独立ETF·相关</h4>
+<ul>
+<li><b>信号</b>：规划🟢国家🟡城市🟡省级🟠市场⚪ — 数据不足，规划层独撑</li>
+<li><b>行情</b>：数据不足 | 6月 +28.6% | 1年 +62.3% | 资金 流入</li>
+<li><b>注意</b>：借用绿色电力ETF代理，映射精度有限。南京智能电网1万亿目标+深圳虚拟电厂130万千瓦，但浙江省级规划未独立体现。</li>
+</ul></div>
+
+<!-- ================================================================== -->
+<h2 id="s5">五、地方行情 · 波段操作（5 个）</h2>
+
+<div class="strategy-box" style="border-color: var(--muted);">
+<h3>策略逻辑</h3>
+<p>政策主要由省/市/规划层面推动，国家层面只是"未来产业"级别的定性提及或未独立强调。地方政策的持续性不如国家级，适合波段而非长期持有。</p>
+<div class="strategy-rules">
+  <div class="rule-item"><strong>入场</strong>波段操作，快进快出</div>
+  <div class="rule-item"><strong>仓位</strong>3-5%</div>
+  <div class="rule-item"><strong>止损</strong>严格</div>
+  <div class="rule-item"><strong>退出</strong>目标位到就走</div>
+  <div class="rule-item"><strong>周期</strong>短线波段</div>
+</div>
 </div>
 
-<div class="detail-card">
-<h3>人工智能 <code>159819</code> 🟢</h3>
-<ul>
-<li><b>共识</b>：高度共识（4/5 层强信号）</li>
-<li><b>市场</b>：温和确认 | 6月 +28.5% | 1年 +117.6% | 资金 流入</li>
-<li><b>证据质量</b>：量化目标 14 条 | 工程项目 22 条 | 产业平台 9 条 | 定性提及 3 条</li>
-<li><b>浙江</b>：显著强化——独立成章，定位核心引擎</li>
-</ul>
-<p class="key-quote">量化目标：规上AI核心产业营收1.2万亿元（浙江）· 5000家以上制造业企业智能化应用（上海）· 500个以上先进级智能工厂（上海）· 信息软件增加值突破8000亿元（深圳）</p>
+<div class="industry-card"><h4>新材料 <span class="etf-tag">516890</span> 🟢 独立ETF·精准</h4>
+<ul><li>行情：6月 +22.8% | 1年 +55.2% | 城市🟢规划🟢但国家🟡省级🟡 — 地方推但国家不是重点推进级别</li></ul></div>
+<div class="industry-card"><h4>核能 <span class="etf-tag">159611</span> 🟢 独立ETF·精准</h4>
+<ul><li>行情：6月 +20.3% | 1年 +26.6% | 省级🟢（1600万千瓦目标明确）但国家🟡 — 省内重点项目，国家层面仅"未来能源"提及</li></ul></div>
+<div class="industry-card"><h4>生物制造 <span class="etf-tag">159837</span> 🟡 独立ETF·相关</h4>
+<ul><li>行情：6月 -12.6% | 1年 -3.9% | 全周期偏弱 — 早期产业，市场尚未定价</li></ul></div>
+<div class="industry-card"><h4>储能 <span class="etf-tag">159755</span> 🟢 独立ETF·精准</h4>
+<ul><li>行情：6月 +8.5% | 1年 +68.3% | 1月-9.4%持续走弱 — 3000万千瓦目标明确但近期估值消化中</li></ul></div>
+<div class="industry-card"><h4>氢能与核聚变 <span class="etf-tag">516160</span> 🟠 共享ETF·相关（借用新能源ETF）</h4>
+<ul><li>行情：6月 +12.3% | 1年 +74.1% | 数据不足 — 首次列入未来产业但无纯氢能ETF</li></ul></div>
+
+<!-- ================================================================== -->
+<h2 id="s6">六、排除池 · 不做（13 个）</h2>
+
+<div class="strategy-box" style="border-color: var(--red);">
+<h3>策略逻辑</h3>
+<p>政策面不支持或ETF映射太差。这些方向如果出现行情，驱动力不在本分析的政策框架内——你赚的不是政策研究的钱，不如把精力省下来研究其他方向。</p>
+<p style="margin-top: 8px;"><b>例外标注</b>：碳市场（+48.5%/+115.2%）、银发经济（+42.8%/+95.6%）、中医药（+38.2%/+85.6%）行情不弱，但政策框架解释不了——可能由行业周期、人口结构、医保政策等非本文覆盖因素驱动。</p>
 </div>
 
-<div class="detail-card">
-<h3>机器人 <code>562500</code> 🟢</h3>
-<ul>
-<li><b>共识</b>：高度共识（4/5 层强信号）</li>
-<li><b>市场</b>：市场分歧 | 6月 +45.2% | 1年 +98.5% | 资金 流出（近期获利了结）</li>
-<li><b>证据质量</b>：量化目标 2 条 | 工程项目 10 条 | 产业平台 8 条</li>
-<li><b>浙江</b>：大幅强化——升级为未来产业首位的人形机器人+具身智能</li>
-</ul>
-<p class="key-quote">量化目标：具身智能机器人集群规模突破2200亿元（杭州）· 工业机器人产量占全国超10%（深圳）</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:6px;margin:10px 0;">
+<div class="industry-card" style="margin:0"><h4>脑机接口 <span class="etf-tag">159883</span></h4><ul><li>6月 +32.8% | 政策弱</li></ul></div>
+<div class="industry-card" style="margin:0"><h4>关键矿产 <span class="etf-tag">516780</span></h4><ul><li>6月 +8.5% | 政策弱</li></ul></div>
+<div class="industry-card" style="margin:0"><h4>种业 <span class="etf-tag">159825</span></h4><ul><li>6月 +15.2% | 政策无</li></ul></div>
+<div class="industry-card" style="margin:0"><h4>医疗器械 <span class="etf-tag">159883</span></h4><ul><li>6月 +32.8% | 政策无</li></ul></div>
+<div class="industry-card" style="margin:0"><h4>大飞机 <span class="etf-tag">512660</span></h4><ul><li>6月 +25.6% | 政策无</li></ul></div>
+<div class="industry-card" style="margin:0"><h4>新能源车 <span class="etf-tag">515030</span></h4><ul><li>6月 +28.5% | 政策无</li></ul></div>
+<div class="industry-card" style="margin:0"><h4>深海经济 <span class="etf-tag">512660</span></h4><ul><li>6月 +25.6% | 政策弱</li></ul></div>
+<div class="industry-card" style="margin:0"><h4>农业科技 <span class="etf-tag">159825</span></h4><ul><li>6月 +15.2% | 政策无</li></ul></div>
+<div class="industry-card" style="margin:0"><h4>绿色金融 <span class="etf-tag">-</span></h4><ul><li>无ETF</li></ul></div>
+<div class="industry-card" style="margin:0"><h4>碳市场 <span class="etf-tag">560060</span></h4><ul><li>6月 +48.5% ⚠️ 例外</li></ul></div>
+<div class="industry-card" style="margin:0"><h4>银发经济 <span class="etf-tag">516830</span></h4><ul><li>6月 +42.8% ⚠️ 例外</li></ul></div>
+<div class="industry-card" style="margin:0"><h4>冰雪经济 <span class="etf-tag">-</span></h4><ul><li>无ETF</li></ul></div>
+<div class="industry-card" style="margin:0"><h4>中医药 <span class="etf-tag">159647</span></h4><ul><li>6月 +38.2% ⚠️ 例外</li></ul></div>
 </div>
 
-<div class="detail-card">
-<h3>生物医药 <code>512290</code> 🟢</h3>
-<ul>
-<li><b>共识</b>：高度共识（4/5 层强信号）</li>
-<li><b>市场</b>：双重验证 | 6月 +32.8% | 1年 +68.5% | 资金 流入</li>
-<li><b>证据质量</b>：量化目标 1 条 | 工程项目 8 条 | 产业平台 10 条</li>
-</ul>
-<p class="key-quote">量化目标：生物医药与医疗器械集群产值突破1300亿元（杭州）</p>
-</div>
+<!-- ================================================================== -->
+<h2 id="method">方法论</h2>
 
-<h2>政策先行 — 政策力度大但市场尚未确认（1 个）</h2>
+<h3>五层信号来源</h3>
+<table>
+<tr><th>层级</th><th>数据来源</th><th>判断标准</th></tr>
+<tr><td>国家定调</td><td>2026年国务院政府工作报告</td><td>重点推进→强 / 持续推进→中 / 早期培育等→弱</td></tr>
+<tr><td>省级落地</td><td>浙江省十五五规划纲要</td><td>强落地→强 / 有落地→中 / 弱落地→弱</td></tr>
+<tr><td>城市执行</td><td>八城2026年政府工作报告</td><td>≥3城重点推进→强 / 1-2城→中 / 有提及→弱</td></tr>
+<tr><td>规划承诺</td><td>八城十五五规划纲要</td><td>有量化目标→强 / 有工程→中 / 仅定性→弱</td></tr>
+<tr><td>市场验证</td><td>ETF行情+资金流向</td><td>双重验证→强 / 温和确认→中 / 市场分歧/暂不确认→弱</td></tr>
+</table>
 
-<div class="detail-card">
-<h3>新能源 <code>516160</code> 🟡</h3>
-<ul>
-<li><b>共识</b>：政策先行（政策4层强/中，市场暂不确认）</li>
-<li><b>市场</b>：暂不确认 | 6月 +12.3% | 1年 +74.1% | 资金 流出</li>
-<li><b>证据质量</b>：量化目标 8 条 | 工程项目 7 条 | 产业平台 3 条</li>
-<li><b>判断</b>：量化目标极硬（2.8亿千瓦装机等）但产能过剩压制短期表现，可能是"时机未到"而非"政策空洞"</li>
-</ul>
-<p class="key-quote">量化目标：电力总装机2.8亿千瓦 · 风电3000万千瓦 · 光伏9000万千瓦 · 抽蓄+储能3000万千瓦</p>
-</div>
-
-<hr>
-
-<h2>证据质量权重</h2>
+<h3>证据质量权重</h3>
 <table>
 <tr><th>证据类型</th><th>权重</th><th>识别规则</th></tr>
 <tr><td>量化目标（有具体数字）</td><td>3</td><td>含万/亿/%/个/兆等数值单位</td></tr>
@@ -251,7 +502,7 @@
 <tr><td>定性提及</td><td>0.5</td><td>方向性表述无具体内容</td></tr>
 </table>
 
-<h2>数据质量标签</h2>
+<h3>数据质量标签</h3>
 <table>
 <tr><th>标签</th><th>含义</th></tr>
 <tr><td>🟢 独立ETF·精准</td><td>ETF唯一映射，精准匹配该行业</td></tr>
@@ -260,7 +511,9 @@
 <tr><td>🔴 缺数据</td><td>无市场信号</td></tr>
 </table>
 
-<p class="footer">分析仅供研究参考，不构成投资建议。共识度基于现有五层证据的方向一致性，不涉及行情预测。数据来源：国务院/浙江省/八城政府工作报告及十五五规划纲要 · 行情数据来自东方财富（2026-05-29）</p>
+<p class="footer">
+  分析仅供研究参考，不构成投资建议 · 数据来源：国务院/浙江省/八城政府工作报告及十五五规划纲要 · 行情数据：东方财富（2026-05-29） · 生成：2026-05-31
+</p>
 
 </body>
 </html>
