@@ -15,8 +15,6 @@ function App() {
 
   const handleSelect = useCallback((idx: number) => {
     setSelectedIdx(idx);
-    const el = document.getElementById("comparison-section");
-    el?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
   const industry = industries[selectedIdx];
@@ -32,9 +30,7 @@ function App() {
           onSelect={handleSelect}
         />
 
-        <div id="comparison-section">
-          <ComparisonView industry={industry} />
-        </div>
+        <ComparisonView industry={industry} />
 
         <IndustryTable industries={industries} selectedIdx={selectedIdx} />
 
