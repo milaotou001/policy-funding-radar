@@ -1,4 +1,5 @@
-import type { Industry, ProvincialEvidence, MarketSignal, WorkReportEvidence } from "../types";
+import type { Industry, ProvincialEvidence, MarketSignal, WorkReportEvidence, CityEvidenceMatrix, CityCode } from "../types";
+import { CITY_NAMES } from "../types";
 
 export function InvestmentCard({ industry }: { industry: Industry }) {
   const obs = industry.investment_observation;
@@ -81,6 +82,10 @@ export function InvestmentCard({ industry }: { industry: Industry }) {
 
         {industry.work_report && (
           <WorkReportSection data={industry.work_report} />
+        )}
+
+        {industry.city_evidence && Object.keys(industry.city_evidence).length > 0 && (
+          <CityEvidenceSection evidence={industry.city_evidence} />
         )}
 
         <FieldRow label="风险提示" value={obs.risk_warning} />
@@ -259,6 +264,53 @@ function WorkReportSection({ data }: { data: { national?: WorkReportEvidence; zh
             </p>
           </div>
         )}
+      </dd>
+    </div>
+  );
+}
+
+function CityEvidenceSection({ evidence }: { evidence: CityEvidenceMatrix }) {
+  const actionStyles: Record<string, string> = {
+    "重点推进": "bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300 border-red-200 dark:border-red-700",
+    "持续推进": "bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-700",
+    "早期培育": "bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-700",
+    "监管规范": "bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-700",
+    "制度构建": "bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300 border-green-200 dark:border-green-700",
+  };
+
+  const entries = Object.entries(evidence) as [CityCode, { mention: string; detail: string; action_level: string }][];
+  if (entries.length === 0) return null;
+
+  const priorityCities = entries.filter(([, e]) => e.action_level === "重点推进");
+  const otherCities = entries.filter(([, e]) => e.action_level !== "重点推进");
+  const sorted = [...priorityCities, ...otherCities];
+
+  return (
+    <div>
+      <dt className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wide mb-2">
+        八城落地证据
+        <span className="ml-1.5 text-[10px] font-normal normal-case text-zinc-400">
+          {entries.length}/8 城覆盖
+        </span>
+      </dt>
+      <dd className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-md p-3 space-y-1.5 text-sm">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
+          {sorted.map(([code, ev]) => (
+            <div
+              key={code}
+              className={`rounded px-2 py-1.5 border text-xs ${actionStyles[ev.action_level] || "bg-zinc-100 dark:bg-zinc-800 text-zinc-500"}`}
+              title={ev.detail}
+            >
+              <div className="flex items-center gap-1 flex-wrap">
+                <span className="font-bold">{CITY_NAMES[code]}</span>
+                <span className="text-[10px] opacity-70">{ev.action_level}</span>
+              </div>
+              <p className="text-[10px] mt-0.5 leading-tight opacity-80 line-clamp-2">
+                {ev.mention}
+              </p>
+            </div>
+          ))}
+        </div>
       </dd>
     </div>
   );

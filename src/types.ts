@@ -40,6 +40,21 @@ export interface WorkReportData {
   zhejiang?: WorkReportEvidence;
 }
 
+export type CityCode = "sh" | "sz" | "hz" | "nj" | "su" | "bj" | "gz" | "hf";
+
+export const CITY_NAMES: Record<CityCode, string> = {
+  sh: "上海", sz: "深圳", hz: "杭州", nj: "南京",
+  su: "苏州", bj: "北京", gz: "广州", hf: "合肥",
+};
+
+export interface CityWorkReportEvidence {
+  mention: string;
+  detail: string;
+  action_level: "重点推进" | "持续推进" | "早期培育" | "监管规范" | "制度构建";
+}
+
+export type CityEvidenceMatrix = Partial<Record<CityCode, CityWorkReportEvidence>>;
+
 export interface MarketSignal {
   etf_code: string;
   price: number;
@@ -78,6 +93,7 @@ export interface Industry {
   provincial_evidence?: ProvincialEvidence;
   market_signal?: MarketSignal;
   work_report?: WorkReportData;
+  city_evidence?: CityEvidenceMatrix;
 }
 
 export interface Meta {
