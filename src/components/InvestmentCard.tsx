@@ -1,4 +1,4 @@
-import type { Industry, ProvincialEvidence, MarketSignal, WorkReportEvidence, CityEvidenceMatrix, CityCode } from "../types";
+import type { Industry, ProvincialEvidence, MarketSignal, WorkReportEvidence, CityEvidenceMatrix, CityPlanMatrix, CityPlanEvidence, CityCode } from "../types";
 import { CITY_NAMES } from "../types";
 
 export function InvestmentCard({ industry }: { industry: Industry }) {
@@ -20,7 +20,7 @@ export function InvestmentCard({ industry }: { industry: Industry }) {
       </p>
 
       <div className="bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg p-4 sm:p-6 space-y-4">
-        <FieldRow label="政策变化" value={obs.policy_change} />
+        <FieldRow label="政策变化" value={obs.policy_change} source="全国十四五→十五五规划纲要" />
 
         <FieldRow
           label="资源倾斜强度"
@@ -33,13 +33,14 @@ export function InvestmentCard({ industry }: { industry: Industry }) {
           }
         />
 
-        <FieldRow label="落地证据" value={obs.landing_evidence} />
-        <FieldRow label="对应产业链" value={obs.industry_chain} />
+        <FieldRow label="落地证据" value={obs.landing_evidence} source="基于规划原文的AI语义分析" />
+        <FieldRow label="对应产业链" value={obs.industry_chain} source="行业研究" />
 
         {obs.etf && obs.etf.code && (
           <div>
             <dt className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wide mb-2">
               行业ETF
+              {sourceLabel("公开市场数据")}
             </dt>
             <dd className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-md p-3 space-y-2 text-sm">
               <div className="flex items-center gap-2 flex-wrap">
@@ -88,6 +89,10 @@ export function InvestmentCard({ industry }: { industry: Industry }) {
           <CityEvidenceSection evidence={industry.city_evidence} />
         )}
 
+        {industry.city_plan_evidence && Object.keys(industry.city_plan_evidence).length > 0 && (
+          <CityPlanSection evidence={industry.city_plan_evidence} />
+        )}
+
         <FieldRow label="风险提示" value={obs.risk_warning} />
 
         {industry.provincial_evidence && industry.provincial_evidence.concrete_items.length > 0 && (
@@ -109,6 +114,7 @@ function ProvincialSection({ evidence }: { evidence: ProvincialEvidence }) {
     <div>
       <dt className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wide mb-2">
         浙江省落地证据
+        {sourceLabel("浙江省十五五规划纲要")}
         <span className={`ml-2 inline-block px-1.5 py-0.5 rounded text-xs font-bold ${
           evidence.zj_intensity === "强落地"
             ? "bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300"
@@ -170,6 +176,7 @@ function MarketSection({ signal }: { signal: MarketSignal }) {
     <div>
       <dt className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wide mb-2">
         市场验证
+        {sourceLabel("公开行情数据")}
         <span className={`ml-2 inline-block px-1.5 py-0.5 rounded text-xs font-bold ${signalStyles[signal.signal] || signalStyles["数据不足"]}`}>
           {signal.signal}
         </span>
@@ -224,6 +231,7 @@ function WorkReportSection({ data }: { data: { national?: WorkReportEvidence; zh
     <div>
       <dt className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wide mb-2">
         2026年政府工作报告
+        {sourceLabel("国务院/浙江省政府")}
       </dt>
       <dd className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-md p-3 space-y-3 text-sm">
         {data.national && (
@@ -297,6 +305,7 @@ function CityEvidenceSection({ evidence }: { evidence: CityEvidenceMatrix }) {
     <div>
       <dt className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wide mb-2">
         八城落地证据
+        {sourceLabel("2026年各市政府工作报告")}
         <span className="ml-1.5 text-[10px] font-normal normal-case text-zinc-400">
           {entries.length}/8 城覆盖
         </span>
@@ -330,17 +339,110 @@ function CityEvidenceSection({ evidence }: { evidence: CityEvidenceMatrix }) {
   );
 }
 
+function CityPlanSection({ evidence }: { evidence: CityPlanMatrix }) {
+  const categoryStyles: Record<string, string> = {
+    "量化目标": "bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-700",
+    "工程项目": "bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-700",
+    "产业平台": "bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300 border-green-200 dark:border-green-700",
+  };
+
+  const intensityBadge = (level: string) => {
+    if (level === "强落地") return "bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300";
+    if (level === "有落地") return "bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300";
+    return "bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400";
+  };
+
+  const entries = Object.entries(evidence) as [CityCode, CityPlanEvidence][];
+  if (entries.length === 0) return null;
+
+  const priority = entries.filter(([, e]) => e.intensity === "强落地");
+  const moderate = entries.filter(([, e]) => e.intensity === "有落地");
+  const weak = entries.filter(([, e]) => e.intensity === "弱落地");
+  const sorted = [...priority, ...moderate, ...weak];
+
+  return (
+    <div>
+      <dt className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wide mb-2">
+        城市十五五规划证据
+        {sourceLabel("各市十五五规划纲要")}
+        <span className="ml-1.5 text-[10px] font-normal normal-case text-zinc-400">
+          {entries.length}/8 城覆盖
+        </span>
+      </dt>
+      <dd className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-md p-3 text-sm">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          {sorted.map(([code, ev]) => (
+            <div
+              key={code}
+              className="rounded px-3 py-2.5 border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800/50"
+            >
+              <div className="flex items-center gap-1.5 mb-1.5">
+                <span className="font-bold text-sm">{CITY_NAMES[code]}</span>
+                <span className={`inline-block px-1.5 py-0.5 rounded text-[10px] font-bold ${intensityBadge(ev.intensity)}`}>
+                  {ev.intensity}
+                </span>
+              </div>
+              {ev.signal && (
+                <p className="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300 mb-1">
+                  <span className="font-semibold">信号：</span>{ev.signal}
+                </p>
+              )}
+              <p className="text-[11px] leading-relaxed text-zinc-500 dark:text-zinc-400 mb-1.5">
+                {ev.summary_15}
+              </p>
+              {ev.concrete_items.length > 0 && (
+                <ul className="space-y-1 mb-1.5">
+                  {ev.concrete_items.map((item, i) => (
+                    <li key={i} className="flex items-start gap-1 text-[11px]">
+                      <span className={`inline-block px-1 py-0.5 rounded text-[10px] font-medium shrink-0 ${categoryStyles[item.category] || "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"}`}>
+                        {item.category}
+                      </span>
+                      <span className="text-zinc-600 dark:text-zinc-400 leading-relaxed">{item.text}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {ev.source_url && (
+                <a
+                  href={ev.source_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block text-[11px] text-blue-500 dark:text-blue-400 hover:underline"
+                >
+                  {ev.source} →
+                </a>
+              )}
+              {!ev.source_url && ev.source && (
+                <span className="text-[11px] text-zinc-400 dark:text-zinc-500">{ev.source}</span>
+              )}
+            </div>
+          ))}
+        </div>
+      </dd>
+    </div>
+  );
+}
+
+const sourceLabel = (text: string) => (
+  <span className="text-[10px] font-normal text-zinc-300 dark:text-zinc-600 ml-2 normal-case tracking-normal">
+    {text}
+  </span>
+);
+
 function FieldRow({
   label,
   value,
+  source,
 }: {
   label: string;
   value: React.ReactNode;
+  source?: string;
 }) {
   return (
     <div>
       <dt className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wide mb-1">
         {label}
+        {source && sourceLabel(source)}
       </dt>
       <dd className="text-sm text-zinc-800 dark:text-zinc-200 leading-relaxed">
         {value}

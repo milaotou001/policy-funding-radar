@@ -47,6 +47,18 @@ export const CITY_NAMES: Record<CityCode, string> = {
   su: "苏州", bj: "北京", gz: "广州", hf: "合肥",
 };
 
+export interface CityPlanEvidence {
+  signal: string;
+  summary_14: string;
+  summary_15: string;
+  concrete_items: ProvincialEvidenceItem[];
+  source: string;
+  source_url: string;
+  intensity: "强落地" | "有落地" | "弱落地";
+}
+
+export type CityPlanMatrix = Partial<Record<CityCode, CityPlanEvidence>>;
+
 export interface CityWorkReportEvidence {
   mention: string;
   detail: string;
@@ -94,6 +106,7 @@ export interface Industry {
   market_signal?: MarketSignal;
   work_report?: WorkReportData;
   city_evidence?: CityEvidenceMatrix;
+  city_plan_evidence?: CityPlanMatrix;
 }
 
 export interface Meta {
