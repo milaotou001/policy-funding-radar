@@ -6,6 +6,7 @@ import { IndustryTabs } from "./components/IndustryTabs";
 import { ComparisonView } from "./components/ComparisonView";
 import { IndustryTable } from "./components/IndustryTable";
 import { InvestmentCard } from "./components/InvestmentCard";
+import { Methodology } from "./components/Methodology";
 
 const industriesData = data as unknown as IndustriesData;
 const { meta, summary, industries } = industriesData;
@@ -35,6 +36,8 @@ function App() {
         <IndustryTable industries={industries} selectedIdx={selectedIdx} />
 
         <InvestmentCard industry={industry} />
+
+        <Methodology />
 
         <footer className="mt-16 pt-8 border-t border-zinc-200 dark:border-zinc-700 text-xs text-zinc-400 dark:text-zinc-500 space-y-1">
           <p>{meta.disclaimer}</p>
