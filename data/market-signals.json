@@ -1,0 +1,222 @@
+{
+  "semiconductor": {
+    "etf_code": "159995",
+    "price": 2.496,
+    "return_5d_pct": -1.6,
+    "return_1m_pct": 13.2,
+    "volume_trend": "放量",
+    "fund_flow_direction": "流入",
+    "signal": "双重验证",
+    "signal_label": "近一月资金持续流入+净值上涨13.2%，政策省级强落地+市场双重确认",
+    "updated": "2026-05-30"
+  },
+  "ai": {
+    "etf_code": "159819",
+    "price": 1.966,
+    "return_5d_pct": -4.4,
+    "return_1m_pct": 4.1,
+    "volume_trend": "放量",
+    "fund_flow_direction": "流入",
+    "signal": "温和确认",
+    "signal_label": "近一月累计仍为正但月末回调较大，政策独立成章+省级强落地，中期趋势待确认",
+    "updated": "2026-05-30"
+  },
+  "robotics": {
+    "etf_code": "562500",
+    "price": 1.119,
+    "return_5d_pct": -7.4,
+    "return_1m_pct": -3.9,
+    "volume_trend": "放量",
+    "fund_flow_direction": "流出",
+    "signal": "市场分歧",
+    "signal_label": "5月末放量下跌+份额减少3.12亿份，政策未来产业首位但短期资金兑现离场",
+    "updated": "2026-05-30"
+  },
+  "new-energy": {
+    "etf_code": "516160",
+    "price": 3.117,
+    "return_5d_pct": -1.7,
+    "return_1m_pct": -5.4,
+    "volume_trend": "缩量",
+    "fund_flow_direction": "流出",
+    "signal": "暂不确认",
+    "signal_label": "近一月净值下跌+份额减少，政策强化但市场尚未响应，关注海上风电母港等省级项目落地节奏",
+    "updated": "2026-05-30"
+  },
+  "digital-economy": {
+    "etf_code": "560800",
+    "price": 2.42,
+    "return_5d_pct": -3.8,
+    "return_1m_pct": 8.4,
+    "volume_trend": "放量",
+    "fund_flow_direction": "流入",
+    "signal": "温和确认",
+    "signal_label": "近一月涨8.4%+资金流入，数据要素试验区省级落地后市场给予正面反馈",
+    "updated": "2026-05-30"
+  },
+  "biomedicine": {
+    "etf_code": "512290",
+    "price": 2.158,
+    "return_5d_pct": -2.9,
+    "return_1m_pct": 11.5,
+    "volume_trend": "放量",
+    "fund_flow_direction": "流入",
+    "signal": "双重验证",
+    "signal_label": "近一月涨11.5%+持续放量，杭州生物医药集群提级+国家级集群争取中，市场预期明确",
+    "updated": "2026-05-30"
+  },
+  "manufacturing": {
+    "etf_code": "516890",
+    "price": 1.608,
+    "return_5d_pct": -1.8,
+    "return_1m_pct": 5.1,
+    "volume_trend": "持平",
+    "fund_flow_direction": "流入",
+    "signal": "温和确认",
+    "signal_label": "415X集群13万亿目标+技改5000项，制造业升级是确定性长期叙事，资金温和流入",
+    "updated": "2026-05-30"
+  },
+  "low-altitude-economy": {
+    "etf_code": "159378",
+    "price": 1.253,
+    "return_5d_pct": -4.2,
+    "return_1m_pct": 22.8,
+    "volume_trend": "放量",
+    "fund_flow_direction": "流入",
+    "signal": "双重验证",
+    "signal_label": "近一月涨22.8%领跑全市场，低空经济首次写入省级规划+低空新基建，新增方向市场高度认可",
+    "updated": "2026-05-30"
+  },
+  "nuclear-energy": {
+    "etf_code": "561170",
+    "price": 1.321,
+    "return_5d_pct": 0.8,
+    "return_1m_pct": 7.2,
+    "volume_trend": "放量",
+    "fund_flow_direction": "流入",
+    "signal": "温和确认",
+    "signal_label": "三大核电基地并行推进+1600万千瓦装机目标，政策确定性高，资金稳步流入",
+    "updated": "2026-05-30"
+  },
+  "energy-storage": {
+    "etf_code": "516780",
+    "price": 1.587,
+    "return_5d_pct": -1.5,
+    "return_1m_pct": -3.8,
+    "volume_trend": "缩量",
+    "fund_flow_direction": "流出",
+    "signal": "暂不确认",
+    "signal_label": "3000万千瓦储能目标明确，但短期估值偏高+资金流出，等待更好入场时机",
+    "updated": "2026-05-30"
+  },
+  "quantum-tech": {
+    "etf_code": "560060",
+    "price": 1.089,
+    "return_5d_pct": -2.3,
+    "return_1m_pct": 15.6,
+    "volume_trend": "放量",
+    "fund_flow_direction": "流入",
+    "signal": "温和确认",
+    "signal_label": "量子信息列入未来产业，主题性质强，短期涨幅较大后波动加剧",
+    "updated": "2026-05-30"
+  },
+  "autonomous-driving": {
+    "etf_code": "516520",
+    "price": 1.442,
+    "return_5d_pct": -3.1,
+    "return_1m_pct": 9.3,
+    "volume_trend": "放量",
+    "fund_flow_direction": "流入",
+    "signal": "温和确认",
+    "signal_label": "杭州-桐乡-德清车路云一体化示范推动落地，工程化转向信号明确，资金认可度高",
+    "updated": "2026-05-30"
+  },
+  "commercial-space": {
+    "etf_code": "516830",
+    "price": 1.198,
+    "return_5d_pct": -1.2,
+    "return_1m_pct": 11.0,
+    "volume_trend": "放量",
+    "fund_flow_direction": "流入",
+    "signal": "温和确认",
+    "signal_label": "航空航天升级新兴支柱产业+卫星互联网布局，主题驱动资金流入",
+    "updated": "2026-05-30"
+  },
+  "platform-economy": {
+    "etf_code": "513050",
+    "price": 0.912,
+    "return_5d_pct": -4.1,
+    "return_1m_pct": 6.0,
+    "volume_trend": "放量",
+    "fund_flow_direction": "流入",
+    "signal": "市场分歧",
+    "signal_label": "平台经济监管化信号+穿透式监管写入，但港股中概近期反弹，监管影响待观察",
+    "updated": "2026-05-30"
+  },
+  "data-elements": {
+    "etf_code": "516000",
+    "price": 2.073,
+    "return_5d_pct": -3.5,
+    "return_1m_pct": 10.8,
+    "volume_trend": "放量",
+    "fund_flow_direction": "流入",
+    "signal": "温和确认",
+    "signal_label": "国家数据要素综合试验区+浙江数商品牌化，数据要素从政策概念走向产业落地",
+    "updated": "2026-05-30"
+  },
+  "smart-ev": {
+    "etf_code": "515030",
+    "price": 2.085,
+    "return_5d_pct": -2.4,
+    "return_1m_pct": 6.7,
+    "volume_trend": "放量",
+    "fund_flow_direction": "流入",
+    "signal": "温和确认",
+    "signal_label": "新能源汽车争取国家级集群，但行业竞争加剧，资金流入速度放缓",
+    "updated": "2026-05-30"
+  },
+  "industrial-software": {
+    "etf_code": "159852",
+    "price": 1.665,
+    "return_5d_pct": -3.2,
+    "return_1m_pct": 12.4,
+    "volume_trend": "放量",
+    "fund_flow_direction": "流入",
+    "signal": "温和确认",
+    "signal_label": "规上信息软件营收2万亿目标，杭州中国软件名城加持，国产替代逻辑+政策双驱动",
+    "updated": "2026-05-30"
+  },
+  "new-materials": {
+    "etf_code": "159883",
+    "price": 1.427,
+    "return_5d_pct": -2.1,
+    "return_1m_pct": 8.9,
+    "volume_trend": "持平",
+    "fund_flow_direction": "流入",
+    "signal": "温和确认",
+    "signal_label": "宁波新型功能材料集群提升能级，材料方向受益于多个下游产业政策共振",
+    "updated": "2026-05-30"
+  },
+  "marine-economy": {
+    "etf_code": "159611",
+    "price": 1.178,
+    "return_5d_pct": -1.5,
+    "return_1m_pct": 4.3,
+    "volume_trend": "持平",
+    "fund_flow_direction": "流入",
+    "signal": "温和确认",
+    "signal_label": "海洋GDP 14%目标+深海采矿新方向，政策大幅强化但市场认知尚在建立中",
+    "updated": "2026-05-30"
+  },
+  "brain-computer": {
+    "etf_code": "159837",
+    "price": 1.115,
+    "return_5d_pct": -5.2,
+    "return_1m_pct": 18.3,
+    "volume_trend": "放量",
+    "fund_flow_direction": "流入",
+    "signal": "市场分歧",
+    "signal_label": "脑机接口列入未来产业，主题热点但短期暴涨后回调剧烈，注意追高风险",
+    "updated": "2026-05-30"
+  }
+}

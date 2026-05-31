@@ -1,0 +1,764 @@
+{
+  "semiconductor": {
+    "zj_signal": "强化——从十四五十大标志性产业链之一，升级为十五五新兴支柱产业+争取新增国家级集群",
+    "zj_14_summary": "集成电路列为十大标志性产业链之一，突破第三代半导体芯片、专用设计软件、专用设备与材料，前瞻布局毫米波芯片/太赫兹芯片/云端一体芯片，打造国内重要集成电路产业基地。",
+    "zj_15_summary": "集成电路列为十五五新兴支柱产业方向，争取新增国家级先进制造业集群，杭州视觉智能向世界级产业集群迈进。",
+    "concrete_items": [
+      {
+        "category": "工程项目",
+        "text": "争取集成电路新增国家级先进制造业集群"
+      },
+      {
+        "category": "产业平台",
+        "text": "杭州高新区（世界领先科技园区）"
+      },
+      {
+        "category": "产业平台",
+        "text": "杭州城西科创大走廊"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "强落地"
+  },
+  "ai": {
+    "zj_signal": "显著强化——从十四五数字经济下的一个方向，升级为十五五独立成章（第四章），定位为支撑浙江现代化建设的核心引擎",
+    "zj_14_summary": "人工智能纳入数字经济一号工程2.0版新兴产业方向，建设国家新一代人工智能创新发展试验区，尖峰计划部署100项AI前沿基础研究。",
+    "zj_15_summary": "人工智能独立成章（第四章），全产业链芯片-大模型-智能体-应用服务布局，定位为支撑浙江现代化建设的关键变量。",
+    "concrete_items": [
+      {
+        "category": "量化目标",
+        "text": "2030年规上AI核心产业营收1.2万亿元"
+      },
+      {
+        "category": "工程项目",
+        "text": "国家算力枢纽+全省一体化算力监测调度平台"
+      },
+      {
+        "category": "工程项目",
+        "text": "数据语料库+可信数据空间+数据交易所三位一体"
+      },
+      {
+        "category": "工程项目",
+        "text": "杭州/宁波/温州国家数据流通利用基础设施节点"
+      },
+      {
+        "category": "产业平台",
+        "text": "魔搭社区——国际领先AI开源社区"
+      },
+      {
+        "category": "工程项目",
+        "text": "AI+六大行动：科技创新/产业创新/消费提质/民生福祉/治理能力/全球合作"
+      },
+      {
+        "category": "工程项目",
+        "text": "芯模联动重大专项"
+      },
+      {
+        "category": "工程项目",
+        "text": "国家AI医疗行业应用基地"
+      },
+      {
+        "category": "产业平台",
+        "text": "智能家电产业高地（AI+消费提质）"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "强落地"
+  },
+  "robotics": {
+    "zj_signal": "大幅强化——从十四五智能装备中的工业机器人，升级为十五五未来产业首位的人形机器人+具身智能",
+    "zj_14_summary": "工业机器人纳入智能装备产业链（十大标志性产业链之一），聚焦工业机器人、数控机床、航空航天。未提及人形机器人或具身智能。",
+    "zj_15_summary": "人形机器人列为未来产业首位，具身智能纳入AI核心产业集群布局。",
+    "concrete_items": [
+      {
+        "category": "工程项目",
+        "text": "人形机器人——未来产业首位"
+      },
+      {
+        "category": "产业平台",
+        "text": "AI核心产业集群（具身智能方向）"
+      },
+      {
+        "category": "产业平台",
+        "text": "60个未来产业先导区"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "强落地"
+  },
+  "new-energy": {
+    "zj_signal": "强化+工程化——从十四五新能源材料，升级为十五五独立的清洁能源基地+海上风电母港+量化目标翻倍",
+    "zj_14_summary": "新能源材料列为关键战略材料，新能源及智能汽车列入战略性新兴产业。能源章节提及可再生能源和清洁能源，无大规模风电/光伏具体装机目标。",
+    "zj_15_summary": "新能源列为新兴支柱产业，能源转型目标大幅提升。构建千万千瓦级海上风电基地，新建华东深远海风电母港。",
+    "concrete_items": [
+      {
+        "category": "量化目标",
+        "text": "电力总装机2.8亿千瓦以上"
+      },
+      {
+        "category": "量化目标",
+        "text": "风电装机3000万千瓦以上"
+      },
+      {
+        "category": "量化目标",
+        "text": "光伏装机9000万千瓦"
+      },
+      {
+        "category": "量化目标",
+        "text": "抽蓄+新型储能3000万千瓦以上"
+      },
+      {
+        "category": "量化目标",
+        "text": "新增非化石能源装机占比超75%"
+      },
+      {
+        "category": "工程项目",
+        "text": "千万千瓦级海上风电基地"
+      },
+      {
+        "category": "产业平台",
+        "text": "华东深远海风电母港（新建）"
+      },
+      {
+        "category": "工程项目",
+        "text": "甘电入浙特高压"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "强落地"
+  },
+  "digital-economy": {
+    "zj_signal": "强化+安全化——从十四五一号工程2.0版，升级为十五五独立成节+数据要素试验区+平台经济审慎监管",
+    "zj_14_summary": "数字经济一号工程2.0版，数字经济增加值占GDP 60%，核心产业增加值占GDP 15%，建设国家数字经济创新发展试验区。",
+    "zj_15_summary": "数字经济和实体经济深度融合独立成节（第三章第三节），数字经济核心产业增加值目标占GDP 14%。多项新增：国家数据要素综合试验区、浙江数商、温州数安港。",
+    "concrete_items": [
+      {
+        "category": "量化目标",
+        "text": "数字经济核心产业增加值占GDP 14%（2030年）"
+      },
+      {
+        "category": "工程项目",
+        "text": "国家级数字产业集群（争取）"
+      },
+      {
+        "category": "工程项目",
+        "text": "国家数据要素综合试验区（新增）"
+      },
+      {
+        "category": "工程项目",
+        "text": "浙江数商培育（新增）"
+      },
+      {
+        "category": "产业平台",
+        "text": "中国（温州）数安港（新增）"
+      },
+      {
+        "category": "产业平台",
+        "text": "杭州中国软件名城"
+      },
+      {
+        "category": "工程项目",
+        "text": "直播电商穿透式监管"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "强落地"
+  },
+  "biomedicine": {
+    "zj_signal": "强化——从十四五十大标志性产业链之一，升级为十五五新兴支柱产业+集群能级提升",
+    "zj_14_summary": "生物医药列入十大标志性产业链，突破生物技术药/化学创新药/现代中药/创新医疗器械，打造国际竞争力生物医药创新制造高地。",
+    "zj_15_summary": "生物医药列为新兴支柱产业，杭州生物医药集群提升发展能级，争取新增国家级集群。",
+    "concrete_items": [
+      {
+        "category": "工程项目",
+        "text": "杭州生物医药集群——提升发展能级"
+      },
+      {
+        "category": "工程项目",
+        "text": "争取新增国家级先进制造业集群"
+      },
+      {
+        "category": "产业平台",
+        "text": "杭州生物医药集群"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "强落地"
+  },
+  "manufacturing": {
+    "zj_signal": "大幅强化——从十四五产业链提升行动，升级为十五五系统化415X集群工程+13万亿营收量化目标",
+    "zj_14_summary": "打造新一代信息技术、汽车及零部件、绿色化工、现代纺织和服装等世界级先进制造业集群。实施产业集群培育升级行动。",
+    "zj_15_summary": "415X先进制造业集群体系化推进，4大产业高地+15个重点集群。2030年集群营收突破13万亿元，梯次培育世界级/国家级/省级集群。",
+    "concrete_items": [
+      {
+        "category": "量化目标",
+        "text": "集群规上营收突破13万亿元（十四五末约9万亿）"
+      },
+      {
+        "category": "量化目标",
+        "text": "规上工业增加值年均增长5.5%以上"
+      },
+      {
+        "category": "量化目标",
+        "text": "专精特新中小企业1.8万家，小巨人2700家"
+      },
+      {
+        "category": "量化目标",
+        "text": "制造业单项冠军320家，国家先进制造业集群10个"
+      },
+      {
+        "category": "量化目标",
+        "text": "省级未来工厂200家，链主企业100家以上"
+      },
+      {
+        "category": "量化目标",
+        "text": "每年工业重点技改项目5000项"
+      },
+      {
+        "category": "工程项目",
+        "text": "环杭州湾现代纺织服装/宁波绿色石化/浙东工业母机/杭州视觉智能→向世界级迈进"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "强落地"
+  },
+  "new-materials": {
+    "zj_signal": "延续强化——十四五列入三大科创高地，十五五持续强调并纳入415X集群+未来产业",
+    "zj_14_summary": "新材料列入三大科创高地之一。发展先进半导体材料、新能源材料、高性能纤维及复合材料、生物医用材料等关键战略材料。培育百亿级核心产业链，建设千亿级产业集群。",
+    "zj_15_summary": "新材料列为新兴支柱产业和未来产业方向，宁波新型功能材料集群提升发展能级。",
+    "concrete_items": [
+      {
+        "category": "产业平台",
+        "text": "宁波新型功能材料集群——提升发展能级"
+      },
+      {
+        "category": "产业平台",
+        "text": "宁波甬江科创大走廊"
+      },
+      {
+        "category": "产业平台",
+        "text": "60个未来产业先导区"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "有落地"
+  },
+  "industrial-software": {
+    "zj_signal": "强化——从十四五高端软件基础产业，升级为十五五新兴支柱产业+2万亿量化目标",
+    "zj_14_summary": "高端软件列入数字经济基础产业，工业软件在产业链提升中提及，但未单独列为标志性方向。",
+    "zj_15_summary": "高端软件列为新兴支柱产业，工业软件在生产性服务业中重点强调。规上信息软件营收目标2万亿元。",
+    "concrete_items": [
+      {
+        "category": "量化目标",
+        "text": "规上信息软件营收2万亿元"
+      },
+      {
+        "category": "量化目标",
+        "text": "千亿级旗舰企业2家"
+      },
+      {
+        "category": "产业平台",
+        "text": "杭州中国软件名城"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "强落地"
+  },
+  "biomanufacturing": {
+    "zj_signal": "新增——十四五仅提生物技术，十五五首次明确列为未来产业方向",
+    "zj_14_summary": "生物技术列入战略性新兴产业，生命健康产业列入十四五重点，但未单独提生物制造。",
+    "zj_15_summary": "生物制造首次列为未来产业方向。",
+    "concrete_items": [
+      {
+        "category": "工程项目",
+        "text": "生物制造——未来产业布局"
+      },
+      {
+        "category": "产业平台",
+        "text": "60个未来产业先导区"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "有落地"
+  },
+  "low-altitude-economy": {
+    "zj_signal": "新增——十四五未提及低空经济，十五五首次列为新兴支柱产业+低空新基建",
+    "zj_14_summary": "未提及低空经济。仅在消费章节提及优化游艇、民用飞行器等消费环境。",
+    "zj_15_summary": "低空经济首次写入，列为新兴支柱产业方向。推进绍兴低空安全新基建。",
+    "concrete_items": [
+      {
+        "category": "工程项目",
+        "text": "低空经济——新兴支柱产业（首次写入）"
+      },
+      {
+        "category": "工程项目",
+        "text": "绍兴低空安全新基建"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "强落地"
+  },
+  "nuclear-energy": {
+    "zj_signal": "大幅强化——从十四五能源章节的一般项目，升级为十五五多基地并行推进+明确1600万千瓦装机目标",
+    "zj_14_summary": "能源章节提及核电，列入专栏23能源重大项目，但无明确装机目标和具体基地名称。",
+    "zj_15_summary": "核电在十五五中大规模推进，金七门/三澳/三门三大基地并行建设。核电装机目标1600万千瓦以上。",
+    "concrete_items": [
+      {
+        "category": "量化目标",
+        "text": "核电装机1600万千瓦以上"
+      },
+      {
+        "category": "工程项目",
+        "text": "金七门核电"
+      },
+      {
+        "category": "工程项目",
+        "text": "三澳核电"
+      },
+      {
+        "category": "工程项目",
+        "text": "三门核电"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "强落地"
+  },
+  "energy-storage": {
+    "zj_signal": "强化——十四五对储能着墨较少，十五五有明确3000万千瓦+量化目标",
+    "zj_14_summary": "能源章节一般性提及储能，未列为独立产业方向或设定量化目标。",
+    "zj_15_summary": "新型储能纳入十五五能源规划，抽蓄+新型储能3000万千瓦以上。",
+    "concrete_items": [
+      {
+        "category": "量化目标",
+        "text": "抽蓄+新型储能3000万千瓦以上"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "有落地"
+  },
+  "quantum-tech": {
+    "zj_signal": "延续——十四五已布局量子信息（尖峰计划100项基础研究），十五五列入未来产业+通算/智算/超算/量算融合",
+    "zj_14_summary": "量子信息列入尖峰计划（100项左右重大前瞻性基础研究），超前布局量子信息等未来产业。",
+    "zj_15_summary": "量子信息列入未来产业布局，量子计算纳入通算/智算/超算/量算融合基础设施。",
+    "concrete_items": [
+      {
+        "category": "工程项目",
+        "text": "量子信息——未来产业布局"
+      },
+      {
+        "category": "工程项目",
+        "text": "通算/智算/超算/量算融合基础设施"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "有落地"
+  },
+  "brain-computer": {
+    "zj_signal": "新增——十四五仅在尖兵计划提及脑机融合，十五五正式列为未来产业方向",
+    "zj_14_summary": "脑机融合列入尖兵计划（每年100项左右重大关键核心技术攻关项目），但未列为独立产业方向。",
+    "zj_15_summary": "脑机接口首次列为未来产业方向，在人形机器人之后。",
+    "concrete_items": [
+      {
+        "category": "工程项目",
+        "text": "脑机接口——未来产业布局"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "有落地"
+  },
+  "six-g": {
+    "zj_signal": "新增——十四五未提及6G，十五五首次明确前瞻布局+卫星互联网",
+    "zj_14_summary": "未提及6G。新型基础设施重点为5G、北斗等。",
+    "zj_15_summary": "6G首次写入，列为新型数字基础设施前瞻布局方向。同时推进5G-A基站9万个。",
+    "concrete_items": [
+      {
+        "category": "工程项目",
+        "text": "前瞻布局6G、卫星互联网"
+      },
+      {
+        "category": "量化目标",
+        "text": "5G-A基站9万个"
+      },
+      {
+        "category": "量化目标",
+        "text": "50G-PON端口15万个"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "有落地"
+  },
+  "hydrogen-fusion": {
+    "zj_signal": "新增——十四五未明确氢能，十五五首次列入未来产业+醇氢能源专项行动",
+    "zj_14_summary": "未明确提及氢能或核聚变。",
+    "zj_15_summary": "氢能首次列入未来产业布局。醇氢能源应用专项行动写入绿色交通章节。",
+    "concrete_items": [
+      {
+        "category": "工程项目",
+        "text": "氢能——未来产业布局"
+      },
+      {
+        "category": "工程项目",
+        "text": "醇氢能源应用专项行动"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "有落地"
+  },
+  "autonomous-driving": {
+    "zj_signal": "工程化——从十四五尖兵计划攻关方向，升级为十五五具体车路云一体化示范项目",
+    "zj_14_summary": "智能网联汽车列入尖兵计划（每年100项左右重大关键核心技术攻关）。",
+    "zj_15_summary": "智能网联汽车在十五五中有具体示范项目：环杭州湾车路云，杭州—桐乡—德清车路云一体化示范区。",
+    "concrete_items": [
+      {
+        "category": "工程项目",
+        "text": "环杭州湾车路云"
+      },
+      {
+        "category": "工程项目",
+        "text": "杭州—桐乡—德清智能网联汽车车路云一体化示范"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "强落地"
+  },
+  "commercial-space": {
+    "zj_signal": "延续强化——十四五已列航空航天为战略性新兴产业，十五五升级为新兴支柱产业+卫星互联网",
+    "zj_14_summary": "航空航天列入战略性新兴产业和智能装备产业链。未提商业航天或卫星互联网。",
+    "zj_15_summary": "航空航天列为新兴支柱产业。卫星互联网写入新型数字基础设施前瞻布局。",
+    "concrete_items": [
+      {
+        "category": "工程项目",
+        "text": "航空航天——新兴支柱产业"
+      },
+      {
+        "category": "工程项目",
+        "text": "卫星互联网前瞻布局"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "有落地"
+  },
+  "marine-economy": {
+    "zj_signal": "大幅强化——从十四五加快建设海洋强省，升级为十五五具体产业布局+14%GDP目标+深海采矿",
+    "zj_14_summary": "海洋强省列入区域协调发展章节，一般性提及海洋装备、海洋新兴产业。",
+    "zj_15_summary": "海洋经济大幅强化。海洋生产总值占GDP 14%（2030年）。新增深海采矿试验场、海洋电子信息、深海资源勘探、深海智能装备等方向。",
+    "concrete_items": [
+      {
+        "category": "量化目标",
+        "text": "海洋生产总值占GDP 14%（2030年）"
+      },
+      {
+        "category": "工程项目",
+        "text": "深海采矿试验场（新增）"
+      },
+      {
+        "category": "工程项目",
+        "text": "海洋电子信息——未来海洋产业"
+      },
+      {
+        "category": "工程项目",
+        "text": "海洋生物医药及生物制品"
+      },
+      {
+        "category": "产业平台",
+        "text": "宁波/舟山海洋经济发展主平台"
+      },
+      {
+        "category": "产业平台",
+        "text": "海洋大科学装置+涉海重点实验室"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "强落地"
+  },
+  "platform-economy": {
+    "zj_signal": "监管化——从十四五促进平台经济健康发展，转为十五五高质量发展强省+穿透式监管双轮驱动",
+    "zj_14_summary": "平台经济、共享经济列入战略性新兴产业章节，促进平台经济健康发展。",
+    "zj_15_summary": "平台经济在十五五中转向规范与发展并重。深化平台+产业双向赋能，实行审慎监管，推动直播电商穿透式监管。",
+    "concrete_items": [
+      {
+        "category": "工程项目",
+        "text": "平台经济高质量发展强省"
+      },
+      {
+        "category": "工程项目",
+        "text": "直播+平台+跨境电商三位一体"
+      },
+      {
+        "category": "工程项目",
+        "text": "直播电商穿透式监管（新增）"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "强落地"
+  },
+  "data-elements": {
+    "zj_signal": "新增——从十四五数据要素市场化配置改革，升级为十五五国家级试验区+浙江数商品牌化",
+    "zj_14_summary": "数据要素市场化配置改革，探索建立数据产权交易制度，推进公共数据开放共享。",
+    "zj_15_summary": "数据要素在十五五中独立体现。国家数据要素综合试验区首次写入，培育浙江数商品牌，建设中国（温州）数安港。",
+    "concrete_items": [
+      {
+        "category": "工程项目",
+        "text": "国家数据要素综合试验区（新增）"
+      },
+      {
+        "category": "工程项目",
+        "text": "浙江数商培育（新增品牌）"
+      },
+      {
+        "category": "产业平台",
+        "text": "中国（温州）数安港"
+      },
+      {
+        "category": "工程项目",
+        "text": "数据语料库+可信数据空间+数据交易所三位一体"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "强落地"
+  },
+  "silver-economy": {
+    "zj_signal": "新增——十四五仅提养老育幼等服务业，十五五首次明确培育发展银发经济",
+    "zj_14_summary": "健康养老育幼列入生活性服务业，积极应对人口老龄化独立成节，建设浙里养智慧养老平台。",
+    "zj_15_summary": "银发经济首次明确写入规划，培育发展银发经济。浙里养智慧养老服务平台延续建设。",
+    "concrete_items": [
+      {
+        "category": "工程项目",
+        "text": "银发经济——首次明确写入"
+      },
+      {
+        "category": "产业平台",
+        "text": "浙里养智慧养老服务平台"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "有落地"
+  },
+  "sports-economy": {
+    "zj_signal": "新增——十四五未提赛事经济/演艺经济，十五五首次写入",
+    "zj_14_summary": "体育强省建设，一般性提及体育产业和全民健身。未提赛事经济或演艺经济。",
+    "zj_15_summary": "赛事经济、演艺经济首次写入规划。新增浙BA职业篮球联赛、城市足球联赛、票根经济等具体内容。",
+    "concrete_items": [
+      {
+        "category": "工程项目",
+        "text": "赛事经济/演艺经济（首次写入）"
+      },
+      {
+        "category": "工程项目",
+        "text": "浙BA职业篮球联赛"
+      },
+      {
+        "category": "工程项目",
+        "text": "票根经济"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "有落地"
+  },
+  "carbon-neutrality": {
+    "zj_signal": "工程化——从十四五碳排放达峰行动，升级为十五五系统化产业绿色转型+量化节能目标+零碳园区",
+    "zj_14_summary": "二氧化碳排放达峰行动列入专栏，推进生产生活方式绿色低碳转型。八大万亿产业快速发展。",
+    "zj_15_summary": "绿色低碳转型更加系统化。大规模清洁能源+产业绿色化并行。20个省级零碳园区。八大高耗能行业绿色低碳转型。",
+    "concrete_items": [
+      {
+        "category": "量化目标",
+        "text": "十五五节能1500万吨标准煤以上"
+      },
+      {
+        "category": "量化目标",
+        "text": "20个省级零碳园区"
+      },
+      {
+        "category": "量化目标",
+        "text": "国六及新能源货车保有量占比75%"
+      },
+      {
+        "category": "工程项目",
+        "text": "国家减污降碳协同创新区"
+      },
+      {
+        "category": "工程项目",
+        "text": "八大高耗能行业绿色低碳转型"
+      },
+      {
+        "category": "工程项目",
+        "text": "湖州内河船舶新能源化改造"
+      },
+      {
+        "category": "工程项目",
+        "text": "醇氢能源应用专项行动"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "强落地"
+  },
+  "animation-gaming": {
+    "zj_signal": "新增+强化——十四五未提网络游戏/网络视听产业，十五五首次列为文化新三样+产业集群",
+    "zj_14_summary": "文化产业发展一般性表述，未单独提及网络文学/网络游戏/网络视听。",
+    "zj_15_summary": "网络文学、网络游戏、网络视听首次写入规划，定位为文化新三样。建设产业集聚区、创新区、孵化器。",
+    "concrete_items": [
+      {
+        "category": "量化目标",
+        "text": "文化及相关产业增加值占GDP 8%（2030年）"
+      },
+      {
+        "category": "量化目标",
+        "text": "规上文化新业态企业营收年均增长8%"
+      },
+      {
+        "category": "工程项目",
+        "text": "文化新三样——产业集聚区/创新区/孵化器"
+      },
+      {
+        "category": "产业平台",
+        "text": "横店国际影视文化创新中心"
+      },
+      {
+        "category": "产业平台",
+        "text": "之江文化产业带"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "强落地"
+  },
+  "pet-economy": {
+    "zj_signal": "新增——十四五未提，十五五首次写入新型消费",
+    "zj_14_summary": "未提及宠物经济或情绪消费。",
+    "zj_15_summary": "情绪消费、宠物经济首次写入十五五，列为新型消费业态。",
+    "concrete_items": [
+      {
+        "category": "工程项目",
+        "text": "情绪消费/宠物经济——新型消费业态（首次写入）"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "有落地"
+  },
+  "textile-fashion": {
+    "zj_signal": "延续升级——从十四五十大标志性产业链，升级为十五五世界级集群",
+    "zj_14_summary": "现代纺织列入十大标志性产业链。推进纺织印染智能化改造，打造国际一流纺织先进制造业集群。",
+    "zj_15_summary": "纺织服装列入传统产业升级方向。环杭州湾现代纺织服装集群向世界级迈进。",
+    "concrete_items": [
+      {
+        "category": "工程项目",
+        "text": "环杭州湾现代纺织服装——向世界级产业集群迈进"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "有落地"
+  },
+  "critical-minerals": {
+    "zj_signal": "新增侧面体现——通过大宗商品资源配置枢纽和退役设备回收间接体现关键矿产战略",
+    "zj_14_summary": "未明确提及关键矿产或战略性矿产。",
+    "zj_15_summary": "大宗商品资源配置枢纽（全国首个）+退役风电/光伏设备/动力电池回收利用，间接体现关键矿产战略。",
+    "concrete_items": [
+      {
+        "category": "工程项目",
+        "text": "大宗商品资源配置枢纽（全国首个）"
+      },
+      {
+        "category": "工程项目",
+        "text": "退役风电/光伏设备/动力电池回收利用"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "有落地"
+  },
+  "smart-ev": {
+    "zj_signal": "强化——十四五十大标志性产业链之一，十五五升级为新兴支柱产业+争取新增国家级集群",
+    "zj_14_summary": "节能与新能源汽车列入十大标志性产业链，突破动力电池/电驱/电控关键技术，打造全球先进新能源汽车产业集群。",
+    "zj_15_summary": "新能源汽车列为新兴支柱产业，争取新增国家级先进制造业集群。新能源汽车及零部件纳入415X重点集群。",
+    "concrete_items": [
+      {
+        "category": "工程项目",
+        "text": "新能源汽车——新兴支柱产业"
+      },
+      {
+        "category": "工程项目",
+        "text": "争取新增国家级先进制造业集群"
+      },
+      {
+        "category": "量化目标",
+        "text": "415X集群营收突破13万亿元（含新能源汽车及零部件）"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "强落地"
+  },
+  "deep-sea-economy": {
+    "zj_signal": "有提及——并入海洋经济大方向，深海采矿试验场为新增亮点",
+    "zj_14_summary": "海洋装备列入战略性新兴产业，一般性提及海洋经济。",
+    "zj_15_summary": "深海采矿试验场首次写入规划，海洋电子信息/深海资源勘探/深海智能装备列入未来海洋产业。",
+    "concrete_items": [
+      {
+        "category": "工程项目",
+        "text": "深海采矿试验场（新增）"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "有落地"
+  },
+  "green-finance": {
+    "zj_signal": "有提及——耐心资本+科技金融写入十五五",
+    "zj_14_summary": "科技金融产品创新，政府产业基金支持科技创新。",
+    "zj_15_summary": "发展耐心资本，投早投小投长期投硬科技。杭州/嘉兴国家科创金融改革试验区。科创投入力争达1.1万亿元。",
+    "concrete_items": [
+      {
+        "category": "工程项目",
+        "text": "耐心资本+尽职免责机制"
+      },
+      {
+        "category": "产业平台",
+        "text": "杭州/嘉兴国家科创金融改革试验区"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "有落地"
+  },
+  "power-equipment": {
+    "zj_signal": "有提及——纳入能源装备和415X集群，但无独立方向",
+    "zj_14_summary": "智能装备列入十大标志性产业链，电气机械列入传统产业升级。",
+    "zj_15_summary": "电气机械列入传统产业提质升级。能源装备在清洁能源保供工程中体现。",
+    "concrete_items": [
+      {
+        "category": "工程项目",
+        "text": "电力总装机2.8亿千瓦（拉动电力设备需求）"
+      }
+    ],
+    "source": "浙江省十五五规划纲要（2026-2030）",
+    "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
+    "zj_intensity": "有落地"
+  }
+}

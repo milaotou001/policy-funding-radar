@@ -102,6 +102,17 @@ export function IndustryTabs({
               onClick={() => onSelect(idx)}
               className={`px-2 py-1.5 sm:px-3 sm:py-2 lg:px-4 lg:py-2.5 text-xs sm:text-sm lg:text-base font-medium rounded-lg border transition-colors cursor-pointer ${getTierColor(ind.id, isSelected)}`}
             >
+              {ind.investment_observation.etf?.priority && (
+                <span
+                  className={`inline-block w-1.5 h-1.5 rounded-full mr-2 ${
+                    ind.investment_observation.etf.priority === "核心配置"
+                      ? "bg-red-500"
+                      : ind.investment_observation.etf.priority === "卫星配置"
+                      ? "bg-blue-500"
+                      : "bg-zinc-400"
+                  }`}
+                />
+              )}
               {ind.name}
             </button>
           );
@@ -124,6 +135,26 @@ export function IndustryTabs({
             : `展开中低优先级方向 (${hiddenCount} 个) ▼`}
         </button>
       )}
+      {/* ETF priority legend */}
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-3 text-xs text-zinc-500 dark:text-zinc-400">
+        <span className="font-medium text-zinc-600 dark:text-zinc-300">ETF投资优先级：</span>
+        <span className="inline-flex items-center gap-1">
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-red-500" />
+          核心配置
+        </span>
+        <span className="inline-flex items-center gap-1">
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-blue-500" />
+          卫星配置
+        </span>
+        <span className="inline-flex items-center gap-1">
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-zinc-400" />
+          观察配置
+        </span>
+        <span className="inline-flex items-center gap-1">
+          <span className="inline-block w-1.5 h-1.5 rounded-full border border-zinc-300 dark:border-zinc-600" />
+          暂无ETF
+        </span>
+      </div>
     </nav>
   );
 }

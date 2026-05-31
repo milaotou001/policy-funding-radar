@@ -1,7 +1,43 @@
 export interface Highlight {
   term: string;
-  type: "新增" | "强化" | "弱化" | "工程化" | "监管化" | "新增+工程化" | "新增+安全化" | "大幅强化" | "大幅强化+安全化" | "强化+工程化" | "新增+战略级" | "强化+安全化" | "监管化延续" | "安全化" | "全新产业";
+  type: string;
   reason: string;
+}
+
+export interface ETFMapping {
+  code: string;
+  name: string;
+  index: string;
+  note: string;
+  confidence: "精准匹配" | "相关匹配" | "暂无对应";
+  priority: "核心配置" | "卫星配置" | "观察配置" | "";
+}
+
+export interface ProvincialEvidenceItem {
+  category: "量化目标" | "工程项目" | "产业平台";
+  text: string;
+}
+
+export interface ProvincialEvidence {
+  zj_signal: string;
+  zj_14_summary: string;
+  zj_15_summary: string;
+  concrete_items: ProvincialEvidenceItem[];
+  source: string;
+  source_url: string;
+  zj_intensity: "强落地" | "有落地" | "弱落地";
+}
+
+export interface MarketSignal {
+  etf_code: string;
+  price: number;
+  return_5d_pct: number;
+  return_1m_pct: number;
+  volume_trend: "放量" | "缩量" | "持平";
+  fund_flow_direction: "流入" | "流出" | "持平";
+  signal: "双重验证" | "温和确认" | "市场分歧" | "暂不确认" | "数据不足";
+  signal_label: string;
+  updated: string;
 }
 
 export interface InvestmentObservation {
@@ -10,6 +46,7 @@ export interface InvestmentObservation {
   landing_evidence: string;
   industry_chain: string;
   risk_warning: string;
+  etf?: ETFMapping;
 }
 
 export interface Industry {
@@ -23,6 +60,8 @@ export interface Industry {
   evidence_15: string[];
   highlights: Highlight[];
   investment_observation: InvestmentObservation;
+  provincial_evidence?: ProvincialEvidence;
+  market_signal?: MarketSignal;
 }
 
 export interface Meta {
