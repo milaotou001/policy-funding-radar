@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="x-ua-compatible" content="IE=Edge,chrome=1">
+  <meta name="applicable-device" content="pc">
+  <meta name="SiteName" content="华龙区人民政府">
+  <meta name="SiteDomain" content="pyhualong.gov.cn">
+  <meta name="SiteIDCode" content="4109020001">
+  <meta name="description" content="华龙区人民政府, 2026年政府工作报告">
+  <meta name="Keywords" content="华龙区人民政府, 2026年政府工作报告">
+  <title>2026年政府工作报告-华龙区人民政府</title>
+  <link rel="stylesheet" href="https://tfile.dahe.cn/4109020001/css/master.css">
+  <link rel="stylesheet" href="https://tfile.dahe.cn/4109020001/gb20250225/css/common.css">
+  <link rel="stylesheet" href="https://tfile.dahe.cn/4109020001/css/view_model.css">
+  <link rel="Shortcut Icon" href="https://tfile.dahe.cn/4109020001/img/favicon.ico">
+  <script src="https://tfile.dahe.cn/4109020001/js/jquery-1.12.3.js"></script>
+  <!-- <script src="http://code.voicer.info/?method=front" type="text/javascript"></script> -->
+  <script src="https://tfile.dahe.cn/4109020001/js/jquery.SuperSlide.2.1.1.js"></script>
+  <script src="https://tfile.dahe.cn/4109020001/js/jquery.qrcode.min.js"></script>
+  <style>
+    /*qrcode*/
+    #output {
+      width: 132px;
+      height: 158px;
+      margin: 100px auto 0;
+    }
+
+    #output p {
+      width: 132px;
+      color: #b5b5b5;
+      font-size: 12px;
+      line-height: 26px;
+    }
+
+    #output canvas {
+      width: 132px;
+    }
+
+    .output {
+      width: 400px;
+      margin: 100px auto 0;
+      text-align: center;
+    }
+
+    .output #QRcode {
+      width: 132px;
+      margin: 10px auto;
+    }
+
+    .output #QRcode td,
+    .output #QRcode tr {
+      border: none;
+    }
+
+    .output p {
+      color: #b5b5b5;
+      font-size: 12px;
+      line-height: 26px;
+    }
+
+    .output p a {
+      color: #000 !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+   <script src="https://tfile.dahe.cn/4109020001/gb20250225/js/header.js"></script>
+    <div class="main_wrap">
+      <p class="view_trace">您当前的位置：
+        <a href="/"> 首页></a>
+          <a href = 'http://www.pyhualong.gov.cn/zwgk' target='_blank' >政务公开</a> > 
+        <span>政府工作报告</span>
+      </p>
+      <div class="view_model">
+        <h1>2026年政府工作报告</h1>
+        <div class="ly">
+          <div class="zj">
+            <span class="sp1">时间：2026-02-26</span>
+            <span class="sp2">来源：区政府办公室</span>
+          </div>
+        </div>
+        <div class="xw">
+          <p><a href="https://oss.dahe.cn/bdtypt/file/pdf/2026/02/26/1772067908971629.pdf">2026年政府工作报告.pdf</a></p>
+        </div>
+        <div class="output">
+          <div id="QRcode"></div>
+          <p>扫一扫在手机打开当前页</p>
+          <!-- <p><a href="javascript:window.close()">【关闭当前页面】</a></p> -->
+        </div>
+        <div class="fx">
+          <div class="fx1">
+            <span>分享到</span>
+            <div class="bdsharebuttonbox bdshare-button-style0-32" data-bd-bind="1492585753125">
+              <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+              <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+            </div>
+            <script>
+              window._bd_share_config = {
+                "common": {
+                  "bdSnsKey": {},
+                  "bdText": "",
+                  "bdMini": "2",
+                  "bdMiniList": false,
+                  "bdPic": "",
+                  "bdStyle": "0",
+                  "bdSize": "32"
+                },
+                "share": {}
+              };
+              with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement(
+                  'script')).src =
+                'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' +
+                ~
+                (-new Date() / 36e5)];
+            </script>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <script src="https://tfile.dahe.cn/4109020001/js/footer.js"></script>
+  </div>
+  <script src="https://tfile.dahe.cn/4109020001/js/fjqh.js"></script>
+  <script>
+    $(".slideBox-f").slide({
+      mainCell: ".bd ul",
+      autoPlay: true,
+      fade: "left",
+      interTime: 3000
+    });
+
+    $('#QRcode').qrcode({
+      width: 132,
+      height: 132,
+      correctLevel: 0,
+      render: "table",
+      text: "http://www.pyhualong.gov.cn/2026/02-26/3622316.html"
+    });
+  </script>
+  <div data-visible=""> </div>
+</body>
+
+</html>

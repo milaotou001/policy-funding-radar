@@ -1,4 +1,4 @@
-import type { Industry, ProvincialEvidence, MarketSignal } from "../types";
+import type { Industry, ProvincialEvidence, MarketSignal, WorkReportEvidence } from "../types";
 
 export function InvestmentCard({ industry }: { industry: Industry }) {
   const obs = industry.investment_observation;
@@ -77,6 +77,10 @@ export function InvestmentCard({ industry }: { industry: Industry }) {
 
         {industry.market_signal && (
           <MarketSection signal={industry.market_signal} />
+        )}
+
+        {industry.work_report && (
+          <WorkReportSection data={industry.work_report} />
         )}
 
         <FieldRow label="风险提示" value={obs.risk_warning} />
@@ -166,19 +170,26 @@ function MarketSection({ signal }: { signal: MarketSignal }) {
         </span>
       </dt>
       <dd className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-md p-3 space-y-1.5 text-sm">
-        <div className="flex items-center gap-3 flex-wrap">
+        <div className="flex items-center gap-2 flex-wrap">
           <span className="font-mono font-bold text-zinc-900 dark:text-zinc-100">
             {signal.etf_code}
           </span>
-          <span className="font-mono text-zinc-600 dark:text-zinc-400">
+          <span className="font-mono text-sm text-zinc-600 dark:text-zinc-400">
             ¥{signal.price}
           </span>
-          <span className={`font-mono text-xs ${returnColor(signal.return_1m_pct)}`}>
-            近一月 {signal.return_1m_pct > 0 ? "+" : ""}{signal.return_1m_pct}%
-          </span>
-          <span className={`font-mono text-xs ${returnColor(signal.return_5d_pct)}`}>
-            近一周 {signal.return_5d_pct > 0 ? "+" : ""}{signal.return_5d_pct}%
-          </span>
+        </div>
+        <div className="flex items-center gap-x-3 gap-y-0.5 flex-wrap text-xs font-mono">
+          {[
+            { label: "1周", pct: signal.return_5d_pct },
+            { label: "1月", pct: signal.return_1m_pct },
+            { label: "3月", pct: signal.return_3m_pct },
+            { label: "6月", pct: signal.return_6m_pct },
+            { label: "1年", pct: signal.return_1y_pct },
+          ].map(({ label, pct }) => (
+            <span key={label} className={`${returnColor(pct)}`}>
+              {label} {pct > 0 ? "+" : ""}{pct}%
+            </span>
+          ))}
         </div>
         <div className="flex items-center gap-3 text-xs text-zinc-500 dark:text-zinc-400">
           <span>成交量：{signal.volume_trend}</span>
@@ -190,6 +201,64 @@ function MarketSection({ signal }: { signal: MarketSignal }) {
         <p className="text-xs text-zinc-400 dark:text-zinc-500">
           数据截止：{signal.updated} · 仅供研究参考
         </p>
+      </dd>
+    </div>
+  );
+}
+
+function WorkReportSection({ data }: { data: { national?: WorkReportEvidence; zhejiang?: WorkReportEvidence } }) {
+  const actionStyles: Record<string, string> = {
+    "重点推进": "bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300 border-red-200 dark:border-red-700",
+    "持续推进": "bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-700",
+    "早期培育": "bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-700",
+    "监管规范": "bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-700",
+    "制度构建": "bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300 border-green-200 dark:border-green-700",
+  };
+
+  return (
+    <div>
+      <dt className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wide mb-2">
+        2026年政府工作报告
+      </dt>
+      <dd className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-md p-3 space-y-3 text-sm">
+        {data.national && (
+          <div className="space-y-1">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-xs font-bold text-zinc-700 dark:text-zinc-300">全国</span>
+              <span className={`inline-block px-1.5 py-0.5 rounded text-xs font-bold ${actionStyles[data.national.action_level] || actionStyles["持续推进"]}`}>
+                {data.national.action_level}
+              </span>
+            </div>
+            <p className="text-zinc-700 dark:text-zinc-300 leading-relaxed">
+              <span className="font-semibold">定调：</span>{data.national.mention}
+            </p>
+            <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
+              {data.national.detail}
+            </p>
+            <p className="text-zinc-400 dark:text-zinc-500 text-xs">
+              <span className="font-semibold">预算信号：</span>{data.national.budget_signal}
+            </p>
+          </div>
+        )}
+        {data.zhejiang && (
+          <div className={`space-y-1 ${data.national ? "pt-2 border-t border-zinc-200 dark:border-zinc-700" : ""}`}>
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-xs font-bold text-zinc-700 dark:text-zinc-300">浙江</span>
+              <span className={`inline-block px-1.5 py-0.5 rounded text-xs font-bold ${actionStyles[data.zhejiang.action_level] || actionStyles["持续推进"]}`}>
+                {data.zhejiang.action_level}
+              </span>
+            </div>
+            <p className="text-zinc-700 dark:text-zinc-300 leading-relaxed">
+              <span className="font-semibold">定调：</span>{data.zhejiang.mention}
+            </p>
+            <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
+              {data.zhejiang.detail}
+            </p>
+            <p className="text-zinc-400 dark:text-zinc-500 text-xs">
+              <span className="font-semibold">预算信号：</span>{data.zhejiang.budget_signal}
+            </p>
+          </div>
+        )}
       </dd>
     </div>
   );

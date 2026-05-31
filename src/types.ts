@@ -28,11 +28,26 @@ export interface ProvincialEvidence {
   zj_intensity: "强落地" | "有落地" | "弱落地";
 }
 
+export interface WorkReportEvidence {
+  mention: string;
+  detail: string;
+  budget_signal: string;
+  action_level: "重点推进" | "持续推进" | "早期培育" | "监管规范" | "制度构建";
+}
+
+export interface WorkReportData {
+  national?: WorkReportEvidence;
+  zhejiang?: WorkReportEvidence;
+}
+
 export interface MarketSignal {
   etf_code: string;
   price: number;
   return_5d_pct: number;
   return_1m_pct: number;
+  return_3m_pct: number;
+  return_6m_pct: number;
+  return_1y_pct: number;
   volume_trend: "放量" | "缩量" | "持平";
   fund_flow_direction: "流入" | "流出" | "持平";
   signal: "双重验证" | "温和确认" | "市场分歧" | "暂不确认" | "数据不足";
@@ -62,6 +77,7 @@ export interface Industry {
   investment_observation: InvestmentObservation;
   provincial_evidence?: ProvincialEvidence;
   market_signal?: MarketSignal;
+  work_report?: WorkReportData;
 }
 
 export interface Meta {

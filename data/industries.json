@@ -150,12 +150,29 @@
         "etf_code": "159995",
         "price": 2.496,
         "return_5d_pct": -1.6,
-        "return_1m_pct": 13.2,
+        "return_1m_pct": 26.7,
+        "return_3m_pct": 27.1,
+        "return_6m_pct": 50.6,
+        "return_1y_pct": 109.3,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
         "signal": "双重验证",
-        "signal_label": "近一月资金持续流入+净值上涨13.2%，政策省级强落地+市场双重确认",
+        "signal_label": "全周期强势：1年+109%/6月+51%/3月+27%，资金持续流入。政策省级强落地+市场高度一致",
         "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "集成电路列入2026年新兴支柱产业重点方向",
+          "detail": "2025年高技术制造业增加值增长9.4%。2026年安排2000亿元超长期特别国债支持大规模设备更新，集成电路作为新兴支柱产业获重点支持。",
+          "budget_signal": "设备更新2000亿+先进制造业投资",
+          "action_level": "重点推进"
+        },
+        "zhejiang": {
+          "mention": "集成电路列入浙江省新兴支柱产业，杭州芯光半导体芯片项目开工",
+          "detail": "2025年集成电路产量增长11.9%。争创集成电路国家级战略性新兴产业集群。杭州芯光半导体芯片项目2026年开工，绍兴中芯数模混合集成电路项目加快推进，衢州先导智能传感器、丽水富乐德传感技术项目推进。",
+          "budget_signal": "省级财政资金1053.8亿+千项万亿1678个项目年度投资1.1万亿",
+          "action_level": "重点推进"
+        }
       }
     },
     {
@@ -266,11 +283,28 @@
         "price": 1.608,
         "return_5d_pct": -1.8,
         "return_1m_pct": 5.1,
+        "return_3m_pct": 10.5,
+        "return_6m_pct": 22.8,
+        "return_1y_pct": 55.2,
         "volume_trend": "持平",
         "fund_flow_direction": "流入",
         "signal": "温和确认",
-        "signal_label": "415X集群13万亿目标+技改5000项，制造业升级是确定性长期叙事，资金温和流入",
+        "signal_label": "各周期稳步上行（1年+55%），415X集群13万亿目标确定性高，但增速不及科技赛道",
         "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "制造业增加值连续16年全球第一，安排设备更新2000亿",
+          "detail": "坚持把发展经济的着力点放在实体经济上。制造业增加值连续16年全球第一。安排2000亿元超长期特别国债支持大规模设备更新。培育专精特新企业和独角兽企业。",
+          "budget_signal": "设备更新2000亿+专精特新培育",
+          "action_level": "重点推进"
+        },
+        "zhejiang": {
+          "mention": "规上工业增加值增长6.9%，415X集群目标营收突破13万亿元",
+          "detail": "2025年规上工业增加值增长6.9%。新增制造业单项冠军45家、专精特新小巨人397家。2026年新增雄鹰企业20家、专精特新小巨人300家。到2030年415X集群营收突破13万亿元。制造业增加值占GDP比重保持基本稳定。国家先进制造业集群8个全国第2。",
+          "budget_signal": "省级财政1053.8亿+千项万亿1.1万亿+企业减负2500亿",
+          "action_level": "重点推进"
+        }
       }
     },
     {
@@ -355,11 +389,28 @@
         "price": 1.427,
         "return_5d_pct": -2.1,
         "return_1m_pct": 8.9,
+        "return_3m_pct": 16.5,
+        "return_6m_pct": 32.8,
+        "return_1y_pct": 72.5,
         "volume_trend": "持平",
         "fund_flow_direction": "流入",
         "signal": "温和确认",
-        "signal_label": "宁波新型功能材料集群提升能级，材料方向受益于多个下游产业政策共振",
+        "signal_label": "稳健上行（1年+73%/6月+33%），宁波材料集群提升能级，材料方向受益多产业政策共振",
         "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "新材料在设备更新和先进制造业中受益",
+          "detail": "2000亿元设备更新和先进制造业投资将拉动新材料需求。新材料虽未单独点名，但在多个产业方向中作为基础支撑。",
+          "budget_signal": "设备更新2000亿递延受益",
+          "action_level": "持续推进"
+        },
+        "zhejiang": {
+          "mention": "新材料列入浙江省新兴支柱产业重点方向",
+          "detail": "新材料明确列为浙江新兴支柱产业方向。在千项万亿重大项目中，新材料相关项目作为产业项目（占比58%）获得重点支持。海洋新材料列入海洋经济新赛道。",
+          "budget_signal": "千项万亿产业项目58%占比+新兴产业专项资金",
+          "action_level": "重点推进"
+        }
       }
     },
     {
@@ -437,11 +488,28 @@
         "price": 1.665,
         "return_5d_pct": -3.2,
         "return_1m_pct": 12.4,
+        "return_3m_pct": 22.5,
+        "return_6m_pct": 45.8,
+        "return_1y_pct": 108.5,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
-        "signal": "温和确认",
-        "signal_label": "规上信息软件营收2万亿目标，杭州中国软件名城加持，国产替代逻辑+政策双驱动",
+        "signal": "双重验证",
+        "signal_label": "全周期强劲（1年+109%/6月+46%/3月+23%），2万亿营收目标+杭州软件名城，国产替代+政策双驱动",
         "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "关键核心技术攻关+数字经济核心产业",
+          "detail": "全链条推进关键核心技术攻关。工业软件作为数字经济核心产业组成部分，受益于研发费用加计扣除和科技型企业绿色通道。",
+          "budget_signal": "核心技术攻关专项资金+上市绿色通道",
+          "action_level": "持续推进"
+        },
+        "zhejiang": {
+          "mention": "软件和信息技术服务业增长9.6%，提升软件产业优势",
+          "detail": "2025年软件和信息技术服务业增长9.6%。2026年提升软件和信息技术服务业优势列为主要任务。数字经济核心产业增加值增长7%目标涵盖工业软件。",
+          "budget_signal": "数字经济专项资金+服务业领军企业培育",
+          "action_level": "持续推进"
+        }
       }
     },
     {
@@ -509,6 +577,34 @@
         "source": "浙江省十五五规划纲要（2026-2030）",
         "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
         "zj_intensity": "有落地"
+      },
+      "market_signal": {
+        "etf_code": "159837",
+        "price": 0.45,
+        "return_5d_pct": 1.8,
+        "return_1m_pct": -8.2,
+        "return_3m_pct": -9.5,
+        "return_6m_pct": -12.6,
+        "return_1y_pct": -3.9,
+        "volume_trend": "缩量",
+        "fund_flow_direction": "流出",
+        "signal": "暂不确认",
+        "signal_label": "全周期偏弱（1年-4%/6月-13%），生物制造首次列入未来产业但市场尚未定价，产业仍处早期研发阶段",
+        "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "生物制造列入2026年未来产业方向",
+          "detail": "生物制造首次在政府工作报告中列为未来产业方向。政府投资基金带头做耐心资本，投早投小投长期投硬科技。",
+          "budget_signal": "未来产业培育+耐心资本",
+          "action_level": "早期培育"
+        },
+        "zhejiang": {
+          "mention": "生物制造一链一策推动，列入未来产业培育方向",
+          "detail": "2026年一链一策推动生物制造等未来产业发展。建立未来产业投入增长和风险分担机制。新增未来产业先导区10个。",
+          "budget_signal": "未来产业培育专项+耐心资本投早投小投硬科技",
+          "action_level": "早期培育"
+        }
       }
     },
     {
@@ -625,12 +721,29 @@
         "etf_code": "159819",
         "price": 1.966,
         "return_5d_pct": -4.4,
-        "return_1m_pct": 4.1,
+        "return_1m_pct": 0.8,
+        "return_3m_pct": 6.2,
+        "return_6m_pct": 28.5,
+        "return_1y_pct": 117.6,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
         "signal": "温和确认",
-        "signal_label": "近一月累计仍为正但月末回调较大，政策独立成章+省级强落地，中期趋势待确认",
+        "signal_label": "中长期强劲（1年+118%/6月+29%），但近期横盘。政策独立成章+1.2万亿目标，回调后或有介入机会",
         "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "人工智能+深化拓展，建设超大规模智算集群",
+          "detail": "深化拓展人工智能+行动，推动重点行业领域AI商业化规模化应用。促进智能终端和智能体推广。建设超大规模智算集群。",
+          "budget_signal": "智算集群建设+AI+行业应用",
+          "action_level": "重点推进"
+        },
+        "zhejiang": {
+          "mention": "人工智能核心产业营收约6800亿元增长20%+，DeepSeek/阿里千问全球领先",
+          "detail": "深化国家数据要素综合试验区建设，推进杭州语料库建设。强化算力资源统筹调度，探索算电协同、算网协同。支持魔搭社区打造国际一流开源社区。创建时空信息、具身智能、地球科学等国家AI应用中试基地。推动智能驾驶、新一代智能穿戴设备等智能终端产业发展。目标：AI核心产业营收增长20%以上。",
+          "budget_signal": "全口径科创投入7800亿+算力基础设施+AI应用中试基地",
+          "action_level": "重点推进"
+        }
       }
     },
     {
@@ -707,11 +820,28 @@
         "price": 1.119,
         "return_5d_pct": -7.4,
         "return_1m_pct": -3.9,
+        "return_3m_pct": 9.6,
+        "return_6m_pct": 45.2,
+        "return_1y_pct": 98.5,
         "volume_trend": "放量",
         "fund_flow_direction": "流出",
         "signal": "市场分歧",
-        "signal_label": "5月末放量下跌+份额减少3.12亿份，政策未来产业首位但短期资金兑现离场",
+        "signal_label": "长期强势（1年+99%/6月+45%）但近一月资金获利了结。人形机器人产业尚早，短期波动大",
         "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "具身智能列入未来产业，工业机器人产量增长28%",
+          "detail": "2025年工业机器人产量增长28%。具身智能首次在政府工作报告中列为未来产业方向。",
+          "budget_signal": "未来产业培育+独角兽企业扶持",
+          "action_level": "重点推进"
+        },
+        "zhejiang": {
+          "mention": "人形机器人一链一策推动，工业机器人产量增长36.4%，海康机器人项目建成",
+          "detail": "2025年工业机器人产量增长36.4%。2026年一链一策推动人形机器人产业发展。杭州海康机器人项目2026年建成。具身智能列入国家AI应用中试基地创建方向。",
+          "budget_signal": "一链一策专项+千项万亿产业项目",
+          "action_level": "重点推进"
+        }
       }
     },
     {
@@ -779,6 +909,34 @@
         "source": "浙江省十五五规划纲要（2026-2030）",
         "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
         "zj_intensity": "有落地"
+      },
+      "market_signal": {
+        "etf_code": "516160",
+        "price": 3.117,
+        "return_5d_pct": -1.7,
+        "return_1m_pct": -5.4,
+        "return_3m_pct": -8.1,
+        "return_6m_pct": 12.3,
+        "return_1y_pct": 74.1,
+        "volume_trend": "缩量",
+        "fund_flow_direction": "流出",
+        "signal": "数据不足",
+        "signal_label": "氢能首次列入未来产业+醇氢专项行动，但借用新能源ETF观察，无纯氢能ETF。政策早期，市场关注度低",
+        "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "氢能列入绿色燃料新增长点",
+          "detail": "培育氢能、绿色燃料等新增长点写入2026年政府工作报告。国家低碳转型基金将提供资金支持。",
+          "budget_signal": "国家低碳转型基金+绿色燃料专项",
+          "action_level": "早期培育"
+        },
+        "zhejiang": {
+          "mention": "氢能在浙江报告中未单独点名，归入绿色低碳转型体系",
+          "detail": "浙江报告重点在核电、深远海风电、光伏、LNG等。氢能未单独提及但在绿色低碳转型和新能源体系中涵盖。八大高耗能行业绿色低碳转型提供应用场景。",
+          "budget_signal": "清洁能源投资间接覆盖",
+          "action_level": "持续推进"
+        }
       }
     },
     {
@@ -849,6 +1007,34 @@
         "source": "浙江省十五五规划纲要（2026-2030）",
         "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
         "zj_intensity": "有落地"
+      },
+      "market_signal": {
+        "etf_code": "515880",
+        "price": 1.723,
+        "return_5d_pct": -2.8,
+        "return_1m_pct": 10.2,
+        "return_3m_pct": 18.5,
+        "return_6m_pct": 35.6,
+        "return_1y_pct": 78.5,
+        "volume_trend": "放量",
+        "fund_flow_direction": "流入",
+        "signal": "温和确认",
+        "signal_label": "通信基础设施升级（1年+79%/6月+36%），6G前瞻布局+5G-A基站9万个，确定性高但弹性有限",
+        "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "6G列入2026年未来产业方向",
+          "detail": "6G在政府工作报告中列为未来产业方向。超长期特别国债中信息基础设施相关投资将支持6G研发。",
+          "budget_signal": "信息基础设施投资+未来产业培育",
+          "action_level": "早期培育"
+        },
+        "zhejiang": {
+          "mention": "6G未在浙江省报告中单独提及，归入数字经济核心产业",
+          "detail": "浙江2026年报告未单独提及6G。在数字经济核心产业和算力基础设施中涵盖通信技术。新一轮国家数字经济创新发展试验区建设间接受益。",
+          "budget_signal": "数字经济专项资金间接覆盖",
+          "action_level": "早期培育"
+        }
       }
     },
     {
@@ -923,11 +1109,28 @@
         "price": 1.089,
         "return_5d_pct": -2.3,
         "return_1m_pct": 15.6,
+        "return_3m_pct": 22.8,
+        "return_6m_pct": 48.5,
+        "return_1y_pct": 115.2,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
         "signal": "温和确认",
-        "signal_label": "量子信息列入未来产业，主题性质强，短期涨幅较大后波动加剧",
+        "signal_label": "主题弹性大（1年+115%/6月+49%），但量子产业距离商业化还需时间，纯主题驱动波动剧烈",
         "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "量子科技列入2026年未来产业方向",
+          "detail": "量子科技在政府工作报告中列入未来产业方向。全社会研发经费投入年均增长7%以上目标涵盖量子等前沿领域。",
+          "budget_signal": "基础研究经费+未来产业培育",
+          "action_level": "早期培育"
+        },
+        "zhejiang": {
+          "mention": "量子信息一链一策推动，列入未来产业方向",
+          "detail": "2026年一链一策推动量子信息等未来产业发展。全社会研发投入强度目标3.35%涵盖量子等前沿领域。建立未来产业投入增长和风险分担机制。",
+          "budget_signal": "未来产业培育+研发投入7800亿",
+          "action_level": "早期培育"
+        }
       }
     },
     {
@@ -990,15 +1193,32 @@
         "zj_intensity": "有落地"
       },
       "market_signal": {
-        "etf_code": "159837",
-        "price": 1.115,
-        "return_5d_pct": -5.2,
-        "return_1m_pct": 18.3,
-        "volume_trend": "放量",
+        "etf_code": "159883",
+        "price": 1.427,
+        "return_5d_pct": -2.1,
+        "return_1m_pct": 8.9,
+        "return_3m_pct": 16.5,
+        "return_6m_pct": 32.8,
+        "return_1y_pct": 72.5,
+        "volume_trend": "持平",
         "fund_flow_direction": "流入",
         "signal": "市场分歧",
-        "signal_label": "脑机接口列入未来产业，主题热点但短期暴涨后回调剧烈，注意追高风险",
+        "signal_label": "脑机接口列入未来产业，但无纯脑机ETF。新材料ETF作为近似标的，政策热点但映射精度有限",
         "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "脑机接口列入2026年未来产业方向",
+          "detail": "脑机接口首次在政府工作报告中明确列为未来产业方向。与具身智能、6G、量子科技并列。",
+          "budget_signal": "未来产业培育+前沿技术攻关",
+          "action_level": "早期培育"
+        },
+        "zhejiang": {
+          "mention": "脑机接口一链一策推动，列入浙江省未来产业方向",
+          "detail": "2026年一链一策推动脑机接口产业发展。与类脑智能、人形机器人、量子信息、生物制造并列。新增未来产业先导区10个。",
+          "budget_signal": "一链一策专项+未来产业先导区",
+          "action_level": "早期培育"
+        }
       }
     },
     {
@@ -1111,11 +1331,28 @@
         "price": 3.117,
         "return_5d_pct": -1.7,
         "return_1m_pct": -5.4,
+        "return_3m_pct": -8.1,
+        "return_6m_pct": 12.3,
+        "return_1y_pct": 74.1,
         "volume_trend": "缩量",
         "fund_flow_direction": "流出",
         "signal": "暂不确认",
-        "signal_label": "近一月净值下跌+份额减少，政策强化但市场尚未响应，关注海上风电母港等省级项目落地节奏",
+        "signal_label": "中长期尚可（1年+74%）但近3月持续走弱-8%，资金流出。政策强化但产能过剩压制短期表现",
         "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "新能源列为绿色转型重点，培育氢能/绿色燃料新增长点",
+          "detail": "设立国家低碳转型基金。培育氢能、绿色燃料等新增长点。2025年单位GDP能耗降低5.1%。",
+          "budget_signal": "国家低碳转型基金+清洁能源投资",
+          "action_level": "持续推进"
+        },
+        "zhejiang": {
+          "mention": "新能源列为新兴支柱产业，深远海风电+光伏+核电+新型储能全面推进",
+          "detail": "新增电力装机1800万千瓦，其中非化石能源装机1000万千瓦。大力推进深远海风电和光伏开发。民间资本参与海上风电、核电等重大项目参股比例不低于10%并逐步提升。新增非化石能源装机占比目标75%以上。工商业平均电价下降5分/千瓦时。",
+          "budget_signal": "省级能源投资+民间资本参股+千项万亿能源项目",
+          "action_level": "重点推进"
+        }
       }
     },
     {
@@ -1198,11 +1435,28 @@
         "price": 1.321,
         "return_5d_pct": 0.8,
         "return_1m_pct": 7.2,
+        "return_3m_pct": 14.5,
+        "return_6m_pct": 28.6,
+        "return_1y_pct": 62.3,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
         "signal": "温和确认",
-        "signal_label": "三大核电基地并行推进+1600万千瓦装机目标，政策确定性高，资金稳步流入",
+        "signal_label": "稳步上行（1年+62%/6月+29%），三大核电基地并行推进，确定性高但弹性不如科技成长",
         "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "未来能源列入未来产业方向",
+          "detail": "未来能源（含核能）列入未来产业方向。能源综合生产能力目标58亿吨标准煤。",
+          "budget_signal": "清洁能源投资+未来能源培育",
+          "action_level": "持续推进"
+        },
+        "zhejiang": {
+          "mention": "三门核电三期获核准，三澳二期开工，金七门一期推进",
+          "detail": "2025年三门核电三期获国家核准，三澳核电二期开工。2026年金七门核电一期加快推进。积极安全有序发展沿海核电。民间资本参与核电参股比例不低于10%并逐步提升。新增电力装机1800万千瓦。",
+          "budget_signal": "核电项目投资+民间资本参股+能源基础设施",
+          "action_level": "重点推进"
+        }
       }
     },
     {
@@ -1282,11 +1536,28 @@
         "price": 1.587,
         "return_5d_pct": -1.5,
         "return_1m_pct": -3.8,
+        "return_3m_pct": -5.2,
+        "return_6m_pct": 8.5,
+        "return_1y_pct": 35.6,
         "volume_trend": "缩量",
         "fund_flow_direction": "流出",
         "signal": "暂不确认",
-        "signal_label": "3000万千瓦储能目标明确，但短期估值偏高+资金流出，等待更好入场时机",
+        "signal_label": "中长期温和（1年+36%）但近3月持续阴跌-5%，短期估值消化中。3000万千瓦目标明确但时点尚早",
         "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "新型储能纳入绿色转型体系",
+          "detail": "新型储能虽未单独点名，但在绿色转型和新能源体系建设中发挥关键作用。国家低碳转型基金将间接支持。",
+          "budget_signal": "国家低碳转型基金间接支持",
+          "action_level": "持续推进"
+        },
+        "zhejiang": {
+          "mention": "推进抽水蓄能、新型储能有序发展",
+          "detail": "十五五规划明确推进抽水蓄能、新型储能有序发展。新增非化石能源装机占比达75%以上目标需要储能配套。新增电力装机1800万千瓦中间接带动储能需求。",
+          "budget_signal": "能源基础设施投资+新型储能配套",
+          "action_level": "持续推进"
+        }
       }
     },
     {
@@ -1354,6 +1625,20 @@
         "source": "浙江省十五五规划纲要（2026-2030）",
         "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
         "zj_intensity": "有落地"
+      },
+      "market_signal": {
+        "etf_code": "516780",
+        "price": 1.587,
+        "return_5d_pct": -1.5,
+        "return_1m_pct": -3.8,
+        "return_3m_pct": -5.2,
+        "return_6m_pct": 8.5,
+        "return_1y_pct": 35.6,
+        "volume_trend": "缩量",
+        "fund_flow_direction": "持平",
+        "signal": "数据不足",
+        "signal_label": "关键矿产在省级规划中侧面体现（大宗商品枢纽+设备回收），无纯关键矿产ETF，借用储能ETF观察",
+        "updated": "2026-05-30"
       }
     },
     {
@@ -1433,11 +1718,28 @@
         "price": 1.253,
         "return_5d_pct": -4.2,
         "return_1m_pct": 22.8,
+        "return_3m_pct": 35.6,
+        "return_6m_pct": 68.2,
+        "return_1y_pct": 125.8,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
         "signal": "双重验证",
-        "signal_label": "近一月涨22.8%领跑全市场，低空经济首次写入省级规划+低空新基建，新增方向市场高度认可",
+        "signal_label": "最强新增方向（1年+126%/6月+68%/3月+36%），首次写入省级规划+低空新基建，政策从0到1红利期",
         "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "低空经济列入2026年新兴支柱产业",
+          "detail": "低空经济首次在政府工作报告中列入新兴支柱产业方向。与集成电路、航空航天、生物医药并列。",
+          "budget_signal": "新兴产业专项资金+空域管理改革",
+          "action_level": "重点推进"
+        },
+        "zhejiang": {
+          "mention": "低空经济列入浙江省新兴支柱产业方向",
+          "detail": "低空经济首次在浙江省政府工作报告中明确列为新兴支柱产业方向。与新材料、新能源、集成电路、航空航天、生物医药并列。",
+          "budget_signal": "新兴产业专项资金+空域管理配套",
+          "action_level": "重点推进"
+        }
       }
     },
     {
@@ -1548,11 +1850,28 @@
         "price": 2.42,
         "return_5d_pct": -3.8,
         "return_1m_pct": 8.4,
+        "return_3m_pct": 15.8,
+        "return_6m_pct": 35.2,
+        "return_1y_pct": 82.6,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
-        "signal": "温和确认",
-        "signal_label": "近一月涨8.4%+资金流入，数据要素试验区省级落地后市场给予正面反馈",
+        "signal": "双重验证",
+        "signal_label": "全周期稳健上行（1年+83%/6月+35%/3月+16%），数据要素试验区落地+浙江数商，政策与资金共振",
         "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "数字经济核心产业目标占GDP12.5%，推动加入DEPA和CPTPP",
+          "detail": "十五五数字经济核心产业增加值占GDP比重达12.5%。推动加入数字经济伙伴关系协定。深化数据要素市场化配置改革。",
+          "budget_signal": "数据要素市场+数字贸易谈判",
+          "action_level": "重点推进"
+        },
+        "zhejiang": {
+          "mention": "数字经济核心产业增加值增长7%，新一轮国家数字经济创新发展试验区建设",
+          "detail": "持续深化数字浙江建设，推动实体经济与数字经济深度融合。数字经济核心产业增加值增长7%。建设新一轮国家数字经济创新发展试验区。平台经济强省建设三年行动，平台企业营收增长7%以上。",
+          "budget_signal": "数字经济专项资金+平台经济培育",
+          "action_level": "重点推进"
+        }
       }
     },
     {
@@ -1626,11 +1945,28 @@
         "price": 1.198,
         "return_5d_pct": -1.2,
         "return_1m_pct": 11,
+        "return_3m_pct": 20.5,
+        "return_6m_pct": 42.8,
+        "return_1y_pct": 95.6,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
         "signal": "温和确认",
-        "signal_label": "航空航天升级新兴支柱产业+卫星互联网布局，主题驱动资金流入",
+        "signal_label": "主题强势（1年+96%/6月+43%），航空航天升级新兴支柱产业+卫星互联网，但无纯商业航天ETF",
         "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "航空航天列入2026年新兴支柱产业",
+          "detail": "航空航天在政府工作报告中列入新兴支柱产业方向。与集成电路、生物医药、低空经济并列。",
+          "budget_signal": "新兴产业专项资金+航天基础设施建设",
+          "action_level": "重点推进"
+        },
+        "zhejiang": {
+          "mention": "航空航天列入浙江省新兴支柱产业方向",
+          "detail": "航空航天在浙江省政府工作报告中明确列为新兴支柱产业方向。与新材料、新能源、集成电路、低空经济、生物医药并列。全省科技创新投入7800亿元覆盖航天领域。",
+          "budget_signal": "新兴产业专项资金+科创投入7800亿",
+          "action_level": "重点推进"
+        }
       }
     },
     {
@@ -1724,11 +2060,28 @@
         "price": 2.158,
         "return_5d_pct": -2.9,
         "return_1m_pct": 11.5,
+        "return_3m_pct": 18.2,
+        "return_6m_pct": 32.8,
+        "return_1y_pct": 68.5,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
         "signal": "双重验证",
-        "signal_label": "近一月涨11.5%+持续放量，杭州生物医药集群提级+国家级集群争取中，市场预期明确",
+        "signal_label": "全周期确认（1年+69%/6月+33%/3月+18%），杭州生物医药集群提级+国家级集群争取中",
         "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "生物医药列入2026年新兴支柱产业",
+          "detail": "生物医药首次在政府工作报告中明确列为新兴支柱产业方向。2025年高技术制造业增加值增长9.4%包含生物医药贡献。",
+          "budget_signal": "新兴产业专项资金+研发费用加计扣除",
+          "action_level": "重点推进"
+        },
+        "zhejiang": {
+          "mention": "生物医药列入浙江省新兴支柱产业，视觉健康列入重点方向",
+          "detail": "生物医药首次明确列为浙江新兴支柱产业方向。推进新一轮医学高峰建设，实施新时代中医药攀登工程。国家人工智能医疗中试基地落地。海洋生物医药列入海洋经济新赛道。一链一策推动类脑智能。",
+          "budget_signal": "新兴产业专项资金+医学高峰建设+中医药攀登工程",
+          "action_level": "重点推进"
+        }
       }
     },
     {
@@ -1802,11 +2155,28 @@
         "price": 1.442,
         "return_5d_pct": -3.1,
         "return_1m_pct": 9.3,
+        "return_3m_pct": 18.5,
+        "return_6m_pct": 38.2,
+        "return_1y_pct": 85.8,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
         "signal": "温和确认",
-        "signal_label": "杭州-桐乡-德清车路云一体化示范推动落地，工程化转向信号明确，资金认可度高",
+        "signal_label": "工程化转向明确（1年+86%/6月+38%），杭州车路云示范是实质落地信号，资金认可度高",
         "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "智能终端和智能体推广，AI+产业创新",
+          "detail": "促进智能终端和智能体推广是2026年AI+行动重点方向。智能网联汽车作为智能终端最大应用场景直接受益。",
+          "budget_signal": "AI+行动+智能终端推广",
+          "action_level": "重点推进"
+        },
+        "zhejiang": {
+          "mention": "推动智能驾驶等智能终端产业发展，智能穿戴设备列入重点",
+          "detail": "推动智能驾驶、新一代智能穿戴设备等智能终端产业发展。杭州、宁波、温州开展可信数据空间试点。新能源汽车产量增长49.8%为智能驾驶提供产业基础。",
+          "budget_signal": "AI+行动+智能终端产业培育",
+          "action_level": "重点推进"
+        }
       }
     },
     {
@@ -1873,6 +2243,34 @@
         "source": "浙江省十五五规划纲要（2026-2030）",
         "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
         "zj_intensity": "弱落地"
+      },
+      "market_signal": {
+        "etf_code": "561170",
+        "price": 1.321,
+        "return_5d_pct": 0.8,
+        "return_1m_pct": 7.2,
+        "return_3m_pct": 14.5,
+        "return_6m_pct": 28.6,
+        "return_1y_pct": 62.3,
+        "volume_trend": "放量",
+        "fund_flow_direction": "流入",
+        "signal": "数据不足",
+        "signal_label": "电力设备受益于2.8亿千瓦装机目标，但借用核电ETF近似观察，映射精度有限",
+        "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "能源综合生产能力58亿吨标准煤",
+          "detail": "能源综合生产能力目标58亿吨标准煤，电网升级和电力设备在能源基础设施投资中受益。",
+          "budget_signal": "能源基础设施投资",
+          "action_level": "持续推进"
+        },
+        "zhejiang": {
+          "mention": "新增电力装机1800万千瓦，工商业电价下降5分/千瓦时",
+          "detail": "2025年新增电力装机3000万千瓦（可再生能源2000万千瓦）。2026年新增电力装机1800万千瓦（非化石能源1000万千瓦）。甘电入浙特高压推进。全省工商业平均电价下降5分/千瓦时。",
+          "budget_signal": "电力基础设施投资+甘电入浙特高压",
+          "action_level": "持续推进"
+        }
       }
     },
     {
@@ -1931,6 +2329,20 @@
         "source": "浙江省十五五规划纲要（2026-2030）",
         "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
         "zj_intensity": "弱落地"
+      },
+      "market_signal": {
+        "etf_code": "159825",
+        "price": 1.089,
+        "return_5d_pct": -1.6,
+        "return_1m_pct": 3.8,
+        "return_3m_pct": 6.5,
+        "return_6m_pct": 15.2,
+        "return_1y_pct": 32.5,
+        "volume_trend": "持平",
+        "fund_flow_direction": "流入",
+        "signal": "数据不足",
+        "signal_label": "种业在省级规划中未独立体现，借用农业ETF观察。政策驱动弱，市场平淡",
+        "updated": "2026-05-30"
       }
     },
     {
@@ -1989,6 +2401,20 @@
         "source": "浙江省十五五规划纲要（2026-2030）",
         "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
         "zj_intensity": "弱落地"
+      },
+      "market_signal": {
+        "etf_code": "159883",
+        "price": 1.427,
+        "return_5d_pct": -2.1,
+        "return_1m_pct": 8.9,
+        "return_3m_pct": 16.5,
+        "return_6m_pct": 32.8,
+        "return_1y_pct": 72.5,
+        "volume_trend": "持平",
+        "fund_flow_direction": "流入",
+        "signal": "温和确认",
+        "signal_label": "医疗器械受益于医药板块整体回暖（1年+73%），但省级规划未独立强调，嵌套在生物医药方向中",
+        "updated": "2026-05-30"
       }
     },
     {
@@ -2041,6 +2467,20 @@
         "source": "浙江省十五五规划纲要（2026-2030）",
         "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
         "zj_intensity": "弱落地"
+      },
+      "market_signal": {
+        "etf_code": "512660",
+        "price": 1.258,
+        "return_5d_pct": -1.2,
+        "return_1m_pct": 5.8,
+        "return_3m_pct": 12.5,
+        "return_6m_pct": 25.6,
+        "return_1y_pct": 58.2,
+        "volume_trend": "持平",
+        "fund_flow_direction": "流入",
+        "signal": "数据不足",
+        "signal_label": "大飞机非浙江优势产业，省级规划未体现。借用军工ETF观察，映射精度有限",
+        "updated": "2026-05-30"
       }
     },
     {
@@ -2110,6 +2550,20 @@
         "source": "浙江省十五五规划纲要（2026-2030）",
         "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
         "zj_intensity": "弱落地"
+      },
+      "market_signal": {
+        "etf_code": "515030",
+        "price": 2.085,
+        "return_5d_pct": -2.4,
+        "return_1m_pct": 6.7,
+        "return_3m_pct": 12.8,
+        "return_6m_pct": 28.5,
+        "return_1y_pct": 62.8,
+        "volume_trend": "放量",
+        "fund_flow_direction": "流入",
+        "signal": "温和确认",
+        "signal_label": "稳步上行（1年+63%/6月+29%），争取国家级集群但行业竞争加剧，资金流入速度放缓",
+        "updated": "2026-05-30"
       }
     },
     {
@@ -2167,6 +2621,34 @@
         "source": "浙江省十五五规划纲要（2026-2030）",
         "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
         "zj_intensity": "弱落地"
+      },
+      "market_signal": {
+        "etf_code": "512660",
+        "price": 1.258,
+        "return_5d_pct": -1.2,
+        "return_1m_pct": 5.8,
+        "return_3m_pct": 12.5,
+        "return_6m_pct": 25.6,
+        "return_1y_pct": 58.2,
+        "volume_trend": "持平",
+        "fund_flow_direction": "流入",
+        "signal": "数据不足",
+        "signal_label": "深海采矿写入浙江十五五，但无纯深海ETF。借用军工ETF观察，映射精度有限",
+        "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "深海资源在海洋经济和未来产业中提及",
+          "detail": "深海资源开发在十五五规划纲要中力度更大，政府工作报告在海洋经济部分简要提及。",
+          "budget_signal": "海洋经济专项资金",
+          "action_level": "持续推进"
+        },
+        "zhejiang": {
+          "mention": "抢占深海智能装备新赛道，深远海风电+海洋电子信息",
+          "detail": "2026年浙江报告明确提出抢占深海智能装备、海洋电子信息等新赛道。统筹推进蓝色粮仓海上花园建设。加强海洋科技创新，加快国家海洋综合试验场建设。深远海风电母港推进。",
+          "budget_signal": "海洋经济专项资金+国家海洋综合试验场",
+          "action_level": "重点推进"
+        }
       }
     },
     {
@@ -2256,11 +2738,28 @@
         "price": 2.073,
         "return_5d_pct": -3.5,
         "return_1m_pct": 10.8,
+        "return_3m_pct": 19.2,
+        "return_6m_pct": 40.5,
+        "return_1y_pct": 88.6,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
         "signal": "温和确认",
-        "signal_label": "国家数据要素综合试验区+浙江数商品牌化，数据要素从政策概念走向产业落地",
+        "signal_label": "政策驱动上行（1年+89%/6月+41%），国家数据要素试验区+浙江数商品牌化，政策从概念走向产业",
         "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "深化数据要素市场化配置改革",
+          "detail": "全国统一大市场建设涵盖数据要素。十五五数字经济核心产业目标12.5%GDP占比，数据要素是核心增量来源。",
+          "budget_signal": "数据要素市场制度建设",
+          "action_level": "制度构建"
+        },
+        "zhejiang": {
+          "mention": "深化国家数据要素综合试验区建设，推进杭州语料库建设",
+          "detail": "深化国家数据要素综合试验区建设。推进杭州语料库建设。支持杭州、宁波、温州开展可信数据空间试点。杭甬温要素市场化配置综合改革试点获批。探索推广数据得地机制。",
+          "budget_signal": "数据要素试验区+要素市场化改革试点",
+          "action_level": "制度构建"
+        }
       }
     },
     {
@@ -2329,6 +2828,20 @@
         "source": "浙江省十五五规划纲要（2026-2030）",
         "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
         "zj_intensity": "弱落地"
+      },
+      "market_signal": {
+        "etf_code": "159825",
+        "price": 1.089,
+        "return_5d_pct": -1.6,
+        "return_1m_pct": 3.8,
+        "return_3m_pct": 6.5,
+        "return_6m_pct": 15.2,
+        "return_1y_pct": 32.5,
+        "volume_trend": "持平",
+        "fund_flow_direction": "流入",
+        "signal": "数据不足",
+        "signal_label": "农业科技无独立ETF，借用农业ETF观察。政策支持但市场关注度有限",
+        "updated": "2026-05-30"
       }
     },
     {
@@ -2395,6 +2908,20 @@
         "source": "浙江省十五五规划纲要（2026-2030）",
         "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
         "zj_intensity": "有落地"
+      },
+      "work_report": {
+        "national": {
+          "mention": "国家低碳转型基金+耐心资本+科技金融绿色通道",
+          "detail": "政府投资基金带头做耐心资本。科技型企业上市融资和并购重组绿色通道。设立国家低碳转型基金。",
+          "budget_signal": "低碳转型基金+上市绿色通道+耐心资本",
+          "action_level": "制度构建"
+        },
+        "zhejiang": {
+          "mention": "浙江社保科创基金500亿+耐心资本+杭甬温要素市场化改革",
+          "detail": "首期500亿元浙江社保科创基金签约落地。实施打造耐心资本专项行动，引导长期资本投早投小投硬科技。杭甬温要素市场化配置综合改革试点获批。科技型企业上市绿色通道。",
+          "budget_signal": "社保科创基金500亿+耐心资本+要素市场化改革",
+          "action_level": "制度构建"
+        }
       }
     },
     {
@@ -2460,6 +2987,34 @@
         "source": "浙江省十五五规划纲要（2026-2030）",
         "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
         "zj_intensity": "弱落地"
+      },
+      "market_signal": {
+        "etf_code": "560060",
+        "price": 1.089,
+        "return_5d_pct": -2.3,
+        "return_1m_pct": 15.6,
+        "return_3m_pct": 22.8,
+        "return_6m_pct": 48.5,
+        "return_1y_pct": 115.2,
+        "volume_trend": "放量",
+        "fund_flow_direction": "流入",
+        "signal": "数据不足",
+        "signal_label": "碳市场无独立ETF，借用科技/量子ETF近似观察。数据不足以支撑碳市场方向研判",
+        "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "扩大碳排放权交易市场覆盖范围",
+          "detail": "2026年将扩大碳市场覆盖行业范围。国家低碳转型基金的设立将为碳市场提供流动性支撑。",
+          "budget_signal": "碳市场扩容+低碳转型基金",
+          "action_level": "制度构建"
+        },
+        "zhejiang": {
+          "mention": "碳排放双控制度和数智治理体系构建中涵盖碳市场",
+          "detail": "浙江2026年报告重点在碳排放双控制度和数智治理体系。碳市场具体扩容措施未在省级报告中单独列出，但八大高耗能行业绿色转型为碳市场提供需求基础。",
+          "budget_signal": "碳排放数智治理体系+行业绿色转型",
+          "action_level": "制度构建"
+        }
       }
     },
     {
@@ -2535,6 +3090,34 @@
         "source": "浙江省十五五规划纲要（2026-2030）",
         "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
         "zj_intensity": "有落地"
+      },
+      "market_signal": {
+        "etf_code": "516830",
+        "price": 1.198,
+        "return_5d_pct": -1.2,
+        "return_1m_pct": 11,
+        "return_3m_pct": 20.5,
+        "return_6m_pct": 42.8,
+        "return_1y_pct": 95.6,
+        "volume_trend": "放量",
+        "fund_flow_direction": "流入",
+        "signal": "数据不足",
+        "signal_label": "银发经济首次写入省级规划，借用消费/航空航天ETF近似观察，无纯银发经济ETF",
+        "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "城乡居民基础养老金月最低标准再提高20元",
+          "detail": "完善免费学前教育政策。居民医保人均财政补助提高24元。加强初婚初育家庭住房保障。银发经济在养老服务体系中间接体现。",
+          "budget_signal": "养老金提标+医保提标+保障房",
+          "action_level": "持续推进"
+        },
+        "zhejiang": {
+          "mention": "全国首个省级银发经济产业园设立，银发经济列入新型消费",
+          "detail": "全国首个省级银发经济产业园在浙江设立。2026年大力发展银发经济等新型消费。长护险参保率达93%参保人数1561万人。70岁以上户籍老人意外伤害保险全覆盖列入十方面民生实事。养老服务机构1596个床位23.1万张。",
+          "budget_signal": "银发经济产业园+长护险+养老服务体系",
+          "action_level": "重点推进"
+        }
       }
     },
     {
@@ -2639,6 +3222,20 @@
         "source": "浙江省十五五规划纲要（2026-2030）",
         "source_url": "https://www.zj.gov.cn/col/col1229823372/art/2026/art_ab8db9e22b2a4be49743c52a86c05fb8.html",
         "zj_intensity": "弱落地"
+      },
+      "market_signal": {
+        "etf_code": "159647",
+        "price": 1.856,
+        "return_5d_pct": -3.8,
+        "return_1m_pct": 8.7,
+        "return_3m_pct": 18.5,
+        "return_6m_pct": 38.2,
+        "return_1y_pct": 85.6,
+        "volume_trend": "放量",
+        "fund_flow_direction": "流入",
+        "signal": "数据不足",
+        "signal_label": "中医药在省级规划中未独立强调，借用动漫游戏ETF近似观察，映射精度有限",
+        "updated": "2026-05-30"
       }
     },
     {
@@ -2724,11 +3321,28 @@
         "price": 0.912,
         "return_5d_pct": -4.1,
         "return_1m_pct": 6,
+        "return_3m_pct": 12.5,
+        "return_6m_pct": 25.8,
+        "return_1y_pct": 55.2,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
         "signal": "市场分歧",
-        "signal_label": "平台经济监管化信号+穿透式监管写入，但港股中概近期反弹，监管影响待观察",
+        "signal_label": "中概反弹（1年+55%/6月+26%），但穿透式监管写入省级规划增添不确定性，政策信号与市场走势背离",
         "updated": "2026-05-30"
+      },
+      "work_report": {
+        "national": {
+          "mention": "深入整治内卷式竞争，制定全国统一大市场建设条例",
+          "detail": "出台地方政府招商引资鼓励和禁止事项清单。深入整治内卷式竞争。制定全国统一大市场建设条例。完善民营经济促进法配套法规。",
+          "budget_signal": "监管规范+统一大市场制度",
+          "action_level": "监管规范"
+        },
+        "zhejiang": {
+          "mention": "启动平台经济强省建设三年行动，平台企业营收增长7%+",
+          "detail": "2025年启动平台经济强省建设三年行动，平台企业营收增长7%以上。2026年打造40个重点消费品产业集群。培育即时零售、数字虚拟主播等新增长点。",
+          "budget_signal": "平台经济强省行动+消费品产业集群40个",
+          "action_level": "重点推进"
+        }
       }
     }
   ],
