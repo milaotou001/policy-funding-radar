@@ -1,35 +1,32 @@
 import { useState } from "react";
 import type { Industry } from "../types";
 
-// Priority sub-tiers within 高 resource intensity
+// Priority sub-tiers within 高 resource intensity — mapped by document hierarchy
 const PRIORITY_TIER: Record<string, { tier: string; label: string }> = {
-  // 攻坚战
+  // 攻坚战 + AI — 最高优先级
   semiconductor:         { tier: "battle", label: "攻坚战" },
   manufacturing:         { tier: "battle", label: "攻坚战" },
   "new-materials":       { tier: "battle", label: "攻坚战" },
   "industrial-software": { tier: "battle", label: "攻坚战" },
   biomanufacturing:      { tier: "battle", label: "攻坚战" },
-  // 增长引擎
-  robotics:       { tier: "growth", label: "增长引擎" },
-  "new-energy":   { tier: "growth", label: "增长引擎" },
-  "nuclear-energy": { tier: "growth", label: "增长引擎" },
-  "energy-storage": { tier: "growth", label: "增长引擎" },
-  // 战略性产业
-  ai:                  { tier: "strategic", label: "战略性产业" },
-  "digital-economy":   { tier: "strategic", label: "战略性产业" },
-  "commercial-space":  { tier: "strategic", label: "战略性产业" },
-  biomedicine:         { tier: "strategic", label: "战略性产业" },
-  // 强化升级
-  "power-grid":         { tier: "strengthened", label: "强化升级" },
-  "autonomous-driving": { tier: "strengthened", label: "强化升级" },
-  "seed-industry":      { tier: "strengthened", label: "强化升级" },
-  "medical-devices":    { tier: "strengthened", label: "强化升级" },
-  "domestic-aircraft":  { tier: "strengthened", label: "强化升级" },
-  nev:                  { tier: "strengthened", label: "强化升级" },
-  // 制度/民生
-  "data-elements":  { tier: "other", label: "制度/民生" },
-  "silver-economy": { tier: "other", label: "制度/民生" },
-  "carbon-market":  { tier: "other", label: "制度/民生" },
+  ai:                    { tier: "battle", label: "攻坚战" },
+  // 增长引擎 — 写入"新的经济增长点"
+  "quantum-tech":   { tier: "growth", label: "增长引擎" },
+  robotics:         { tier: "growth", label: "增长引擎" },
+  "brain-computer": { tier: "growth", label: "增长引擎" },
+  "six-g":          { tier: "growth", label: "增长引擎" },
+  "hydrogen-fusion":{ tier: "growth", label: "增长引擎" },
+  // 能源与资源安全 — 清洁能源基地 + 关键矿产
+  "new-energy":      { tier: "energy", label: "能源与资源安全" },
+  "nuclear-energy":  { tier: "energy", label: "能源与资源安全" },
+  "energy-storage":  { tier: "energy", label: "能源与资源安全" },
+  "critical-minerals": { tier: "energy", label: "能源与资源安全" },
+  // 战略产业 — 独立战略性新兴产业
+  "low-altitude-economy": { tier: "strategic", label: "战略产业" },
+  "digital-economy":  { tier: "strategic", label: "战略产业" },
+  "commercial-space": { tier: "strategic", label: "战略产业" },
+  biomedicine:        { tier: "strategic", label: "战略产业" },
+  "autonomous-driving": { tier: "strategic", label: "战略产业" },
 };
 
 const TIER_COLORS: Record<string, string> = {
@@ -37,12 +34,10 @@ const TIER_COLORS: Record<string, string> = {
     "bg-red-50 dark:bg-red-950/40 border-red-200 dark:border-red-800/60 text-red-800 dark:text-red-300 hover:border-red-400 dark:hover:border-red-600",
   growth:
     "bg-amber-50 dark:bg-amber-950/40 border-amber-200 dark:border-amber-800/60 text-amber-800 dark:text-amber-300 hover:border-amber-400 dark:hover:border-amber-600",
+  energy:
+    "bg-green-50 dark:bg-green-950/40 border-green-200 dark:border-green-800/60 text-green-800 dark:text-green-300 hover:border-green-400 dark:hover:border-green-600",
   strategic:
     "bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800/60 text-blue-800 dark:text-blue-300 hover:border-blue-400 dark:hover:border-blue-600",
-  strengthened:
-    "bg-purple-50 dark:bg-purple-950/40 border-purple-200 dark:border-purple-800/60 text-purple-800 dark:text-purple-300 hover:border-purple-400 dark:hover:border-purple-600",
-  other:
-    "bg-zinc-50 dark:bg-zinc-800/60 border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:border-zinc-400 dark:hover:border-zinc-500",
 };
 
 function getTierColor(id: string, isSelected: boolean) {
@@ -84,9 +79,8 @@ export function IndustryTabs({
         {[
           { tier: "battle", label: "攻坚战" },
           { tier: "growth", label: "增长引擎" },
-          { tier: "strategic", label: "战略性产业" },
-          { tier: "strengthened", label: "强化升级" },
-          { tier: "other", label: "制度/民生" },
+          { tier: "energy", label: "能源与资源安全" },
+          { tier: "strategic", label: "战略产业" },
         ].map(({ tier, label }) => (
           <span key={tier} className="inline-flex items-center gap-1">
             <span
@@ -100,7 +94,6 @@ export function IndustryTabs({
       {/* Tab grid */}
       <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-1.5 sm:gap-2 lg:gap-3">
         {visible.map((ind) => {
-          // Find original index in full industries array
           const idx = industries.indexOf(ind);
           const isSelected = idx === selectedIdx;
           return (
