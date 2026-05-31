@@ -6,40 +6,55 @@
 <title>五层信号共识矩阵 & 投资策略框架 v2 — 政策资金流向雷达</title>
 <style>
 :root{--bg:#fafafa;--card:#fff;--text:#18181b;--muted:#71717a;--border:#e4e4e7;--accent:#2563eb;--green:#16a34a;--amber:#d97706;--red:#dc2626;--purple:#9333ea;--green-bg:#f0fdf4;--amber-bg:#fffbeb;--red-bg:#fef2f2;--blue-bg:#eff6ff;--purple-bg:#faf5ff;--zinc-bg:#f4f4f5}
-2@media(prefers-color-scheme:dark){:root{--bg:#09090b;--card:#18181b;--text:#f4f4f5;--muted:#a1a1aa;--border:#27272a;--accent:#60a5fa;--green:#4ade80;--amber:#fbbf24;--red:#f87171;--purple:#c084fc;--green-bg:#052e16;--amber-bg:#451a03;--red-bg:#450a0a;--blue-bg:#172554;--purple-bg:#2e1065;--zinc-bg:#27272a}}
-3*{box-sizing:border-box;margin:0;padding:0}
-4body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;max-width:1280px;margin:0 auto;padding:24px 16px}
-5h1{font-size:1.6em;margin-bottom:4px}h2{font-size:1.2em;margin:36px 0 16px;padding-bottom:6px;border-bottom:2px solid var(--border)}
-6h3{font-size:1em;margin:20px 0 8px;font-family:monospace}.meta{color:var(--muted);font-size:.85em;margin-bottom:20px}
-7.summary{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
-8.summary-item{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 18px;min-width:100px;text-align:center}
-9.summary-item strong{font-size:1.5em;display:block}.summary-item span{font-size:.8em;color:var(--muted)}
-10table{width:100%;border-collapse:collapse;font-size:.84em;margin:12px 0}
-11th,td{padding:6px 8px;border:1px solid var(--border);text-align:left}
-12th{background:var(--zinc-bg);font-weight:600;white-space:nowrap;position:sticky;top:0}
-13tr:hover{background:var(--blue-bg)}
-14.matrix-wrap{overflow-x:auto;margin:16px 0;border:1px solid var(--border);border-radius:8px}
-15.matrix-wrap table{margin:0;font-size:.82em}.matrix-wrap td:first-child{white-space:nowrap;font-weight:600}
-16.tag{display:inline-block;padding:1px 8px;border-radius:4px;font-size:.75em;font-weight:600;white-space:nowrap}
-17.tag-core{background:var(--green-bg);color:var(--green)}.tag-left{background:var(--amber-bg);color:var(--amber)}
-18.tag-momentum{background:var(--purple-bg);color:var(--purple)}.tag-diffusion{background:var(--blue-bg);color:var(--accent)}
-19.tag-local{background:var(--zinc-bg);color:var(--muted)}.tag-exclude{background:var(--red-bg);color:var(--red)}
-20.strategy-box{background:var(--card);border:2px solid var(--border);border-radius:10px;padding:20px;margin:20px 0}
-21.strategy-box h3{margin-top:0;font-family:inherit}.strategy-rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:12px 0;font-size:.85em}
-22.rule-item{background:var(--zinc-bg);border-radius:6px;padding:8px 12px}
-23.rule-item strong{display:block;font-size:.75em;color:var(--muted);text-transform:uppercase;margin-bottom:2px}
-24.industry-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin:10px 0}
-25.industry-card h4{margin:0 0 8px;font-size:.95em}.industry-card ul{list-style:none;padding:0;font-size:.88em}
-26.industry-card li{padding:2px 0}
-27.etf-info{font-size:.85em;background:var(--zinc-bg);padding:8px 12px;border-radius:6px;margin:8px 0;line-height:1.7}
-28.etf-info code{font-size:1em;background:var(--card);padding:1px 6px;border-radius:3px}
-29.key-quote{font-size:.85em;color:var(--muted);padding:6px 0 6px 12px;border-left:3px solid var(--border);margin:6px 0}
-30.flow-in{color:var(--green)}.flow-out{color:var(--red)}
-31.return-pos{color:var(--green);font-weight:600}.return-neg{color:var(--red);font-weight:600}.return-na{color:var(--muted)}
-32hr{border:none;border-top:1px solid var(--border);margin:28px 0}.footer{font-size:.8em;color:var(--muted);margin-top:40px}
-33.toc{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.toc a{font-size:.85em;color:var(--accent);text-decoration:none;padding:4px 10px;border:1px solid var(--border);border-radius:20px}.toc a:hover{background:var(--blue-bg)}
-34@media print{body{max-width:none;padding:0;font-size:10pt}.strategy-box,.industry-card{break-inside:avoid}h2{break-after:avoid}}
-35</style>
+@media(prefers-color-scheme:dark){:root{--bg:#09090b;--card:#18181b;--text:#f4f4f5;--muted:#a1a1aa;--border:#27272a;--accent:#60a5fa;--green:#4ade80;--amber:#fbbf24;--red:#f87171;--purple:#c084fc;--green-bg:#052e16;--amber-bg:#451a03;--red-bg:#450a0a;--blue-bg:#172554;--purple-bg:#2e1065;--zinc-bg:#27272a}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;max-width:1280px;margin:0 auto;padding:24px 16px}
+h1{font-size:1.6em;margin-bottom:4px}
+h2{font-size:1.2em;margin:36px 0 16px;padding-bottom:6px;border-bottom:2px solid var(--border)}
+h3{font-size:1em;margin:20px 0 8px;font-family:monospace}
+.meta{color:var(--muted);font-size:.85em;margin-bottom:20px}
+.summary{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
+.summary-item{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 18px;min-width:100px;text-align:center}
+.summary-item strong{font-size:1.5em;display:block}
+.summary-item span{font-size:.8em;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:.84em;margin:12px 0}
+th,td{padding:6px 8px;border:1px solid var(--border);text-align:left}
+th{background:var(--zinc-bg);font-weight:600;white-space:nowrap;position:sticky;top:0}
+tr:hover{background:var(--blue-bg)}
+.matrix-wrap{overflow-x:auto;margin:16px 0;border:1px solid var(--border);border-radius:8px}
+.matrix-wrap table{margin:0;font-size:.82em}
+.matrix-wrap td:first-child{white-space:nowrap;font-weight:600}
+.tag{display:inline-block;padding:1px 8px;border-radius:4px;font-size:.75em;font-weight:600;white-space:nowrap}
+.tag-core{background:var(--green-bg);color:var(--green)}
+.tag-left{background:var(--amber-bg);color:var(--amber)}
+.tag-momentum{background:var(--purple-bg);color:var(--purple)}
+.tag-diffusion{background:var(--blue-bg);color:var(--accent)}
+.tag-local{background:var(--zinc-bg);color:var(--muted)}
+.tag-exclude{background:var(--red-bg);color:var(--red)}
+.strategy-box{background:var(--card);border:2px solid var(--border);border-radius:10px;padding:20px;margin:20px 0}
+.strategy-box h3{margin-top:0;font-family:inherit}
+.strategy-rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:12px 0;font-size:.85em}
+.rule-item{background:var(--zinc-bg);border-radius:6px;padding:8px 12px}
+.rule-item strong{display:block;font-size:.75em;color:var(--muted);text-transform:uppercase;margin-bottom:2px}
+.industry-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin:10px 0}
+.industry-card h4{margin:0 0 8px;font-size:.95em}
+.industry-card ul{list-style:none;padding:0;font-size:.88em}
+.industry-card li{padding:2px 0}
+.etf-info{font-size:.85em;background:var(--zinc-bg);padding:8px 12px;border-radius:6px;margin:8px 0;line-height:1.7}
+.etf-info code{font-size:1em;background:var(--card);padding:1px 6px;border-radius:3px}
+.key-quote{font-size:.85em;color:var(--muted);padding:6px 0 6px 12px;border-left:3px solid var(--border);margin:6px 0}
+.flow-in{color:var(--green)}
+.flow-out{color:var(--red)}
+.return-pos{color:var(--green);font-weight:600}
+.return-neg{color:var(--red);font-weight:600}
+.return-na{color:var(--muted)}
+hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+.footer{font-size:.8em;color:var(--muted);margin-top:40px}
+.toc{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+.toc a{font-size:.85em;color:var(--accent);text-decoration:none;padding:4px 10px;border:1px solid var(--border);border-radius:20px}
+.toc a:hover{background:var(--blue-bg)}
+@media print{body{max-width:none;padding:0;font-size:10pt}.strategy-box,.industry-card{break-inside:avoid}h2{break-after:avoid}}
+</style>
 </head>
 <body>
 <h1>五层信号共识矩阵 &amp; 投资策略框架 v2</h1>
