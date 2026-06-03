@@ -13,15 +13,15 @@ export function ComparisonView({ industry }: { industry: Industry }) {
 
   return (
     <section className="mb-12">
-      <h2 className="text-lg sm:text-xl font-semibold mb-2 text-zinc-900">
+      <h2 className="text-lg sm:text-xl font-semibold mb-2 text-zinc-900 dark:text-zinc-100">
         原文对比 · {industry.name}
       </h2>
-      <p className="text-sm text-zinc-500 mb-4">
+      <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-4">
         {industry.summary}
       </p>
 
       {tooltip && (
-        <div className="mb-4 p-3 sm:p-4 bg-zinc-50 rounded-lg border border-zinc-200 text-sm">
+        <div className="mb-4 p-3 sm:p-4 bg-zinc-50 dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700 text-sm">
           <div className="flex items-center gap-2 mb-1">
             <span
               className={`inline-block px-2 py-0.5 rounded text-xs font-medium ${
@@ -32,14 +32,14 @@ export function ComparisonView({ industry }: { industry: Industry }) {
             </span>
             <strong>{tooltip.term}</strong>
           </div>
-          <p className="text-zinc-600">{tooltip.reason}</p>
+          <p className="text-zinc-600 dark:text-zinc-400">{tooltip.reason}</p>
         </div>
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* 十四五 */}
-        <div className="border border-zinc-200 rounded-lg p-4 sm:p-6">
-          <h3 className="text-sm font-semibold text-zinc-500 mb-3 uppercase tracking-wide">
+        <div className="border border-zinc-200 dark:border-zinc-700 rounded-lg p-4 sm:p-6">
+          <h3 className="text-sm font-semibold text-zinc-500 dark:text-zinc-400 mb-3 uppercase tracking-wide">
             十四五规划纲要（2021-2025）
           </h3>
           <div className="space-y-3 text-sm leading-relaxed">
@@ -58,8 +58,8 @@ export function ComparisonView({ industry }: { industry: Industry }) {
         </div>
 
         {/* 十五五 */}
-        <div className="border border-zinc-200 rounded-lg p-4 sm:p-6">
-          <h3 className="text-sm font-semibold text-zinc-500 mb-3 uppercase tracking-wide">
+        <div className="border border-zinc-200 dark:border-zinc-700 rounded-lg p-4 sm:p-6">
+          <h3 className="text-sm font-semibold text-zinc-500 dark:text-zinc-400 mb-3 uppercase tracking-wide">
             十五五规划纲要（2026-2030）
           </h3>
           <div className="space-y-3 text-sm leading-relaxed">
@@ -79,7 +79,7 @@ export function ComparisonView({ industry }: { industry: Industry }) {
       </div>
 
       {/* Highlights legend */}
-      <div className="mt-4 flex flex-wrap gap-3 text-xs text-zinc-500">
+      <div className="mt-4 flex flex-wrap gap-3 text-xs text-zinc-500 dark:text-zinc-400">
         <span className="inline-flex items-center gap-1">
           <span className="inline-block w-3 h-3 rounded highlight-new" />{" "}
           新增/强化
@@ -109,7 +109,7 @@ function ParagraphWithHighlights({
   highlightClass: (type: string) => string;
 }) {
   if (highlights.length === 0) {
-    return <p className="text-zinc-700 mb-1">{text}</p>;
+    return <p className="text-zinc-700 dark:text-zinc-300 mb-1">{text}</p>;
   }
 
   const parts: { text: string; highlight?: Highlight }[] = [{ text }];
@@ -142,7 +142,7 @@ function ParagraphWithHighlights({
   }
 
   return (
-    <p className="text-zinc-700 mb-1">
+    <p className="text-zinc-700 dark:text-zinc-300 mb-1">
       {parts.map((part, i) =>
         part.highlight ? (
           <span

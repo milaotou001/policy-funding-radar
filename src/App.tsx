@@ -68,7 +68,7 @@ function App() {
   const isFiltered = query.trim().length > 0;
 
   return (
-    <div className="min-h-screen bg-white text-zinc-800">
+    <div className="min-h-screen bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <Header meta={meta} summary={summary} />
 
@@ -76,7 +76,7 @@ function App() {
         <div className="mb-6">
           <div className="relative max-w-md">
             <svg
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none"
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 dark:text-zinc-500 pointer-events-none"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -93,19 +93,19 @@ function App() {
               value={query}
               onChange={(e) => handleSearch(e.target.value)}
               placeholder="搜索产业..."
-              className="w-full pl-10 pr-4 py-2 text-sm rounded-lg border border-zinc-300 bg-white text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-shadow"
+              className="w-full pl-10 pr-4 py-2 text-sm rounded-lg border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-amber-400 dark:focus:ring-amber-500 focus:border-transparent transition-shadow"
             />
             {query && (
               <button
                 onClick={() => setQuery("")}
-                className="absolute right-2 top-1/2 -translate-y-1/2 w-5 h-5 flex items-center justify-center rounded-full text-zinc-400 hover:text-zinc-600 hover:bg-zinc-200 text-xs cursor-pointer"
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-5 h-5 flex items-center justify-center rounded-full text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-xs cursor-pointer"
               >
                 ✕
               </button>
             )}
           </div>
           {isFiltered && (
-            <p className="mt-1.5 text-xs text-zinc-500">
+            <p className="mt-1.5 text-xs text-zinc-500 dark:text-zinc-400">
               找到 {industries.length} 个匹配产业
             </p>
           )}
@@ -129,7 +129,7 @@ function App() {
 
         <Methodology />
 
-        <footer className="mt-16 pt-8 border-t border-zinc-200 text-xs text-zinc-400 space-y-1">
+        <footer className="mt-16 pt-8 border-t border-zinc-200 dark:border-zinc-700 text-xs text-zinc-400 dark:text-zinc-500 space-y-1">
           <p>{meta.disclaimer}</p>
           <p>
             {meta.produced_by} · 数据版本 {meta.data_version} · {meta.source_14} · {meta.source_15}

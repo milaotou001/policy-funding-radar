@@ -97,19 +97,19 @@ export function computeSignals(ind: Industry): IndustrySignals {
 }
 
 export const SIGNAL_COLORS: Record<SignalLevel, string> = {
-  "🟢": "text-emerald-600",
-  "🟡": "text-amber-600",
-  "🟠": "text-orange-500",
-  "⚪": "text-zinc-300",
+  "🟢": "text-emerald-600 dark:text-emerald-400",
+  "🟡": "text-amber-600 dark:text-amber-400",
+  "🟠": "text-orange-500 dark:text-orange-400",
+  "⚪": "text-zinc-300 dark:text-zinc-600",
 };
 
 export const STRATEGY_COLORS: Record<string, string> = {
-  "核心配置": "bg-emerald-50 text-emerald-700 border-emerald-200",
-  "左侧观察": "bg-blue-50 text-blue-700 border-blue-200",
-  "政策扩散": "bg-purple-50 text-purple-700 border-purple-200",
-  "动量交易": "bg-amber-50 text-amber-700 border-amber-200",
-  "地方行情": "bg-cyan-50 text-cyan-700 border-cyan-200",
-  "排除池": "bg-zinc-100 text-zinc-500 border-zinc-200",
+  "核心配置": "bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-700",
+  "左侧观察": "bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-700",
+  "政策扩散": "bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-700",
+  "动量交易": "bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-700",
+  "地方行情": "bg-cyan-50 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 border-cyan-200 dark:border-cyan-700",
+  "排除池": "bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700",
 };
 
 // --- 文件层级分组 ---
@@ -177,11 +177,11 @@ export const INDUSTRY_TIER: Record<string, TierKey> = {
 };
 
 export const TIER_COLORS: Record<TierKey, string> = {
-  battle:     "bg-red-50 border-red-300 text-red-800",
-  growth:     "bg-amber-50 border-amber-300 text-amber-800",
-  energy:     "bg-emerald-50 border-emerald-300 text-emerald-800",
-  strategic:  "bg-blue-50 border-blue-300 text-blue-800",
-  strengthen: "bg-purple-50 border-purple-300 text-purple-800",
-  livelihood: "bg-teal-50 border-teal-300 text-teal-800",
-  regulatory: "bg-orange-50 border-orange-300 text-orange-800",
+  battle:     "bg-red-50 dark:bg-red-950/30 border-red-300 dark:border-red-800 text-red-800 dark:text-red-300",
+  growth:     "bg-amber-50 dark:bg-amber-950/30 border-amber-300 dark:border-amber-800 text-amber-800 dark:text-amber-300",
+  energy:     "bg-emerald-50 dark:bg-emerald-950/30 border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300",
+  strategic:  "bg-blue-50 dark:bg-blue-950/30 border-blue-300 dark:border-blue-800 text-blue-800 dark:text-blue-300",
+  strengthen: "bg-purple-50 dark:bg-purple-950/30 border-purple-300 dark:border-purple-800 text-purple-800 dark:text-purple-300",
+  livelihood: "bg-teal-50 dark:bg-teal-950/30 border-teal-300 dark:border-teal-800 text-teal-800 dark:text-teal-300",
+  regulatory: "bg-orange-50 dark:bg-orange-950/30 border-orange-300 dark:border-orange-800 text-orange-800 dark:text-orange-300",
 };
