@@ -36,8 +36,16 @@ jobs:
             echo "Preparing deployment for ${PROJECT_NAME}"
 
             if [ ! -d "${PROJECT_PATH}/.git" ]; then
-              mkdir -p "$(dirname "${PROJECT_PATH}")"
-              git clone --branch "${BRANCH}" "${REPO_URL}" "${PROJECT_PATH}"
+              mkdir -p "${PROJECT_PATH}"
+              cd "${PROJECT_PATH}"
+              git init
+              if git remote get-url origin >/dev/null 2>&1; then
+                git remote set-url origin "${REPO_URL}"
+              else
+                git remote add origin "${REPO_URL}"
+              fi
+              git fetch origin "${BRANCH}"
+              git checkout -B "${BRANCH}" "origin/${BRANCH}" --force
             fi
 
             cd "${PROJECT_PATH}"
