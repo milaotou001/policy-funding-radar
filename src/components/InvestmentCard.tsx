@@ -1,7 +1,17 @@
+import { useState } from "react";
 import type { Industry, ProvincialEvidence, MarketSignal, WorkReportEvidence, CityEvidenceMatrix, CityPlanMatrix, CityPlanEvidence, CityCode } from "../types";
 import { CITY_NAMES } from "../types";
 
+type TabKey = "policy" | "market" | "evidence";
+
+const TABS: { key: TabKey; label: string }[] = [
+  { key: "policy", label: "政策信号" },
+  { key: "market", label: "市场行情" },
+  { key: "evidence", label: "落地证据" },
+];
+
 export function InvestmentCard({ industry }: { industry: Industry }) {
+  const [activeTab, setActiveTab] = useState<TabKey>("policy");
   const obs = industry.investment_observation;
 
   const intensityColor = (level: string) => {
@@ -9,6 +19,12 @@ export function InvestmentCard({ industry }: { industry: Industry }) {
     if (level.startsWith("中")) return "text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/30";
     return "text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-800";
   };
+
+  const hasEvidence =
+    (industry.work_report != null) ||
+    (industry.provincial_evidence && industry.provincial_evidence.concrete_items.length > 0) ||
+    (industry.city_evidence && Object.keys(industry.city_evidence).length > 0) ||
+    (industry.city_plan_evidence && Object.keys(industry.city_plan_evidence).length > 0);
 
   return (
     <section className="mb-12">
@@ -19,84 +35,125 @@ export function InvestmentCard({ industry }: { industry: Industry }) {
         以下内容仅供研究参考，不构成投资建议。
       </p>
 
-      <div className="bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg p-4 sm:p-6 space-y-4">
-        <FieldRow label="政策变化" value={obs.policy_change} source="全国十四五→十五五规划纲要" />
-
-        <FieldRow
-          label="资源倾斜强度"
-          value={
-            <span
-              className={`inline-block px-2 py-0.5 rounded text-sm font-medium ${intensityColor(obs.resource_intensity)}`}
+      {/* Tab bar */}
+      <div className="flex border-b border-zinc-200 dark:border-zinc-700 mb-4">
+        {TABS.map(({ key, label }) => {
+          const isActive = key === activeTab;
+          const isEvidence = key === "evidence";
+          return (
+            <button
+              key={key}
+              onClick={() => setActiveTab(key)}
+              className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors -mb-px ${
+                isActive
+                  ? "border-amber-500 text-amber-700 dark:text-amber-300"
+                  : "border-transparent text-zinc-400 dark:text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300"
+              }`}
             >
-              {obs.resource_intensity}
-            </span>
-          }
-        />
+              {label}
+              {isEvidence && !hasEvidence && (
+                <span className="ml-1 text-zinc-300 dark:text-zinc-600">—</span>
+              )}
+            </button>
+          );
+        })}
+      </div>
 
-        <FieldRow label="落地证据" value={obs.landing_evidence} source="基于规划原文的AI语义分析" />
-        <FieldRow label="对应产业链" value={obs.industry_chain} source="行业研究" />
-
-        {obs.etf && obs.etf.code && (
-          <div>
-            <dt className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wide mb-2">
-              行业ETF
-              {sourceLabel("公开市场数据")}
-            </dt>
-            <dd className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-md p-3 space-y-2 text-sm">
-              <div className="flex items-center gap-2 flex-wrap">
-                <span className="font-mono font-bold text-zinc-900 dark:text-zinc-100">{obs.etf.code}</span>
-                <span className="text-zinc-600 dark:text-zinc-400">{obs.etf.name}</span>
-              </div>
-              <div className="flex items-center gap-2 flex-wrap">
-                {obs.etf.priority && (
-                  <span className={`inline-block px-2 py-0.5 rounded text-xs font-bold ${
-                    obs.etf.priority === "核心配置"
-                      ? "bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-700"
-                      : obs.etf.priority === "卫星配置"
-                      ? "bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-700"
-                      : "bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700"
-                  }`}>
-                    {obs.etf.priority}
-                  </span>
-                )}
-                <span className={`inline-block px-1.5 py-0.5 rounded text-xs font-medium ${
-                  obs.etf.confidence === "精准匹配"
-                    ? "bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300"
-                    : "bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300"
-                }`}>
-                  {obs.etf.confidence}
+      <div className="bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg p-4 sm:p-6 space-y-4">
+        {activeTab === "policy" && (
+          <>
+            <FieldRow label="政策变化" value={obs.policy_change} source="全国十四五→十五五规划纲要" />
+            <FieldRow
+              label="资源倾斜强度"
+              value={
+                <span className={`inline-block px-2 py-0.5 rounded text-sm font-medium ${intensityColor(obs.resource_intensity)}`}>
+                  {obs.resource_intensity}
                 </span>
+              }
+            />
+            <FieldRow label="落地证据" value={obs.landing_evidence} source="基于规划原文的AI语义分析" />
+            <FieldRow label="对应产业链" value={obs.industry_chain} source="行业研究" />
+            <FieldRow label="风险提示" value={obs.risk_warning} />
+          </>
+        )}
+
+        {activeTab === "market" && (
+          <>
+            {obs.etf && obs.etf.code && (
+              <div>
+                <dt className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wide mb-2">
+                  行业ETF
+                  {sourceLabel("公开市场数据")}
+                </dt>
+                <dd className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-md p-3 space-y-2 text-sm">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="font-mono font-bold text-zinc-900 dark:text-zinc-100">{obs.etf.code}</span>
+                    <span className="text-zinc-600 dark:text-zinc-400">{obs.etf.name}</span>
+                  </div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    {obs.etf.priority && (
+                      <span className={`inline-block px-2 py-0.5 rounded text-xs font-bold ${
+                        obs.etf.priority === "核心配置"
+                          ? "bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-700"
+                          : obs.etf.priority === "卫星配置"
+                          ? "bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-700"
+                          : "bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700"
+                      }`}>
+                        {obs.etf.priority}
+                      </span>
+                    )}
+                    <span className={`inline-block px-1.5 py-0.5 rounded text-xs font-medium ${
+                      obs.etf.confidence === "精准匹配"
+                        ? "bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300"
+                        : "bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300"
+                    }`}>
+                      {obs.etf.confidence}
+                    </span>
+                  </div>
+                  <div className="text-xs text-zinc-500 dark:text-zinc-400">
+                    跟踪指数：{obs.etf.index}
+                  </div>
+                  <div className="text-xs text-zinc-500 dark:text-zinc-400">
+                    {obs.etf.note}
+                  </div>
+                </dd>
               </div>
-              <div className="text-xs text-zinc-500 dark:text-zinc-400">
-                跟踪指数：{obs.etf.index}
-              </div>
-              <div className="text-xs text-zinc-500 dark:text-zinc-400">
-                {obs.etf.note}
-              </div>
-            </dd>
-          </div>
+            )}
+
+            {industry.market_signal && (
+              <MarketSection signal={industry.market_signal} />
+            )}
+
+            {!obs.etf?.code && !industry.market_signal && (
+              <p className="text-sm text-zinc-400 dark:text-zinc-500">暂无市场数据。</p>
+            )}
+          </>
         )}
 
-        {industry.market_signal && (
-          <MarketSection signal={industry.market_signal} />
-        )}
+        {activeTab === "evidence" && (
+          <>
+            {hasEvidence ? (
+              <>
+                {industry.work_report && (
+                  <WorkReportSection data={industry.work_report} />
+                )}
 
-        {industry.work_report && (
-          <WorkReportSection data={industry.work_report} />
-        )}
+                {industry.provincial_evidence && industry.provincial_evidence.concrete_items.length > 0 && (
+                  <ProvincialSection evidence={industry.provincial_evidence} />
+                )}
 
-        {industry.city_evidence && Object.keys(industry.city_evidence).length > 0 && (
-          <CityEvidenceSection evidence={industry.city_evidence} />
-        )}
+                {industry.city_evidence && Object.keys(industry.city_evidence).length > 0 && (
+                  <CityEvidenceSection evidence={industry.city_evidence} />
+                )}
 
-        {industry.city_plan_evidence && Object.keys(industry.city_plan_evidence).length > 0 && (
-          <CityPlanSection evidence={industry.city_plan_evidence} />
-        )}
-
-        <FieldRow label="风险提示" value={obs.risk_warning} />
-
-        {industry.provincial_evidence && industry.provincial_evidence.concrete_items.length > 0 && (
-          <ProvincialSection evidence={industry.provincial_evidence} />
+                {industry.city_plan_evidence && Object.keys(industry.city_plan_evidence).length > 0 && (
+                  <CityPlanSection evidence={industry.city_plan_evidence} />
+                )}
+              </>
+            ) : (
+              <p className="text-sm text-zinc-400 dark:text-zinc-500">暂无落地证据数据。</p>
+            )}
+          </>
         )}
       </div>
     </section>
@@ -115,6 +172,7 @@ function ProvincialSection({ evidence }: { evidence: ProvincialEvidence }) {
       <dt className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wide mb-2">
         浙江省落地证据
         {sourceLabel("浙江省十五五规划纲要")}
+        {valueTag(2)}
         <span className={`ml-2 inline-block px-1.5 py-0.5 rounded text-xs font-bold ${
           evidence.zj_intensity === "强落地"
             ? "bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300"
@@ -232,6 +290,7 @@ function WorkReportSection({ data }: { data: { national?: WorkReportEvidence; zh
       <dt className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wide mb-2">
         2026年政府工作报告
         {sourceLabel("国务院/浙江省政府")}
+        {valueTag(1)}
       </dt>
       <dd className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-md p-3 space-y-3 text-sm">
         {data.national && (
@@ -306,6 +365,7 @@ function CityEvidenceSection({ evidence }: { evidence: CityEvidenceMatrix }) {
       <dt className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wide mb-2">
         八城落地证据
         {sourceLabel("2026年各市政府工作报告")}
+        {valueTag(3)}
         <span className="ml-1.5 text-[10px] font-normal normal-case text-zinc-400">
           {entries.length}/8 城覆盖
         </span>
@@ -365,6 +425,7 @@ function CityPlanSection({ evidence }: { evidence: CityPlanMatrix }) {
       <dt className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wide mb-2">
         城市十五五规划证据
         {sourceLabel("各市十五五规划纲要")}
+        {valueTag(4)}
         <span className="ml-1.5 text-[10px] font-normal normal-case text-zinc-400">
           {entries.length}/8 城覆盖
         </span>
@@ -428,6 +489,23 @@ const sourceLabel = (text: string) => (
     {text}
   </span>
 );
+
+const VALUE_TIERS: Record<number, { label: string; style: string }> = {
+  1: { label: "最具时效·预算信号", style: "bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 border-emerald-200 dark:border-emerald-700" },
+  2: { label: "省级量化·具体项目", style: "bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-700" },
+  3: { label: "基层执行验证", style: "bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 border-amber-200 dark:border-amber-700" },
+  4: { label: "长期愿景·落地不确定", style: "bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700" },
+};
+
+function valueTag(tier: number) {
+  const t = VALUE_TIERS[tier];
+  if (!t) return null;
+  return (
+    <span className={`ml-2 inline-block px-1.5 py-0.5 rounded text-[10px] font-medium border ${t.style}`}>
+      {t.label}
+    </span>
+  );
+}
 
 function FieldRow({
   label,

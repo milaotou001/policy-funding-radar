@@ -10,17 +10,25 @@ export function Header({ meta, summary }: { meta: Meta; summary: Summary }) {
         {meta.subtitle}
       </p>
 
-      <div className="bg-zinc-50 dark:bg-zinc-800 rounded-lg p-4 sm:p-6 border border-zinc-200 dark:border-zinc-700">
-        <p className="text-sm sm:text-base leading-relaxed text-zinc-700 dark:text-zinc-300 mb-4">
+      <div className="bg-zinc-50 dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700">
+        <p className="px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
           {summary.overview}
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-xs sm:text-sm">
-          <SummaryGroup label="新增方向" items={summary.new_directions} color="amber" />
-          <SummaryGroup label="明显强化" items={summary.strengthened} color="emerald" />
-          <SummaryGroup label="明显弱化" items={summary.weakened} color="gray" />
-          <SummaryGroup label="工程化" items={summary.engineering_shift} color="blue" />
-          <SummaryGroup label="监管化" items={summary.regulatory_shift} color="orange" />
-        </div>
+
+        <details className="group">
+          <summary className="px-4 sm:px-6 pb-3 text-xs font-semibold text-zinc-400 dark:text-zinc-500 cursor-pointer hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors select-none">
+            产业分类明细
+          </summary>
+          <div className="px-4 sm:px-6 pb-4 sm:pb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-xs sm:text-sm">
+              <SummaryGroup label="新增方向" items={summary.new_directions} color="amber" />
+              <SummaryGroup label="明显强化" items={summary.strengthened} color="emerald" />
+              <SummaryGroup label="明显弱化" items={summary.weakened} color="gray" />
+              <SummaryGroup label="工程化" items={summary.engineering_shift} color="blue" />
+              <SummaryGroup label="监管化" items={summary.regulatory_shift} color="orange" />
+            </div>
+          </div>
+        </details>
       </div>
     </header>
   );

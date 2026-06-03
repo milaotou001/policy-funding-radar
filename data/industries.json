@@ -148,17 +148,17 @@
       },
       "market_signal": {
         "etf_code": "159995",
-        "price": 2.496,
-        "return_5d_pct": -1.6,
-        "return_1m_pct": 26.7,
-        "return_3m_pct": 27.1,
-        "return_6m_pct": 50.6,
-        "return_1y_pct": 109.3,
+        "price": 2.483,
+        "return_5d_pct": -5.6,
+        "return_1m_pct": 26,
+        "return_3m_pct": 26.6,
+        "return_6m_pct": 54.4,
+        "return_1y_pct": 108.1,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
         "signal": "双重验证",
-        "signal_label": "全周期强势：1年+109%/6月+51%/3月+27%，资金持续流入。政策省级强落地+市场高度一致",
-        "updated": "2026-05-30"
+        "signal_label": "全周期偏强：1年+108%/6月+54%/3月+27%，政策与市场共振",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
@@ -428,17 +428,17 @@
       },
       "market_signal": {
         "etf_code": "159667",
-        "price": 2.3068,
-        "return_5d_pct": -4.45,
-        "return_1m_pct": 14.3,
-        "return_3m_pct": 17.43,
-        "return_6m_pct": 61.84,
-        "return_1y_pct": 107.28,
+        "price": 2.351,
+        "return_5d_pct": 0.6,
+        "return_1m_pct": 16.2,
+        "return_3m_pct": 19.3,
+        "return_6m_pct": 67.1,
+        "return_1y_pct": 111,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
         "signal": "双重验证",
-        "signal_label": "工业母机ETF(159667)全周期强势（1年+107%/6月+62%/3月+17%），覆盖机床/激光/谐波减速器，仅覆盖工业母机细分",
-        "updated": "2026-05-29"
+        "signal_label": "全周期偏强：1年+111%/6月+67%/3月+19%，政策与市场共振",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
@@ -556,17 +556,17 @@
       },
       "market_signal": {
         "etf_code": "516890",
-        "price": 1.608,
-        "return_5d_pct": -1.8,
-        "return_1m_pct": 5.1,
-        "return_3m_pct": 10.5,
-        "return_6m_pct": 22.8,
-        "return_1y_pct": 55.2,
+        "price": 0.841,
+        "return_5d_pct": -3.1,
+        "return_1m_pct": -0.2,
+        "return_3m_pct": 4.3,
+        "return_6m_pct": 25.9,
+        "return_1y_pct": 72,
         "volume_trend": "持平",
         "fund_flow_direction": "流入",
-        "signal": "温和确认",
-        "signal_label": "稳健上行（1年+55%/6月+23%），宁波材料集群提升能级，材料方向受益多产业政策共振。ETF代码已修正(516890新材料ETF)",
-        "updated": "2026-05-31"
+        "signal": "双重验证",
+        "signal_label": "全周期偏强：1年+72%/6月+26%/3月+4%，政策与市场共振",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
@@ -770,17 +770,17 @@
       },
       "market_signal": {
         "etf_code": "159852",
-        "price": 1.665,
-        "return_5d_pct": -3.2,
-        "return_1m_pct": 12.4,
-        "return_3m_pct": 22.5,
-        "return_6m_pct": 45.8,
-        "return_1y_pct": 108.5,
+        "price": 0.759,
+        "return_5d_pct": -2.7,
+        "return_1m_pct": -5.4,
+        "return_3m_pct": -17.9,
+        "return_6m_pct": -13.2,
+        "return_1y_pct": -2.4,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
-        "signal": "双重验证",
-        "signal_label": "全周期强劲（1年+109%/6月+46%/3月+23%），2万亿营收目标+杭州软件名城，国产替代+政策双驱动",
-        "updated": "2026-05-30"
+        "signal": "暂不确认",
+        "signal_label": "信号不足：多周期数据偏弱，等待更多确认信号",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
@@ -945,17 +945,17 @@
       },
       "market_signal": {
         "etf_code": "159837",
-        "price": 0.45,
-        "return_5d_pct": 1.8,
-        "return_1m_pct": -8.2,
-        "return_3m_pct": -9.5,
-        "return_6m_pct": -12.6,
-        "return_1y_pct": -3.9,
+        "price": 0.433,
+        "return_5d_pct": -3.8,
+        "return_1m_pct": -11.8,
+        "return_3m_pct": -13.2,
+        "return_6m_pct": -15.6,
+        "return_1y_pct": -7.3,
         "volume_trend": "缩量",
         "fund_flow_direction": "流出",
         "signal": "暂不确认",
-        "signal_label": "全周期偏弱（1年-4%/6月-13%），生物制造首次列入未来产业但市场尚未定价，产业仍处早期研发阶段",
-        "updated": "2026-05-30"
+        "signal_label": "信号不足：多周期数据偏弱，等待更多确认信号",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
@@ -1189,17 +1189,17 @@
       },
       "market_signal": {
         "etf_code": "159819",
-        "price": 1.966,
-        "return_5d_pct": -4.4,
-        "return_1m_pct": 0.8,
-        "return_3m_pct": 6.2,
-        "return_6m_pct": 28.5,
-        "return_1y_pct": 117.6,
+        "price": 2.038,
+        "return_5d_pct": 1.6,
+        "return_1m_pct": 17.1,
+        "return_3m_pct": 26.3,
+        "return_6m_pct": 46.7,
+        "return_1y_pct": 123,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
-        "signal": "温和确认",
-        "signal_label": "中长期强劲（1年+118%/6月+29%），但近期横盘。政策独立成章+1.2万亿目标，回调后或有介入机会",
-        "updated": "2026-05-30"
+        "signal": "双重验证",
+        "signal_label": "全周期偏强：1年+123%/6月+47%/3月+26%，政策与市场共振",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
@@ -1557,17 +1557,17 @@
       },
       "market_signal": {
         "etf_code": "562500",
-        "price": 1.119,
-        "return_5d_pct": -7.4,
-        "return_1m_pct": -3.9,
-        "return_3m_pct": 9.6,
-        "return_6m_pct": 45.2,
-        "return_1y_pct": 98.5,
+        "price": 1.127,
+        "return_5d_pct": -3.1,
+        "return_1m_pct": 10.4,
+        "return_3m_pct": 3.9,
+        "return_6m_pct": 19.4,
+        "return_1y_pct": 33.4,
         "volume_trend": "放量",
         "fund_flow_direction": "流出",
-        "signal": "市场分歧",
-        "signal_label": "长期强势（1年+99%/6月+45%）但近一月资金获利了结。人形机器人产业尚早，短期波动大",
-        "updated": "2026-05-30"
+        "signal": "双重验证",
+        "signal_label": "全周期偏强：1年+33%/6月+19%/3月+4%，政策与市场共振",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
@@ -1799,17 +1799,17 @@
       },
       "market_signal": {
         "etf_code": "516160",
-        "price": 3.117,
-        "return_5d_pct": -1.7,
-        "return_1m_pct": -5.4,
-        "return_3m_pct": -8.1,
-        "return_6m_pct": 12.3,
-        "return_1y_pct": 74.1,
+        "price": 3.06,
+        "return_5d_pct": -3.8,
+        "return_1m_pct": -7.2,
+        "return_3m_pct": -1.9,
+        "return_6m_pct": 10,
+        "return_1y_pct": 70.9,
         "volume_trend": "缩量",
         "fund_flow_direction": "流出",
-        "signal": "数据不足",
-        "signal_label": "氢能首次列入未来产业+醇氢专项行动，但借用新能源ETF观察，无纯氢能ETF。政策早期，市场关注度低",
-        "updated": "2026-05-30"
+        "signal": "温和确认",
+        "signal_label": "中期偏正面：6月+10%/3月-2%，但短期或有波动",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
@@ -1932,17 +1932,17 @@
       },
       "market_signal": {
         "etf_code": "515880",
-        "price": 1.723,
-        "return_5d_pct": -2.8,
-        "return_1m_pct": 10.2,
-        "return_3m_pct": 18.5,
-        "return_6m_pct": 35.6,
-        "return_1y_pct": 78.5,
+        "price": 1.716,
+        "return_5d_pct": 11.5,
+        "return_1m_pct": 29.2,
+        "return_3m_pct": 56.4,
+        "return_6m_pct": 104.8,
+        "return_1y_pct": 312.5,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
-        "signal": "温和确认",
-        "signal_label": "通信基础设施升级（1年+79%/6月+36%），6G前瞻布局+5G-A基站9万个，确定性高但弹性有限",
-        "updated": "2026-05-30"
+        "signal": "双重验证",
+        "signal_label": "全周期偏强：1年+313%/6月+105%/3月+56%，政策与市场共振",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
@@ -2071,17 +2071,17 @@
       },
       "market_signal": {
         "etf_code": "515050",
-        "price": 1.2017,
-        "return_5d_pct": 4.56,
-        "return_1m_pct": 21.33,
-        "return_3m_pct": 48.73,
-        "return_6m_pct": 77.36,
-        "return_1y_pct": 248.69,
+        "price": 1.271,
+        "return_5d_pct": 6.2,
+        "return_1m_pct": 28.3,
+        "return_3m_pct": 57.3,
+        "return_6m_pct": 97.7,
+        "return_1y_pct": 268.4,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
-        "signal": "温和确认",
-        "signal_label": "5G通信ETF(515050)极端强势（1年+249%/6月+77%），但主要受益于5G-A/AI基础设施而非量子技术本身。无纯量子ETF，代理映射精度有限",
-        "updated": "2026-05-29"
+        "signal": "双重验证",
+        "signal_label": "全周期偏强：1年+268%/6月+98%/3月+57%，政策与市场共振",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
@@ -2219,17 +2219,17 @@
       },
       "market_signal": {
         "etf_code": "159883",
-        "price": 1.427,
-        "return_5d_pct": -2.1,
-        "return_1m_pct": 8.9,
-        "return_3m_pct": 16.5,
-        "return_6m_pct": 32.8,
-        "return_1y_pct": 72.5,
+        "price": 0.446,
+        "return_5d_pct": -4.1,
+        "return_1m_pct": -7.1,
+        "return_3m_pct": -13.4,
+        "return_6m_pct": -11.7,
+        "return_1y_pct": -7.1,
         "volume_trend": "持平",
         "fund_flow_direction": "流入",
-        "signal": "市场分歧",
-        "signal_label": "脑机接口列入未来产业，但无纯脑机ETF。新材料ETF作为近似标的，政策热点但映射精度有限",
-        "updated": "2026-05-30"
+        "signal": "暂不确认",
+        "signal_label": "信号不足：多周期数据偏弱，等待更多确认信号",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
@@ -2418,17 +2418,17 @@
       },
       "market_signal": {
         "etf_code": "516160",
-        "price": 3.117,
-        "return_5d_pct": -1.7,
-        "return_1m_pct": -5.4,
-        "return_3m_pct": -8.1,
-        "return_6m_pct": 12.3,
-        "return_1y_pct": 74.1,
+        "price": 3.06,
+        "return_5d_pct": -3.8,
+        "return_1m_pct": -7.2,
+        "return_3m_pct": -1.9,
+        "return_6m_pct": 10,
+        "return_1y_pct": 70.9,
         "volume_trend": "缩量",
         "fund_flow_direction": "流出",
-        "signal": "暂不确认",
-        "signal_label": "中长期尚可（1年+74%）但近3月持续走弱-8%，资金流出。政策强化但产能过剩压制短期表现",
-        "updated": "2026-05-30"
+        "signal": "温和确认",
+        "signal_label": "中期偏正面：6月+10%/3月-2%，但短期或有波动",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
@@ -2615,17 +2615,17 @@
       },
       "market_signal": {
         "etf_code": "159611",
-        "price": 1.2377,
-        "return_5d_pct": null,
-        "return_1m_pct": 10.13,
-        "return_3m_pct": 13.57,
-        "return_6m_pct": 20.29,
-        "return_1y_pct": 26.59,
+        "price": 1.249,
+        "return_5d_pct": 5.5,
+        "return_1m_pct": 11.1,
+        "return_3m_pct": 14.4,
+        "return_6m_pct": 21.9,
+        "return_1y_pct": 27.4,
         "volume_trend": "持平",
         "fund_flow_direction": "流入",
-        "signal": "温和确认",
-        "signal_label": "全指电力ETF(159611)稳步上行（1年+27%/6月+20%），核电+火电+绿电混合，核电权重持续提升但电力板块弹性有限",
-        "updated": "2026-05-29"
+        "signal": "双重验证",
+        "signal_label": "全周期偏强：1年+27%/6月+22%/3月+14%，政策与市场共振",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
@@ -2743,17 +2743,17 @@
       },
       "market_signal": {
         "etf_code": "159755",
-        "price": 1.1292,
-        "return_5d_pct": -3.26,
-        "return_1m_pct": -9.42,
-        "return_3m_pct": 2.75,
-        "return_6m_pct": 8.51,
-        "return_1y_pct": 68.31,
+        "price": 1.108,
+        "return_5d_pct": -3.3,
+        "return_1m_pct": -11.4,
+        "return_3m_pct": 0.7,
+        "return_6m_pct": 7.9,
+        "return_1y_pct": 64.9,
         "volume_trend": "缩量",
         "fund_flow_direction": "流出",
-        "signal": "暂不确认",
-        "signal_label": "电池ETF(159755)中长期尚可（1年+68%）但近1月-9.4%持续走弱。3000万千瓦储能目标明确但短期消化估值中",
-        "updated": "2026-05-29"
+        "signal": "双重验证",
+        "signal_label": "全周期偏强：1年+65%/6月+8%/3月+1%，政策与市场共振",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
@@ -2878,17 +2878,17 @@
       },
       "market_signal": {
         "etf_code": "516780",
-        "price": 1.587,
-        "return_5d_pct": -1.5,
-        "return_1m_pct": -3.8,
-        "return_3m_pct": -5.2,
-        "return_6m_pct": 8.5,
-        "return_1y_pct": 35.6,
+        "price": 0.954,
+        "return_5d_pct": 0.5,
+        "return_1m_pct": -2.9,
+        "return_3m_pct": -14.3,
+        "return_6m_pct": 16.8,
+        "return_1y_pct": 81.7,
         "volume_trend": "缩量",
         "fund_flow_direction": "持平",
-        "signal": "数据不足",
-        "signal_label": "关键矿产借用稀土产业ETF(516780)近似观察，无纯关键矿产ETF。省级规划侧面体现（大宗商品枢纽+设备回收）",
-        "updated": "2026-05-30"
+        "signal": "温和确认",
+        "signal_label": "中期偏正面：6月+17%/3月-14%，但短期或有波动",
+        "updated": "2026-06-03"
       }
     },
     {
@@ -2965,17 +2965,17 @@
       },
       "market_signal": {
         "etf_code": "159378",
-        "price": 1.253,
-        "return_5d_pct": -4.2,
-        "return_1m_pct": 22.8,
-        "return_3m_pct": 35.6,
-        "return_6m_pct": 68.2,
-        "return_1y_pct": 125.8,
+        "price": 1.162,
+        "return_5d_pct": -4.6,
+        "return_1m_pct": -12.5,
+        "return_3m_pct": -21.4,
+        "return_6m_pct": -1.9,
+        "return_1y_pct": 6.1,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
-        "signal": "双重验证",
-        "signal_label": "最强新增方向（1年+126%/6月+68%/3月+36%），首次写入省级规划+低空新基建，政策从0到1红利期",
-        "updated": "2026-05-30"
+        "signal": "暂不确认",
+        "signal_label": "信号不足：多周期数据偏弱，等待更多确认信号",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
@@ -3217,17 +3217,17 @@
       },
       "market_signal": {
         "etf_code": "560800",
-        "price": 2.42,
-        "return_5d_pct": -3.8,
-        "return_1m_pct": 8.4,
-        "return_3m_pct": 15.8,
-        "return_6m_pct": 35.2,
-        "return_1y_pct": 82.6,
+        "price": 1.236,
+        "return_5d_pct": -3.7,
+        "return_1m_pct": 15.6,
+        "return_3m_pct": 15.6,
+        "return_6m_pct": 31.2,
+        "return_1y_pct": 65.5,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
         "signal": "双重验证",
-        "signal_label": "全周期稳健上行（1年+83%/6月+35%/3月+16%），数据要素试验区落地+浙江数商，政策与资金共振",
-        "updated": "2026-05-30"
+        "signal_label": "全周期偏强：1年+65%/6月+31%/3月+16%，政策与市场共振",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
@@ -3371,17 +3371,17 @@
       },
       "market_signal": {
         "etf_code": "512660",
-        "price": 1.2839,
-        "return_5d_pct": -5.47,
-        "return_1m_pct": -6.7,
-        "return_3m_pct": -17.19,
-        "return_6m_pct": 9.56,
-        "return_1y_pct": 22.73,
+        "price": 1.273,
+        "return_5d_pct": -3.8,
+        "return_1m_pct": -7.6,
+        "return_3m_pct": -17.9,
+        "return_6m_pct": 7.7,
+        "return_1y_pct": 21.6,
         "volume_trend": "缩量",
         "fund_flow_direction": "流出",
-        "signal": "暂不确认",
-        "signal_label": "军工ETF(512660)中长期温和（1年+23%/6月+10%）但近3月-17%持续走弱。商业航天多数标的在军工板块，是当前最接近的代理",
-        "updated": "2026-05-29"
+        "signal": "温和确认",
+        "signal_label": "中期偏正面：6月+8%/3月-18%，但短期或有波动",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
@@ -3560,17 +3560,17 @@
       },
       "market_signal": {
         "etf_code": "512290",
-        "price": 2.158,
-        "return_5d_pct": -2.9,
-        "return_1m_pct": 11.5,
-        "return_3m_pct": 18.2,
-        "return_6m_pct": 32.8,
-        "return_1y_pct": 68.5,
+        "price": 0.877,
+        "return_5d_pct": -4.6,
+        "return_1m_pct": -11.4,
+        "return_3m_pct": -11.8,
+        "return_6m_pct": -15.4,
+        "return_1y_pct": -9.6,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
-        "signal": "双重验证",
-        "signal_label": "全周期确认（1年+69%/6月+33%/3月+18%），杭州生物医药集群提级+国家级集群争取中",
-        "updated": "2026-05-30"
+        "signal": "暂不确认",
+        "signal_label": "信号不足：多周期数据偏弱，等待更多确认信号",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
@@ -3788,17 +3788,17 @@
       },
       "market_signal": {
         "etf_code": "516520",
-        "price": 1.442,
-        "return_5d_pct": -3.1,
-        "return_1m_pct": 9.3,
-        "return_3m_pct": 18.5,
-        "return_6m_pct": 38.2,
-        "return_1y_pct": 85.8,
+        "price": 1.218,
+        "return_5d_pct": -4.7,
+        "return_1m_pct": -0.4,
+        "return_3m_pct": -9.8,
+        "return_6m_pct": 2.2,
+        "return_1y_pct": 13.7,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
         "signal": "温和确认",
-        "signal_label": "工程化转向明确（1年+86%/6月+38%），杭州车路云示范是实质落地信号，资金认可度高",
-        "updated": "2026-05-30"
+        "signal_label": "中期偏正面：6月+2%/3月-10%，但短期或有波动",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
@@ -3962,17 +3962,17 @@
       },
       "market_signal": {
         "etf_code": "561170",
-        "price": 1.321,
-        "return_5d_pct": 0.8,
-        "return_1m_pct": 7.2,
-        "return_3m_pct": 14.5,
-        "return_6m_pct": 28.6,
-        "return_1y_pct": 62.3,
+        "price": 1.372,
+        "return_5d_pct": 5.9,
+        "return_1m_pct": 12.5,
+        "return_3m_pct": 16.1,
+        "return_6m_pct": 22.5,
+        "return_1y_pct": 28.1,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
-        "signal": "数据不足",
-        "signal_label": "电力设备借用绿色电力ETF(561170)近似观察，覆盖电网设备/智能电网标的，映射精度有限",
-        "updated": "2026-05-30"
+        "signal": "双重验证",
+        "signal_label": "全周期偏强：1年+28%/6月+22%/3月+16%，政策与市场共振",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
@@ -4136,17 +4136,17 @@
       },
       "market_signal": {
         "etf_code": "159825",
-        "price": 1.089,
-        "return_5d_pct": -1.6,
-        "return_1m_pct": 3.8,
-        "return_3m_pct": 6.5,
-        "return_6m_pct": 15.2,
-        "return_1y_pct": 32.5,
+        "price": 0.721,
+        "return_5d_pct": -1.9,
+        "return_1m_pct": -14.5,
+        "return_3m_pct": -17.6,
+        "return_6m_pct": -10.8,
+        "return_1y_pct": 4.5,
         "volume_trend": "持平",
         "fund_flow_direction": "流入",
-        "signal": "数据不足",
-        "signal_label": "种业在省级规划中未独立体现，借用农业ETF观察。政策驱动弱，市场平淡",
-        "updated": "2026-05-30"
+        "signal": "暂不确认",
+        "signal_label": "信号不足：多周期数据偏弱，等待更多确认信号",
+        "updated": "2026-06-03"
       }
     },
     {
@@ -4208,17 +4208,17 @@
       },
       "market_signal": {
         "etf_code": "159883",
-        "price": 1.427,
-        "return_5d_pct": -2.1,
-        "return_1m_pct": 8.9,
-        "return_3m_pct": 16.5,
-        "return_6m_pct": 32.8,
-        "return_1y_pct": 72.5,
+        "price": 0.446,
+        "return_5d_pct": -4.1,
+        "return_1m_pct": -7.1,
+        "return_3m_pct": -13.4,
+        "return_6m_pct": -11.7,
+        "return_1y_pct": -7.1,
         "volume_trend": "持平",
         "fund_flow_direction": "流入",
-        "signal": "温和确认",
-        "signal_label": "医疗器械受益于医药板块整体回暖（1年+73%），但省级规划未独立强调，嵌套在生物医药方向中",
-        "updated": "2026-05-30"
+        "signal": "暂不确认",
+        "signal_label": "信号不足：多周期数据偏弱，等待更多确认信号",
+        "updated": "2026-06-03"
       }
     },
     {
@@ -4274,17 +4274,17 @@
       },
       "market_signal": {
         "etf_code": "512660",
-        "price": 1.258,
-        "return_5d_pct": -1.2,
-        "return_1m_pct": 5.8,
-        "return_3m_pct": 12.5,
-        "return_6m_pct": 25.6,
-        "return_1y_pct": 58.2,
+        "price": 1.273,
+        "return_5d_pct": -3.8,
+        "return_1m_pct": -7.6,
+        "return_3m_pct": -17.9,
+        "return_6m_pct": 7.7,
+        "return_1y_pct": 21.6,
         "volume_trend": "持平",
         "fund_flow_direction": "流入",
-        "signal": "数据不足",
-        "signal_label": "大飞机非浙江优势产业，省级规划未体现。借用军工ETF观察，映射精度有限",
-        "updated": "2026-05-30"
+        "signal": "温和确认",
+        "signal_label": "中期偏正面：6月+8%/3月-18%，但短期或有波动",
+        "updated": "2026-06-03"
       },
       "city_plan_evidence": {
         "sh": {
@@ -4425,17 +4425,17 @@
       },
       "market_signal": {
         "etf_code": "515030",
-        "price": 2.085,
-        "return_5d_pct": -2.4,
-        "return_1m_pct": 6.7,
-        "return_3m_pct": 12.8,
-        "return_6m_pct": 28.5,
-        "return_1y_pct": 62.8,
+        "price": 1.922,
+        "return_5d_pct": -4,
+        "return_1m_pct": -10,
+        "return_3m_pct": 1.3,
+        "return_6m_pct": 8.6,
+        "return_1y_pct": 57.9,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
-        "signal": "温和确认",
-        "signal_label": "稳步上行（1年+63%/6月+29%），争取国家级集群但行业竞争加剧，资金流入速度放缓",
-        "updated": "2026-05-30"
+        "signal": "双重验证",
+        "signal_label": "全周期偏强：1年+58%/6月+9%/3月+1%，政策与市场共振",
+        "updated": "2026-06-03"
       }
     },
     {
@@ -4496,17 +4496,17 @@
       },
       "market_signal": {
         "etf_code": "512660",
-        "price": 1.258,
-        "return_5d_pct": -1.2,
-        "return_1m_pct": 5.8,
-        "return_3m_pct": 12.5,
-        "return_6m_pct": 25.6,
-        "return_1y_pct": 58.2,
+        "price": 1.273,
+        "return_5d_pct": -3.8,
+        "return_1m_pct": -7.6,
+        "return_3m_pct": -17.9,
+        "return_6m_pct": 7.7,
+        "return_1y_pct": 21.6,
         "volume_trend": "持平",
         "fund_flow_direction": "流入",
-        "signal": "数据不足",
-        "signal_label": "深海采矿写入浙江十五五，但无纯深海ETF。借用军工ETF观察，映射精度有限",
-        "updated": "2026-05-30"
+        "signal": "温和确认",
+        "signal_label": "中期偏正面：6月+8%/3月-18%，但短期或有波动",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
@@ -4700,17 +4700,17 @@
       },
       "market_signal": {
         "etf_code": "516000",
-        "price": 2.073,
-        "return_5d_pct": -3.5,
-        "return_1m_pct": 10.8,
-        "return_3m_pct": 19.2,
-        "return_6m_pct": 40.5,
-        "return_1y_pct": 88.6,
+        "price": 1.006,
+        "return_5d_pct": -2.7,
+        "return_1m_pct": -7.1,
+        "return_3m_pct": -15,
+        "return_6m_pct": -2.2,
+        "return_1y_pct": 11.7,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
-        "signal": "温和确认",
-        "signal_label": "政策驱动上行（1年+89%/6月+41%），国家数据要素试验区+浙江数商品牌化，政策从概念走向产业",
-        "updated": "2026-05-30"
+        "signal": "暂不确认",
+        "signal_label": "信号不足：多周期数据偏弱，等待更多确认信号",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
@@ -4876,17 +4876,17 @@
       },
       "market_signal": {
         "etf_code": "159825",
-        "price": 1.089,
-        "return_5d_pct": -1.6,
-        "return_1m_pct": 3.8,
-        "return_3m_pct": 6.5,
-        "return_6m_pct": 15.2,
-        "return_1y_pct": 32.5,
+        "price": 0.721,
+        "return_5d_pct": -1.9,
+        "return_1m_pct": -14.5,
+        "return_3m_pct": -17.6,
+        "return_6m_pct": -10.8,
+        "return_1y_pct": 4.5,
         "volume_trend": "持平",
         "fund_flow_direction": "流入",
-        "signal": "数据不足",
-        "signal_label": "农业科技无独立ETF，借用农业ETF观察。政策支持但市场关注度有限",
-        "updated": "2026-05-30"
+        "signal": "暂不确认",
+        "signal_label": "信号不足：多周期数据偏弱，等待更多确认信号",
+        "updated": "2026-06-03"
       }
     },
     {
@@ -5071,17 +5071,17 @@
       },
       "market_signal": {
         "etf_code": "560060",
-        "price": 1.089,
-        "return_5d_pct": -2.3,
-        "return_1m_pct": 15.6,
-        "return_3m_pct": 22.8,
-        "return_6m_pct": 48.5,
-        "return_1y_pct": 115.2,
+        "price": 1.034,
+        "return_5d_pct": -0.4,
+        "return_1m_pct": -4.4,
+        "return_3m_pct": -4.8,
+        "return_6m_pct": 7.5,
+        "return_1y_pct": 40.9,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
-        "signal": "数据不足",
-        "signal_label": "碳市场无独立ETF，借用科技/量子ETF近似观察。数据不足以支撑碳市场方向研判",
-        "updated": "2026-05-30"
+        "signal": "温和确认",
+        "signal_label": "中期偏正面：6月+7%/3月-5%，但短期或有波动",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
@@ -5191,17 +5191,17 @@
       },
       "market_signal": {
         "etf_code": "516830",
-        "price": 1.198,
-        "return_5d_pct": -1.2,
-        "return_1m_pct": 11,
-        "return_3m_pct": 20.5,
-        "return_6m_pct": 42.8,
-        "return_1y_pct": 95.6,
+        "price": 1.097,
+        "return_5d_pct": 0.7,
+        "return_1m_pct": 4,
+        "return_3m_pct": 6.8,
+        "return_6m_pct": 12.3,
+        "return_1y_pct": 30.8,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
-        "signal": "数据不足",
-        "signal_label": "银发经济首次写入省级规划，借用消费/航空航天ETF近似观察，无纯银发经济ETF",
-        "updated": "2026-05-30"
+        "signal": "双重验证",
+        "signal_label": "全周期偏强：1年+31%/6月+12%/3月+7%，政策与市场共振",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
@@ -5354,17 +5354,17 @@
       },
       "market_signal": {
         "etf_code": "159647",
-        "price": 1.856,
-        "return_5d_pct": -3.8,
-        "return_1m_pct": 8.7,
-        "return_3m_pct": 18.5,
-        "return_6m_pct": 38.2,
-        "return_1y_pct": 85.6,
+        "price": 0.874,
+        "return_5d_pct": -0.2,
+        "return_1m_pct": -5.4,
+        "return_3m_pct": -10.6,
+        "return_6m_pct": -13.6,
+        "return_1y_pct": -11,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
-        "signal": "温和确认",
-        "signal_label": "中药ETF(159647)精准匹配（1年+86%/6月+38%），省级规划未独立强调中医药但ETF本身精准",
-        "updated": "2026-05-31"
+        "signal": "暂不确认",
+        "signal_label": "信号不足：多周期数据偏弱，等待更多确认信号",
+        "updated": "2026-06-03"
       }
     },
     {
@@ -5447,17 +5447,17 @@
       },
       "market_signal": {
         "etf_code": "513050",
-        "price": 0.912,
-        "return_5d_pct": -4.1,
-        "return_1m_pct": 6,
-        "return_3m_pct": 12.5,
-        "return_6m_pct": 25.8,
-        "return_1y_pct": 55.2,
+        "price": 1.154,
+        "return_5d_pct": 2.5,
+        "return_1m_pct": -3.4,
+        "return_3m_pct": -12,
+        "return_6m_pct": -25.2,
+        "return_1y_pct": -16.9,
         "volume_trend": "放量",
         "fund_flow_direction": "流入",
-        "signal": "市场分歧",
-        "signal_label": "中概反弹（1年+55%/6月+26%），但穿透式监管写入省级规划增添不确定性，政策信号与市场走势背离",
-        "updated": "2026-05-30"
+        "signal": "暂不确认",
+        "signal_label": "信号不足：多周期数据偏弱，等待更多确认信号",
+        "updated": "2026-06-03"
       },
       "work_report": {
         "national": {
