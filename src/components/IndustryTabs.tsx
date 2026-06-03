@@ -5,28 +5,28 @@ import type { TierKey } from "../signals";
 
 const TAB_TIER_COLORS: Record<string, string> = {
   battle:
-    "bg-red-50g-red-950/40 border-red-200order-red-800/60 text-red-800ext-red-300 hover:border-red-400over:border-red-600",
+    "bg-red-50 border-red-200 text-red-800 hover:border-red-400",
   growth:
-    "bg-amber-50g-amber-950/40 border-amber-200order-amber-800/60 text-amber-800ext-amber-300 hover:border-amber-400over:border-amber-600",
+    "bg-amber-50 border-amber-200 text-amber-800 hover:border-amber-400",
   energy:
-    "bg-green-50g-green-950/40 border-green-200order-green-800/60 text-green-800ext-green-300 hover:border-green-400over:border-green-600",
+    "bg-green-50 border-green-200 text-green-800 hover:border-green-400",
   strategic:
-    "bg-blue-50g-blue-950/40 border-blue-200order-blue-800/60 text-blue-800ext-blue-300 hover:border-blue-400over:border-blue-600",
+    "bg-blue-50 border-blue-200 text-blue-800 hover:border-blue-400",
   strengthen:
-    "bg-purple-50g-purple-950/40 border-purple-200order-purple-800/60 text-purple-800ext-purple-300 hover:border-purple-400over:border-purple-600",
+    "bg-purple-50 border-purple-200 text-purple-800 hover:border-purple-400",
   livelihood:
-    "bg-teal-50g-teal-950/40 border-teal-200order-teal-800/60 text-teal-800ext-teal-300 hover:border-teal-400over:border-teal-600",
+    "bg-teal-50 border-teal-200 text-teal-800 hover:border-teal-400",
   regulatory:
-    "bg-orange-50g-orange-950/40 border-orange-200order-orange-800/60 text-orange-800ext-orange-300 hover:border-orange-400over:border-orange-600",
+    "bg-orange-50 border-orange-200 text-orange-800 hover:border-orange-400",
 };
 
 function getTierColor(id: string, isSelected: boolean) {
   if (isSelected) {
-    return "bg-slate-700g-slate-200 text-whiteext-slate-800 border-slate-700order-slate-200 ring-2 ring-offset-1 ring-slate-400ing-slate-500";
+    return "bg-slate-700 text-white border-slate-700 ring-2 ring-offset-1 ring-slate-400";
   }
   const tier = INDUSTRY_TIER[id];
   if (!tier)
-    return "bg-whiteg-zinc-800 text-zinc-600ext-zinc-400 border-zinc-200order-zinc-700 hover:border-zinc-400over:border-zinc-500";
+    return "bg-white text-zinc-600 border-zinc-200 hover:border-zinc-400";
   return TAB_TIER_COLORS[tier];
 }
 
@@ -56,7 +56,7 @@ export function IndustryTabs({
 
   return (
     <nav className="mb-6" aria-label="产业标签">
-      <p className="mb-3 text-xs text-zinc-400ext-zinc-500">
+      <p className="mb-3 text-xs text-zinc-400">
         按十五五规划纲要优先级排列，详情见下方矩阵分组说明。
       </p>
 
@@ -96,7 +96,7 @@ export function IndustryTabs({
             }
             setExpanded(!effectiveExpanded);
           }}
-          className="mt-3 text-xs text-zinc-500ext-zinc-400 hover:text-zinc-700over:text-zinc-300 transition-colors cursor-pointer"
+          className="mt-3 text-xs text-zinc-500 hover:text-zinc-700 transition-colors cursor-pointer"
         >
           {effectiveExpanded
             ? `收起中低优先级方向 ▲`
