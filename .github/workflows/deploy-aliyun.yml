@@ -35,18 +35,21 @@ jobs:
 
             echo "Preparing deployment for ${PROJECT_NAME}"
 
+            mkdir -p "${PROJECT_PATH}"
+            cd "${PROJECT_PATH}"
+            git config --global --add safe.directory "${PROJECT_PATH}" || true
+
             if [ ! -d "${PROJECT_PATH}/.git" ]; then
-              mkdir -p "${PROJECT_PATH}"
-              cd "${PROJECT_PATH}"
-              git init
-              if git remote get-url origin >/dev/null 2>&1; then
-                git remote set-url origin "${REPO_URL}"
-              else
-                git remote add origin "${REPO_URL}"
-              fi
-              git fetch origin "${BRANCH}"
-              git checkout -B "${BRANCH}" "origin/${BRANCH}" --force
+              git init -b "${BRANCH}"
             fi
 
-            cd "${PROJECT_PATH}"
+            if git remote get-url origin >/dev/null 2>&1; then
+              git remote set-url origin "${REPO_URL}"
+            else
+              git remote add origin "${REPO_URL}"
+            fi
+
+            git fetch origin "${BRANCH}"
+            git checkout -B "${BRANCH}" "origin/${BRANCH}" --force
+
             bash deploy.sh
