@@ -55,11 +55,11 @@ function renderRows(
       <tr
         key={ind.id}
         onClick={() => onSelect(ind.id)}
-        className={`border-b border-zinc-100 dark:border-zinc-800 cursor-pointer transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800/50 ${
-          isSelected ? "bg-amber-50 dark:bg-amber-900/20 font-medium" : ""
+        className={`border-b border-zinc-100order-zinc-800 cursor-pointer transition-colors hover:bg-zinc-50over:bg-zinc-800/50 ${
+          isSelected ? "bg-amber-50g-amber-900/20 font-medium" : ""
         }`}
       >
-        <td className="px-2 py-1 font-medium text-zinc-900 dark:text-zinc-100 whitespace-nowrap text-xs">
+        <td className="px-2 py-1 font-medium text-zinc-900ext-zinc-100 whitespace-nowrap text-xs">
           {ind.name}
         </td>
         {HEADER_LABELS.map(({ key, scope }) => (
@@ -69,7 +69,7 @@ function renderRows(
         ))}
         <td className="px-2 py-1 whitespace-nowrap">
           {sig.etfCode === "-" || !sig.etfCode ? (
-            <span className="text-[11px] text-zinc-400 dark:text-zinc-500">—</span>
+            <span className="text-[11px] text-zinc-400ext-zinc-500">—</span>
           ) : (
             <span
               className="cursor-help"
@@ -79,10 +79,10 @@ function renderRows(
                   : ""
               }
             >
-              <span className="text-[11px] font-mono text-zinc-600 dark:text-zinc-400 font-medium">
+              <span className="text-[11px] font-mono text-zinc-600ext-zinc-400 font-medium">
                 {sig.etfCode}
               </span>
-              <span className="text-[11px] text-zinc-500 dark:text-zinc-400 ml-1">
+              <span className="text-[11px] text-zinc-500ext-zinc-400 ml-1">
                 {ind.investment_observation.etf?.name || ""}
               </span>
             </span>
@@ -137,38 +137,38 @@ export function IndustryTable({
     <section className="mb-12">
       <div className="mb-4">
         <div className="flex items-baseline gap-3 mb-1">
-          <h2 className="text-lg sm:text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+          <h2 className="text-lg sm:text-xl font-semibold text-zinc-900ext-zinc-100">
             信号共识矩阵
           </h2>
-          <span className="text-xs text-zinc-400 dark:text-zinc-500">
+          <span className="text-xs text-zinc-400ext-zinc-500">
             {industries.length} 个产业 · 🟢强 🟡中 🟠弱 ⚪暂无此层数据
           </span>
         </div>
         <details className="mb-3">
-          <summary className="text-xs text-zinc-400 dark:text-zinc-500 cursor-pointer hover:text-zinc-600 dark:hover:text-zinc-300 select-none">
+          <summary className="text-xs text-zinc-400ext-zinc-500 cursor-pointer hover:text-zinc-600over:text-zinc-300 select-none">
             数据说明与注释
           </summary>
           <div className="mt-2 space-y-1">
-            <p className="text-xs text-zinc-400 dark:text-zinc-500">
+            <p className="text-xs text-zinc-400ext-zinc-500">
               数据覆盖：全国规划纲要 + 浙江省 + 上海/深圳/杭州/南京/苏州/北京/广州/合肥 8 城（两会报告+十五五规划）。
               ⚪ 表示当前覆盖范围内未抓取到对应证据，不等于该产业无落地。
             </p>
-            <p className="text-xs text-zinc-400 dark:text-zinc-500">
+            <p className="text-xs text-zinc-400ext-zinc-500">
               行情数据：静态快照，截止 2026-06-03。由于多数新兴产业尚无纯正ETF上市，本表将每个产业映射到市场上最接近的一只ETF，
-              映射精度分三档：<span className="text-emerald-500 dark:text-emerald-400 font-medium">精准匹配</span>（有独立行业ETF，如芯片ETF→半导体）、
-              <span className="text-amber-500 dark:text-amber-400 font-medium">相关匹配</span>（借用了相近行业ETF，如军工ETF→深海经济）、
+              映射精度分三档：<span className="text-emerald-500ext-emerald-400 font-medium">精准匹配</span>（有独立行业ETF，如芯片ETF→半导体）、
+              <span className="text-amber-500ext-amber-400 font-medium">相关匹配</span>（借用了相近行业ETF，如军工ETF→深海经济）、
               暂无对应（该产业处于早期或过于宽泛，无合适标的）。
             </p>
-            <p className="text-xs text-zinc-400 dark:text-zinc-500">
-              <span className="text-amber-500 dark:text-amber-400">*</span> 标注的涨跌幅来自<span className="font-medium">代理ETF</span>——即这只ETF并非为该产业设计，其价格变动反映的是另一个行业板块的行情。
+            <p className="text-xs text-zinc-400ext-zinc-500">
+              <span className="text-amber-500ext-amber-400">*</span> 标注的涨跌幅来自<span className="font-medium">代理ETF</span>——即这只ETF并非为该产业设计，其价格变动反映的是另一个行业板块的行情。
               例如：深海经济、商业航天、大飞机的涨跌幅均来自同一只军工ETF（512660），因此三者的6月/1年数据完全相同，实际上都是军工板块的涨幅，不能当作这三个产业各自的市场信号。
             </p>
-            <p className="text-xs text-zinc-400 dark:text-zinc-500">
+            <p className="text-xs text-zinc-400ext-zinc-500">
               时间维度说明：1年涨跌幅主要反映国家级政策定调（十五五规划、政府工作报告、预算安排）的累积效果——
               即"方向对不对"。3月/6月涨跌幅反映的是中期市场价格变化，其驱动因素（项目开工落地、季度业绩兑现、机构资金调仓、
               行业催化事件）超出了本工具当前的政策文本覆盖范围。本表提供的是政策方向验证，而非短期交易信号。
             </p>
-            <p className="text-xs text-zinc-400 dark:text-zinc-500">
+            <p className="text-xs text-zinc-400ext-zinc-500">
               分组：按十五五规划纲要中产业的文档优先级分层——攻坚战（集成电路/工业母机/先进材料/基础软件/生物制造/AI）→ 增长引擎（机器人/氢能/6G/量子/脑机）→ 能源与资源安全 → 战略产业 → 强化升级 → 制度民生 → 监管化。
               行内策略徽标表示该产业在当前五层信号下的投资策略分类。
             </p>
@@ -176,10 +176,10 @@ export function IndustryTable({
         </details>
       </div>
 
-      <div className="overflow-x-auto rounded-lg border border-zinc-200 dark:border-zinc-700">
+      <div className="overflow-x-auto rounded-lg border border-zinc-200order-zinc-700">
         <table className="min-w-[640px] w-full text-sm">
           <thead>
-            <tr className="border-b-2 border-zinc-300 dark:border-zinc-600 bg-zinc-50 dark:bg-zinc-800/50 text-[11px] font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+            <tr className="border-b-2 border-zinc-300order-zinc-600 bg-zinc-50g-zinc-800/50 text-[11px] font-semibold text-zinc-500ext-zinc-400 uppercase tracking-wide">
               <th className="px-2 py-1.5 text-left">产业</th>
               {HEADER_LABELS.map(({ key, label, scope }) => (
                 <th key={key} className="px-1 py-1.5 text-center w-10" title={scope}>
@@ -224,16 +224,16 @@ function ReturnCell({
   const isProxy =
     sig.etfConfidence !== "精准匹配" && sig.etfConfidence !== "暂无对应";
   const colorClass = val.startsWith("+")
-    ? "text-emerald-600 dark:text-emerald-400"
+    ? "text-emerald-600ext-emerald-400"
     : val.startsWith("-")
-    ? "text-red-500 dark:text-red-400"
-    : "text-zinc-400 dark:text-zinc-500";
+    ? "text-red-500ext-red-400"
+    : "text-zinc-400ext-zinc-500";
 
   return (
     <span className={colorClass} title={isProxy ? `ETF映射：${sig.etfConfidence}（${sig.etfCode}）` : sig.etfCode}>
       {val}
       {isProxy && (
-        <span className="text-amber-500 dark:text-amber-400 ml-0.5">*</span>
+        <span className="text-amber-500ext-amber-400 ml-0.5">*</span>
       )}
     </span>
   );
@@ -321,12 +321,12 @@ function TierSection({
 
   return (
     <>
-      <tr className={`border-b border-zinc-200 dark:border-zinc-700 ${colorClass.split(" ")[0]} ${colorClass.split(" ")[1]}`}>
+      <tr className={`border-b border-zinc-200order-zinc-700 ${colorClass.split(" ")[0]} ${colorClass.split(" ")[1]}`}>
         <td colSpan={13} className="px-3 py-0.5">
           <span className={`text-[11px] font-bold ${colorClass.split(" ").slice(2).join(" ")}`}>
             {tier.label}
           </span>
-          <span className="text-[10px] text-zinc-400 dark:text-zinc-500 ml-1.5">
+          <span className="text-[10px] text-zinc-400ext-zinc-500 ml-1.5">
             {rows.length}个
           </span>
         </td>
@@ -339,7 +339,7 @@ function TierSection({
 function StrategyLegend() {
   return (
     <details className="mt-6 group">
-      <summary className="text-sm font-semibold text-zinc-500 dark:text-zinc-400 cursor-pointer hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors select-none">
+      <summary className="text-sm font-semibold text-zinc-500ext-zinc-400 cursor-pointer hover:text-zinc-700over:text-zinc-300 transition-colors select-none">
         策略框架说明
       </summary>
       <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -379,11 +379,11 @@ function Row({ label, value }: { label: string; value: string }) {
 
 const CONFIDENCE_STYLES: Record<string, string> = {
   "精准匹配":
-    "bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-700",
+    "bg-emerald-50g-emerald-900/30 text-emerald-700ext-emerald-300 border-emerald-200order-emerald-700",
   "相关匹配":
-    "bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-700",
+    "bg-amber-50g-amber-900/30 text-amber-700ext-amber-300 border-amber-200order-amber-700",
   "暂无对应":
-    "bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700",
+    "bg-zinc-100g-zinc-800 text-zinc-500ext-zinc-400 border-zinc-200order-zinc-700",
 };
 
 const CONFIDENCE_EXPLAIN: Record<string, string> = {
