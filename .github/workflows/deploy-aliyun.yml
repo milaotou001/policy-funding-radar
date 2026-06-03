@@ -40,15 +40,11 @@ jobs:
             git config --global --add safe.directory "${PROJECT_PATH}" || true
 
             if [ ! -d "${PROJECT_PATH}/.git" ]; then
-              git init -b "${BRANCH}"
+              git init
             fi
 
-            if git remote get-url origin >/dev/null 2>&1; then
-              git remote set-url origin "${REPO_URL}"
-            else
-              git remote add origin "${REPO_URL}"
-            fi
-
+            git remote remove origin >/dev/null 2>&1 || true
+            git remote add origin "${REPO_URL}"
             git fetch origin "${BRANCH}"
             git checkout -B "${BRANCH}" "origin/${BRANCH}" --force
 
