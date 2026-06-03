@@ -19,3 +19,6 @@
 ## 下一步
 - 用户在浏览器验证效果
 - 确认后可选：部署上线 / 进入 MVP-1（如增加省份维度、搜索筛选等）
+## 2026-06-03 Codex
+
+- Added Aliyun first-deploy compatible GitHub Actions workflow and deploy.sh for master branch deployment.
