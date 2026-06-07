@@ -1,16 +1,18 @@
 import type { Industry } from "../types";
-import { computeSignals, SIGNAL_COLORS, STRATEGY_COLORS, TIERS, INDUSTRY_TIER, TIER_COLORS } from "../signals";
-import type { IndustrySignals, TierDef } from "../signals";
+import { computeSignals, SIGNAL_COLORS, CONVICTION_COLORS, TIERS, INDUSTRY_TIER, TIER_COLORS } from "../signals";
+import type { IndustrySignals, TierDef, SignalLevel } from "../signals";
+
+type SignalKey = "national" | "provincial" | "city" | "plan" | "market";
 
 const HEADER_LABELS: {
-  key: keyof IndustrySignals;
+  key: SignalKey;
   label: string;
   scope: string;
 }[] = [
   { key: "national", label: "国家", scope: "全国规划纲要" },
   { key: "provincial", label: "省级", scope: "浙江1省" },
-  { key: "city", label: "城市", scope: "8城" },
-  { key: "plan", label: "规划", scope: "8城" },
+  { key: "city", label: "城市", scope: "9城" },
+  { key: "plan", label: "规划", scope: "9城" },
   { key: "market", label: "市场", scope: "公开行情" },
 ];
 
@@ -18,7 +20,7 @@ function SignalDot({
   level,
   coverage,
 }: {
-  level: string;
+  level: SignalLevel;
   coverage?: string;
 }) {
   const isBlank = level === "⚪";
@@ -94,11 +96,20 @@ function renderRows(
         <td className="px-2 py-1">
           <span
             className={`inline-block px-1.5 py-0.5 rounded text-xs font-medium border ${
-              STRATEGY_COLORS[sig.strategy] || STRATEGY_COLORS["排除池"]
+              CONVICTION_COLORS[sig.direction.conviction]
             }`}
+            title={sig.direction.action}
           >
-            {sig.strategy}
+            {sig.direction.conviction}
           </span>
+          {sig.direction.contradiction && (
+            <span
+              className="ml-1 text-amber-500 cursor-help"
+              title={sig.direction.contradiction}
+            >
+              ⚠
+            </span>
+          )}
         </td>
         <td className="px-2 py-1 text-right text-[11px] font-mono whitespace-nowrap">
           <ReturnCell sig={sig} field="return1y" />
@@ -150,7 +161,7 @@ export function IndustryTable({
           </summary>
           <div className="mt-2 space-y-1">
             <p className="text-xs text-zinc-400 dark:text-zinc-500">
-              数据覆盖：全国规划纲要 + 浙江省 + 上海/深圳/杭州/南京/苏州/北京/广州/合肥 8 城（两会报告+十五五规划）。
+              数据覆盖：全国规划纲要 + 浙江省 + 上海/深圳/杭州/南京/苏州/北京/广州/合肥/武汉 9 城（两会报告+十五五规划）。
               ⚪ 表示当前覆盖范围内未抓取到对应证据，不等于该产业无落地。
             </p>
             <p className="text-xs text-zinc-400 dark:text-zinc-500">
@@ -170,7 +181,7 @@ export function IndustryTable({
             </p>
             <p className="text-xs text-zinc-400 dark:text-zinc-500">
               分组：按十五五规划纲要中产业的文档优先级分层——攻坚战（集成电路/工业母机/先进材料/基础软件/生物制造/AI）→ 增长引擎（机器人/氢能/6G/量子/脑机）→ 能源与资源安全 → 战略产业 → 强化升级 → 制度民生 → 监管化。
-              行内策略徽标表示该产业在当前五层信号下的投资策略分类。
+              行内信念徽标表示该产业在五层信号交叉验证后的投资信念等级。⚠ 表示层面间存在矛盾（如政策强推但市场未认）。
             </p>
           </div>
         </details>
@@ -188,7 +199,7 @@ export function IndustryTable({
               ))}
               <th className="px-2 py-1.5 text-left">ETF</th>
               <th className="px-1 py-1.5 text-left">映射精度</th>
-              <th className="px-2 py-1.5 text-left">策略</th>
+              <th className="px-2 py-1.5 text-left">信念</th>
               <th className="px-2 py-1.5 text-right">近1年</th>
               <th className="px-2 py-1.5 text-right">近6月</th>
               <th className="px-2 py-1.5 text-right">近3月</th>
@@ -251,54 +262,45 @@ interface StrategyDef {
 
 const STRATEGIES: StrategyDef[] = [
   {
-    name: "核心配置",
-    tagline: "回调即买",
-    operation: "等回调15-20%分批买",
+    name: "高信念",
+    tagline: "三重确认",
+    operation: "回调15-20%分批建仓",
     position: "≤15%/只，合计≤60%",
-    stopLoss: "不止损行业，止损时机",
-    exit: "省级降级或资金连续4周流出",
+    stopLoss: "省级降级或资金连续4周流出",
+    exit: "省级降级或资金连续4周流出→减仓",
     cycle: "中长期",
   },
   {
-    name: "左侧观察",
-    tagline: "等催化剂",
-    operation: "等≥2层信号改善再进",
-    position: "3-5%试仓",
-    stopLoss: "量化目标下修→清仓",
-    exit: "12个月无改善→放弃",
-    cycle: "12个月+",
-  },
-  {
-    name: "政策扩散",
-    tagline: "等城市落地",
-    operation: "等城市层新增重点推进信号",
-    position: "5-8%",
+    name: "中等信念",
+    tagline: "两层面确认",
+    operation: "已有仓位持有，新仓等回调或催化剂",
+    position: "试仓3-5%，确认后5-8%",
     stopLoss: "6个月无新信号→减半",
-    exit: "省级降级或资金持续流出",
+    exit: "省级降级或下期报告不再提及",
     cycle: "中期",
   },
   {
-    name: "动量交易",
-    tagline: "不靠政策逻辑",
-    operation: "纯技术面入场",
-    position: "≤5%/只，合计≤15%",
+    name: "低信念",
+    tagline: "单层面信号",
+    operation: "列入观察，不主动建仓",
+    position: "≤5%，仅技术面入场",
     stopLoss: "严格技术止损",
-    exit: "趋势破位即出",
-    cycle: "短线",
+    exit: "信号恶化或下期不再提及",
+    cycle: "短线/观察",
   },
   {
-    name: "地方行情",
-    tagline: "波段操作",
-    operation: "波段操作，快进快出",
-    position: "3-5%",
-    stopLoss: "严格",
-    exit: "目标位到就走",
-    cycle: "短线波段",
+    name: "观望",
+    tagline: "尚无信号",
+    operation: "等待任何一层出现信号",
+    position: "—",
+    stopLoss: "—",
+    exit: "—",
+    cycle: "—",
   },
   {
-    name: "排除池",
-    tagline: "不做",
-    operation: "不做",
+    name: "回避",
+    tagline: "政策退潮",
+    operation: "不做，等政策信号反转",
     position: "—",
     stopLoss: "—",
     exit: "—",
@@ -340,14 +342,17 @@ function StrategyLegend() {
   return (
     <details className="mt-6 group">
       <summary className="text-sm font-semibold text-zinc-500 dark:text-zinc-400 cursor-pointer hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors select-none">
-        策略框架说明
+        方向判断框架说明
       </summary>
+      <p className="mt-1 text-xs text-zinc-400 dark:text-zinc-500">
+        三维交叉：政策动量 × 执行证据 × 市场认知 → 信念等级。⚠ 标记表示层面间存在矛盾。
+      </p>
       <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {STRATEGIES.map((s) => (
           <div
             key={s.name}
             className={`rounded-lg border p-3 text-sm ${
-              STRATEGY_COLORS[s.name] || STRATEGY_COLORS["排除池"]
+              CONVICTION_COLORS[s.name as keyof typeof CONVICTION_COLORS] || CONVICTION_COLORS["观望"]
             }`}
           >
             <div className="flex items-center gap-2 mb-2">

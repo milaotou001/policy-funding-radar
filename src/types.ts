@@ -40,11 +40,11 @@ export interface WorkReportData {
   zhejiang?: WorkReportEvidence;
 }
 
-export type CityCode = "sh" | "sz" | "hz" | "nj" | "su" | "bj" | "gz" | "hf";
+export type CityCode = "sh" | "sz" | "hz" | "nj" | "su" | "bj" | "gz" | "hf" | "wh";
 
 export const CITY_NAMES: Record<CityCode, string> = {
   sh: "上海", sz: "深圳", hz: "杭州", nj: "南京",
-  su: "苏州", bj: "北京", gz: "广州", hf: "合肥",
+  su: "苏州", bj: "北京", gz: "广州", hf: "合肥", wh: "武汉",
 };
 
 export interface CityPlanEvidence {
@@ -132,6 +132,31 @@ export interface IndustriesData {
   meta: Meta;
   summary: Summary;
   industries: Industry[];
+}
+
+// --- Direction judgment types ---
+
+export type PolicyMomentum = "政策加速" | "政策稳定" | "政策减速" | "政策初现";
+export type ExecutionLevel = "强执行" | "有执行" | "弱执行" | "无证据" | "样本偏差";
+export type MarketStance = "资金认同" | "资金观望" | "资金分歧" | "资金流出" | "无数据";
+export type ConvictionTier = "高信念" | "中等信念" | "低信念" | "观望" | "回避";
+
+export interface WatchItem {
+  label: string;
+  current: string;
+  threshold: string;
+  status: "safe" | "watch" | "triggered";
+}
+
+export interface DirectionJudgment {
+  policyMomentum: PolicyMomentum;
+  executionLevel: ExecutionLevel;
+  marketStance: MarketStance;
+  conviction: ConvictionTier;
+  contradiction: string | null;
+  action: string;
+  falsification: string;
+  watchItems: WatchItem[];
 }
 
 export const HIGHLIGHT_COLORS: Record<string, string> = {

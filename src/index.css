@@ -8,6 +8,20 @@ body {
   margin: 0;
 }
 
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .dark * {
+    background: white !important;
+    color: black !important;
+    border-color: #e5e5e5 !important;
+  }
+  /* keep tab content visible */
+  [role="tabpanel"], .tab-content { display: block !important; }
+}
+
 .highlight-new {
   background-color: #fde68a;
   cursor: help;

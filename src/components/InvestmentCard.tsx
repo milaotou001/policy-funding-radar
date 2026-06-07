@@ -1,18 +1,22 @@
 import { useState } from "react";
 import type { Industry, ProvincialEvidence, MarketSignal, WorkReportEvidence, CityEvidenceMatrix, CityPlanMatrix, CityPlanEvidence, CityCode } from "../types";
 import { CITY_NAMES } from "../types";
+import { computeSignals, CONVICTION_COLORS, MOMENTUM_COLORS, EXECUTION_COLORS, MARKET_STANCE_COLORS } from "../signals";
 
-type TabKey = "policy" | "market" | "evidence";
+type TabKey = "direction" | "policy" | "market" | "evidence";
 
 const TABS: { key: TabKey; label: string }[] = [
+  { key: "direction", label: "方向判断" },
   { key: "policy", label: "政策信号" },
   { key: "market", label: "市场行情" },
   { key: "evidence", label: "落地证据" },
 ];
 
 export function InvestmentCard({ industry }: { industry: Industry }) {
-  const [activeTab, setActiveTab] = useState<TabKey>("policy");
+  const [activeTab, setActiveTab] = useState<TabKey>("direction");
   const obs = industry.investment_observation;
+  const sig = computeSignals(industry);
+  const dir = sig.direction;
 
   const intensityColor = (level: string) => {
     if (level.startsWith("高")) return "text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/30";
@@ -60,6 +64,178 @@ export function InvestmentCard({ industry }: { industry: Industry }) {
       </div>
 
       <div className="bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg p-4 sm:p-6 space-y-4">
+        {activeTab === "direction" && (
+          <>
+            {/* Conviction badge */}
+            <div className="flex items-center gap-3 mb-4">
+              <span
+                className={`inline-block px-3 py-1 rounded-lg text-lg font-bold border ${
+                  CONVICTION_COLORS[dir.conviction]
+                }`}
+              >
+                {dir.conviction}
+              </span>
+              <span className="text-sm text-zinc-600 dark:text-zinc-400">
+                {dir.conviction === "高信念" && "政策+执行+市场三重确认"}
+                {dir.conviction === "中等信念" && "两层面确认，等待第三层"}
+                {dir.conviction === "低信念" && "仅有单一层面信号"}
+                {dir.conviction === "观望" && "尚无明确信号"}
+                {dir.conviction === "回避" && "政策退潮或信号恶化"}
+              </span>
+            </div>
+
+            {/* Three-axis summary */}
+            <div className="grid grid-cols-3 gap-3 mb-4">
+              <div className="bg-zinc-50 dark:bg-zinc-900 rounded-md p-3 text-center">
+                <div className="text-xs text-zinc-400 dark:text-zinc-500 mb-1">政策动量</div>
+                <div className={`text-sm font-bold ${MOMENTUM_COLORS[dir.policyMomentum]}`}>
+                  {dir.policyMomentum}
+                </div>
+              </div>
+              <div className="bg-zinc-50 dark:bg-zinc-900 rounded-md p-3 text-center">
+                <div className="text-xs text-zinc-400 dark:text-zinc-500 mb-1">执行证据</div>
+                <div className={`text-sm font-bold ${EXECUTION_COLORS[dir.executionLevel]}`}>
+                  {dir.executionLevel}
+                </div>
+                {dir.executionLevel === "样本偏差" && (
+                  <div className="text-[10px] text-purple-500 dark:text-purple-400 mt-1 leading-tight">
+                    9城样本未覆盖该产业重心城市
+                  </div>
+                )}
+              </div>
+              <div className="bg-zinc-50 dark:bg-zinc-900 rounded-md p-3 text-center">
+                <div className="text-xs text-zinc-400 dark:text-zinc-500 mb-1">市场认知</div>
+                <div className={`text-sm font-bold ${MARKET_STANCE_COLORS[dir.marketStance]}`}>
+                  {dir.marketStance}
+                </div>
+              </div>
+            </div>
+
+            {/* Contradiction flag */}
+            {dir.contradiction && (
+              <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 rounded-md p-3 flex items-start gap-2">
+                <span className="text-amber-500 shrink-0 mt-0.5">⚠</span>
+                <div>
+                  <span className="text-xs font-bold text-amber-700 dark:text-amber-300">
+                    层面矛盾
+                  </span>
+                  <p className="text-xs text-amber-600 dark:text-amber-400 mt-0.5">
+                    {dir.contradiction}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Action */}
+            <FieldRow label="操作建议" value={dir.action} />
+
+            {/* Falsification */}
+            <FieldRow label="证伪条件" value={dir.falsification} />
+
+            {/* Data freshness & monitoring windows */}
+            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-md p-3 space-y-2">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold text-blue-700 dark:text-blue-300">
+                  数据更新窗口
+                </span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                <div className="flex justify-between">
+                  <span className="text-blue-600 dark:text-blue-400">省市工作报告</span>
+                  <span className="text-blue-500 dark:text-blue-400 font-medium">
+                    2027年1-2月 · 每年一次
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-blue-600 dark:text-blue-400">全国工作报告</span>
+                  <span className="text-blue-500 dark:text-blue-400 font-medium">
+                    2027年3月 · 每年一次
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-blue-600 dark:text-blue-400">市场数据</span>
+                  <span className="text-emerald-600 dark:text-emerald-400 font-medium">
+                    每周可刷新 · 运行脚本
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-blue-600 dark:text-blue-400">五年规划</span>
+                  <span className="text-zinc-400 dark:text-zinc-500">
+                    2031年 · 下个周期
+                  </span>
+                </div>
+              </div>
+              <p className="text-[11px] text-blue-500 dark:text-blue-400 leading-relaxed pt-1 border-t border-blue-200 dark:border-blue-700">
+                当前数据基于2026年3月发布的十五五规划和2026年政府工作报告。到上述窗口期，需去 .gov.cn 逐产业比对措辞变化，更新 JSON 数据文件。
+              </p>
+              <p className="text-[11px] text-purple-500 dark:text-purple-400 leading-relaxed">
+                注意：9城样本（上海/深圳/杭州/南京/苏州/北京/广州/合肥/武汉）仍偏向东部和科技中心。深海、核能、关键矿产3个产业的自然重心不在这些城市——"样本偏差"≠"无执行"，需另外找对口城市验证。
+              </p>
+            </div>
+
+            {/* Watch items */}
+            {dir.watchItems.length > 0 && (
+              <div>
+                <dt className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wide mb-2">
+                  当前监控状态
+                </dt>
+                <dd className="space-y-1.5">
+                  {dir.watchItems.map((w, i) => {
+                    const statusDot =
+                      w.status === "triggered"
+                        ? "bg-red-500"
+                        : w.status === "watch"
+                        ? "bg-amber-500"
+                        : "bg-emerald-500";
+                    return (
+                      <div
+                        key={i}
+                        className="flex items-center gap-2 text-xs bg-zinc-50 dark:bg-zinc-900 rounded px-3 py-2"
+                      >
+                        <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${statusDot}`} />
+                        <span className="text-zinc-600 dark:text-zinc-400 shrink-0">
+                          {w.label}
+                        </span>
+                        <span className="font-medium text-zinc-800 dark:text-zinc-200">
+                          {w.current}
+                        </span>
+                        <span className="text-zinc-400 dark:text-zinc-500 hidden sm:inline">
+                          · {w.threshold}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </dd>
+              </div>
+            )}
+
+            {/* ETF mapping summary */}
+            {obs.etf?.code && (
+              <div className="pt-3 border-t border-zinc-200 dark:border-zinc-700">
+                <div className="flex items-center gap-2 text-sm">
+                  <span className="font-mono font-bold text-zinc-900 dark:text-zinc-100">
+                    {obs.etf.code}
+                  </span>
+                  <span className="text-zinc-600 dark:text-zinc-400">{obs.etf.name}</span>
+                  {obs.etf.priority && (
+                    <span
+                      className={`inline-block px-1.5 py-0.5 rounded text-xs font-bold ${
+                        obs.etf.priority === "核心配置"
+                          ? "bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300"
+                          : obs.etf.priority === "卫星配置"
+                          ? "bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300"
+                          : "bg-zinc-100 dark:bg-zinc-800 text-zinc-500"
+                      }`}
+                    >
+                      {obs.etf.priority}
+                    </span>
+                  )}
+                </div>
+              </div>
+            )}
+          </>
+        )}
+
         {activeTab === "policy" && (
           <>
             <FieldRow label="政策变化" value={obs.policy_change} source="全国十四五→十五五规划纲要" />
@@ -363,11 +539,11 @@ function CityEvidenceSection({ evidence }: { evidence: CityEvidenceMatrix }) {
   return (
     <div>
       <dt className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wide mb-2">
-        八城落地证据
+        城市落地证据
         {sourceLabel("2026年各市政府工作报告")}
         {valueTag(3)}
         <span className="ml-1.5 text-[10px] font-normal normal-case text-zinc-400">
-          {entries.length}/8 城覆盖
+          {entries.length}/9 城覆盖
         </span>
       </dt>
       <dd className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-md p-3 text-sm">
@@ -427,7 +603,7 @@ function CityPlanSection({ evidence }: { evidence: CityPlanMatrix }) {
         {sourceLabel("各市十五五规划纲要")}
         {valueTag(4)}
         <span className="ml-1.5 text-[10px] font-normal normal-case text-zinc-400">
-          {entries.length}/8 城覆盖
+          {entries.length}/9 城覆盖
         </span>
       </dt>
       <dd className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-md p-3 text-sm">
